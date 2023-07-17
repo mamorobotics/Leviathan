@@ -1,0 +1,6 @@
+Package: imgui
+Feature: docking-experimental
+Architecture: x64-windows
+Multi-Arch: same
+Description: Build with docking support
+Status: install ok installed

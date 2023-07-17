@@ -1,0 +1,13 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "Leviathan.exe (Leviathan\\Leviathan.exe)",
+      "name": "Leviathan.exe (Leviathan\\Leviathan.exe)",
+      "currentDir": "${workspaceRoot}"
+    }
+  ]
+}
