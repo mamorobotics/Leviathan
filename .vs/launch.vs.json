@@ -5,8 +5,8 @@
     {
       "type": "default",
       "project": "CMakeLists.txt",
-      "projectTarget": "Leviathan.exe (Leviathan\\Leviathan.exe)",
-      "name": "Leviathan.exe (Leviathan\\Leviathan.exe)",
+      "projectTarget": "Leviathan.exe (src\\Leviathan.exe)",
+      "name": "Leviathan.exe (src\\Leviathan.exe)",
       "currentDir": "${workspaceRoot}"
     }
   ]

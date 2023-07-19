@@ -12,4 +12,4 @@ endif()
 project ("Leviathan")
 
 # Include sub-projects.
-add_subdirectory ("Leviathan")
+add_subdirectory ("src")

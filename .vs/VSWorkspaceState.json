@@ -6,8 +6,11 @@
     ]
   },
   "ExpandedNodes": [
-    ""
+    "",
+    "\\out\\build",
+    "\\src",
+    "\\src\\resources"
   ],
-  "SelectedNode": "\\CMakeLists.txt",
+  "SelectedNode": "\\src\\resources\\NotoSans-SemiBold.ttf",
   "PreviewInSolutionExplorer": false
 }

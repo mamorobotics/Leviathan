@@ -1,8 +1,8 @@
 ﻿#pragma once
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 
-#include "UseImGui.h"
-#include "LoadTexture.h"
+#include "UseImGui.hpp"
+#include "LoadTexture.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -34,7 +34,7 @@ int main()
 	UseImGui myimgui;
 	myimgui.Init(window, glsl_version);
 
-	bool ret = LoadTexture::LoadTextureFromFile("Leviathan/Resources/4.2.05.png", &myimgui.cameraTexture, &myimgui.cameraWidth, &myimgui.cameraHeight);
+	bool ret = LoadTexture::LoadTextureFromFile("src/resources/4.2.05.png", &myimgui.cameraTexture, &myimgui.cameraWidth, &myimgui.cameraHeight);
 	IM_ASSERT(ret);
 
 	while (!glfwWindowShouldClose(window)) {

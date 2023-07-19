@@ -8,22 +8,22 @@ The following packages will be built and installed:
   * vcpkg-cmake:x64-windows -> 2023-05-04
   * vcpkg-cmake-config:x64-windows -> 2022-02-06#1
 Additional packages (*) will be modified to complete this operation.
-Restored 7 package(s) from C:\Users\Miles Contopoulos\AppData\Local\vcpkg\archives in 273 ms. Use --debug to see more details.
+Restored 7 package(s) from C:\Users\Miles Contopoulos\AppData\Local\vcpkg\archives in 264 ms. Use --debug to see more details.
 Installing 1/7 vcpkg-cmake-config:x64-windows...
-Elapsed time to handle vcpkg-cmake-config:x64-windows: 15.9 ms
+Elapsed time to handle vcpkg-cmake-config:x64-windows: 20.7 ms
 Installing 2/7 vcpkg-cmake:x64-windows...
-Elapsed time to handle vcpkg-cmake:x64-windows: 17.9 ms
+Elapsed time to handle vcpkg-cmake:x64-windows: 21.1 ms
 Installing 3/7 egl-registry:x64-windows...
-Elapsed time to handle egl-registry:x64-windows: 21.5 ms
+Elapsed time to handle egl-registry:x64-windows: 27.8 ms
 Installing 4/7 opengl-registry:x64-windows...
-Elapsed time to handle opengl-registry:x64-windows: 74.9 ms
+Elapsed time to handle opengl-registry:x64-windows: 109 ms
 Installing 5/7 glad:x64-windows...
-Elapsed time to handle glad:x64-windows: 83.1 ms
+Elapsed time to handle glad:x64-windows: 54.5 ms
 Installing 6/7 glfw3:x64-windows...
-Elapsed time to handle glfw3:x64-windows: 53.6 ms
+Elapsed time to handle glfw3:x64-windows: 111 ms
 Installing 7/7 imgui:x64-windows...
-Elapsed time to handle imgui:x64-windows: 98.1 ms
-Total install time: 365 ms
+Elapsed time to handle imgui:x64-windows: 64.4 ms
+Total install time: 409 ms
 glad provides CMake targets:
 
     # this is heuristically generated, and may not be correct

@@ -1,10 +1,12 @@
-#include "UseImGui.h"
+#include "UseImGui.hpp"
 
 void UseImGui::Init(GLFWwindow* window, const char* glsl_version)
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
+
+	io.Fonts->AddFontFromFileTTF("src/resources/NotoSans-SemiBold.ttf", 16);
 
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
@@ -23,8 +25,6 @@ void UseImGui::NewFrame()
 
 void UseImGui::Update()
 {
-	const char* ip = "1.1.1.1";
-
 	ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 
 	ImGui::Begin("Camera View");
@@ -63,6 +63,7 @@ void UseImGui::Update()
 	
 	ImGui::Begin("Camera Settings");
 	ImGui::Checkbox("Pause Video Feed", &pauseCamera);
+	ImGui::SliderInt("Quality", &quality , 0, 100, "%d%%");
 	ImGui::End();
 }
 

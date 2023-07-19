@@ -48,18 +48,18 @@ Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" p
 The CXX compiler identification is MSVC, found in "E:/Code/Leviathan/out/build/x64-Debug/CMakeFiles/3.25.1-msvc1/CompilerIdCXX/CMakeCXXCompilerId.exe"
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: E:/Code/Leviathan/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-zwf815
+Change Dir: E:/Code/Leviathan/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-eq193z
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_94aa8 && [1/2] Building C object CMakeFiles\cmTC_94aa8.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_94aa8.exe
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_26269 && [1/2] Building C object CMakeFiles\cmTC_26269.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_26269.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: E:/Code/Leviathan/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-8fddo3
+Change Dir: E:/Code/Leviathan/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-6n5tzx
 
-Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_a27b1 && [1/2] Building CXX object CMakeFiles\cmTC_a27b1.dir\CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_a27b1.exe
+Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_6d7af && [1/2] Building CXX object CMakeFiles\cmTC_6d7af.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_6d7af.exe
 
 
 
