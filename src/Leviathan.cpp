@@ -1,13 +1,25 @@
 ﻿#pragma once
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 
-#include "UseImGui.hpp"
+#include <iostream>
+
+#include "UI.hpp"
 #include "LoadTexture.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+#ifdef _WIN32
+#define _WIN32_WINNT 0x0A00
+#endif
+
+#define ASIO_STANDALONE
+#include "asio.hpp"
+#include "asio/ts/buffer.hpp"
+#include "asio/ts/internet.hpp";
+
 int main()
 {
+
 	//Setup GLFW and Imgui
 	if (!glfwInit())
 		return 1;
@@ -31,23 +43,38 @@ int main()
 	glfwGetFramebufferSize(window, &screen_width, &screen_height);
 	glViewport(0, 0, screen_width, screen_height);
 
-	UseImGui myimgui;
-	myimgui.Init(window, glsl_version);
+	UI gui;
+	gui.Init(window, glsl_version);
 
-	bool ret = LoadTexture::LoadTextureFromFile("src/resources/4.2.05.png", &myimgui.cameraTexture, &myimgui.cameraWidth, &myimgui.cameraHeight);
+	bool ret = LoadTexture::LoadTextureFromFile("src/resources/4.2.05.png", &gui.cameraTexture, &gui.cameraWidth, &gui.cameraHeight);
 	IM_ASSERT(ret);
+
+	bool firstFrame = true;
 
 	while (!glfwWindowShouldClose(window)) {
 		glfwPollEvents();
 		glClearColor(1.00f, 1.00f, 1.00f, 1.00f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		myimgui.NewFrame();
-		myimgui.Update();
-		myimgui.Render();
+		gui.NewFrame();
+		gui.Update();
+		gui.Render();
 		glfwSwapBuffers(window);
+		/*if (firstFrame) {
+			asio::error_code ec;
+			asio::io_context context;
+			asio::ip::tcp::endpoint endpoint = asio::ip::tcp::endpoint(asio::ip::make_address("192.2.3.4", ec), 1974);
+			asio::ip::tcp::socket socket = asio::ip::tcp::socket(context);
+			socket.connect(endpoint, ec);
+			if (!ec) { gui.output.push_back("Connected!"); }
+			else { gui.output.push_back("Failed to connect to address: \n" + ec.message()); }
+
+			firstFrame = false;
+		}*/
 	}
 
-	myimgui.Shutdown();
+	gui.Shutdown();
 
 	return 0;
+
+	
 }
