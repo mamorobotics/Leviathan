@@ -31,21 +31,38 @@ void UI::Update()
 	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();
 
-	ImGui::Begin("Connection Details");
+	ImGui::Begin("Connection");
 	ImGui::Text("IP: 1.1.1.1");
 	ImGui::Text("Port: 1111");
 	ImGui::Text("FPS: 60");
 	ImGui::Text("Connection Status: Starting");
 	ImGui::End();
 
-	ImGui::Begin("Controller Details");
-	if (glfwJoystickPresent(0) == NULL)
+	ImGui::Begin("Controller");
+	const char* controllers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" };
+	ImGui::Combo("Controller", &selectedController, controllers, IM_ARRAYSIZE(controllers));
+	int count;
+	for (int i = 0; i < 16; i++)
 	{
-		ImGui::Text("! Controller not connected !");
-	}
-	else
-	{
-		ImGui::Text("Controller connected");
+		if (glfwJoystickPresent(i) != NULL)
+		{
+			if (ImGui::TreeNode(("Controller: " + std::string(glfwGetJoystickName(i)) + " (" + std::to_string(i) + ")").c_str()))
+			{
+				ImGui::Text(("Left Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[0]) + ", "
+					+ std::to_string(glfwGetJoystickAxes(i, &count)[1]) + ")").c_str());
+				ImGui::Text(("Right Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[2]) + ", "
+					+ std::to_string(glfwGetJoystickAxes(i, &count)[5]) + ")").c_str());
+				ImGui::Text(("Left Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[3])).c_str());
+				ImGui::Text(("Right Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[4])).c_str());
+				ImGui::Text(("A: " + std::to_string(glfwGetJoystickButtons(i, &count)[1])).c_str());
+				ImGui::Text(("X: " + std::to_string(glfwGetJoystickButtons(i, &count)[0])).c_str());
+				ImGui::Text(("B: " + std::to_string(glfwGetJoystickButtons(i, &count)[2])).c_str());
+				ImGui::Text(("Y: " + std::to_string(glfwGetJoystickButtons(i, &count)[3])).c_str());
+				ImGui::Text(("Left Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[4])).c_str());
+				ImGui::Text(("Right Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[5])).c_str());
+				ImGui::TreePop();
+			}
+		}
 	}
 	ImGui::End();
 

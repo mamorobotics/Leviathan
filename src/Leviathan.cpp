@@ -59,6 +59,7 @@ int main()
 		gui.Update();
 		gui.Render();
 		glfwSwapBuffers(window);
+
 		/*if (firstFrame) {
 			asio::error_code ec;
 			asio::io_context context;

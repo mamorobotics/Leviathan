@@ -14,6 +14,7 @@ public:
 	int cameraWidth, cameraHeight;
 	GLuint cameraTexture;
 	bool pauseCamera = false;
+	int selectedController = 0;
 	int quality = 80;
 
 	//Outputs:
