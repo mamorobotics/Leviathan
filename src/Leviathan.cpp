@@ -15,11 +15,10 @@
 #define ASIO_STANDALONE
 #include "asio.hpp"
 #include "asio/ts/buffer.hpp"
-#include "asio/ts/internet.hpp";
+#include "asio/ts/internet.hpp"
 
 int main()
 {
-
 	//Setup GLFW and Imgui
 	if (!glfwInit())
 		return 1;
