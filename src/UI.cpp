@@ -6,7 +6,7 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 
-	io.Fonts->AddFontFromFileTTF("src/resources/NotoSans-SemiBold.ttf", 16);
+	//io.Fonts->AddFontFromFileTTF("src/resources/NotoSans-SemiBold.ttf", 16);
 
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
@@ -14,6 +14,14 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGui_ImplOpenGL3_Init(glsl_version);
 
 	ImGui::StyleColorsDark();
+
+	for (int i = 0; i < 16; i++)
+	{
+		if (glfwJoystickPresent(i) != NULL)
+		{
+			controllers.push_back(std::string(glfwGetJoystickName(i)));
+		}
+	}
 }
 
 void UI::NewFrame()
@@ -39,8 +47,21 @@ void UI::Update()
 	ImGui::End();
 
 	ImGui::Begin("Controller");
-	const char* controllers[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" };
-	ImGui::Combo("Controller", &selectedController, controllers, IM_ARRAYSIZE(controllers));
+	static const char* current_item = NULL;
+	if (ImGui::BeginCombo("##combo", current_item))
+	{
+		for (int n = 0; n < controllers.size(); n++)
+		{
+			bool is_selected = (current_item == controllers[n]);
+			if (ImGui::Selectable(controllers[n].c_str(), is_selected))
+			{
+				current_item = controllers[n].c_str();
+				if (is_selected)
+					ImGui::SetItemDefaultFocus();
+			}
+		}
+		ImGui::EndCombo();
+	}
 	int count;
 	for (int i = 0; i < 16; i++)
 	{

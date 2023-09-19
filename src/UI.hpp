@@ -16,6 +16,8 @@ public:
 	bool pauseCamera = false;
 	int selectedController = 0;
 	int quality = 80;
+	std::vector<std::string> controllers;
+	
 
 	//Outputs:
 	std::vector<std::string> output;

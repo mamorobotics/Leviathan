@@ -45,8 +45,8 @@ int main()
 	UI gui;
 	gui.Init(window, glsl_version);
 
-	bool ret = LoadTexture::LoadTextureFromFile("src/resources/4.2.05.png", &gui.cameraTexture, &gui.cameraWidth, &gui.cameraHeight);
-	IM_ASSERT(ret);
+	//bool ret = LoadTexture::LoadTextureFromFile("src/resources/4.2.05.png", &gui.cameraTexture, &gui.cameraWidth, &gui.cameraHeight);
+	//IM_ASSERT(ret);
 
 	bool firstFrame = true;
 
