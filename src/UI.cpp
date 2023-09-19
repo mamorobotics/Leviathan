@@ -6,7 +6,7 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 
-	//io.Fonts->AddFontFromFileTTF("src/resources/NotoSans-SemiBold.ttf", 16);
+	io.Fonts->AddFontFromFileTTF("resources/NotoSans-SemiBold.ttf", 16);
 
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 

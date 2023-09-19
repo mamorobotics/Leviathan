@@ -1,6 +1,7 @@
 ﻿#pragma once
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 
+
 #include <iostream>
 
 #include "UI.hpp"
@@ -45,8 +46,8 @@ int main()
 	UI gui;
 	gui.Init(window, glsl_version);
 
-	//bool ret = LoadTexture::LoadTextureFromFile("src/resources/4.2.05.png", &gui.cameraTexture, &gui.cameraWidth, &gui.cameraHeight);
-	//IM_ASSERT(ret);
+	bool ret = LoadTexture::LoadTextureFromFile("resources/4.2.05.png", &gui.cameraTexture, &gui.cameraWidth, &gui.cameraHeight);
+	IM_ASSERT(ret);
 
 	bool firstFrame = true;
 
