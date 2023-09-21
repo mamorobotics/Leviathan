@@ -39,16 +39,23 @@ void UI::Update()
 	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();
 
-	ImGui::Begin("Connection");
-	ImGui::Text("IP: 1.1.1.1");
-	ImGui::Text("Port: 1111");
-	ImGui::Text("FPS: 60");
-	ImGui::Text("Connection Status: Starting");
+	ImGui::Begin("Networking");
+	if (ImGui::CollapsingHeader("Host"))
+	{
+		ImGui::Text(("IP: " + selfIP).c_str());
+		ImGui::Text(("Port: " + selfPort).c_str());
+	}
+	if (ImGui::CollapsingHeader("Connection"))
+	{
+		ImGui::Text(("IP: " + connectedIP).c_str());
+		ImGui::Text(("Port: " + connectedPort).c_str());
+		ImGui::Text(("Status: " + connectionStatus).c_str());
+	}	
 	ImGui::End();
 
 	ImGui::Begin("Controller");
-	static const char* current_item = NULL;
-	if (ImGui::BeginCombo("##combo", current_item))
+	static const char* current_item = "";
+	if (ImGui::BeginCombo("Controller", current_item))
 	{
 		for (int n = 0; n < controllers.size(); n++)
 		{
@@ -65,24 +72,21 @@ void UI::Update()
 	int count;
 	for (int i = 0; i < 16; i++)
 	{
-		if (glfwJoystickPresent(i) != NULL)
+		if (glfwJoystickPresent(i) != NULL && std::string(glfwGetJoystickName(i)) == current_item)
 		{
-			if (ImGui::TreeNode(("Controller: " + std::string(glfwGetJoystickName(i)) + " (" + std::to_string(i) + ")").c_str()))
-			{
-				ImGui::Text(("Left Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[0]) + ", "
-					+ std::to_string(glfwGetJoystickAxes(i, &count)[1]) + ")").c_str());
-				ImGui::Text(("Right Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[2]) + ", "
-					+ std::to_string(glfwGetJoystickAxes(i, &count)[5]) + ")").c_str());
-				ImGui::Text(("Left Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[3])).c_str());
-				ImGui::Text(("Right Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[4])).c_str());
-				ImGui::Text(("A: " + std::to_string(glfwGetJoystickButtons(i, &count)[1])).c_str());
-				ImGui::Text(("X: " + std::to_string(glfwGetJoystickButtons(i, &count)[0])).c_str());
-				ImGui::Text(("B: " + std::to_string(glfwGetJoystickButtons(i, &count)[2])).c_str());
-				ImGui::Text(("Y: " + std::to_string(glfwGetJoystickButtons(i, &count)[3])).c_str());
-				ImGui::Text(("Left Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[4])).c_str());
-				ImGui::Text(("Right Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[5])).c_str());
-				ImGui::TreePop();
-			}
+			ImGui::Text(("Controller: " + std::string(glfwGetJoystickName(i)) + " (" + std::to_string(i) + ")").c_str());
+			ImGui::Text(("Left Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[0]) + ", "
+				+ std::to_string(glfwGetJoystickAxes(i, &count)[1]) + ")").c_str());
+			ImGui::Text(("Right Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[2]) + ", "
+				+ std::to_string(glfwGetJoystickAxes(i, &count)[5]) + ")").c_str());
+			ImGui::Text(("Left Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[3])).c_str());
+			ImGui::Text(("Right Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[4])).c_str());
+			ImGui::Text(("A: " + std::to_string(glfwGetJoystickButtons(i, &count)[1])).c_str());
+			ImGui::Text(("X: " + std::to_string(glfwGetJoystickButtons(i, &count)[0])).c_str());
+			ImGui::Text(("B: " + std::to_string(glfwGetJoystickButtons(i, &count)[2])).c_str());
+			ImGui::Text(("Y: " + std::to_string(glfwGetJoystickButtons(i, &count)[3])).c_str());
+			ImGui::Text(("Left Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[4])).c_str());
+			ImGui::Text(("Right Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[5])).c_str());
 		}
 	}
 	ImGui::End();

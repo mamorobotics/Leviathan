@@ -60,7 +60,7 @@ int main()
 		gui.Render();
 		glfwSwapBuffers(window);
 
-		/*if (firstFrame) {
+		if (firstFrame) {
 			asio::error_code ec;
 			asio::io_context context;
 			asio::ip::tcp::endpoint endpoint = asio::ip::tcp::endpoint(asio::ip::make_address("192.2.3.4", ec), 1974);
@@ -70,7 +70,7 @@ int main()
 			else { gui.output.push_back("Failed to connect to address: \n" + ec.message()); }
 
 			firstFrame = false;
-		}*/
+		}
 	}
 
 	gui.Shutdown();
