@@ -9,6 +9,7 @@
 #include <imgui_impl_opengl3.h>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "Connection.hpp"
 
 class UI {
 public:
@@ -18,7 +19,8 @@ public:
 	bool statisticsOpen = false;
 	int selectedController = 0;
 	int quality = 80;
-	float values[64];
+	float deltaVals[64];
+	float frameVals[64];
 	std::vector<std::string> controllers;
 
 	std::string selfIP;

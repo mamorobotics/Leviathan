@@ -50,15 +50,29 @@ void UI::Update()
 		if (ImGui::Button("Exit"))
 			statisticsOpen = false;
 
-		float values2[64];
+		float averageDelta = 0;
+		float deltaVals2[64];
 		for (int i = 0; i < 64; i++)
 		{
-			values2[i] = values[(i + 65) % 64];
+			averageDelta += deltaVals[i];
+			deltaVals2[i] = deltaVals[(i + 65) % 64];
 		}
-		std::copy(std::begin(values2), std::end(values2), std::begin(values));
-		values[63] = ImGui::GetIO().DeltaTime;
+		averageDelta /= 64;
+		std::copy(std::begin(deltaVals2), std::end(deltaVals2), std::begin(deltaVals));
+		deltaVals[63] = ImGui::GetIO().DeltaTime;
+		ImGui::PlotLines("DeltaTime", deltaVals, IM_ARRAYSIZE(deltaVals), 0, std::to_string(averageDelta).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
 
-		ImGui::PlotLines("Lines", values, IM_ARRAYSIZE(values), 0, "DeltaTime", -1.0f, 1.0f, ImVec2(0, 80.0f));
+		float averageFrame = 0;
+		float frameVals2[64];
+		for (int i = 0; i < 64; i++)
+		{
+			averageFrame += frameVals[i];
+			frameVals2[i] = frameVals[(i + 65) % 64];
+		}
+		averageFrame /= 64;
+		std::copy(std::begin(frameVals2), std::end(frameVals2), std::begin(frameVals));
+		frameVals[63] = ImGui::GetIO().Framerate;
+		ImGui::PlotLines("Framerate", frameVals, IM_ARRAYSIZE(frameVals), 0, std::to_string((int)averageFrame).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
 		ImGui::End();
 	}
 
@@ -76,7 +90,10 @@ void UI::Update()
 	{
 		ImGui::Text(("IP: " + connectedIP).c_str());
 		ImGui::Text(("Port: " + connectedPort).c_str());
+		if (ImGui::Button("Connect"))
+			Connection::Connect();
 		ImGui::Text(("Status: " + connectionStatus).c_str());
+		
 	}	
 	ImGui::End();
 
