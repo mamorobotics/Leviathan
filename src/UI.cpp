@@ -35,6 +35,33 @@ void UI::Update()
 {
 	ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 
+	ImGui::BeginMainMenuBar();
+	if (ImGui::MenuItem("Exit"))
+		exit(0);
+	if (ImGui::MenuItem("Statistics"))
+	{
+		statisticsOpen = true;
+	}
+	ImGui::EndMainMenuBar();
+
+	if (statisticsOpen)
+	{
+		ImGui::Begin("Statistics");
+		if (ImGui::Button("Exit"))
+			statisticsOpen = false;
+
+		float values2[64];
+		for (int i = 0; i < 64; i++)
+		{
+			values2[i] = values[(i + 65) % 64];
+		}
+		std::copy(std::begin(values2), std::end(values2), std::begin(values));
+		values[63] = ImGui::GetIO().DeltaTime;
+
+		ImGui::PlotLines("Lines", values, IM_ARRAYSIZE(values), 0, "DeltaTime", -1.0f, 1.0f, ImVec2(0, 80.0f));
+		ImGui::End();
+	}
+
 	ImGui::Begin("Camera View");
 	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();

@@ -15,8 +15,10 @@ public:
 	int cameraWidth, cameraHeight;
 	GLuint cameraTexture;
 	bool pauseCamera = false;
+	bool statisticsOpen = false;
 	int selectedController = 0;
 	int quality = 80;
+	float values[64];
 	std::vector<std::string> controllers;
 
 	std::string selfIP;
