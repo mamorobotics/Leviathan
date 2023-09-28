@@ -1,9 +1,9 @@
-cmake 3.27.5
+cmake 3.25.1
 features core
 portfile.cmake 7a309bc7a1ccb12a9c2e52ba7fd5a0568dda2fbb991b3bc8e26c46d5d554784c
 ports.cmake 5a8e00cedff0c898b1f90f7d129329d0288801bc9056562b039698caf31ff3f3
 post_build_checks 2
-powershell 7.2.11
+powershell 7.2.13
 triplet x64-windows
 triplet_abi 4556164a2cd3dd6f4742101eabb46def7e71b6e5856faa88e5d005aac12a803c-36b818778ba6f2c16962495caedb9a7b221d5be4c60de1cd3060f549319a9931-fa30f6102a46122a852174c5c72ff9a901e4dd1f
 vcpkg.json 445934c37515e4480be55dfb2cb3eaca2592f8b24d0f9b5585d3e99791854958
