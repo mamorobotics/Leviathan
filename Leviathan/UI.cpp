@@ -1,5 +1,10 @@
 #include "UI.hpp"
 
+UI::UI()
+{
+
+}
+
 void UI::Init(GLFWwindow* window, const char* glsl_version)
 {
 	IMGUI_CHECKVERSION();
@@ -22,6 +27,7 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 			controllers.push_back(std::string(glfwGetJoystickName(i)));
 		}
 	}
+	start = time(0);
 }
 
 void UI::NewFrame()
@@ -91,7 +97,7 @@ void UI::Update()
 		ImGui::Text(("IP: " + connectedIP).c_str());
 		ImGui::Text(("Port: " + connectedPort).c_str());
 		if (ImGui::Button("Connect"))
-			output.push_back("Connect");
+			PublishOutput("Connect");
 		ImGui::Text(("Status: " + connectionStatus).c_str());
 		
 	}	
@@ -150,8 +156,12 @@ void UI::Update()
 
 	if (ImGui::BeginListBox("##Telemetry box", ImVec2(-FLT_MIN, -FLT_MIN)))
 	{
-		for (int n = 0; n < telemetry.size(); n++)
-			ImGui::Text(telemetry[n].c_str());
+		std::map<std::string, std::string>::iterator it = telemetry.begin();
+		while (it != telemetry.end())
+		{
+			ImGui::Text(("[" + it->first + "] " + it->second).c_str());
+			++it;
+		}
 		ImGui::EndListBox();
 	}
 	ImGui::End();
@@ -168,9 +178,31 @@ void UI::Render()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
+void UI::PublishOutput(std::string msg)
+{
+	output.push_back("[" + std::to_string((int)difftime(time(0), start)) + "s] " + msg);
+}
+
+void UI::PublishTelemetry(std::string id, std::string value)
+{
+	telemetry[id] = value;
+}
+
 void UI::Shutdown()
 {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
+}
+
+UI::~UI()
+{
+}
+
+UI* UI::Get()
+{
+	if (ui == NULL)
+		ui = new UI();
+
+	return ui;
 }

@@ -11,6 +11,7 @@
 #define _WIN32_WINNT 0x0A00
 #endif
 
+UI* UI::ui = new UI();
 
 int main()
 {
@@ -37,10 +38,10 @@ int main()
 	glfwGetFramebufferSize(window, &screen_width, &screen_height);
 	glViewport(0, 0, screen_width, screen_height);
 
-	UI gui;
-	gui.Init(window, glsl_version);
+	UI* gui = UI::Get();
+	gui->Init(window, glsl_version);
 
-	bool ret = LoadTexture::LoadTextureFromFile("4.2.05.png", &gui.cameraTexture, &gui.cameraWidth, &gui.cameraHeight);
+	bool ret = LoadTexture::LoadTextureFromFile("4.2.05.png", gui->getCameraTexture(), gui->getCameraWidth(), gui->getCameraHeight());
 	IM_ASSERT(ret);
 
 	bool firstFrame = true;
@@ -49,9 +50,9 @@ int main()
 		glfwPollEvents();
 		glClearColor(1.00f, 1.00f, 1.00f, 1.00f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		gui.NewFrame();
-		gui.Update();
-		gui.Render();
+		gui->NewFrame();
+		gui->Update();
+		gui->Render();
 		glfwSwapBuffers(window);
 
 		if (firstFrame) {
@@ -59,7 +60,7 @@ int main()
 		}
 	}
 
-	gui.Shutdown();
+	gui->Shutdown();
 
 	return 0;
 }
