@@ -2,7 +2,7 @@
 
 ## About Seamoth
 Leviathan is a c++ project aimed at creating a cohesive and robust control system for the MATE ROV competition. It is a spiritual successor to our previous python library Sea Moth that had a similar goal. The project is built by the Mamaroneck High School Robotics Team and named for the iconic giant creatures in the video game Subnautica by Unknown Worlds Entertainment.
-<img src="[https://pbs.twimg.com/media/EwqlbkAVcAI7Y3w.jpg:large](https://www.google.com/url?sa=i&url=https%3A%2F%2Falpheapedia.fandom.com%2Fwiki%2FGhost_Leviathan&psig=AOvVaw0_zAH0KtwN_HC1m2tHSrfA&ust=1696009338918000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCPjIxKTtzYEDFQAAAAAdAAAAABAJ)"/>
+<img src="https://static.wikia.nocookie.net/alpheapedia/images/3/3a/Ghost_leviathan.png/revision/latest/scale-to-width-down/1200?cb=20210910225821"/>
 
 Designed By: The MHS Tiger Sharks
 
