@@ -5,11 +5,12 @@
 #include <iostream>
 #include <time.h>
 #include <map>
-
 #include <ImGui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+
 #include "ConnDetails.hpp"
+#include "Connection.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -47,6 +48,7 @@ public:
 
 	static UI* Get();
 
+	void setConnectionDetails(ConnDetails connDetails);
 	GLuint* getCameraTexture() { return &cameraTexture; }
 	int* getCameraWidth() { return &cameraHeight; }
 	int* getCameraHeight() { return &cameraWidth; }

@@ -1,14 +1,17 @@
 #pragma once
+
+#include <asio.hpp>
+
 #include "UI.hpp"
 
 class Connection
 {
 private:
 	static Connection* connection;
-	UI* ui;
 
 public:
 	Connection();
+	void Connect();
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();

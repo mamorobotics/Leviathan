@@ -1,4 +1,5 @@
-﻿  Leviathan.cpp
+﻿  Connection.cpp
+  Leviathan.cpp
   UI.cpp
 C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(86,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(86,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data

@@ -97,7 +97,7 @@ void UI::Update()
 		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
 		if (ImGui::Button("Connect"))
-			PublishOutput("Connect");
+			Connection::Get()->Connect();
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
 		
 	}	
@@ -205,4 +205,9 @@ UI* UI::Get()
 		ui = new UI();
 
 	return ui;
+}
+
+void UI::setConnectionDetails(ConnDetails details)
+{
+	connDetails = details;
 }
