@@ -128,9 +128,9 @@ void UI::Update()
 			ImGui::Text(("Left Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[0]) + ", "
 				+ std::to_string(glfwGetJoystickAxes(i, &count)[1]) + ")").c_str());
 			ImGui::Text(("Right Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[2]) + ", "
-				+ std::to_string(glfwGetJoystickAxes(i, &count)[5]) + ")").c_str());
-			ImGui::Text(("Left Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[3])).c_str());
-			ImGui::Text(("Right Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[4])).c_str());
+				+ std::to_string(glfwGetJoystickAxes(i, &count)[3]) + ")").c_str());
+			ImGui::Text(("Left Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[4])).c_str());
+			ImGui::Text(("Right Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[5])).c_str());
 			ImGui::Text(("A: " + std::to_string(glfwGetJoystickButtons(i, &count)[1])).c_str());
 			ImGui::Text(("X: " + std::to_string(glfwGetJoystickButtons(i, &count)[0])).c_str());
 			ImGui::Text(("B: " + std::to_string(glfwGetJoystickButtons(i, &count)[2])).c_str());

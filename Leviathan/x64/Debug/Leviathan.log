@@ -1,6 +1,4 @@
-﻿  Leviathan.cpp
-  UI.cpp
+﻿  UI.cpp
 E:\Code\Leviathan\Leviathan\UI.cpp(86,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Code\Leviathan\Leviathan\UI.cpp(86,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
   Leviathan.vcxproj -> E:\Code\Leviathan\x64\Debug\Leviathan.exe
