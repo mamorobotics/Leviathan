@@ -9,6 +9,7 @@
 #include <ImGui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
+#include "ConnDetails.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -28,11 +29,7 @@ private:
 	std::vector<std::string> output;
 	std::map<std::string, std::string> telemetry;
 
-	std::string selfIP;
-	std::string selfPort;
-	std::string connectedIP;
-	std::string connectedPort;
-	std::string connectionStatus;
+	ConnDetails connDetails;
 
 	static UI* ui;
 

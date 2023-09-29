@@ -1,57 +1,6 @@
-﻿  Installing vcpkg dependencies to C:\Users\miles\Code\Leviathan\vcpkg_installed\x64-windows\
-  "C:\src\vcpkg\vcpkg.exe" install  --x-wait-for-lock --triplet "x64-windows" --vcpkg-root "C:\src\vcpkg\\" "--x-manifest-root=C:\Users\miles\Code\Leviathan\\" "--x-install-root=C:\Users\miles\Code\Leviathan\vcpkg_installed\x64-windows\\" 
-  Detecting compiler hash for triplet x64-windows...
-  The following packages will be built and installed:
-      asio:x64-windows -> 1.28.0#1
-    * egl-registry:x64-windows -> 2022-09-20
-      glad[core,loader]:x64-windows -> 0.1.36
-      glfw3:x64-windows -> 3.3.8#2
-      imgui[core,docking-experimental,glfw-binding,opengl3-binding]:x64-windows -> 1.89.7
-    * opengl-registry:x64-windows -> 2022-09-29#1
-    * vcpkg-cmake:x64-windows -> 2023-05-04
-    * vcpkg-cmake-config:x64-windows -> 2022-02-06#1
-  Additional packages (*) will be modified to complete this operation.
-  Restored 8 package(s) from C:\Users\miles\AppData\Local\vcpkg\archives in 4.1 s. Use --debug to see more details.
-  Installing 1/8 vcpkg-cmake-config:x64-windows...
-  Elapsed time to handle vcpkg-cmake-config:x64-windows: 19.8 ms
-  Installing 2/8 vcpkg-cmake:x64-windows...
-  Elapsed time to handle vcpkg-cmake:x64-windows: 29.8 ms
-  Installing 3/8 asio:x64-windows...
-  Elapsed time to handle asio:x64-windows: 485 ms
-  Installing 4/8 egl-registry:x64-windows...
-  Elapsed time to handle egl-registry:x64-windows: 43.4 ms
-  Installing 5/8 opengl-registry:x64-windows...
-  Elapsed time to handle opengl-registry:x64-windows: 52.2 ms
-  Installing 6/8 glad:x64-windows...
-  Elapsed time to handle glad:x64-windows: 43.4 ms
-  Installing 7/8 glfw3:x64-windows...
-  Elapsed time to handle glfw3:x64-windows: 25.8 ms
-  Installing 8/8 imgui:x64-windows...
-  Elapsed time to handle imgui:x64-windows: 43.7 ms
-  Total install time: 743 ms
-  asio provides CMake targets:
-  
-      # this is heuristically generated, and may not be correct
-      find_package(asio CONFIG REQUIRED)
-      target_link_libraries(main PRIVATE asio::asio)
-  
-  glad provides CMake targets:
-  
-      # this is heuristically generated, and may not be correct
-      find_package(glad CONFIG REQUIRED)
-      target_link_libraries(main PRIVATE glad::glad)
-  
-  glfw3 provides CMake targets:
-  
-      # this is heuristically generated, and may not be correct
-      find_package(glfw3 CONFIG REQUIRED)
-      target_link_libraries(main PRIVATE glfw)
-  
-  imgui provides CMake targets:
-  
-      # this is heuristically generated, and may not be correct
-      find_package(imgui CONFIG REQUIRED)
-      target_link_libraries(main PRIVATE imgui::imgui)
-  
-  LINK : C:\Users\miles\Code\Leviathan\x64\Debug\Leviathan.exe not found or not built by the last incremental link; performing full link
+﻿  Leviathan.cpp
+  UI.cpp
+C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(86,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(86,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   Leviathan.vcxproj -> C:\Users\miles\Code\Leviathan\x64\Debug\Leviathan.exe

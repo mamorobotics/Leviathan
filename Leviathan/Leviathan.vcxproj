@@ -130,12 +130,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Connection.cpp" />
     <ClCompile Include="Leviathan.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConnDetails.hpp" />
+    <ClInclude Include="Connection.hpp" />
     <ClInclude Include="LoadTexture.hpp" />
-    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="stb_image.hpp" />
     <ClInclude Include="UI.hpp" />
   </ItemGroup>
   <ItemGroup>

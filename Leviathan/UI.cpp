@@ -89,16 +89,16 @@ void UI::Update()
 	ImGui::Begin("Networking");
 	if (ImGui::CollapsingHeader("Host"))
 	{
-		ImGui::Text(("IP: " + selfIP).c_str());
-		ImGui::Text(("Port: " + selfPort).c_str());
+		ImGui::Text(("IP: " + connDetails.selfIP).c_str());
+		ImGui::Text(("Port: " + connDetails.selfPort).c_str());
 	}
 	if (ImGui::CollapsingHeader("Connection"))
 	{
-		ImGui::Text(("IP: " + connectedIP).c_str());
-		ImGui::Text(("Port: " + connectedPort).c_str());
+		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
+		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
 		if (ImGui::Button("Connect"))
 			PublishOutput("Connect");
-		ImGui::Text(("Status: " + connectionStatus).c_str());
+		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
 		
 	}	
 	ImGui::End();
@@ -201,7 +201,7 @@ UI::~UI()
 
 UI* UI::Get()
 {
-	if (ui == NULL)
+	if (ui == nullptr)
 		ui = new UI();
 
 	return ui;

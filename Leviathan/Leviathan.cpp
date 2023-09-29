@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "UI.hpp"
+#include "Connection.hpp"
 #include "LoadTexture.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -12,9 +13,13 @@
 #endif
 
 UI* UI::ui = new UI();
+Connection* Connection::connection = new Connection();
 
 int main()
 {
+	UI* gui = UI::Get();
+	Connection* conn = Connection::Get();
+
 	//Setup GLFW and Imgui
 	if (!glfwInit())
 		return 1;
@@ -38,7 +43,6 @@ int main()
 	glfwGetFramebufferSize(window, &screen_width, &screen_height);
 	glViewport(0, 0, screen_width, screen_height);
 
-	UI* gui = UI::Get();
 	gui->Init(window, glsl_version);
 
 	bool ret = LoadTexture::LoadTextureFromFile("4.2.05.png", gui->getCameraTexture(), gui->getCameraWidth(), gui->getCameraHeight());
