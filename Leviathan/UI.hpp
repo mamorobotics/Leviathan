@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <time.h>
+#include <tuple>
 #include <map>
 #include <ImGui.h>
 #include <imgui_impl_glfw.h>
@@ -11,6 +12,7 @@
 
 #include "ConnDetails.hpp"
 #include "Connection.hpp"
+#include "Management.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -27,7 +29,7 @@ private:
 	float frameVals[64];
 
 	std::vector<std::string> controllers;
-	std::vector<std::string> output;
+	std::vector<std::tuple<Management::LEV_CODE, std::string>> output;
 	std::map<std::string, std::string> telemetry;
 
 	ConnDetails connDetails;
@@ -41,7 +43,7 @@ public:
 	void NewFrame();
 	void Update();
 	void Render();
-	void PublishOutput(std::string msg);
+	void PublishOutput(std::string msg, Management::LEV_CODE code = Management::CLEAR);
 	void PublishTelemetry(std::string id, std::string value);
 	void Shutdown();
 	~UI();

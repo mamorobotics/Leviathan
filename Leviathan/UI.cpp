@@ -145,8 +145,10 @@ void UI::Update()
 
 	if (ImGui::BeginListBox("##Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
 	{
-		for (int n = 0; n < output.size(); n++)
-			ImGui::Text(output[n].c_str());
+		for (int n = 0; n < output.size(); n++) 
+		{
+			ImGui::TextColored(Management::CodeColor(std::get<0>(output[n])), (std::get<1>(output[n]).c_str()));
+		}
 		ImGui::EndListBox();
 	}
 	ImGui::End();
@@ -178,9 +180,9 @@ void UI::Render()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void UI::PublishOutput(std::string msg)
+void UI::PublishOutput(std::string msg, Management::LEV_CODE code)
 {
-	output.push_back("[" + std::to_string((int)difftime(time(0), start)) + "s] " + msg);
+	output.push_back({ code, "[" + Management::CodeDef(code) + " (" + std::to_string((int)difftime(time(0), start)) + "s)] " + msg });
 }
 
 void UI::PublishTelemetry(std::string id, std::string value)

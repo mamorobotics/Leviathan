@@ -41,6 +41,9 @@
     <ClInclude Include="ConnDetails.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Management.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />

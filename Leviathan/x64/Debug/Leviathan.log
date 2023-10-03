@@ -1,7 +1,6 @@
 ﻿  Connection.cpp
-  Leviathan.cpp
-  UI.cpp
-C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(86,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(86,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
+  Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
+  - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
+  - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
+  Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
   Leviathan.vcxproj -> C:\Users\miles\Code\Leviathan\x64\Debug\Leviathan.exe
