@@ -11,8 +11,8 @@
 #include <imgui_impl_opengl3.h>
 
 #include "ConnDetails.hpp"
-#include "Connection.hpp"
 #include "Management.hpp"
+#include "Connection.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -29,7 +29,7 @@ private:
 	float frameVals[64];
 
 	std::vector<std::string> controllers;
-	std::vector<std::tuple<Management::LEV_CODE, std::string>> output;
+	std::vector<std::tuple<LEV_CODE, std::string>> output;
 	std::map<std::string, std::string> telemetry;
 
 	ConnDetails connDetails;
@@ -43,7 +43,7 @@ public:
 	void NewFrame();
 	void Update();
 	void Render();
-	void PublishOutput(std::string msg, Management::LEV_CODE code = Management::CLEAR);
+	void PublishOutput(std::string msg, LEV_CODE code = LEV_CODE::CLEAR);
 	void PublishTelemetry(std::string id, std::string value);
 	void Shutdown();
 	~UI();

@@ -16,7 +16,7 @@ void Connection::Connect()
 	else 
 	{ 
 		connDetails.connectionStatus = "Failed to connect";
-		UI::Get()->PublishOutput(("Failed to connect to address: \n\t" + ec.message()), Management::CONN_ERROR);
+		UI::Get()->PublishOutput(("Failed to connect to address: \n\t" + ec.message()), LEV_CODE::CONN_ERROR);
 	}
 	UI::Get()->setConnectionDetails(connDetails);
 }

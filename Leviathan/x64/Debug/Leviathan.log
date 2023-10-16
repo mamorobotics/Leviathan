@@ -1,6 +1,15 @@
-﻿  Connection.cpp
+﻿  UI.cpp
+C:\Users\miles\Code\Leviathan\Leviathan\Management.hpp(6,36): warning C4305: 'initializing': truncation from '__int64' to 'const float'
+C:\Users\miles\Code\Leviathan\Leviathan\Management.hpp(7,41): warning C4305: 'initializing': truncation from '__int64' to 'const float'
+C:\Users\miles\Code\Leviathan\Leviathan\Management.hpp(8,40): warning C4305: 'initializing': truncation from '__int64' to 'const float'
+C:\Users\miles\Code\Leviathan\Leviathan\Management.hpp(10,49): warning C4091: 'static ': ignored on left of 'LEV_CODE' when no variable is declared
   Please define _WIN32_WINNT or _WIN32_WINDOWS appropriately. For example:
   - add -D_WIN32_WINNT=0x0601 to the compiler command line; or
   - add _WIN32_WINNT=0x0601 to your project's Preprocessor Definitions.
   Assuming _WIN32_WINNT=0x0601 (i.e. Windows 7 target).
+C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(90,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(90,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\miles\Code\Leviathan\Leviathan\UI.cpp(154,63): warning C4244: 'argument': conversion from 'float' to 'ImU32', possible loss of data
+C:\Users\miles\Code\Leviathan\Leviathan\Management.hpp(19): warning C4715: 'CodeDef': not all control paths return a value
+C:\Users\miles\Code\Leviathan\Leviathan\Management.hpp(25): warning C4715: 'CodeColor': not all control paths return a value
   Leviathan.vcxproj -> C:\Users\miles\Code\Leviathan\x64\Debug\Leviathan.exe

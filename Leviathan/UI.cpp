@@ -44,7 +44,7 @@ void UI::Update()
 	ImGui::BeginMainMenuBar();
 	if (ImGui::MenuItem("Exit"))
 		exit(0);
-	if (ImGui::MenuItem("Statistics"))
+	if (ImGui::MenuItem("Diagnostics"))
 	{
 		statisticsOpen = true;
 	}
@@ -52,7 +52,7 @@ void UI::Update()
 
 	if (statisticsOpen)
 	{
-		ImGui::Begin("Statistics");
+		ImGui::Begin("Diagnostics");
 		if (ImGui::Button("Exit"))
 			statisticsOpen = false;
 
@@ -79,6 +79,10 @@ void UI::Update()
 		std::copy(std::begin(frameVals2), std::end(frameVals2), std::begin(frameVals));
 		frameVals[63] = ImGui::GetIO().Framerate;
 		ImGui::PlotLines("Framerate", frameVals, IM_ARRAYSIZE(frameVals), 0, std::to_string((int)averageFrame).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
+		if (ImGui::Button("Test Error"))
+			PublishOutput("Error Test", LEV_CODE::TEST);
+		if (ImGui::Button("Test Telemetry"))
+			PublishTelemetry("Telemetry Test", std::to_string(rand()));
 		ImGui::End();
 	}
 
@@ -147,12 +151,11 @@ void UI::Update()
 	{
 		for (int n = 0; n < output.size(); n++) 
 		{
-			ImGui::TextColored(Management::CodeColor(std::get<0>(output[n])), (std::get<1>(output[n]).c_str()));
+			ImGui::TextColored(ImGui::ColorConvertU32ToFloat4(CodeColor(std::get<0>(output[n]))), (std::get<1>(output[n]).c_str()));
 		}
 		ImGui::EndListBox();
 	}
-	ImGui::End();
-	
+	ImGui::End();	
 
 	ImGui::Begin("Telemetry");
 
@@ -161,7 +164,7 @@ void UI::Update()
 		std::map<std::string, std::string>::iterator it = telemetry.begin();
 		while (it != telemetry.end())
 		{
-			ImGui::Text(("[" + it->first + "] " + it->second).c_str());
+			ImGui::Text((it->first + ": " + it->second).c_str());
 			++it;
 		}
 		ImGui::EndListBox();
@@ -180,9 +183,13 @@ void UI::Render()
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void UI::PublishOutput(std::string msg, Management::LEV_CODE code)
+void UI::PublishOutput(std::string msg, LEV_CODE code)
 {
-	output.push_back({ code, "[" + Management::CodeDef(code) + " (" + std::to_string((int)difftime(time(0), start)) + "s)] " + msg });
+	std::string seconds = std::to_string((int)difftime(time(0), start) % 60);
+	std::string minutes = std::to_string((int)difftime(time(0), start) / 60);
+	if (seconds.length() == 1)
+		seconds = "0" + seconds;
+	output.push_back({ code, "[" + minutes + ":" + seconds + "] [" + CodeDef(code) + "] " + msg});
 }
 
 void UI::PublishTelemetry(std::string id, std::string value)
