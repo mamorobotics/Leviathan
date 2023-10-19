@@ -29,7 +29,7 @@ private:
 	float frameVals[64];
 
 	std::vector<std::string> controllers;
-	std::vector<std::tuple<LEV_CODE, std::string>> output;
+	std::vector<std::string> output;
 	std::map<std::string, std::string> telemetry;
 
 	ConnDetails connDetails;

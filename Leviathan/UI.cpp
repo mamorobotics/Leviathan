@@ -12,7 +12,7 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGuiIO& io = ImGui::GetIO();
 
 	io.Fonts->AddFontFromFileTTF("NotoSans-SemiBold.ttf", 16);
-
+	
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -151,7 +151,7 @@ void UI::Update()
 	{
 		for (int n = 0; n < output.size(); n++) 
 		{
-			ImGui::TextColored(ImGui::ColorConvertU32ToFloat4(CodeColor(std::get<0>(output[n]))), (std::get<1>(output[n]).c_str()));
+			ImGui::Text((output[n]).c_str());
 		}
 		ImGui::EndListBox();
 	}
@@ -189,7 +189,7 @@ void UI::PublishOutput(std::string msg, LEV_CODE code)
 	std::string minutes = std::to_string((int)difftime(time(0), start) / 60);
 	if (seconds.length() == 1)
 		seconds = "0" + seconds;
-	output.push_back({ code, "[" + minutes + ":" + seconds + "] [" + CodeDef(code) + "] " + msg});
+	output.push_back("[" + minutes + ":" + seconds + "] [" + CodeDef(code) + "] " + msg);
 }
 
 void UI::PublishTelemetry(std::string id, std::string value)
