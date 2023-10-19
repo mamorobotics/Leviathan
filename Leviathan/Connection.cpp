@@ -25,16 +25,26 @@ void Connection::Connect()
 
 	clientAddr.sin_family = AF_INET;
 	clientAddr.sin_port = htons(PORT);
-	clientAddr.sin_addr.s_addr = inet_addr(IP);
+	PVOID buf;
+	clientAddr.sin_addr.s_addr = inet_pton(AF_INET, IP, &buf);
 	
 	UI::Get()->setConnectionDetails(connDetails);
 }
 
-void Connection::Send(std::string message) 
+void Connection::Send(int header, std::string message) 
 {
-	char sendBuf[SENDSIZE];
-	strcpy(sendBuf, message.c_str());
-	int clientResult = sendto(clientSocket, sendBuf, SENDSIZE-1, 0, (SOCKADDR*)&clientAddr, (int)sizeof(clientAddr));
+	int clientResult;
+	char sizeBuf[32];
+	strcpy_s(sizeBuf, std::to_string(sizeof(message)).c_str());
+	clientResult = sendto(clientSocket, sizeBuf, 32, 0, (SOCKADDR*)&clientAddr, (int)sizeof(clientAddr));
+
+	char headerBuf[32];
+	strcpy_s(headerBuf, std::to_string(sizeof(header)).c_str());
+	clientResult = sendto(clientSocket, headerBuf, 32, 0, (SOCKADDR*)&clientAddr, (int)sizeof(clientAddr));
+
+	char messageBuf[sizeof(message)];
+	strcpy_s(messageBuf, message.c_str());
+	clientResult = sendto(clientSocket, messageBuf, sizeof(message), 0, (SOCKADDR*)&clientAddr, (int)sizeof(clientAddr));
 }
 
 Connection::~Connection()

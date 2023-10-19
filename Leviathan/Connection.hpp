@@ -22,7 +22,7 @@ private:
 public:
 	Connection();
 	void Connect();
-	void Send(std::string message);
+	void Send(int header, std::string message);
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();
