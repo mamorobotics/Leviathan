@@ -1,0 +1,28 @@
+{
+  "ActiveTargetSystem": "raspberrypi",
+  "DevContainersInfoBarHidden": true,
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "out\\build\\x64-Debug",
+      "out\\install\\x64-Debug",
+      "out\\build\\x64-Release",
+      "out\\install\\x64-Release",
+      "out\\build\\Linux-GCC-Debug",
+      "out\\install\\Linux-GCC-Debug"
+    ],
+    "raspberrypi": [
+      "out\\build\\x64-Debug",
+      "out\\install\\x64-Debug",
+      "out\\build\\x64-Release",
+      "out\\install\\x64-Release",
+      "out\\build\\Linux-GCC-Debug",
+      "out\\install\\Linux-GCC-Debug"
+    ]
+  },
+  "ExpandedNodes": [
+    "",
+    "\\Leviathan"
+  ],
+  "SelectedNode": "\\Leviathan\\Connection.hpp",
+  "PreviewInSolutionExplorer": false
+}
