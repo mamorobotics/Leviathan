@@ -1,9 +1,4 @@
 #pragma once
-
-#include <WinSock2.h>
-#include <Ws2tcpip.h>
-#pragma comment(lib, "Ws2_32.lib")
-
 #include <asio.hpp>
 
 #include "UI.hpp"

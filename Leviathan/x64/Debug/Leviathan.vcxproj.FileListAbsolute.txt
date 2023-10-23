@@ -1,2 +1,0 @@
-C:\Users\miles\Code\Leviathan\Leviathan\x64\Debug\Leviathan.vcxproj.CopyComplete
-E:\Code\Leviathan\Leviathan\x64\Debug\Leviathan.vcxproj.CopyComplete

@@ -11,8 +11,6 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 
-	io.Fonts->AddFontFromFileTTF("NotoSans-SemiBold.ttf", 16);
-	
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -103,8 +101,8 @@ void UI::Update()
 		if (ImGui::Button("Connect"))
 			Connection::Get()->Connect();
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
-		
-	}	
+
+	}
 	ImGui::End();
 
 	ImGui::Begin("Controller");
@@ -135,9 +133,9 @@ void UI::Update()
 				+ std::to_string(glfwGetJoystickAxes(i, &count)[3]) + ")").c_str());
 			ImGui::Text(("Left Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[4])).c_str());
 			ImGui::Text(("Right Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[5])).c_str());
-			ImGui::Text(("A: " + std::to_string(glfwGetJoystickButtons(i, &count)[1])).c_str());
-			ImGui::Text(("X: " + std::to_string(glfwGetJoystickButtons(i, &count)[0])).c_str());
-			ImGui::Text(("B: " + std::to_string(glfwGetJoystickButtons(i, &count)[2])).c_str());
+			ImGui::Text(("A: " + std::to_string(glfwGetJoystickButtons(i, &count)[0])).c_str());
+			ImGui::Text(("B: " + std::to_string(glfwGetJoystickButtons(i, &count)[1])).c_str());
+			ImGui::Text(("X: " + std::to_string(glfwGetJoystickButtons(i, &count)[2])).c_str());
 			ImGui::Text(("Y: " + std::to_string(glfwGetJoystickButtons(i, &count)[3])).c_str());
 			ImGui::Text(("Left Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[4])).c_str());
 			ImGui::Text(("Right Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[5])).c_str());
@@ -149,13 +147,13 @@ void UI::Update()
 
 	if (ImGui::BeginListBox("##Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
 	{
-		for (int n = 0; n < output.size(); n++) 
+		for (int n = 0; n < output.size(); n++)
 		{
 			ImGui::Text((output[n]).c_str());
 		}
 		ImGui::EndListBox();
 	}
-	ImGui::End();	
+	ImGui::End();
 
 	ImGui::Begin("Telemetry");
 
@@ -170,10 +168,10 @@ void UI::Update()
 		ImGui::EndListBox();
 	}
 	ImGui::End();
-	
+
 	ImGui::Begin("Camera Settings");
 	ImGui::Checkbox("Pause Video Feed", &pauseCamera);
-	ImGui::SliderInt("Quality", &quality , 0, 100, "%d%%");
+	ImGui::SliderInt("Quality", &quality, 0, 100, "%d%%");
 	ImGui::End();
 }
 

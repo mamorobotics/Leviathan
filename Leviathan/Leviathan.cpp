@@ -45,7 +45,7 @@ int main()
 
 	gui->Init(window, glsl_version);
 
-	bool ret = LoadTexture::LoadTextureFromFile("4.2.05.png", gui->getCameraTexture(), gui->getCameraWidth(), gui->getCameraHeight());
+	bool ret = LoadTexture::LoadTextureFromFile("E:/Code/Leviathan/Leviathan/4.2.05.png", gui->getCameraTexture(), gui->getCameraWidth(), gui->getCameraHeight());
 	IM_ASSERT(ret);
 
 	bool firstFrame = true;

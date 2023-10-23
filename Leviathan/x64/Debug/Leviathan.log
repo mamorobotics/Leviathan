@@ -1,5 +1,0 @@
-﻿  Connection.cpp
-C:\Users\miles\Code\Leviathan\Leviathan\Management.hpp(6,49): warning C4091: 'static ': ignored on left of 'LEV_CODE' when no variable is declared
-  (compiling source file 'Connection.cpp')
-  
-  Leviathan.vcxproj -> C:\Users\miles\Code\Leviathan\x64\Debug\Leviathan.exe
