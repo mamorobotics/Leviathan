@@ -1,6 +1,5 @@
 #include "Connection.hpp"
 
-#define SENDSIZE 1024
 #define PORT 8080
 #define IP "192.168.1.1"
 
@@ -13,6 +12,21 @@ void Connection::Connect()
 	//suff
 
 	UI::Get()->setConnectionDetails(connDetails);
+}
+
+void Connection::SendError(std::string message)
+{
+	Send(2, message);
+}
+
+void Connection::SendWarning(std::string message)
+{
+	Send(1, message);
+}
+
+void Connection::SendTelemetry(std::string key, std::string value)
+{
+	Send(3, key + "!!" + value);
 }
 
 void Connection::Send(int header, std::string message)
