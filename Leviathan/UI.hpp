@@ -42,7 +42,7 @@ public:
 	void Init(GLFWwindow* window, const char* glsl_version);
 	void NewFrame();
 	void Update();
-	void Render();
+	void Render(GLFWwindow* window);
 	void PublishOutput(std::string msg, LEV_CODE code = LEV_CODE::CLEAR);
 	void PublishTelemetry(std::string id, std::string value);
 	void Shutdown();

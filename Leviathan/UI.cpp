@@ -12,6 +12,7 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGuiIO& io = ImGui::GetIO();
 
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init(glsl_version);
@@ -101,8 +102,8 @@ void UI::Update()
 		if (ImGui::Button("Connect"))
 			Connection::Get()->Connect();
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
-
-	}
+		
+	}	
 	ImGui::End();
 
 	ImGui::Begin("Controller");
@@ -147,13 +148,13 @@ void UI::Update()
 
 	if (ImGui::BeginListBox("##Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
 	{
-		for (int n = 0; n < output.size(); n++)
+		for (int n = 0; n < output.size(); n++) 
 		{
 			ImGui::Text((output[n]).c_str());
 		}
 		ImGui::EndListBox();
 	}
-	ImGui::End();
+	ImGui::End();	
 
 	ImGui::Begin("Telemetry");
 
@@ -168,17 +169,23 @@ void UI::Update()
 		ImGui::EndListBox();
 	}
 	ImGui::End();
-
+	
 	ImGui::Begin("Camera Settings");
 	ImGui::Checkbox("Pause Video Feed", &pauseCamera);
-	ImGui::SliderInt("Quality", &quality, 0, 100, "%d%%");
+	ImGui::SliderInt("Quality", &quality , 0, 100, "%d%%");
 	ImGui::End();
 }
 
-void UI::Render()
+void UI::Render(GLFWwindow* window)
 {
 	ImGui::Render();
+	glClearColor(1.00f, 1.00f, 1.00f, 1.00f);
+	glClear(GL_COLOR_BUFFER_BIT);
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+	ImGui::UpdatePlatformWindows();
+	ImGui::RenderPlatformWindowsDefault();
+	glfwMakeContextCurrent(window);
+	glfwSwapBuffers(window);
 }
 
 void UI::PublishOutput(std::string msg, LEV_CODE code)

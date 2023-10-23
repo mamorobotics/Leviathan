@@ -45,17 +45,13 @@ int main()
 
 	gui->Init(window, glsl_version);
 
-
 	bool firstFrame = true;
 
 	while (!glfwWindowShouldClose(window)) {
 		glfwPollEvents();
-		glClearColor(1.00f, 1.00f, 1.00f, 1.00f);
-		glClear(GL_COLOR_BUFFER_BIT);
 		gui->NewFrame();
 		gui->Update();
-		gui->Render();
-		glfwSwapBuffers(window);
+		gui->Render(window);
 
 		if (firstFrame) {
 			firstFrame = false;
