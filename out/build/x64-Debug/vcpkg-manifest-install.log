@@ -1,6 +1,6 @@
 Detecting compiler hash for triplet x64-windows...
 All requested packages are currently installed.
-Total install time: 200 ns
+Total install time: 400 ns
 asio provides CMake targets:
 
     # this is heuristically generated, and may not be correct
