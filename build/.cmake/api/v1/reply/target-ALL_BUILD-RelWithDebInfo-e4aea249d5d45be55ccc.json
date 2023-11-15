@@ -5,7 +5,7 @@
 		"commands" : [],
 		"files" : 
 		[
-			"Leviathan/lib/glfw3/CMakeLists.txt"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -17,23 +17,32 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+			"id" : "Leviathan::@448c6d165024b918aac6"
+		},
+		{
+			"id" : "glad::@448c6d165024b918aac6"
+		},
+		{
+			"id" : "ImGui::@448c6d165024b918aac6"
 		},
 		{
 			"id" : "glfw::@be15d9b5f0daeabcb2a3"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"folder" : 
 	{
 		"name" : "CMakePredefinedTargets"
 	},
-	"id" : "ALL_BUILD::@dfd9dd2b4b8856bf6add",
+	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
 	"name" : "ALL_BUILD",
 	"paths" : 
 	{
-		"build" : "Leviathan/lib/glfw3",
-		"source" : "Leviathan/lib/glfw3"
+		"build" : ".",
+		"source" : "."
 	},
 	"sources" : [],
 	"type" : "UTILITY"

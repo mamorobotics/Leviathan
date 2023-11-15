@@ -135,9 +135,6 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 2,
 			"id" : "glad::@448c6d165024b918aac6"
 		},
@@ -148,6 +145,9 @@
 		{
 			"backtrace" : 4,
 			"id" : "glfw::@be15d9b5f0daeabcb2a3"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "Leviathan::@448c6d165024b918aac6",
