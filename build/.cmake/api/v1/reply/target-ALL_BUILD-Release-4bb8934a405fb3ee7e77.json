@@ -17,13 +17,13 @@
 	"dependencies" : 
 	[
 		{
+			"id" : "Leviathan::@448c6d165024b918aac6"
+		},
+		{
 			"id" : "glad::@448c6d165024b918aac6"
 		},
 		{
 			"id" : "ImGui::@448c6d165024b918aac6"
-		},
-		{
-			"id" : "Leviathan::@448c6d165024b918aac6"
 		},
 		{
 			"id" : "asio::@448c6d165024b918aac6"
