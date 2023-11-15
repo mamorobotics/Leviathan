@@ -6,10 +6,10 @@
 #include <time.h>
 #include <tuple>
 #include <map>
-#include <ImGui.h>
-#include <imgui_impl_glfw.h>
-#include <imgui_impl_opengl3.h>
 
+#include "ImGui/imgui_impl_glfw.h"
+#include "ImGui/imgui_impl_opengl3.h"
+#include "ImGui/imgui.h"
 #include "ConnDetails.hpp"
 #include "Management.hpp"
 #include "Connection.hpp"
