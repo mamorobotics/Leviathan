@@ -51,11 +51,3 @@ target_link_libraries(${PROJECT_NAME} "glfw" "${GLFW_LIBRARIES}")
 target_include_directories(${PROJECT_NAME} PRIVATE "${GLFW_DIR}/include")
 target_compile_definitions(${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
 
-# asio
-set(ASIO_DIR "${LIB_DIR}/asio")
-
-add_library("asio" "${ASIO_DIR}/src/asio.cpp")
-
-target_include_directories("asio" PRIVATE "${ASIO_DIR}/include")
-target_include_directories(${PROJECT_NAME} PRIVATE "${ASIO_DIR}/include")
-target_link_libraries(${PROJECT_NAME} "asio" "${CMAKE_DL_LIBS}")

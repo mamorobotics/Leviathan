@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -104,10 +104,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLFW_INCLUDE_NONE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -115,7 +115,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>Debug\glad.lib;Debug\ImGui.lib;lib\glfw3\src\Debug\glfw3.lib;Debug\asio.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>Debug\glad.lib;Debug\ImGui.lib;lib\glfw3\src\Debug\glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -130,7 +130,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -148,10 +148,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -159,7 +159,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>Release\glad.lib;Release\ImGui.lib;lib\glfw3\src\Release\glfw3.lib;Release\asio.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>Release\glad.lib;Release\ImGui.lib;lib\glfw3\src\Release\glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -174,7 +174,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -192,10 +192,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -203,7 +203,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>MinSizeRel\glad.lib;MinSizeRel\ImGui.lib;lib\glfw3\src\MinSizeRel\glfw3.lib;MinSizeRel\asio.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>MinSizeRel\glad.lib;MinSizeRel\ImGui.lib;lib\glfw3\src\MinSizeRel\glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -218,7 +218,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -235,10 +235,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\asio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\miles\Code\Leviathan\Leviathan\lib\glad\include;C:\Users\miles\Code\Leviathan\Leviathan\lib\ImGui;C:\Users\miles\Code\Leviathan\Leviathan\lib\glfw3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -246,7 +246,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>RelWithDebInfo\glad.lib;RelWithDebInfo\ImGui.lib;lib\glfw3\src\RelWithDebInfo\glfw3.lib;RelWithDebInfo\asio.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>RelWithDebInfo\glad.lib;RelWithDebInfo\ImGui.lib;lib\glfw3\src\RelWithDebInfo\glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -337,10 +337,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\Users\miles\Code\Leviathan\build\Leviathan\ImGui.vcxproj">
       <Project>{9E65F97D-86D7-3F6D-B77B-A414E9FCF40A}</Project>
       <Name>ImGui</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\miles\Code\Leviathan\build\Leviathan\asio.vcxproj">
-      <Project>{3B60DBE8-1610-3A01-B553-4698AFEAE5DB}</Project>
-      <Name>asio</Name>
     </ProjectReference>
     <ProjectReference Include="C:\Users\miles\Code\Leviathan\build\Leviathan\glad.vcxproj">
       <Project>{DCC47F54-BFEA-3F54-8AB6-D1EBA557D0AA}</Project>

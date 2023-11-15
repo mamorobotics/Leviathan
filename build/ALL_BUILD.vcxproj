@@ -181,10 +181,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{80282E72-1686-349D-A794-71FD5963DEEE}</Project>
       <Name>Leviathan</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\miles\Code\Leviathan\build\Leviathan\asio.vcxproj">
-      <Project>{3B60DBE8-1610-3A01-B553-4698AFEAE5DB}</Project>
-      <Name>asio</Name>
-    </ProjectReference>
     <ProjectReference Include="C:\Users\miles\Code\Leviathan\build\Leviathan\glad.vcxproj">
       <Project>{DCC47F54-BFEA-3F54-8AB6-D1EBA557D0AA}</Project>
       <Name>glad</Name>

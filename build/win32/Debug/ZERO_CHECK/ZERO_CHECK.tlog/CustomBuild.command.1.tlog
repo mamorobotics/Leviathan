@@ -1,0 +1,10 @@
+^C:\USERS\MILES\CODE\LEVIATHAN\BUILD\CMAKEFILES\0977A4AE5E486C12EBB8219426CE8CA8\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/miles/Code/Leviathan -BC:/Users/miles/Code/Leviathan/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/miles/Code/Leviathan/build/Leviathan.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
