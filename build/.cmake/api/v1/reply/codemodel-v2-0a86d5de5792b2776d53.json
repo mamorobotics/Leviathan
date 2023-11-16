@@ -1,0 +1,728 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"build" : "Leviathan",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-Leviathan-Debug-2248d4791ead31d65b75.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Leviathan",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						5
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-Leviathan.lib.glfw3-Debug-22f27f076d7b0e63c33d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3/src",
+					"jsonFile" : "directory-Leviathan.lib.glfw3.src-Debug-765e535909aa3381bc9c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3/src",
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "Leviathan",
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Debug-0fb5f5cfc3acde03abaf.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ALL_BUILD::@dfd9dd2b4b8856bf6add",
+					"jsonFile" : "target-ALL_BUILD-Debug-5c226fc501c68d6a57d4.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ImGui::@448c6d165024b918aac6",
+					"jsonFile" : "target-ImGui-Debug-8e0646d3859a4c0d0db1.json",
+					"name" : "ImGui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Leviathan::@448c6d165024b918aac6",
+					"jsonFile" : "target-Leviathan-Debug-2f8c432eeffa86d13401.json",
+					"name" : "Leviathan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Debug-def97083fe80d720cf33.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "glad::@448c6d165024b918aac6",
+					"jsonFile" : "target-glad-Debug-d01f20eb81f573792826.json",
+					"name" : "glad",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfw::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-glfw-Debug-b14e3469902ee6debf2b.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "update_mappings::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-update_mappings-Debug-64547cc78eaea3895e76.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"build" : "Leviathan",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-Leviathan-Release-2248d4791ead31d65b75.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Leviathan",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						5
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-Leviathan.lib.glfw3-Release-22f27f076d7b0e63c33d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3/src",
+					"jsonFile" : "directory-Leviathan.lib.glfw3.src-Release-765e535909aa3381bc9c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3/src",
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "Leviathan",
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-Release-0fb5f5cfc3acde03abaf.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ALL_BUILD::@dfd9dd2b4b8856bf6add",
+					"jsonFile" : "target-ALL_BUILD-Release-5c226fc501c68d6a57d4.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ImGui::@448c6d165024b918aac6",
+					"jsonFile" : "target-ImGui-Release-32cee23313544a009203.json",
+					"name" : "ImGui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Leviathan::@448c6d165024b918aac6",
+					"jsonFile" : "target-Leviathan-Release-bbd318da261c14d3808d.json",
+					"name" : "Leviathan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Release-def97083fe80d720cf33.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "glad::@448c6d165024b918aac6",
+					"jsonFile" : "target-glad-Release-6f6b256d8e8d5ef2b98e.json",
+					"name" : "glad",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfw::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-glfw-Release-7a779a3641210221f8d3.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "update_mappings::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-update_mappings-Release-64547cc78eaea3895e76.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-MinSizeRel-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"build" : "Leviathan",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-Leviathan-MinSizeRel-2248d4791ead31d65b75.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Leviathan",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						5
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-Leviathan.lib.glfw3-MinSizeRel-22f27f076d7b0e63c33d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3/src",
+					"jsonFile" : "directory-Leviathan.lib.glfw3.src-MinSizeRel-765e535909aa3381bc9c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3/src",
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				}
+			],
+			"name" : "MinSizeRel",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "Leviathan",
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-0fb5f5cfc3acde03abaf.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ALL_BUILD::@dfd9dd2b4b8856bf6add",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-5c226fc501c68d6a57d4.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ImGui::@448c6d165024b918aac6",
+					"jsonFile" : "target-ImGui-MinSizeRel-68e8478853daadc78622.json",
+					"name" : "ImGui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Leviathan::@448c6d165024b918aac6",
+					"jsonFile" : "target-Leviathan-MinSizeRel-0e90d9f27ea8c9bb2fc0.json",
+					"name" : "Leviathan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-def97083fe80d720cf33.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "glad::@448c6d165024b918aac6",
+					"jsonFile" : "target-glad-MinSizeRel-27d9d61ff98512550bea.json",
+					"name" : "glad",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfw::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-glfw-MinSizeRel-2a9a13ef06c4d977c3a1.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "update_mappings::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-update_mappings-MinSizeRel-64547cc78eaea3895e76.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		},
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						4
+					]
+				},
+				{
+					"build" : "Leviathan",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-Leviathan-RelWithDebInfo-2248d4791ead31d65b75.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "Leviathan",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						5
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-Leviathan.lib.glfw3-RelWithDebInfo-22f27f076d7b0e63c33d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Leviathan/lib/glfw3/src",
+					"jsonFile" : "directory-Leviathan.lib.glfw3.src-RelWithDebInfo-765e535909aa3381bc9c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "Leviathan/lib/glfw3/src",
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "Leviathan",
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-0fb5f5cfc3acde03abaf.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "ALL_BUILD::@dfd9dd2b4b8856bf6add",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-5c226fc501c68d6a57d4.json",
+					"name" : "ALL_BUILD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "ImGui::@448c6d165024b918aac6",
+					"jsonFile" : "target-ImGui-RelWithDebInfo-2e66fbd344f2ef48958d.json",
+					"name" : "ImGui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Leviathan::@448c6d165024b918aac6",
+					"jsonFile" : "target-Leviathan-RelWithDebInfo-97c60075d1494f1abbbc.json",
+					"name" : "Leviathan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-def97083fe80d720cf33.json",
+					"name" : "ZERO_CHECK",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "glad::@448c6d165024b918aac6",
+					"jsonFile" : "target-glad-RelWithDebInfo-5b89cc85e53abb61c4bb.json",
+					"name" : "glad",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfw::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-glfw-RelWithDebInfo-59c2725002cfd3d5b447.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "update_mappings::@be15d9b5f0daeabcb2a3",
+					"jsonFile" : "target-update_mappings-RelWithDebInfo-64547cc78eaea3895e76.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/miles/Code/Leviathan/build",
+		"source" : "C:/Users/miles/Code/Leviathan"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

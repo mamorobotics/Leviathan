@@ -281,24 +281,6 @@ Leviathan_SOURCE_DIR:STATIC=C:/Users/miles/Code/Leviathan
 //Use MSVC runtime library DLL
 USE_MSVC_RUNTIME_LIBRARY_DLL:BOOL=ON
 
-//The directory containing a CMake configuration file for asio.
-asio_DIR:PATH=asio_DIR-NOTFOUND
-
-//Value Computed by CMake
-boost_asio_BINARY_DIR:STATIC=C:/Users/miles/Code/Leviathan/build/Leviathan/lib/asio
-
-//Value Computed by CMake
-boost_asio_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-boost_asio_SOURCE_DIR:STATIC=C:/Users/miles/Code/Leviathan/Leviathan/lib/asio
-
-//The directory containing a CMake configuration file for glad.
-glad_DIR:PATH=glad_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for glfw3.
-glfw3_DIR:PATH=glfw3_DIR-NOTFOUND
-
 
 ########################
 # INTERNAL cache entries
