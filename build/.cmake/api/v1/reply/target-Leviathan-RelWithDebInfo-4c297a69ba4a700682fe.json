@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Leviathan/Release/Leviathan.exe"
+			"path" : "Leviathan/RelWithDebInfo/Leviathan.exe"
 		},
 		{
-			"path" : "Leviathan/Release/Leviathan.pdb"
+			"path" : "Leviathan/RelWithDebInfo/Leviathan.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -90,7 +90,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG -std:c++20"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob1 /DNDEBUG -std:c++20 -ZI"
 				}
 			],
 			"defines" : 
@@ -135,12 +135,12 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 3,
-			"id" : "ImGui::@448c6d165024b918aac6"
-		},
-		{
 			"backtrace" : 2,
 			"id" : "glad::@448c6d165024b918aac6"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "ImGui::@448c6d165024b918aac6"
 		},
 		{
 			"backtrace" : 4,
@@ -156,26 +156,26 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob1 /DNDEBUG -ZI",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:X86 /INCREMENTAL:NO /subsystem:console",
+				"fragment" : "/machine:X86 /debug /INCREMENTAL /subsystem:console",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "Release\\glad.lib",
+				"fragment" : "RelWithDebInfo\\glad.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "Release\\ImGui.lib",
+				"fragment" : "RelWithDebInfo\\ImGui.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 4,
-				"fragment" : "lib\\glfw3\\src\\Release\\glfw3.lib",
+				"fragment" : "lib\\glfw3\\src\\RelWithDebInfo\\glfw3.lib",
 				"role" : "libraries"
 			},
 			{

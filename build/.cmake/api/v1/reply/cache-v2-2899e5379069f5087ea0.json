@@ -1560,6 +1560,78 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "C:/Program Files (x86)/Leviathan"
+		},
+		{
+			"name" : "asio_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for asio."
+				}
+			],
+			"type" : "PATH",
+			"value" : "asio_DIR-NOTFOUND"
+		},
+		{
+			"name" : "boost_asio_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/miles/Code/Leviathan/build/Leviathan/lib/asio"
+		},
+		{
+			"name" : "boost_asio_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "OFF"
+		},
+		{
+			"name" : "boost_asio_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/miles/Code/Leviathan/Leviathan/lib/asio"
+		},
+		{
+			"name" : "glad_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for glad."
+				}
+			],
+			"type" : "PATH",
+			"value" : "glad_DIR-NOTFOUND"
+		},
+		{
+			"name" : "glfw3_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for glfw3."
+				}
+			],
+			"type" : "PATH",
+			"value" : "glfw3_DIR-NOTFOUND"
 		}
 	],
 	"kind" : "cache",

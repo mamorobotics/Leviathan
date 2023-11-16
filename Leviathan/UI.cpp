@@ -110,7 +110,7 @@ void UI::Update()
 	static const char* current_item = "";
 	if (ImGui::BeginCombo("Controller", current_item))
 	{
-		for (size_t n = 0; n < controllers.size(); n++)
+		for (int n = 0; n < controllers.size(); n++)
 		{
 			bool is_selected = (current_item == controllers[n]);
 			if (ImGui::Selectable(controllers[n].c_str(), is_selected))
@@ -148,7 +148,7 @@ void UI::Update()
 
 	if (ImGui::BeginListBox("##Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
 	{
-		for (size_t n = 0; n < output.size(); n++) 
+		for (int n = 0; n < output.size(); n++) 
 		{
 			ImGui::Text((output[n]).c_str());
 		}

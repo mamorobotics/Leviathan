@@ -17,16 +17,16 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "ImGui::@448c6d165024b918aac6"
+			"id" : "Leviathan::@448c6d165024b918aac6"
 		},
 		{
 			"id" : "glad::@448c6d165024b918aac6"
 		},
 		{
-			"id" : "glfw::@be15d9b5f0daeabcb2a3"
+			"id" : "ImGui::@448c6d165024b918aac6"
 		},
 		{
-			"id" : "Leviathan::@448c6d165024b918aac6"
+			"id" : "glfw::@be15d9b5f0daeabcb2a3"
 		},
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
