@@ -95,7 +95,7 @@
 #endif
 #ifdef __APPLE__
 #define GLFW_EXPOSE_NATIVE_COCOA
-#include <GLFW/glfw3native.h>   // for glfwGetCocoaWindow()
+#include "../glfw3/include/GLFW/glfw3native.h"   // for glfwGetCocoaWindow()
 #endif
 
 #ifdef __EMSCRIPTEN__
