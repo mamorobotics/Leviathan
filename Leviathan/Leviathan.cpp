@@ -22,11 +22,16 @@ int main()
 
 	//Setup GLFW and Imgui
 	if (!glfwInit())
-		return 1;
+		return -1;
 
 	const char* glsl_version = "#version 130";
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+	// glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	// glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	// glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);	
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);	
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	GLFWwindow* window = glfwCreateWindow(1280, 720, "Leviathan", NULL, NULL);
@@ -60,6 +65,6 @@ int main()
 	}
 
 	gui->Shutdown();
-
+	
 	return 0;
 }
