@@ -25,9 +25,6 @@ int main()
 		return -1;
 
 	const char* glsl_version = "#version 130";
-	// glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	// glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-	// glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);	
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);	
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
