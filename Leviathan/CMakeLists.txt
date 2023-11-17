@@ -21,15 +21,6 @@ target_include_directories("glad" PRIVATE "${GLAD_DIR}/include")
 target_include_directories(${PROJECT_NAME} PRIVATE "${GLAD_DIR}/include")
 target_link_libraries(${PROJECT_NAME} "glad" "${CMAKE_DL_LIBS}")
 
-# ZeroMQ
-set(ZEROMQ_DIR "${LIB_DIR}/ZeroMQ")
-
-add_library("ZeroMq" "${ZEROMQ_DIR}/src/zmq.cpp")
-
-target_include_directories("ZeroMq" PRIVATE "${ZEROMQ_DIR}/include")
-target_include_directories(${PROJECT_NAME} PRIVATE "${ZEROMQ_DIR}/include")
-target_link_libraries(${PROJECT_NAME} "ZeroMq" "${CMAKE_DL_LIBS}")
-
 # ImGui
 set(IMGUI_DIR "${LIB_DIR}/ImGui")
 
