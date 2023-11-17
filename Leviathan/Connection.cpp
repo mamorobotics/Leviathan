@@ -15,7 +15,7 @@ void Connection::Connect()
 }
 
 void Connection::SendError(std::string message)
-{f
+{
 	Send(2, message);
 }
 
