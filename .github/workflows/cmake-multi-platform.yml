@@ -27,16 +27,16 @@ jobs:
         build_type: [Release]
         c_compiler: [gcc, clang, cl]
         include:
+          - os: ubuntu-latest
+            c_compiler: gcc
+            cpp_compiler: g++
+        exclude:
           - os: windows-latest
             c_compiler: cl
             cpp_compiler: cl
           - os: ubuntu-latest
-            c_compiler: gcc
-            cpp_compiler: g++
-          - os: ubuntu-latest
             c_compiler: clang
             cpp_compiler: clang++
-        exclude:
           - os: windows-latest
             c_compiler: gcc
           - os: windows-latest
@@ -58,6 +58,7 @@ jobs:
       run: |
         sudo apt-get install -y libxrandr-dev
         sudo apt-get install libxinerama-dev
+        sudo apt-get install libxcursor-dev
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
