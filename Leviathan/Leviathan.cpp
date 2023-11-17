@@ -24,7 +24,7 @@ int main()
 	if (!glfwInit())
 		return -1;
 
-	const char* glsl_version = "#version 130";
+	const char* glsl_version = "#version 150";
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);	
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);	
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
