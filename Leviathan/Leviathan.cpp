@@ -15,26 +15,36 @@
 UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
 
+void error_callback( int error, const char *msg ) {
+    std::string s;
+    s = " [" + std::to_string(error) + "] " + msg + '\n';
+    std::cerr << s << std::endl;
+}
+
 int main()
 {
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
 
 	//Setup GLFW and Imgui
+	glfwSetErrorCallback( error_callback );
+
 	if (!glfwInit())
-		return -1;
+		return 2;
 
 	const char* glsl_version = "#version 150";
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);	
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);	
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	GLFWwindow* window = glfwCreateWindow(1280, 720, "Leviathan", NULL, NULL);
 
 	if (window == NULL)
-		return 1;
+		return 2;
 
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
