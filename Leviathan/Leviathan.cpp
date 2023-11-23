@@ -32,14 +32,15 @@ int main()
 	if (!glfwInit())
 		return 2;
 
-	const char* glsl_version = "#version 150";
+	const char* glsl_version = "#version 120";
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);	
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);	
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);	
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	//you may need to uncomment these to get it to work
+	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	GLFWwindow* window = glfwCreateWindow(1280, 720, "Leviathan", NULL, NULL);
 
