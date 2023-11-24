@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <iostream>
+#include <chrono>
 
 #include "UI.hpp"
 #include "Connection.hpp"
@@ -8,12 +9,16 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+using namespace std::chrono;
+
 #ifdef _WIN32
 #define _WIN32_WINNT 0x0A00
 #endif
 
 UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
+
+
 
 void error_callback( int error, const char *msg ) {
     std::string s;
@@ -62,14 +67,18 @@ int main()
 	bool firstFrame = true;
 
 	while (!glfwWindowShouldClose(window)) {
+		auto start = high_resolution_clock::now();
 		glfwPollEvents();
 		gui->NewFrame();
 		gui->Update();
 		gui->Render(window);
-
+		
 		if (firstFrame) {
 			firstFrame = false;
 		}
+		auto stop = high_resolution_clock::now();
+		int duration = duration_cast<microseconds>(stop - start).count();
+		gui->setMainDeltaTime((float)duration / 1000000);
 	}
 
 	gui->Shutdown();

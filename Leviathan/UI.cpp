@@ -82,6 +82,7 @@ void UI::Update()
 			PublishOutput("Error Test", LEV_CODE::TEST);
 		if (ImGui::Button("Test Telemetry"))
 			PublishTelemetry("Telemetry Test", std::to_string(rand()));
+		ImGui::Text(("Main delta time: " + std::to_string(mainDeltaTime)).c_str());
 		ImGui::End();
 	}
 

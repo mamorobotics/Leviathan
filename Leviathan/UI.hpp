@@ -28,6 +28,7 @@ private:
 	int quality = 80;
 	float deltaVals[64];
 	float frameVals[64];
+	float mainDeltaTime;
 
 	std::vector<std::string> controllers;
 	std::vector<std::string> output;
@@ -51,6 +52,7 @@ public:
 
 	static UI* Get();
 
+	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
 	GLuint* getCameraTexture() { return &cameraTexture; }
 	int* getCameraWidth() { return &cameraHeight; }
