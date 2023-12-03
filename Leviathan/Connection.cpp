@@ -1,12 +1,5 @@
 #include "Connection.hpp"
 
-#define PORT 8080
-#define IP "192.168.1.1"
-
-Connection::Connection()
-{
-}
-
 void Connection::Connect()
 {
 	//suff
@@ -16,22 +9,36 @@ void Connection::Connect()
 
 void Connection::SendError(std::string message)
 {
-	Send(2, message);
+	Send(2, &message);
 }
 
 void Connection::SendWarning(std::string message)
 {
-	Send(1, message);
+	Send(1, &message);
 }
 
 void Connection::SendTelemetry(std::string key, std::string value)
 {
-	Send(3, key + "!!" + value);
+    std::string message = key + "!" + value;
+	Send(3, &message);
 }
 
-void Connection::Send(int header, std::string message)
+void Connection::Send(int header, void * message)
 {
-	//stuff
+    auto sent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
+    socket.close();
+    std::cout << "Sent Payload --- " << sent << "\n";
+
+
+    std::string msgLength = "" + sizeof(message);
+    msgLength.insert(0, 32-msgLength.size(), ' ');
+    auto lenSent = socket.send_to(asio::buffer(msgLength, 32), remote_endpoint, 0);
+
+    std::string msgHeader = "" + header;
+    msgHeader.insert(0, 32-msgHeader.size(), ' ');
+    auto headerSent = socket.send_to(asio::buffer(msgHeader, 32), remote_endpoint, 0);
+
+    auto msgSent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
 }
 
 Connection::~Connection()

@@ -31,6 +31,9 @@ int main()
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
 
+	std::string message = "Bonjour!";
+	conn->Send(11, &message);
+
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
 
