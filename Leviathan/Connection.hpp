@@ -31,7 +31,7 @@ public:
 	void SendError(std::string message);
 	void SendWarning(std::string message);
 	void SendTelemetry(std::string key, std::string value);
-	void Send(int header, void * message);
+	void Send(int header, void * message, int length);
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();

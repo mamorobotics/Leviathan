@@ -32,7 +32,7 @@ int main()
 	Connection* conn = Connection::Get();
 
 	std::string message = "Bonjour!";
-	conn->Send(11, &message);
+	conn->Send(11, &message, message.size());
 
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
