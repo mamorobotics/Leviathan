@@ -107,9 +107,9 @@ void UI::Update()
 		for (int n = 0; n < Controller::GetNumControllers(); n++)
 		{
 			bool is_selected = (current_item == glfwGetJoystickName(n));
-			if (ImGui::Selectable(glfwGetJoystickName(n).c_str(), is_selected))
+			if (ImGui::Selectable(glfwGetJoystickName(n), is_selected))
 			{
-				current_item = glfwGetJoystickName(n).c_str();
+				current_item = glfwGetJoystickName(n);
 				if (is_selected)
 					ImGui::SetItemDefaultFocus();
 			}

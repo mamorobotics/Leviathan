@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "LoadTexture.hpp" "Management.hpp" "stb_image.hpp")
+add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp" "ControllerValues.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "LoadTexture.hpp" "Management.hpp" "stb_image.hpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Leviathan PROPERTY CXX_STANDARD 20)

@@ -3,13 +3,18 @@
 #include <string>
 #include <vector>
 
+#include "ControllerValues.hpp"
+
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
 class Controller {
 private:
-	static std::vector<int> controllerIds;
+    ControllerValues controllerValues;
+	std::vector<int> controllerIds;
     int id;
+
+    int joyCount, buttonCount;
 
 public:
 	Controller(int id);
