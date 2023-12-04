@@ -2,8 +2,6 @@
 
 void Connection::Connect()
 {
-	//suff
-
 	UI::Get()->setConnectionDetails(connDetails);
 }
 
@@ -25,13 +23,14 @@ void Connection::SendTelemetry(std::string key, std::string value)
 
 void Connection::Send(int header, void * message, int length)
 {
-//     auto sent = socket.send_to(asio::buffer(message, length), remote_endpoint, 0);
-//     std::cout << "Sent Payload --- " << sent << "\n";
+    std::stringstream stream;
 
     std::string msgLength = std::to_string(length);
     msgLength.insert(0, 32-msgLength.size(), ' ');
     auto lenSent = socket.send_to(asio::buffer(msgLength, 32), remote_endpoint, 0);
     std::cout << "Sent length --- " << lenSent << "\n";
+
+    auto msgTup = std::make_tuple(header, message);
 
     std::string msgHeader = std::to_string(header);
     msgHeader.insert(0, 32-msgHeader.size(), ' ');
@@ -40,6 +39,16 @@ void Connection::Send(int header, void * message, int length)
 
     auto msgSent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
     std::cout << "Sent message --- " << msgSent << "\n";
+}
+
+void Connection::HandleReceive(const asio::error_code& error, std::size_t bytes_received){
+    if(!error){
+
+    }else{
+        std::cout << error.message();
+    }
+
+    socket.async_receive(asio::buffer(recv_buffer), std::bind(&Connection::HandleReceive, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 Connection::~Connection()
