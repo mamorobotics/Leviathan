@@ -44,7 +44,25 @@ void Connection::Send(int header, void * message)
 
 void Connection::HandleReceive(const asio::error_code& error, std::size_t bytes_received){
     if(!error){
+        int length;
+        std::cout << "Number Received = " << (numMessages+1) << std::endl;
+        if(numMessages==0){
+            length = stoi(std::string(recv_buffer.data(), bytes_received));
+            numMessages++;
+        }
+        else if(numMessages == 2){
+            std::cout << "Received all three messages" << std::endl;
 
+            auto tup = std::make_tuple(recv_buffer.data());
+            char * headerP = std::get<0>(tup);
+            int header = stoi(std::string(headerP, &headerP.size()));
+            std::string message;
+
+            std::cout << "Length:" << length << std::endl;
+            std::cout << "Header:" << header << std::endl;
+            std::cout << "Message:" << message << std::endl;
+            numMessages=0;
+        }
     }else{
         std::cout << "Error Code for receiving: " << error.message() << std::endl;
     }
@@ -54,7 +72,8 @@ void Connection::HandleReceive(const asio::error_code& error, std::size_t bytes_
 
 void Connection::HandleHandshake(const asio::error_code& error, std::size_t bytes_transferred){
     if(!error){
-        if(bytes_transferred != '0110'){
+        std::cout << "Received a message, whose size is: " << bytes_transferred << "and whose data is"  << std::string(recv_buffer.data(), bytes_transferred) << std::endl;
+        if(std::string(recv_buffer.data(), bytes_transferred) != "0110"){
             std::cout << "[WARNING] Handshake with client failed" << std::endl;
         }else{
             connDetails.connectedIP = sender_endpoint.address().to_string();

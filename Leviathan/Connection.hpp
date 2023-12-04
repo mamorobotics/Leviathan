@@ -25,6 +25,7 @@ private:
 	udp::endpoint sender_endpoint;
 
 	std::array<char, 1024> recv_buffer;
+	int numMessages;
 
 	static Connection* connection;
 
