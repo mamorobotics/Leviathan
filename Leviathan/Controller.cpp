@@ -16,6 +16,13 @@ void Controller::ScanControllers()
 	}
 }
 
+ControllerValues GetControllerValues()
+{
+	//count = # of values in returned array of values
+	//glfwGetJoystickAxes(id, &count)[0]
+	//glfwGetJoystickButtons(id, &count)[0]
+}
+
 int Controller::GetControllerIds()
 {
     return controllerIds.size();

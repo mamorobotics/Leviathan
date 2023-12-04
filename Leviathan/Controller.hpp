@@ -14,6 +14,7 @@ private:
 public:
 	Controller(int id);
     static void ScanControllers();
+    ControllerValues GetControllerValues();
     static int GetNumControllers();
 	~Controller();
 };
