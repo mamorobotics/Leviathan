@@ -19,13 +19,6 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 
 	ImGui::StyleColorsDark();
 
-	for (int i = 0; i < 16; i++)
-	{
-		if (glfwJoystickPresent(i) != NULL)
-		{
-			controllers.push_back(std::string(glfwGetJoystickName(i)));
-		}
-	}
 	start = time(0);
 }
 
@@ -111,12 +104,12 @@ void UI::Update()
 	static const char* current_item = "";
 	if (ImGui::BeginCombo("Controller", current_item))
 	{
-		for (int n = 0; n < controllers.size(); n++)
+		for (int n = 0; n < Controller::GetNumControllers(); n++)
 		{
-			bool is_selected = (current_item == controllers[n]);
-			if (ImGui::Selectable(controllers[n].c_str(), is_selected))
+			bool is_selected = (current_item == glfwGetJoystickName(n));
+			if (ImGui::Selectable(glfwGetJoystickName(n).c_str(), is_selected))
 			{
-				current_item = controllers[n].c_str();
+				current_item = glfwGetJoystickName(n).c_str();
 				if (is_selected)
 					ImGui::SetItemDefaultFocus();
 			}
@@ -124,9 +117,9 @@ void UI::Update()
 		ImGui::EndCombo();
 	}
 	int count;
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < Controller::GetNumControllers(); i++)
 	{
-		if (glfwJoystickPresent(i) != NULL && std::string(glfwGetJoystickName(i)) == current_item)
+		if (std::string(glfwGetJoystickName(i)) == current_item)
 		{
 			ImGui::Text(("Controller: " + std::string(glfwGetJoystickName(i)) + " (" + std::to_string(i) + ")").c_str());
 			ImGui::Text(("Left Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[0]) + ", "

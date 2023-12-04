@@ -6,6 +6,7 @@
 #include "UI.hpp"
 #include "Connection.hpp"
 #include "LoadTexture.hpp"
+#include "Controller.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -30,6 +31,8 @@ int main()
 {
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
+
+	Controller::ScanControllers();
 
 	std::string message = "Bonjour!";
 	conn->Send(11, &message, message.size());
