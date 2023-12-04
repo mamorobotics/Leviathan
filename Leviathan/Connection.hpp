@@ -38,7 +38,7 @@ public:
 	void SendError(std::string message);
 	void SendWarning(std::string message);
 	void SendTelemetry(std::string key, std::string value);
-	void Send(int header, void * message, int length);
+	void Send(int header, void * message);
 	void HandleReceive(const asio::error_code& error, std::size_t bytes_received);
 	void HandleHandshake(const asio::error_code& error, std::size_t bytes_transferred);
 	Connection(const Connection& obj) = delete;
