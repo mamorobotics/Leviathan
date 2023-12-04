@@ -23,14 +23,12 @@ void Connection::SendTelemetry(std::string key, std::string value)
 
 void Connection::Send(int header, void * message, int length)
 {
-    std::stringstream stream;
-
     std::string msgLength = std::to_string(length);
     msgLength.insert(0, 32-msgLength.size(), ' ');
     auto lenSent = socket.send_to(asio::buffer(msgLength, 32), remote_endpoint, 0);
     std::cout << "Sent length --- " << lenSent << "\n";
 
-    auto msgTup = std::make_tuple(header, message);
+    //auto msgTup = std::make_tuple(header, message);
 
     std::string msgHeader = std::to_string(header);
     msgHeader.insert(0, 32-msgHeader.size(), ' ');
@@ -45,9 +43,25 @@ void Connection::HandleReceive(const asio::error_code& error, std::size_t bytes_
     if(!error){
 
     }else{
-        std::cout << error.message();
+        std::cout << "Error Code for receiving: " << error.message() << std::endl;
     }
 
+    socket.async_receive(asio::buffer(recv_buffer), std::bind(&Connection::HandleReceive, this, std::placeholders::_1, std::placeholders::_2));
+}
+
+void Connection::HandleHandshake(const asio::error_code& error, std::size_t bytes_transferred){
+    if(!error){
+        if(bytes_transferred != '0110'){
+            std::cout << "[WARNING] Handshake with client failed" << std::endl;
+        }else{
+            connDetails.connectedIP = sender_endpoint.address().to_string();
+            connDetails.connectedPort = sender_endpoint.port();
+            connDetails.connectionStatus = "Connected";
+            UI::Get()->setConnectionDetails(connDetails);
+        }
+    }else{
+        std::cout << "Error Code for receiving: " << error.message() << std::endl;
+    }
     socket.async_receive(asio::buffer(recv_buffer), std::bind(&Connection::HandleReceive, this, std::placeholders::_1, std::placeholders::_2));
 }
 

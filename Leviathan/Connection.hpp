@@ -31,7 +31,7 @@ private:
 public:
 	Connection() : io_context(), socket(io_context), remote_endpoint(asio::ip::address::from_string(IP), PORT) {
         socket.open(asio::ip::udp::v4());
-		socket.async_receive(asio::buffer(recv_buffer), std::bind(&Connection::HandleReceive, this, std::placeholders::_1, std::placeholders::_2));
+		socket.async_receive_from(asio::buffer(recv_buffer), sender_endpoint, std::bind(&Connection::HandleHandshake, this, std::placeholders::_1, std::placeholders::_2));
 		io_context.run();
     }
 	void Connect();
@@ -40,6 +40,7 @@ public:
 	void SendTelemetry(std::string key, std::string value);
 	void Send(int header, void * message, int length);
 	void HandleReceive(const asio::error_code& error, std::size_t bytes_received);
+	void HandleHandshake(const asio::error_code& error, std::size_t bytes_transferred);
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();
