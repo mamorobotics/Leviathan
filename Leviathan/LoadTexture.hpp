@@ -1,18 +1,14 @@
 #define STB_IMAGE_IMPLEMENTATION
 
-#include "stb_image.hpp"
 #include "glad/glad.h"
 
 class LoadTexture {
 public:
-    static bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
+    static bool LoadTexture(const unsigned char* image_data, GLuint* out_texture, int* out_width, int* out_height)
     {
         // Load from file
         int image_width = 0;
         int image_height = 0;
-        unsigned char* image_data = stbi_load(filename, &image_width, &image_height, NULL, 4);
-        if (image_data == NULL)
-            return false;
 
         // Create a OpenGL texture identifier
         GLuint image_texture;
@@ -30,7 +26,6 @@ public:
         glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 #endif
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
-        stbi_image_free(image_data);
 
         *out_texture = image_texture;
         *out_width = image_width;
