@@ -11,7 +11,6 @@
 class Controller {
 private:
     ControllerValues controllerValues;
-	std::vector<int> controllerIds;
     int id;
 
     int joyCount, buttonCount;
@@ -19,7 +18,9 @@ private:
 public:
 	Controller(int id);
     static void ScanControllers();
-    ControllerValues GetControllerValues();
+    int getId() { return id; }
+    void setId(int id) { this->id = id; }
+    ControllerValues* GetControllerValues();
     static int GetNumControllers();
 	~Controller();
 };

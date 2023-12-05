@@ -70,6 +70,9 @@ int main()
 
 	gui->Init(window, glsl_version);
 
+	Controller* controller = new Controller(0);
+	gui->controller = controller;
+
 	bool firstFrame = true;
 
 	while (!glfwWindowShouldClose(window)) {

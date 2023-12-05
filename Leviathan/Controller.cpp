@@ -1,5 +1,7 @@
 #include "Controller.hpp"
 
+static int numControllers;
+
 Controller::Controller(int id)
 {
     this->id = id;
@@ -11,12 +13,12 @@ void Controller::ScanControllers()
 	{
 		if (glfwJoystickPresent(i) != NULL)
 		{
-			controllerIds.push_back(i);
+			numControllers += 1;
 		}
 	}
 }
 
-ControllerValues Controller::GetControllerValues()
+ControllerValues* Controller::GetControllerValues()
 {
 	const float* joys = glfwGetJoystickAxes(id, &joyCount);
 	const unsigned char* buttons = glfwGetJoystickButtons(id, &buttonCount);
@@ -37,12 +39,12 @@ ControllerValues Controller::GetControllerValues()
 	controllerValues.rbumper = buttons[4];
 	controllerValues.lbumper = buttons[5];
 
-	return controllerValues;
+	return &controllerValues;
 }
 
 int Controller::GetNumControllers()
 {
-    return controllerIds.size();
+    return numControllers;
 }
 
 Controller::~Controller()

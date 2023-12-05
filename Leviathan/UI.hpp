@@ -39,6 +39,8 @@ private:
 	static UI* ui;
 
 public:
+	Controller* controller;
+
 	UI();
 	UI(const UI& obj) = delete;
 	void Init(GLFWwindow* window, const char* glsl_version);
