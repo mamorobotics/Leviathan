@@ -101,7 +101,7 @@ void UI::Update()
 		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
 		if (ImGui::Button("Connect"))
-			Connection::Get()->Connect();
+			Connection::Get()->HandleHandshake();
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
 		
 	}	

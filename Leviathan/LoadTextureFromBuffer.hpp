@@ -2,7 +2,7 @@
 
 #include "glad/glad.h"
 
-class LoadTexture {
+class LoadTextureFromBuffer {
 public:
     static bool LoadTexture(const unsigned char* image_data, GLuint* out_texture, int* out_width, int* out_height)
     {
