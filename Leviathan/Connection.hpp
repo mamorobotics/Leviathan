@@ -8,6 +8,7 @@
 #include "UI.hpp"
 #include "ConnDetails.hpp"
 #include "Management.hpp"
+#include "LoadTextureFromBuffer.hpp"
 
 #define PORT 8080
 #define IP "192.168.1.1"

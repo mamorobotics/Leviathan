@@ -59,6 +59,10 @@ void Connection::Recieve()
         std::string message = recv_buffer.data();
 
         std::cout << header << " : " << message << "\n";
+
+        if(header==4){
+            LoadTextureFromBuffer::LoadTexture();
+        }
     }
 }
 
