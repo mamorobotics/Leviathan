@@ -24,8 +24,10 @@ private:
     udp::endpoint remote_endpoint;
 	udp::endpoint sender_endpoint;
 
-	std::array<char, 1024> recv_buffer;
+	std::vector<char> recv_buffer;
 	int numMessages;
+	std::string recvLength;
+	std::string recvHeader;
 
 	static Connection* connection;
 
@@ -33,11 +35,11 @@ public:
 	Connection() : io_context(), socket(io_context), remote_endpoint(asio::ip::address::from_string(IP), PORT) {
         socket.open(asio::ip::udp::v4());
 		socket.bind(remote_endpoint);
-		io_context.run();
     }
 	void StartReceiving(){
 		socket.async_receive_from(asio::buffer(recv_buffer), remote_endpoint, 
                 [this](const asio::error_code& error, std::size_t bytes_transferred) {
+					std::cout << "received smth" << std::endl;
                 if (!error) {
                     HandleReceive(bytes_transferred);
                 } else {
@@ -47,6 +49,7 @@ public:
 		});
 	}
 	void Connect();
+	void ResizeBuffer(int newSize);
 	void SendError(std::string message);
 	void SendWarning(std::string message);
 	void SendTelemetry(std::string key, std::string value);
