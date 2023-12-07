@@ -5,6 +5,11 @@ void Connection::Connect()
     //maybe stuffs
 }
 
+void Connection::ResizeBuffer(int newSize)
+{
+    recv_buffer.resize(newSize);
+}
+
 void Connection::SendError(std::string message)
 {
 	Send(2, &message);
@@ -37,42 +42,27 @@ void Connection::Send(int header, void * message)
     std::cout << "Sent message --- " << msgSent << "\n";
 }
 
-void Connection::HandleReceive(std::size_t bytes_received){
-    std::string length;
-    std::string header;
-    std::cout << "Number Received = " << (numMessages+1) << std::endl;
-    if(numMessages==0){
-        recvLength = std::string(recv_buffer.data(), bytes_received);
-        numMessages++;
-        StartReceiving();
-    }
-    else if(numMessages==1){
-        recvHeader = std::string(recv_buffer.data(), bytes_received);
-        numMessages++;
-        ResizeBuffer(stoi(recvLength));
-        StartReceiving();
-    }
-    else if(numMessages == 2){
-        std::cout << "Received all three messages" << std::endl;
-
-        std::string message = std::string(recv_buffer.data());
-
-        std::cout << "Length:" << recvLength << std::endl;
-        std::cout << "Header:" << recvHeader << std::endl;
-        std::cout << "Message:" << message << std::endl;
-
-        numMessages=0;
-        StartReceiving();
+void Connection::Recieve() 
+{
+    while (true)
+    {
         ResizeBuffer(32);
-    }
-}
+        socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
+        int size = stoi(recv_buffer.data());
 
-void Connection::ResizeBuffer(int newSize){
-    recv_buffer.resize(newSize);
+        socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
+        int header = stoi(recv_buffer.data());
+
+        ResizeBuffer(stoi(size));
+        socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
+        std::string message = recv_buffer.data();
+
+        std::cout << header << " : " << message << "\n";
+    }
 }
 
 void Connection::HandleHandshake(){
-    ResizeBuffer(64);
+    ResizeBuffer(32);
     asio::error_code error;
     socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
     if(recv_buffer.data() != NULL){
@@ -84,8 +74,7 @@ void Connection::HandleHandshake(){
             connDetails.connectedPort = "8080";
             connDetails.connectionStatus = "Connected";
             UI::Get()->setConnectionDetails(connDetails);
-            //StartReceiving();
-            std::thread recurs ([this](){StartReceiving();});
+            std::thread recurs ([this](){Recieve();});
             io_context.run();
         }
     }else{
