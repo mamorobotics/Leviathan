@@ -16,6 +16,7 @@
 #include "Connection.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "Controller.hpp"
 
 class UI {
 private:
@@ -30,7 +31,6 @@ private:
 	float frameVals[64];
 	float mainDeltaTime;
 
-	std::vector<std::string> controllers;
 	std::vector<std::string> output;
 	std::map<std::string, std::string> telemetry;
 
@@ -39,6 +39,8 @@ private:
 	static UI* ui;
 
 public:
+	Controller* controller;
+
 	UI();
 	UI(const UI& obj) = delete;
 	void Init(GLFWwindow* window, const char* glsl_version);

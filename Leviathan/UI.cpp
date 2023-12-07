@@ -19,13 +19,6 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 
 	ImGui::StyleColorsDark();
 
-	for (int i = 0; i < 16; i++)
-	{
-		if (glfwJoystickPresent(i) != NULL)
-		{
-			controllers.push_back(std::string(glfwGetJoystickName(i)));
-		}
-	}
 	start = time(0);
 }
 
@@ -87,7 +80,7 @@ void UI::Update()
 	}
 
 	ImGui::Begin("Camera View");
-	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
+	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(static_cast<float>(cameraWidth), static_cast<float>(cameraHeight)));
 	ImGui::End();
 
 	ImGui::Begin("Networking");
@@ -108,48 +101,27 @@ void UI::Update()
 	ImGui::End();
 
 	ImGui::Begin("Controller");
-	static const char* current_item = "";
-	if (ImGui::BeginCombo("Controller", current_item))
-	{
-		for (int n = 0; n < controllers.size(); n++)
-		{
-			bool is_selected = (current_item == controllers[n]);
-			if (ImGui::Selectable(controllers[n].c_str(), is_selected))
-			{
-				current_item = controllers[n].c_str();
-				if (is_selected)
-					ImGui::SetItemDefaultFocus();
-			}
-		}
-		ImGui::EndCombo();
-	}
-	int count;
-	for (int i = 0; i < 16; i++)
-	{
-		if (glfwJoystickPresent(i) != NULL && std::string(glfwGetJoystickName(i)) == current_item)
-		{
-			ImGui::Text(("Controller: " + std::string(glfwGetJoystickName(i)) + " (" + std::to_string(i) + ")").c_str());
-			ImGui::Text(("Left Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[0]) + ", "
-				+ std::to_string(glfwGetJoystickAxes(i, &count)[1]) + ")").c_str());
-			ImGui::Text(("Right Stick Coordinate: (" + std::to_string(glfwGetJoystickAxes(i, &count)[2]) + ", "
-				+ std::to_string(glfwGetJoystickAxes(i, &count)[3]) + ")").c_str());
-			ImGui::Text(("Left Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[4])).c_str());
-			ImGui::Text(("Right Trigger: " + std::to_string(glfwGetJoystickAxes(i, &count)[5])).c_str());
-			ImGui::Text(("A: " + std::to_string(glfwGetJoystickButtons(i, &count)[0])).c_str());
-			ImGui::Text(("B: " + std::to_string(glfwGetJoystickButtons(i, &count)[1])).c_str());
-			ImGui::Text(("X: " + std::to_string(glfwGetJoystickButtons(i, &count)[2])).c_str());
-			ImGui::Text(("Y: " + std::to_string(glfwGetJoystickButtons(i, &count)[3])).c_str());
-			ImGui::Text(("Left Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[4])).c_str());
-			ImGui::Text(("Right Bumper: " + std::to_string(glfwGetJoystickButtons(i, &count)[5])).c_str());
-		}
-	}
+
+	ControllerValues* controllerValues = controller->GetControllerValues();
+	ImGui::Text(("Controller: " + std::string(glfwGetJoystickName(controller->getId())) + " (" + std::to_string(controller->getId()) + ")").c_str());
+	ImGui::Text(("Left Stick Coordinate: (" + std::to_string(controllerValues->ljoyx) + ", " + std::to_string(controllerValues->ljoyy) + ")").c_str());
+	ImGui::Text(("Right Stick Coordinate: (" + std::to_string(controllerValues->rjoyx) + ", " + std::to_string(controllerValues->rjoyy) + ")").c_str());
+	ImGui::Text(("Left Trigger: " + std::to_string(controllerValues->ltrigger)).c_str());
+	ImGui::Text(("Right Trigger: " + std::to_string(controllerValues->rtrigger)).c_str());
+	ImGui::Text(("A: " + std::to_string(controllerValues->a)).c_str());
+	ImGui::Text(("B: " + std::to_string(controllerValues->b)).c_str());
+	ImGui::Text(("X: " + std::to_string(controllerValues->x)).c_str());
+	ImGui::Text(("Y: " + std::to_string(controllerValues->y)).c_str());
+	ImGui::Text(("Left Bumper: " + std::to_string(controllerValues->lbumper)).c_str());
+	ImGui::Text(("Right Bumper: " + std::to_string(controllerValues->rbumper)).c_str());
+
 	ImGui::End();
 
 	ImGui::Begin("Output");
 
 	if (ImGui::BeginListBox("##Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
 	{
-		for (int n = 0; n < output.size(); n++) 
+		for (unsigned int n = 0; n < output.size(); n++) 
 		{
 			ImGui::Text((output[n]).c_str());
 		}

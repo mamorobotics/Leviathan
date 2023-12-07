@@ -12,6 +12,8 @@ static std::string CodeDef(LEV_CODE code) {
 		return "Connection Error";
 	if (code == LEV_CODE::TEST)
 		return "Test Error";
+	else
+		return "NULL CODE";
 }
 
 #endif
