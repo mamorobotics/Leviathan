@@ -63,7 +63,7 @@ void Connection::HandleReceive(std::size_t bytes_received){
 
         numMessages=0;
         StartReceiving();
-        ResizeBuffer(64);
+        ResizeBuffer(32);
     }
 }
 
@@ -84,7 +84,7 @@ void Connection::HandleHandshake(){
             connDetails.connectedPort = "8080";
             connDetails.connectionStatus = "Connected";
             UI::Get()->setConnectionDetails(connDetails);
-            StartReceiving();
+            std::thread recurs (&Connection::StartReceiving, this);
             io_context.run();
         }
     }else{

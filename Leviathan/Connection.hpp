@@ -2,6 +2,7 @@
 #include <iostream>
 #include <tuple>
 #include <sstream>
+#include <thread>
 
 #include <asio.hpp>
 #include "UI.hpp"
