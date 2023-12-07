@@ -84,7 +84,8 @@ void Connection::HandleHandshake(){
             connDetails.connectedPort = "8080";
             connDetails.connectionStatus = "Connected";
             UI::Get()->setConnectionDetails(connDetails);
-            std::thread recurs (&Connection::StartReceiving, this);
+            //StartReceiving();
+            std::thread recurs ([this](){StartReceiving();});
             io_context.run();
         }
     }else{
