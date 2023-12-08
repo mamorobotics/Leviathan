@@ -8,7 +8,6 @@
 #include "UI.hpp"
 #include "ConnDetails.hpp"
 #include "Management.hpp"
-#include "LoadTextureFromBuffer.hpp"
 
 #define PORT 8080
 #define IP "192.168.1.1"
@@ -35,8 +34,8 @@ private:
 
 public:
 	Connection() : io_context(), socket(io_context), remote_endpoint(asio::ip::address::from_string(IP), PORT) {
-        socket.open(asio::ip::udp::v4());
-		socket.bind(remote_endpoint);
+       // socket.open(asio::ip::udp::v4());
+		//socket.bind(remote_endpoint);
     }
 	void Connect();
 	void ResizeBuffer(int newSize);

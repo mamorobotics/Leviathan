@@ -61,30 +61,33 @@ void Connection::Recieve()
         std::cout << header << " : " << message << "\n";
 
         if(header==4){
-            LoadTextureFromBuffer::LoadTexture();
+            //LoadTextureFromBuffer::LoadTexture();
         }
     }
 }
 
 void Connection::HandleHandshake(){
-    ResizeBuffer(32);
-    asio::error_code error;
-    socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-    if(recv_buffer.data() != NULL){
-        if(std::string(recv_buffer.data()) != "0110"){
-            std::cout << "[WARNING] Handshake with client failed" << std::endl;
-        }else{
-            std::cout << "got handshake" << std::endl;
-            connDetails.connectedIP = remote_endpoint.address().to_string();
-            connDetails.connectedPort = "8080";
-            connDetails.connectionStatus = "Connected";
-            UI::Get()->setConnectionDetails(connDetails);
-            std::thread recurs ([this](){Recieve();});
-            io_context.run();
-        }
-    }else{
-        std::cout << "Error Code for receiving: " << error.message() << std::endl;
+    while(true){
+        std::cout << "another thread" << std::endl;
+        sleep(3);
     }
+    // ResizeBuffer(32);
+    // asio::error_code error;
+    // socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
+    // if(recv_buffer.data() != NULL){
+    //     if(std::string(recv_buffer.data()) != "0110"){
+    //         std::cout << "[WARNING] Handshake with client failed" << std::endl;
+    //     }else{
+    //         std::cout << "got handshake" << std::endl;
+    //         connDetails.connectedIP = remote_endpoint.address().to_string();
+    //         connDetails.connectedPort = "8080";
+    //         connDetails.connectionStatus = "Connected";
+    //         UI::Get()->setConnectionDetails(connDetails);
+    //         Recieve();
+    //     }
+    // }else{
+    //     std::cout << "Error Code for receiving: " << error.message() << std::endl;
+    // }
 }
 
 Connection::~Connection()
