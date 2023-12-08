@@ -5,7 +5,6 @@
 
 #include "UI.hpp"
 #include "Connection.hpp"
-#include "LoadTextureFromBuffer.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -66,6 +65,9 @@ int main()
 
 	bool firstFrame = true;
 
+	std::thread networkThread(&Connection::HandleHandshake, conn);
+	networkThread.detach();
+
 	while (!glfwWindowShouldClose(window)) {
 		auto start = high_resolution_clock::now();
 		glfwPollEvents();
@@ -79,9 +81,6 @@ int main()
 		auto stop = high_resolution_clock::now();
 		int duration = duration_cast<microseconds>(stop - start).count();
 		gui->setMainDeltaTime((float)duration / 1000000);
-
-		std::thread networkThread(&Connection::HandleHandshake, conn);
-		networkThread.detach();
 	}
 
 	gui->Shutdown();
