@@ -46,14 +46,15 @@ void Connection::Recieve()
 {
     while (true)
     {
+        asio::error_code error;
         ResizeBuffer(32);
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        int size = stoi(recv_buffer.data());
+        int size = stoi(std::string(recv_buffer.data()));
 
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        int header = stoi(recv_buffer.data());
+        int header = stoi(std::string(recv_buffer.data()));
 
-        ResizeBuffer(stoi(size));
+        ResizeBuffer(size);
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
         std::string message = recv_buffer.data();
 
