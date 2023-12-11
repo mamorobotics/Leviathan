@@ -5,6 +5,9 @@
 
 #include "UI.hpp"
 #include "Connection.hpp"
+
+#include "Controller.hpp"
+
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -29,6 +32,11 @@ int main()
 {
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
+
+	Controller::ScanControllers();
+
+	std::string message = "Bonjour!";
+	conn->Send(11, &message, message.size());
 
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
@@ -62,6 +70,9 @@ int main()
 	glViewport(0, 0, screen_width, screen_height);
 
 	gui->Init(window, glsl_version);
+
+	Controller* controller = new Controller(0);
+	gui->controller = controller;
 
 	bool firstFrame = true;
 
