@@ -87,18 +87,3 @@ int main()
 	
 	return 0;
 }
-
-void uiThread(UI* gui, GLFWwindow* window, bool firstFrame){
-	auto start = high_resolution_clock::now();
-	glfwPollEvents();
-	gui->NewFrame();
-	gui->Update();
-	gui->Render(window);
-		
-	if (firstFrame) {
-		firstFrame = false;
-	}
-	auto stop = high_resolution_clock::now();
-	int duration = duration_cast<microseconds>(stop - start).count();
-	gui->setMainDeltaTime((float)duration / 1000000);
-}
