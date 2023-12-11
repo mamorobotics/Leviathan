@@ -35,9 +35,6 @@ int main()
 
 	Controller::ScanControllers();
 
-	std::string message = "Bonjour!";
-	conn->Send(11, &message, message.size());
-
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
 
