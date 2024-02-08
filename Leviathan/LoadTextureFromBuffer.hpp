@@ -27,13 +27,9 @@ public:
         glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 #endif
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
-        //UI* gui = UI::Get();
-        //gui->setCameraTexture(image_textu
 
         std::cout << image_texture << std::endl;
         *out_texture = image_texture;
-        // *out_width = image_width;
-        // *out_height = image_height;
 
         return true;
     }

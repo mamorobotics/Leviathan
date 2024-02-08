@@ -55,3 +55,12 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
 # asio
 
 include_directories("${LIB_DIR}/asio/include")
+
+# jpeg-compressor
+
+set(JPEG_DIR "${LIB_DIR}/jpeg-compressor")
+
+find_library(JPGE_LIB jpge_lib PATHS ${JPEG_DIR})
+include_directories(${JPEG_DIR})
+
+target_link_libraries(${PROJECT_NAME} jpge_lib)

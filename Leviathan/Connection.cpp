@@ -59,10 +59,11 @@ void Connection::Recieve()
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
         std::string message = recv_buffer.data();
         
-        //std::cout << header << " : " << message << "\n";
-
         if(header==4){
-            LoadTextureFromBuffer::LoadTexture(recv_buffer.data(), gui->getCameraTexture());
+            const unsigned char* src_data = reinterpret_cast<const unsigned char*>(recv_buffer.data());
+            int width, height, im_type;
+            char* decmp_data = reinterpret_cast<char*>(jpgd::decompress_jpeg_image_from_memory(src_data, sizeof(src_data), &width, &height, &im_type, 3, 0));
+            LoadTextureFromBuffer::LoadTexture(decmp_data, gui->getCameraTexture());
         }
     }
 }

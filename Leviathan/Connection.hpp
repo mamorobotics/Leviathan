@@ -5,6 +5,7 @@
 #include <thread>
 
 #include <asio.hpp>
+#include "jpgd.h"
 #include "UI.hpp"
 #include "ConnDetails.hpp"
 #include "Management.hpp"
