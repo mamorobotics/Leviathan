@@ -20,8 +20,6 @@ using namespace std::chrono;
 UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
 
-
-
 void error_callback( int error, const char *msg ) {
     std::string s;
     s = " [" + std::to_string(error) + "] " + msg + '\n';

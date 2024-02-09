@@ -1,6 +1,5 @@
 project(jpge)
 
-cmake_minimum_required(VERSION 3.0)
 option(BUILD_X64 "build 64-bit" TRUE)
 option(STATIC "static linking" FALSE)
 
@@ -59,9 +58,5 @@ set(BIN_DIRECTORY "bin")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${BIN_DIRECTORY})
 
-add_executable(jpge ${BASISU_SRC_LIST})
-
 add_library(jpge_lib STATIC ${BASISU_SRC_LIST})
 target_include_directories(jpge_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-install(TARGETS jpge jpge_lib DESTINATION bin)
