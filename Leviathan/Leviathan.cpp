@@ -13,10 +13,6 @@
 
 using namespace std::chrono;
 
-#ifdef _WIN32
-#define _WIN32_WINNT 0x0A00
-#endif
-
 UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
 
