@@ -28,10 +28,7 @@ int main()
 	Connection* conn = Connection::Get();
 
 	Controller::ScanControllers();
-
-	std::string message = "Bonjour!";
-	conn->Send(11, &message);
-
+	
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
 

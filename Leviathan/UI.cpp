@@ -12,7 +12,6 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGuiIO& io = ImGui::GetIO();
 
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init(glsl_version);
@@ -115,7 +114,6 @@ void UI::Update()
 	ImGui::Text(("Y: " + std::to_string(controllerValues->y)).c_str());
 	ImGui::Text(("Left Bumper: " + std::to_string(controllerValues->lbumper)).c_str());
 	ImGui::Text(("Right Bumper: " + std::to_string(controllerValues->rbumper)).c_str());
-
 	ImGui::End();
 
 	ImGui::Begin("Output");

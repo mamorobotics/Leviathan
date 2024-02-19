@@ -31,15 +31,12 @@ void Connection::Send(int header, void * message)
     std::string msgLength = std::to_string(sizeof(message));
     msgLength.insert(0, 32-msgLength.size(), ' ');
     auto lenSent = socket.send_to(asio::buffer(msgLength, 32), remote_endpoint, 0);
-    std::cout << "Sent length --- " << lenSent << "\n";
 
     std::string msgHeader = std::to_string(header);
     msgHeader.insert(0, 32-msgHeader.size(), ' ');
     auto headerSent = socket.send_to(asio::buffer(msgHeader, 32), remote_endpoint, 0);
-    std::cout << "Sent header --- " << headerSent << "\n";
 
     auto msgSent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
-    std::cout << "Sent message --- " << msgSent << "\n";
 }
 
 void Connection::Recieve() 
@@ -64,19 +61,26 @@ void Connection::Recieve()
             int width, height, im_type;
             char* decmp_data = reinterpret_cast<char*>(jpgd::decompress_jpeg_image_from_memory(src_data, sizeof(src_data), &width, &height, &im_type, 3, 0));
             LoadTextureFromBuffer::LoadTexture(decmp_data, gui->getCameraTexture());
+            gui->setCameraWidth(width);
+            gui->setCameraHeight(height);
+            gui->PublishOutput("Recieved photo");
+            gui->PublishTelemetry("Photo Width", std::to_string(width));
+            gui->PublishTelemetry("Photo Height", std::to_string(height));
         }
     }
 }
 
 void Connection::HandleHandshake(){
+    UI* gui = UI::Get();
     ResizeBuffer(32);
     asio::error_code error;
     socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
     if(recv_buffer.data() != NULL){
+        std::cout << recv_buffer.data() << std::endl;
         if(std::string(recv_buffer.data()) != "0110"){
-            std::cout << "[WARNING] Handshake with client failed" << std::endl;
-        }else{
-            std::cout << "got handshake" << std::endl;
+            gui->PublishOutput("Handshake with client failed", LEV_CODE::CONN_ERROR);
+        } else { 
+            gui->PublishOutput("Succesful handshake with client", LEV_CODE::CLEAR);
             connDetails.connectedIP = remote_endpoint.address().to_string();
             connDetails.connectedPort = "8080";
             connDetails.connectionStatus = "Connected";
@@ -84,7 +88,7 @@ void Connection::HandleHandshake(){
             Recieve();
         }
     }else{
-        std::cout << "Error Code for receiving: " << error.message() << std::endl;
+        gui->PublishOutput("Error Code for receiving: " + error.message(), LEV_CODE::CONN_ERROR);
     }
 }
 

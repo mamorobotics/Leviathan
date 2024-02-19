@@ -58,6 +58,6 @@ public:
 	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
 	GLuint* getCameraTexture() { return &cameraTexture; }
-	int* getCameraWidth() { return &cameraHeight; }
-	int* getCameraHeight() { return &cameraWidth; }
+	void setCameraWidth(int width) { cameraWidth = width; }
+	void setCameraHeight(int height) { cameraHeight = height; }
 };
