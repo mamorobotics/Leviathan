@@ -28,7 +28,7 @@ int main()
 	Connection* conn = Connection::Get();
 
 	Controller::ScanControllers();
-	
+
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
 
