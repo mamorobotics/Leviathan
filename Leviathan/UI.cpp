@@ -47,29 +47,18 @@ void UI::Update()
 		if (ImGui::Button("Exit"))
 			statisticsOpen = false;
 
-		float averageDelta = 0;
-		float deltaVals2[64];
-		for (int i = 0; i < 64; i++)
+		std::map<std::string, float[64]>::iterator it = graphs.begin();
+		while (it != graphs.end())
 		{
-			averageDelta += deltaVals[i];
-			deltaVals2[i] = deltaVals[(i + 65) % 64];
+			float averageVal = 0;
+			for (int i = 0; i < 64; i++)
+			{
+				averageVal += it->second[i];
+			}
+			averageVal /= 64;
+			ImGui::PlotLines(it->first.c_str(), it->second, IM_ARRAYSIZE(it->second), 0, std::to_string(averageVal).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
 		}
-		averageDelta /= 64;
-		std::copy(std::begin(deltaVals2), std::end(deltaVals2), std::begin(deltaVals));
-		deltaVals[63] = ImGui::GetIO().DeltaTime;
-		ImGui::PlotLines("DeltaTime", deltaVals, IM_ARRAYSIZE(deltaVals), 0, std::to_string(averageDelta).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
 
-		float averageFrame = 0;
-		float frameVals2[64];
-		for (int i = 0; i < 64; i++)
-		{
-			averageFrame += frameVals[i];
-			frameVals2[i] = frameVals[(i + 65) % 64];
-		}
-		averageFrame /= 64;
-		std::copy(std::begin(frameVals2), std::end(frameVals2), std::begin(frameVals));
-		frameVals[63] = ImGui::GetIO().Framerate;
-		ImGui::PlotLines("Framerate", frameVals, IM_ARRAYSIZE(frameVals), 0, std::to_string((int)averageFrame).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
 		if (ImGui::Button("Test Error"))
 			PublishOutput("Error Test", LEV_CODE::TEST);
 		if (ImGui::Button("Test Telemetry"))
@@ -172,6 +161,17 @@ void UI::PublishOutput(std::string msg, LEV_CODE code)
 void UI::PublishTelemetry(std::string id, std::string value)
 {
 	telemetry[id] = value;
+}
+
+void UI::PublishGraph(std::string id, float value)
+{
+	float values2[64];
+	for (int i = 0; i < 64; i++)
+	{
+		values2[i] = graphs[id][(i + 65) % 64];
+	}
+	std::copy(std::begin(values2), std::end(values2), std::begin(graphs[id]));
+	graphs[id][63] = value;
 }
 
 void UI::Shutdown()
