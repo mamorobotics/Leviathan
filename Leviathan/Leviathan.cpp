@@ -87,8 +87,12 @@ int main()
 			firstFrame = false;
 		}
 		auto stop = high_resolution_clock::now();
-		int duration = duration_cast<microseconds>(stop - start).count();
+		int duration = duration_cast<microseconds>(stop - start).count();		
 		gui->setMainDeltaTime((float)duration / 1000000);
+
+		gui->PublishGraph("Delta Time", ImGui::GetIO().DeltaTime);
+		gui->PublishGraph("Frame Rate", ImGui::GetIO().Framerate);
+
 	}
 
 	gui->Shutdown();

@@ -34,6 +34,7 @@ private:
 
 	std::vector<std::string> output;
 	std::map<std::string, std::string> telemetry;
+	std::map<std::string, float[64]> graphs;
 
 	ConnDetails connDetails;
 
@@ -50,6 +51,7 @@ public:
 	void Render(GLFWwindow* window);
 	void PublishOutput(std::string msg, LEV_CODE code = LEV_CODE::CLEAR);
 	void PublishTelemetry(std::string id, std::string value);
+	void PublishGraph(std::string id, float value);
 	void Shutdown();
 	~UI();
 
