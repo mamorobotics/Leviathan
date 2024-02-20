@@ -57,6 +57,8 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
 include_directories("${LIB_DIR}/asio/include")
 
 # jpeg
+include_directories(/home/mhsrobotics/Downloads/libjpeg-turbo-3.0.2)
+
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${TurboJPEG_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${TurboJPEG_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} /home/mhsrobotics/Downloads/libjpeg-turbo-3.0.2/libturbojpeg.so)

@@ -5,7 +5,7 @@
 
 class LoadTextureFromBuffer {
 public:
-    static bool LoadTexture(const char* image_data, int image_width, int image_height, GLuint *  out_texture)
+    static bool LoadTexture(const unsigned char* image_data, int image_width, int image_height, GLuint *  out_texture)
     {
         // Create a OpenGL texture identifier
         GLuint image_texture;

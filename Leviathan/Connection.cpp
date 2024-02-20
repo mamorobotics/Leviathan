@@ -72,8 +72,32 @@ void Connection::Recieve()
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
         
         if(header==4){
-            int width, height, im_type;;
-            //LoadTextureFromBuffer::LoadTexture(decmp_data, 512, 512, gui->getCameraTexture());
+            tjhandle decompressor = tjInitDecompress();
+
+            int width, height, im_type;
+            unsigned char *imageData = new unsigned char[512*512*3];
+
+            if(!imageData){
+                fprintf(stderr, "Error allocating memory for image data\n");
+            }
+
+            int result = tjDecompress2(decompressor, message, size, imageData, 512, 0, 512, TJPF_RGB, TJFLAG_FASTDCT);
+
+            if(result!=0){
+                fprintf(stderr, "Error decompressing JPEG image: %s\n", tjGetErrorStr());
+                delete[] imageData;
+            }
+
+            tjDestroy(decompressor);
+
+            //std::cout<<"finished decomp"<<std::endl;
+            
+            std::cout<<imageData<<std::endl;
+            //printf("%s", imageData);
+        
+            LoadTextureFromBuffer::LoadTexture(imageData, 512, 512, gui->getCameraTexture());
+            //std::cout<<"loaded texture"<<std::endl;
+            tjFree(imageData);
         }
     }
 }
