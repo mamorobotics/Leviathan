@@ -3,9 +3,9 @@
 #include <tuple>
 #include <sstream>
 #include <thread>
+#include <turbojpeg.h>
 
 #include <asio.hpp>
-#include "jpgd.h"
 #include "UI.hpp"
 #include "ConnDetails.hpp"
 #include "Management.hpp"

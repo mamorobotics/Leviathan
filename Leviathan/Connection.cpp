@@ -49,23 +49,31 @@ void Connection::Recieve()
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
         int size = stoi(std::string(recv_buffer.data()));
 
+        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
         int header = stoi(std::string(recv_buffer.data()));
 
-        ResizeBuffer(size);
-        socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        std::string message = recv_buffer.data();
+        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+
+        ResizeBuffer(0);
+        int total_size = 0;
+        while (total_size < size)
+        {
+            std::vector<char> buf;
+            buf.resize((size - total_size) > 65500 ? 65500 : (size - total_size));
+            socket.receive_from(asio::buffer(buf), remote_endpoint, 0, error);
+            total_size += (size - total_size) > 65500 ? 65500 : (size - total_size);
+            recv_buffer.insert(recv_buffer.end(), buf.begin(), buf.end());
+        }
+
+        const unsigned char* message = reinterpret_cast<const unsigned char*>(recv_buffer.data());
+
+        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
         
         if(header==4){
-            const unsigned char* src_data = reinterpret_cast<const unsigned char*>(recv_buffer.data());
-            int width, height, im_type;
-            char* decmp_data = reinterpret_cast<char*>(jpgd::decompress_jpeg_image_from_memory(src_data, sizeof(src_data), &width, &height, &im_type, 3, 0));
-            LoadTextureFromBuffer::LoadTexture(decmp_data, gui->getCameraTexture());
-            gui->setCameraWidth(width);
-            gui->setCameraHeight(height);
-            gui->PublishOutput("Recieved photo");
-            gui->PublishTelemetry("Photo Width", std::to_string(width));
-            gui->PublishTelemetry("Photo Height", std::to_string(height));
+            int width, height, im_type;;
+            //LoadTextureFromBuffer::LoadTexture(decmp_data, 512, 512, gui->getCameraTexture());
         }
     }
 }
@@ -76,7 +84,6 @@ void Connection::HandleHandshake(){
     asio::error_code error;
     socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
     if(recv_buffer.data() != NULL){
-        std::cout << recv_buffer.data() << std::endl;
         if(std::string(recv_buffer.data()) != "0110"){
             gui->PublishOutput("Handshake with client failed", LEV_CODE::CONN_ERROR);
         } else { 
