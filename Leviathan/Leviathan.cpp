@@ -5,9 +5,8 @@
 
 #include "UI.hpp"
 #include "Connection.hpp"
-
+#include "LoadTexture.hpp"
 #include "Controller.hpp"
-
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -67,16 +66,13 @@ int main()
 
 	bool firstFrame = true;
 
-	std::thread networkThread(&Connection::HandleHandshake, conn);
-	networkThread.detach();
-
 	while (!glfwWindowShouldClose(window)) {
 		auto start = high_resolution_clock::now();
 		glfwPollEvents();
 		gui->NewFrame();
 		gui->Update();
 		gui->Render(window);
-			
+		
 		if (firstFrame) {
 			firstFrame = false;
 		}

@@ -5,7 +5,6 @@
 #include <iostream>
 #include <time.h>
 #include <tuple>
-#include <thread>
 #include <map>
 
 #include "imgui.h"
@@ -23,7 +22,7 @@ class UI {
 private:
 	int cameraWidth, cameraHeight = 0;
 	time_t start = time(0);
-	GLuint cameraTexture;
+	GLuint cameraTexture = NULL;
 	bool pauseCamera = false;
 	bool statisticsOpen = false;
 	int selectedController = 0;
