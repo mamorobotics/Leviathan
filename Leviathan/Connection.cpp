@@ -42,6 +42,7 @@ void Connection::Send(int header, void * message)
 void Connection::Recieve() 
 {
     UI* gui = UI::Get();
+    int i = 0;
     while (true)
     {
         asio::error_code error;
@@ -91,8 +92,10 @@ void Connection::Recieve()
             tjDestroy(decompressor);
 
             //std::cout<<"finished decomp"<<std::endl;
-            
-            std::cout<<imageData<<std::endl;
+            if(i==0){
+                std::cout<<imageData<<std::endl;
+                i++;
+            }
             //printf("%s", imageData);
         
             LoadTextureFromBuffer::LoadTexture(imageData, 512, 512, gui->getCameraTexture());

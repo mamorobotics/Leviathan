@@ -25,6 +25,7 @@ public:
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
 
         *out_texture = image_texture;
+        
 
         return true;
     }
