@@ -27,7 +27,9 @@ private:
     udp::endpoint remote_endpoint;
 	udp::endpoint sender_endpoint;
 
-	std::vector<char> recv_buffer;
+	std::vector<char> size_buffer;
+	std::vector<char> header_buffer;
+	std::vector<char> data_buffer;
 	int numMessages;
 	std::string recvLength;
 	std::string recvHeader;

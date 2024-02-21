@@ -7,7 +7,7 @@ void Connection::Connect()
 
 void Connection::ResizeBuffer(int newSize)
 {
-    recv_buffer.resize(newSize);
+    data_buffer.resize(newSize);
 }
 
 void Connection::SendError(std::string message)
@@ -48,78 +48,64 @@ void Connection::Recieve()
     while (true)
     {
         j++;
-        if(j==50){return;}
         failedFrame = false;
-        ResizeBuffer(0);
-        std::cout<<"loop"<<std::endl;
         asio::error_code error;
-        ResizeBuffer(32);
-        socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        int size;
+        std::cout<<"s"<<std::endl;
+        size_buffer.resize(32);
+        socket.receive_from(asio::buffer(size_buffer), remote_endpoint, 0, error);
+        int size = 0;
         try{
-            size = stoi(std::string(recv_buffer.data()));
+            size = stoi(std::string(size_buffer.data()));
         }catch(const std::invalid_argument& e){
             std::cerr << "Invalid argument(size): " << e.what() << std::endl;
-            std::cout << "size is(size): " << recv_buffer.size() << std::endl;
-            std::cout << "data is(size): " << std::string(recv_buffer.data()) << std::endl;
+            std::cout << "size is(size): " << size_buffer.size() << std::endl;
+            std::cout << "data is(size): " << size_buffer.data() << std::endl;
+
+            size = 65500;
 
             failedFrame = true;
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
-
-        ResizeBuffer(0);
-        ResizeBuffer(32);
-
-        socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        int header;
+        
+        std::cout<<"h"<<std::endl;
+        header_buffer.resize(32);
+        socket.receive_from(asio::buffer(header_buffer), remote_endpoint, 0, error);
+        int header = 0;
         try{
-            header = stoi(std::string(recv_buffer.data()));
+            header = stoi(std::string(header_buffer.data()));
         }catch(const std::invalid_argument& e){
             std::cerr << "Invalid argument(header): " << e.what() << std::endl;
-            std::cout << "size is(header): " << recv_buffer.size() << std::endl;
-            std::cout << "data is(header): " << std::string(recv_buffer.data()) << std::endl;
+            std::cout << "size is(header): " << header_buffer.size() << std::endl;
+            std::cout << "data is(header): " << std::string(header_buffer.data()) << std::endl;
             std::cout << "data is(size): " << size << std::endl;
+
+            header = 11;
 
             failedFrame = true;
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        ResizeBuffer(0);
-        int total_size = 0;
-        std::string endCase = "";
-        while (endCase.compare("") == 0)
-        {
-            std::vector<char> buf;
-            buf.resize((size - total_size) > 65500 ? 65500 : (size - total_size));
-            socket.receive_from(asio::buffer(buf), remote_endpoint, 0, error);
-            total_size += (size - total_size) > 65500 ? 65500 : (size - total_size);
-            recv_buffer.insert(recv_buffer.end(), buf.begin(), buf.end());
+        ResizeBuffer(size);
+        std::cout<<"d"<<std::endl;
+        socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
 
-            if(std::string(std::vector<char>(recv_buffer.end()-4, recv_buffer.end()).data()).compare("0110")){
-                endCase = "f";
-                std::cout << "Found end case" << std::endl;
-            }
-
-            std::cout << "size: " << size << std::endl;
-            std::cout << "total size: " << total_size << std::endl;  
-        }
-
-        const unsigned char* message = reinterpret_cast<const unsigned char*>(recv_buffer.data());
+        const unsigned char* message = reinterpret_cast<const unsigned char*>(data_buffer.data());
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        if(failedFrame){continue;}
+        std::cout<<std::endl;
 
         // std::cout << "data is(header): " << std::string(recv_buffer.data()) << std::endl;
         // std::cout << "data is(size): " << size << std::endl;        
         
-        if(header==4){
+        unsigned char *imageData = new unsigned char[512*512*3];
+
+        if(header==4 && !failedFrame){
             tjhandle decompressor = tjInitDecompress();
 
             int width, height, im_type;
-            unsigned char *imageData = new unsigned char[512*512*3];
 
             if(!imageData){
                 fprintf(stderr, "Error allocating memory for image data\n");
@@ -142,12 +128,12 @@ void Connection::Recieve()
             }
             //printf("%s", imageData);
         
-            LoadTextureFromBuffer::LoadTexture(imageData, 512, 512, gui->getCameraTexture());
-            //std::cout<<"loaded texture"<<std::endl;
-            tjFree(imageData);
-
-            ResizeBuffer(0);
+        //     LoadTextureFromBuffer::LoadTexture(imageData, 512, 512, gui->getCameraTexture());
+        //     //std::cout<<"loaded texture"<<std::endl;
         }
+        tjFree(imageData);
+
+        ResizeBuffer(0);
     }
 }
 
@@ -155,9 +141,9 @@ void Connection::HandleHandshake(){
     UI* gui = UI::Get();
     ResizeBuffer(32);
     asio::error_code error;
-    socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-    if(recv_buffer.data() != NULL){
-        if(std::string(recv_buffer.data()) != "0110"){
+    socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
+    if(data_buffer.data() != NULL){
+        if(std::string(data_buffer.data()) != "0110"){
             gui->PublishOutput("Handshake with client failed", LEV_CODE::CONN_ERROR);
         } else { 
             gui->PublishOutput("Succesful handshake with client", LEV_CODE::CLEAR);
