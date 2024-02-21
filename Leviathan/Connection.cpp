@@ -43,34 +43,77 @@ void Connection::Recieve()
 {
     UI* gui = UI::Get();
     int i = 0;
+    int j=0;
+    bool failedFrame = false;
     while (true)
     {
+        j++;
+        if(j==50){return;}
+        failedFrame = false;
+        ResizeBuffer(0);
+        std::cout<<"loop"<<std::endl;
         asio::error_code error;
         ResizeBuffer(32);
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        int size = stoi(std::string(recv_buffer.data()));
+        int size;
+        try{
+            size = stoi(std::string(recv_buffer.data()));
+        }catch(const std::invalid_argument& e){
+            std::cerr << "Invalid argument(size): " << e.what() << std::endl;
+            std::cout << "size is(size): " << recv_buffer.size() << std::endl;
+            std::cout << "data is(size): " << std::string(recv_buffer.data()) << std::endl;
+
+            failedFrame = true;
+        }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
+        ResizeBuffer(0);
+        ResizeBuffer(32);
+
         socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        int header = stoi(std::string(recv_buffer.data()));
+        int header;
+        try{
+            header = stoi(std::string(recv_buffer.data()));
+        }catch(const std::invalid_argument& e){
+            std::cerr << "Invalid argument(header): " << e.what() << std::endl;
+            std::cout << "size is(header): " << recv_buffer.size() << std::endl;
+            std::cout << "data is(header): " << std::string(recv_buffer.data()) << std::endl;
+            std::cout << "data is(size): " << size << std::endl;
+
+            failedFrame = true;
+        }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
         ResizeBuffer(0);
         int total_size = 0;
-        while (total_size < size)
+        std::string endCase = "";
+        while (endCase.compare("") == 0)
         {
             std::vector<char> buf;
             buf.resize((size - total_size) > 65500 ? 65500 : (size - total_size));
             socket.receive_from(asio::buffer(buf), remote_endpoint, 0, error);
             total_size += (size - total_size) > 65500 ? 65500 : (size - total_size);
             recv_buffer.insert(recv_buffer.end(), buf.begin(), buf.end());
+
+            if(std::string(std::vector<char>(recv_buffer.end()-4, recv_buffer.end()).data()).compare("0110")){
+                endCase = "f";
+                std::cout << "Found end case" << std::endl;
+            }
+
+            std::cout << "size: " << size << std::endl;
+            std::cout << "total size: " << total_size << std::endl;  
         }
 
         const unsigned char* message = reinterpret_cast<const unsigned char*>(recv_buffer.data());
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+
+        if(failedFrame){continue;}
+
+        // std::cout << "data is(header): " << std::string(recv_buffer.data()) << std::endl;
+        // std::cout << "data is(size): " << size << std::endl;        
         
         if(header==4){
             tjhandle decompressor = tjInitDecompress();
@@ -93,7 +136,8 @@ void Connection::Recieve()
 
             //std::cout<<"finished decomp"<<std::endl;
             if(i==0){
-                std::cout<<imageData<<std::endl;
+                printf("%s", imageData);
+                //std::cout<<imageData<<std::endl;
                 i++;
             }
             //printf("%s", imageData);
@@ -101,6 +145,8 @@ void Connection::Recieve()
             LoadTextureFromBuffer::LoadTexture(imageData, 512, 512, gui->getCameraTexture());
             //std::cout<<"loaded texture"<<std::endl;
             tjFree(imageData);
+
+            ResizeBuffer(0);
         }
     }
 }
