@@ -62,3 +62,9 @@ include_directories(/home/mhsrobotics/Downloads/libjpeg-turbo-3.0.2)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${TurboJPEG_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} /home/mhsrobotics/Downloads/libjpeg-turbo-3.0.2/libturbojpeg.so)
+
+#openCV
+find_package(OpenCV REQUIRED)
+include_directories(/home/mhsrobotics/opencv/include)
+
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})

@@ -91,7 +91,7 @@ void Connection::Recieve()
         std::cout<<"d"<<std::endl;
         socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
 
-        const unsigned char* message = reinterpret_cast<const unsigned char*>(data_buffer.data());
+        unsigned char* message = reinterpret_cast<unsigned char*>(data_buffer.data());
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
@@ -100,38 +100,45 @@ void Connection::Recieve()
         // std::cout << "data is(header): " << std::string(recv_buffer.data()) << std::endl;
         // std::cout << "data is(size): " << size << std::endl;        
         
-        unsigned char *imageData = new unsigned char[512*512*3];
+        unsigned char imageData[512*512*3];
+
+        if(!imageData){
+            fprintf(stderr, "Error allocating memory for image data\n");
+        }
 
         if(header==4 && !failedFrame){
-            tjhandle decompressor = tjInitDecompress();
+            std::cout << "image" << std::endl;
+            // tjhandle decompressor = tjInitDecompress();
 
-            int width, height, im_type;
+            // int width, height, subSamp;
 
-            if(!imageData){
-                fprintf(stderr, "Error allocating memory for image data\n");
-            }
+            // tjDecompressHeader2(decompressor, message, size, &width, &height, &subSamp);
+            // int result = tjDecompress2(decompressor, message, size, imageData, 512, 0, 512, TJPF_RGB, TJFLAG_FASTDCT);
 
-            int result = tjDecompress2(decompressor, message, size, imageData, 512, 0, 512, TJPF_RGB, TJFLAG_FASTDCT);
+            // if(result!=0){
+            //     fprintf(stderr, "Error decompressing JPEG image: %s\n", tjGetErrorStr());
+            //     delete[] imageData;
+            // }
 
-            if(result!=0){
-                fprintf(stderr, "Error decompressing JPEG image: %s\n", tjGetErrorStr());
-                delete[] imageData;
-            }
+            // tjDestroy(decompressor);
 
-            tjDestroy(decompressor);
-
-            //std::cout<<"finished decomp"<<std::endl;
-            if(i==0){
-                printf("%s", imageData);
-                //std::cout<<imageData<<std::endl;
-                i++;
-            }
+            // //std::cout<<"finished decomp"<<std::endl;
+            // if(i==0){
+            //     printf("%s", imageData);
+            //     //std::cout<<imageData<<std::endl;
+            //     i++;
+            // }
             //printf("%s", imageData);
-        
-        //     LoadTextureFromBuffer::LoadTexture(imageData, 512, 512, gui->getCameraTexture());
+
+            
+
+            LoadTextureFromBuffer::LoadTexture(data_buffer, 512, 512, gui->getCameraTexture());
+            sleep(0.05);
         //     //std::cout<<"loaded texture"<<std::endl;
+
+
+            
         }
-        tjFree(imageData);
 
         ResizeBuffer(0);
     }

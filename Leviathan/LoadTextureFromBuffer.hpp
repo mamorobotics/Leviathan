@@ -2,11 +2,20 @@
 
 #include "UI.hpp"
 #include "glad/glad.h"
+#include <opencv2/opencv.hpp>
 
 class LoadTextureFromBuffer {
 public:
-    static bool LoadTexture(const unsigned char* image_data, int image_width, int image_height, GLuint *  out_texture)
+    static bool LoadTexture(std::vector<char> data_buffer, int image_width, int image_height, GLuint *  out_texture)
     {
+        cv::Mat mat = cv::imdecode(data_buffer, cv::IMREAD_COLOR);
+
+        if(mat.empty()){
+            std::cerr << "Error: unable to decode the JPEG image." << std::endl;
+            return false;
+        }
+        std::cout << "decoded";
+
         // Create a OpenGL texture identifier
         GLuint image_texture;
         glGenTextures(1, &image_texture);
@@ -22,7 +31,7 @@ public:
 #if defined(GL_UNPACK_ROW_LENGTH) && !defined(__EMSCRIPTEN__)
         glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 #endif
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mat.cols, mat.rows, 0, GL_RGBA, GL_UNSIGNED_BYTE, mat.ptr());
 
         *out_texture = image_texture;
         

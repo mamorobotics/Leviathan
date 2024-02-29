@@ -4,12 +4,16 @@
 #include <sstream>
 #include <thread>
 #include <turbojpeg.h>
+#include <opencv2/opencv.hpp>
+
 
 #include <asio.hpp>
 #include "UI.hpp"
+#include "blosc2.h"
 #include "ConnDetails.hpp"
 #include "Management.hpp"
 #include "LoadTextureFromBuffer.hpp"
+#include <unistd.h>
 
 #define PORT 8080
 #define IP "192.168.1.1"     
