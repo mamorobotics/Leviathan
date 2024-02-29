@@ -133,7 +133,6 @@ void Connection::Recieve()
             
 
             LoadTextureFromBuffer::LoadTexture(data_buffer, 512, 512, gui->getCameraTexture());
-            sleep(0.05);
         //     //std::cout<<"loaded texture"<<std::endl;
 
 
