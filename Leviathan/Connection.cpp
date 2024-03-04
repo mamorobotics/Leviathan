@@ -107,36 +107,14 @@ void Connection::Recieve()
         }
 
         if(header==4 && !failedFrame){
-            std::cout << "image" << std::endl;
-            // tjhandle decompressor = tjInitDecompress();
+            glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
 
-            // int width, height, subSamp;
-
-            // tjDecompressHeader2(decompressor, message, size, &width, &height, &subSamp);
-            // int result = tjDecompress2(decompressor, message, size, imageData, 512, 0, 512, TJPF_RGB, TJFLAG_FASTDCT);
-
-            // if(result!=0){
-            //     fprintf(stderr, "Error decompressing JPEG image: %s\n", tjGetErrorStr());
-            //     delete[] imageData;
-            // }
-
-            // tjDestroy(decompressor);
-
-            // //std::cout<<"finished decomp"<<std::endl;
-            // if(i==0){
-            //     printf("%s", imageData);
-            //     //std::cout<<imageData<<std::endl;
-            //     i++;
-            // }
-            //printf("%s", imageData);
-
-            
-
-            LoadTextureFromBuffer::LoadTexture(data_buffer, 512, 512, gui->getCameraTexture());
-        //     //std::cout<<"loaded texture"<<std::endl;
-
-
-            
+            cv::Mat mat = cv::imdecode(data_buffer, cv::IMREAD_COLOR);
+            if(mat.empty()){
+                std::cerr << "Error: unable to decode the JPEG image." << std::endl;
+                return false;
+            }
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
         }
 
         ResizeBuffer(0);

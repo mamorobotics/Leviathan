@@ -86,6 +86,9 @@ int main()
 	}
 
 	gui->Shutdown();
+
+	glDeleteTextures(1, &gui->getCameraTexture());
+	glfwTerminate();
 	
 	return 0;
 }
