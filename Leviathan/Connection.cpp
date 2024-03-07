@@ -89,9 +89,11 @@ void Connection::Recieve()
 
         ResizeBuffer(size);
         std::cout<<"d"<<std::endl;
-        socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
-
-        unsigned char* message = reinterpret_cast<unsigned char*>(data_buffer.data());
+        if(isDecoding){
+            socket.receive_from(asio::buffer(temp_buffer), remote_endpoint, 0, error);
+        }else{
+            socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
+        }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 

@@ -36,6 +36,7 @@ private:
 	std::vector<char> size_buffer;
 	std::vector<char> header_buffer;
 	std::vector<char> data_buffer;
+	std::vector<char> temp_buffer;
 	int numMessages;
 	std::string recvLength;
 	std::string recvHeader;
