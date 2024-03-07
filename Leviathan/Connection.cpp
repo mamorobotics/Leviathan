@@ -130,7 +130,11 @@ void Connection::Recieve()
             // }
             //printf("%s", imageData);
 
-            std::thread decodeThread(LoadTexture(data_buffer, 512, 512, gui->getCameraTexture()));
+            std::cout << data_buffer.empty() << std::endl;
+
+            std::thread decodeThread([&](){
+                LoadTexture(&data_buffer, 512, 512, gui->getCameraTexture());
+            });
 	        decodeThread.detach();
 
             //LoadTexture(data_buffer, 512, 512, gui->getCameraTexture());
