@@ -106,7 +106,7 @@ void Connection::Recieve()
             fprintf(stderr, "Error allocating memory for image data\n");
         }
 
-        if(header==4 && !failedFrame){
+        if(header==4 && !failedFrame && !isDecoding){
             std::cout << "image" << std::endl;
             // tjhandle decompressor = tjInitDecompress();
 
@@ -130,9 +130,10 @@ void Connection::Recieve()
             // }
             //printf("%s", imageData);
 
-            
+            std::thread decodeThread(LoadTexture(data_buffer, 512, 512, gui->getCameraTexture()));
+	        decodeThread.detach();
 
-            LoadTextureFromBuffer::LoadTexture(data_buffer, 512, 512, gui->getCameraTexture());
+            //LoadTexture(data_buffer, 512, 512, gui->getCameraTexture());
         //     //std::cout<<"loaded texture"<<std::endl;
 
 
