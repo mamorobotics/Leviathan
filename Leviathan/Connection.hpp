@@ -64,10 +64,9 @@ public:
 	~Connection();
 	static Connection* Get();
 
-	void LoadTexture(std::vector<char> * dataPtr, int image_width, int image_height, GLuint *  out_texture)
+	void LoadTexture(int image_width, int image_height, GLuint *  out_texture)
     {
-		std::vector<char> data = *dataPtr;	
-		std::cout << data.empty() << std::endl;
+		std::cout << data_buffer.empty() << std::endl;
 
 		isDecoding = true;
 		
@@ -95,7 +94,7 @@ public:
 
         //*out_texture = image_texture;
         
-
+		data_buffer.resize(0);
         isDecoding = false;
     }
 };

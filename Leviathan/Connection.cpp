@@ -5,11 +5,6 @@ void Connection::Connect()
     //maybe stuffs
 }
 
-void Connection::ResizeBuffer(int newSize)
-{
-    data_buffer.resize(newSize);
-}
-
 void Connection::SendError(std::string message)
 {
 	Send(2, &message);
@@ -87,7 +82,9 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        ResizeBuffer(size);
+        temp_buffer.resize(0);
+        data_buffer.resize(0);
+
         std::cout<<"d"<<std::endl;
         if(isDecoding){
             socket.receive_from(asio::buffer(temp_buffer), remote_endpoint, 0, error);
@@ -140,13 +137,9 @@ void Connection::Recieve()
 	        decodeThread.detach();
 
             //LoadTexture(data_buffer, 512, 512, gui->getCameraTexture());
-        //     //std::cout<<"loaded texture"<<std::endl;
-
-
-            
+        //     //std::cout<<"loaded texture"<<std::endl;   
         }
-
-        ResizeBuffer(0);
+        temp_buffer.resize(0);
     }
 }
 
