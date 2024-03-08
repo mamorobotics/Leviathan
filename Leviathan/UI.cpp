@@ -100,9 +100,6 @@ void UI::Update()
 	{
 		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
-		if (ImGui::Button("Connect")){
-			std::cout << "connect button" << std::endl;
-		}
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
 		
 	}	

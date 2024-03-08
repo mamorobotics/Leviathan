@@ -19,7 +19,7 @@ Connection* Connection::connection = new Connection();
 void error_callback( int error, const char *msg ) {
     std::string s;
     s = " [" + std::to_string(error) + "] " + msg + '\n';
-    std::cerr << s << std::endl;
+    UI::Get()->PublishOutput(s, LEV_CODE::GENERAL_ERROR);
 }
 
 int main()
@@ -41,9 +41,6 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
-	//you may need to uncomment these to get it to work
-	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	GLFWwindow* window = glfwCreateWindow(1280, 720, "Leviathan", NULL, NULL);
 

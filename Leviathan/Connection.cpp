@@ -45,16 +45,13 @@ void Connection::Recieve()
         j++;
         failedFrame = false;
         asio::error_code error;
-        std::cout<<"s"<<std::endl;
         size_buffer.resize(32);
         socket.receive_from(asio::buffer(size_buffer), remote_endpoint, 0, error);
         int size = 0;
         try{
             size = stoi(std::string(size_buffer.data()));
         }catch(const std::invalid_argument& e){
-            std::cerr << "Invalid argument(size): " << e.what() << std::endl;
-            std::cout << "size is(size): " << size_buffer.size() << std::endl;
-            std::cout << "data is(size): " << size_buffer.data() << std::endl;
+            UI::Get()->PublishOutput("Invalid size message", LEV_CODE::CONN_ERROR);
 
             size = 65500;
 
@@ -63,17 +60,13 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
         
-        std::cout<<"h"<<std::endl;
         header_buffer.resize(32);
         socket.receive_from(asio::buffer(header_buffer), remote_endpoint, 0, error);
         int header = 0;
         try{
             header = stoi(std::string(header_buffer.data()));
         }catch(const std::invalid_argument& e){
-            std::cerr << "Invalid argument(header): " << e.what() << std::endl;
-            std::cout << "size is(header): " << header_buffer.size() << std::endl;
-            std::cout << "data is(header): " << std::string(header_buffer.data()) << std::endl;
-            std::cout << "data is(size): " << size << std::endl;
+            UI::Get()->PublishOutput("Invalid header message", LEV_CODE::CONN_ERROR);
 
             header = 11;
 
@@ -87,28 +80,22 @@ void Connection::Recieve()
             data_buffer.resize(size);
         }
 
-        std::cout<<"d"<<std::endl;
         socket.receive_from(asio::buffer(temp_buffer), remote_endpoint, 0, error);
         if(!isDecoding){
             data_buffer = temp_buffer;
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
-
-        std::cout<<std::endl;   
         
         unsigned char imageData[512*512*3];
 
         if(!imageData){
-            fprintf(stderr, "Error allocating memory for image data\n");
+            UI::Get()->PublishOutput("Error allocating memory for image data.", LEV_CODE::IMAGE_ERROR);
         }
 
         if(header==4 && !failedFrame && !isDecoding){
-            std::cout << "image" << std::endl;
-
             isDecoding = true;
-            std::cout << data_buffer.empty() << std::endl;
-
+            
             std::thread decodeThread([&](){
                 LoadTexture(&data_buffer, 512, 512, gui->getCameraTexture());
             });
