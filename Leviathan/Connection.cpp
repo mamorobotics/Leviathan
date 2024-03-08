@@ -82,14 +82,15 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        temp_buffer.resize(0);
-        data_buffer.resize(0);
+        temp_buffer.resize(size);
+        if(!isDecoding){
+            data_buffer.resize(size);
+        }
 
         std::cout<<"d"<<std::endl;
-        if(isDecoding){
-            socket.receive_from(asio::buffer(temp_buffer), remote_endpoint, 0, error);
-        }else{
-            socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
+        socket.receive_from(asio::buffer(temp_buffer), remote_endpoint, 0, error);
+        if(!isDecoding){
+            data_buffer = temp_buffer;
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
@@ -145,7 +146,7 @@ void Connection::Recieve()
 
 void Connection::HandleHandshake(){
     UI* gui = UI::Get();
-    ResizeBuffer(32);
+    data_buffer.resize(32);
     asio::error_code error;
     socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
     if(data_buffer.data() != NULL){
