@@ -86,19 +86,14 @@ void Connection::Recieve()
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
-        
-        unsigned char imageData[512*512*3];
-
-        if(!imageData){
-            UI::Get()->PublishOutput("Error allocating memory for image data.", LEV_CODE::IMAGE_ERROR);
-        }
 
         if(header==4 && !failedFrame && !isDecoding){
             isDecoding = true;
             
             std::thread decodeThread([&](){
-                LoadTexture(&data_buffer, 512, 512, gui->getCameraTexture());
-            });
+                LoadTexture(&data_buffer, gui->getCameraTexture());
+            });it config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
 
 	        decodeThread.detach();
         }

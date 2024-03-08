@@ -87,7 +87,7 @@ void UI::Update()
 	}
 
 	ImGui::Begin("Camera View");
-	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(512, 512));
+	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();
 
 	ImGui::Begin("Networking");

@@ -61,15 +61,14 @@ public:
 	~Connection();
 	static Connection* Get();
 
-	void LoadTexture(std::vector<char> * dataPtr, int image_width, int image_height, GLuint *  out_texture)
+	void LoadTexture(std::vector<char>* dataPtr, GLuint* out_texture)
     {
 		if(dataPtr == nullptr || dataPtr->empty()){
 			isDecoding = false;
 			return;
 		}
-		std::vector<char> data = *dataPtr;
 		
-        cv::Mat mat = cv::imdecode(data_buffer, cv::IMREAD_UNCHANGED);
+        cv::Mat mat = cv::imdecode(*dataPtr, cv::IMREAD_UNCHANGED);
 
         if(mat.empty()){
 			UI::Get()->PublishOutput("Unable to decode the JPEG image.", LEV_CODE::IMAGE_ERROR);
@@ -79,6 +78,9 @@ public:
 		
         glBindTexture(GL_TEXTURE_2D, UI::Get()->getCameraTexture(););
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mat.cols, mat.rows, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
+
+		UI::Get()->setCameraWidth(mat.cols);
+		UI::Get()->setCameraHeight(mat.rows);
 
         isDecoding = false;
     }
