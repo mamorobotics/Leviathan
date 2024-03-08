@@ -5,11 +5,6 @@ void Connection::Connect()
     //maybe stuffs
 }
 
-void Connection::ResizeBuffer(int newSize)
-{
-    data_buffer.resize(newSize);
-}
-
 void Connection::SendError(std::string message)
 {
 	Send(2, &message);
@@ -87,18 +82,20 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        ResizeBuffer(size);
-        std::cout<<"d"<<std::endl;
-        socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
+        temp_buffer.resize(size);
+        if(!isDecoding){
+            data_buffer.resize(size);
+        }
 
-        unsigned char* message = reinterpret_cast<unsigned char*>(data_buffer.data());
+        std::cout<<"d"<<std::endl;
+        socket.receive_from(asio::buffer(temp_buffer), remote_endpoint, 0, error);
+        if(!isDecoding){
+            data_buffer = temp_buffer;
+        }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        std::cout<<std::endl;
-
-        // std::cout << "data is(header): " << std::string(recv_buffer.data()) << std::endl;
-        // std::cout << "data is(size): " << size << std::endl;        
+        std::cout<<std::endl;   
         
         unsigned char imageData[512*512*3];
 
@@ -106,24 +103,25 @@ void Connection::Recieve()
             fprintf(stderr, "Error allocating memory for image data\n");
         }
 
-        if(header==4 && !failedFrame){
-            glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
+        if(header==4 && !failedFrame && !isDecoding){
+            std::cout << "image" << std::endl;
 
-            cv::Mat mat = cv::imdecode(data_buffer, cv::IMREAD_COLOR);
-            if(mat.empty()){
-                std::cerr << "Error: unable to decode the JPEG image." << std::endl;
-                return false;
-            }
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
+            isDecoding = true;
+            std::cout << data_buffer.empty() << std::endl;
+
+            std::thread decodeThread([&](){
+                LoadTexture(&data_buffer, 512, 512, gui->getCameraTexture());
+            });
+
+	        decodeThread.detach();
         }
-
-        ResizeBuffer(0);
+        temp_buffer.resize(0);
     }
 }
 
 void Connection::HandleHandshake(){
     UI* gui = UI::Get();
-    ResizeBuffer(32);
+    data_buffer.resize(32);
     asio::error_code error;
     socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
     if(data_buffer.data() != NULL){
