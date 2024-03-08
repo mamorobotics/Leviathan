@@ -82,7 +82,7 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        if(header == 4 && !failedFrame && !isDecoding){
+        if(header == 4 && !failedFrame && !isDecoding && gui->isCameraPaused()){
             isDecoding = true;
             
             std::thread decodeThread([&](){

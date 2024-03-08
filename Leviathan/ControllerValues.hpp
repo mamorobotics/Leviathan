@@ -7,5 +7,11 @@ class ControllerValues
 public:
 	float ljoyx, ljoyy, rjoyx, rjoyy, ltrigger, rtrigger;
     int a, b, x, y, lbumper, rbumper, up, down, left, right;
+
+    std::string toString()
+    {
+        return ljoyx + "!" + ljoyy + "!" + rjoyx + "!" + rjoyy + "!" + ltrigger + "!" + rtrigger + "!"
+         + a + "!" + b + "!" + x + "!" + y + "!" + lbumper + "!" + rbumper + "!" + up + "!" + down + "!" + left + "!" + right;
+    }
 };
 

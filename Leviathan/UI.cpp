@@ -101,12 +101,10 @@ void UI::Update()
 		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
-		
 	}	
 	ImGui::End();
 
 	ImGui::Begin("Controller");
-
 	ControllerValues* controllerValues = controller->GetControllerValues();
 	ImGui::Text(("Controller: " + std::string(glfwGetJoystickName(controller->getId())) + " (" + std::to_string(controller->getId()) + ")").c_str());
 	ImGui::Text(("Left Stick Coordinate: (" + std::to_string(controllerValues->ljoyx) + ", " + std::to_string(controllerValues->ljoyy) + ")").c_str());
@@ -120,7 +118,6 @@ void UI::Update()
 	ImGui::Text(("Left Bumper: " + std::to_string(controllerValues->lbumper)).c_str());
 	ImGui::Text(("Right Bumper: " + std::to_string(controllerValues->rbumper)).c_str());
 	ImGui::End();
-
 	ImGui::Begin("Output");
 
 	if (ImGui::BeginListBox("##Output box", ImVec2(-FLT_MIN, -FLT_MIN)))

@@ -80,6 +80,23 @@ int main()
 		auto stop = high_resolution_clock::now();
 		int duration = duration_cast<microseconds>(stop - start).count();
 		gui->setMainDeltaTime((float)duration / 1000000);
+
+		conn->Send(5, controller->GetControllerValues()->toString());
+
+		const float* joys = glfwGetJoystickAxes(id, &joyCount);
+		const unsigned char* buttons = glfwGetJoystickButtons(id, &buttonCount);
+
+		for (int i = 0; i < sizeof(joys)/sizeof(joys[0]); i++)
+		{
+			if (joys[i])
+				std::cout << i << std::endl;
+		}
+		for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
+		{
+			if (buttons[i])
+				std::cout << i << std::endl;
+		}
+		
 	}
 
 	gui->Shutdown();
