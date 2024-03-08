@@ -129,7 +129,7 @@ void Connection::Recieve()
             //     i++;
             // }
             //printf("%s", imageData);
-
+            isDecoding = true;
             std::cout << data_buffer.empty() << std::endl;
 
             std::thread decodeThread([&](){
