@@ -33,8 +33,7 @@ private:
 	std::vector<char> size_buffer;
 	std::vector<char> header_buffer;
 	std::vector<char> data_buffer;
-	std::vector<char> temp_buffer;
-	int numMessages;
+	std::vector<char> image_buffer;
 	std::string recvLength;
 	std::string recvHeader;
 
@@ -47,8 +46,6 @@ public:
     	socket.open(asio::ip::udp::v4());
 		socket.bind(remote_endpoint);
     }
-	void Connect();
-	void ResizeBuffer(int newSize);
 
 	void SendError(std::string message);
 	void SendWarning(std::string message);
@@ -64,6 +61,7 @@ public:
 	void LoadTexture(std::vector<char>* dataPtr, GLuint* out_texture)
     {
 		if(dataPtr == nullptr || dataPtr->empty()){
+			UI::Get()->PublishOutput("Image data pointer is empty.", LEV_CODE::IMAGE_ERROR);
 			isDecoding = false;
 			return;
 		}

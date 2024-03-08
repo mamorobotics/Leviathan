@@ -1,10 +1,5 @@
 #include "Connection.hpp"
 
-void Connection::Connect()
-{
-    //maybe stuffs
-}
-
 void Connection::SendError(std::string message)
 {
 	Send(2, &message);
@@ -75,29 +70,48 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        temp_buffer.resize(size);
-        if(!isDecoding){
-            data_buffer.resize(size);
+        data_buffer.resize(size);
+        if(!isDecoding && header == 4){
+            image_buffer.resize(size);
         }
 
-        socket.receive_from(asio::buffer(temp_buffer), remote_endpoint, 0, error);
-        if(!isDecoding){
-            data_buffer = temp_buffer;
+        socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
+        if(!isDecoding && header == 4){
+            image_buffer = data_buffer;
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        if(header==4 && !failedFrame && !isDecoding){
+        if(header == 4 && !failedFrame && !isDecoding){
             isDecoding = true;
             
             std::thread decodeThread([&](){
-                LoadTexture(&data_buffer, gui->getCameraTexture());
-            });it config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
+                LoadTexture(&image_buffer, gui->getCameraTexture());
+            });
 
 	        decodeThread.detach();
         }
-        temp_buffer.resize(0);
+        
+        if(header == 2)
+        {
+            gui->PublishOutput(std::string(data_buffer.data()), LEV_CODE::GENERAL_ERROR);
+        }
+
+        if(header == 1)
+        {
+            gui->PublishOutput(std::string(data_buffer.data()), LEV_CODE::WARNING);
+        }
+
+        if(header == 3)
+        {
+            std::string msg = std::string(data_buffer.data());
+            int index = msg.find("!");
+            std::string id = msg.substr(0, index);
+            std::string value = msg.substr(index + 1, msg.length() - (id.length() + 1));
+            gui->PublishTelemetry(id, value);
+        }
+
+        data_buffer.resize(0);
     }
 }
 

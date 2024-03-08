@@ -3,7 +3,7 @@
 #ifndef FILE_H
 #define FILE_H
 
-enum LEV_CODE { CLEAR, CONN_ERROR, TEST, IMAGE_ERROR, GENERAL_ERROR };
+enum LEV_CODE { CLEAR, CONN_ERROR, TEST, IMAGE_ERROR, GENERAL_ERROR, WARNING };
 
 static std::string CodeDef(LEV_CODE code) {
 	if (code == LEV_CODE::CLEAR)
@@ -16,6 +16,8 @@ static std::string CodeDef(LEV_CODE code) {
 		return "Image Error";
 	if (code == LEV_CODE::GENERAL_ERROR)
 		return "Error";
+	if (code == LEV_CODE::WARNING)
+		return "Warning";
 
 	return "NULL CODE";
 }
