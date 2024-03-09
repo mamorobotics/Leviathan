@@ -82,6 +82,7 @@ int main()
 		gui->setMainDeltaTime((float)duration / 1000000);
 
 		conn->Send(5, controller->GetControllerValues()->toString());
+		conn->Send(6, std::to_string(gui->getCameraQuality()));
 
 		int joyCount, buttonCount;
 
