@@ -23,7 +23,7 @@ class UI {
 private:
 	int cameraWidth, cameraHeight = 0;
 	time_t start = time(0);
-	GLuint cameraTexture = NULL;
+	GLuint cameraTexture;
 	bool pauseCamera = false;
 	bool statisticsOpen = false;
 	int selectedController = 0;
@@ -44,6 +44,7 @@ public:
 
 	UI();
 	UI(const UI& obj) = delete;
+	void CreateCameraTexture();
 	void Init(GLFWwindow* window, const char* glsl_version);
 	void NewFrame();
 	void Update();
@@ -59,7 +60,7 @@ public:
 	void setConnectionDetails(ConnDetails connDetails);
 	bool isCameraPaused() { return pauseCamera; }
 	int getCameraQuality() { return quality; }
-	GLuint* getCameraTexture() { return &cameraTexture; }
+	GLuint getCameraTexture() { return cameraTexture; }
 	void setCameraWidth(int width) { cameraWidth = width; }
 	void setCameraHeight(int height) { cameraHeight = height; }
 };

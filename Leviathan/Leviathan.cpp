@@ -24,6 +24,9 @@ void error_callback( int error, const char *msg ) {
 
 int main()
 {
+	UI* gui = UI::Get();
+	Connection* conn = Connection::Get();
+
 	Controller::ScanControllers();
 	
 	//Setup GLFW and Imgui
@@ -50,16 +53,14 @@ int main()
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		throw("Unable to context to OpenGL");
 
-	UI* gui = UI::Get();
-	Connection* conn = Connection::Get();
-
 	int screen_width, screen_height;
 	glfwGetFramebufferSize(window, &screen_width, &screen_height);
 	glViewport(0, 0, screen_width, screen_height);
 
+	gui->CreateCameraTexture();
 	gui->Init(window, glsl_version);
 
-	Controller* controller = new Controller(0);
+	Controller* controller = new Controller(1);
 	gui->controller = controller;
 
 	bool firstFrame = true;

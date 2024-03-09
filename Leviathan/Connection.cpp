@@ -82,11 +82,11 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        if(header == 4 && !failedFrame && !isDecoding && gui->isCameraPaused()){
+        if(header == 4 && !failedFrame && !isDecoding && !gui->isCameraPaused()){
             isDecoding = true;
             
             std::thread decodeThread([&](){
-                LoadTexture(&image_buffer, gui->getCameraTexture());
+                LoadTexture(&image_buffer);
             });
 
 	        decodeThread.detach();
@@ -136,7 +136,7 @@ void Connection::HandleHandshake(){
     }
 }
 
-void Connection::LoadTexture(std::vector<char>* dataPtr, GLuint* out_texture)
+void Connection::LoadTexture(std::vector<char>* dataPtr)
 {
     UI* gui = UI::Get();
 
@@ -146,16 +146,21 @@ void Connection::LoadTexture(std::vector<char>* dataPtr, GLuint* out_texture)
     }
     std::vector<char> data = *dataPtr;
     
-    cv::Mat mat = cv::imdecode(data_buffer, cv::IMREAD_UNCHANGED);
+    cv::Mat mat = cv::imdecode(data, cv::IMREAD_UNCHANGED);
 
     if(mat.empty()){
         gui->PublishOutput("Unable to decode the JPEG image.", LEV_CODE::IMAGE_ERROR);
         isDecoding = false;
         return;
     }
-    
-    glBindTexture(GL_TEXTURE_2D, *(gui->getCameraTexture()));
+
+    cv::imwrite("hello.png", mat);
+
+    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mat.cols, mat.rows, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
+
+    gui->setCameraWidth(mat.cols);
+    gui->setCameraHeight(mat.rows);
 
     isDecoding = false;
 }

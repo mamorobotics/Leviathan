@@ -59,7 +59,7 @@ public:
 
 	void Recieve();
 	void HandleHandshake();
-	void LoadTexture(std::vector<char> * dataPtr, GLuint* out_texture);
+	void LoadTexture(std::vector<char> * dataPtr);
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();

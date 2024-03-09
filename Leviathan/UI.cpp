@@ -2,6 +2,11 @@
 
 UI::UI()
 {
+	
+}
+
+void UI::CreateCameraTexture()
+{
 	glGenTextures(1, &cameraTexture);
 	glBindTexture(GL_TEXTURE_2D, cameraTexture);
 
@@ -13,8 +18,6 @@ UI::UI()
 
 void UI::Init(GLFWwindow* window, const char* glsl_version)
 {
-	
-
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
