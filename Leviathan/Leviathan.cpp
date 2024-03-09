@@ -83,21 +83,6 @@ int main()
 		gui->setMainDeltaTime((float)duration / 1000000);
 
 		int joyCount, buttonCount;
-
-		const float* joys = glfwGetJoystickAxes(0, &joyCount);
-		const unsigned char* buttons = glfwGetJoystickButtons(0, &buttonCount);
-
-		for (int i = 0; i < joyCount; i++)
-		{
-			if (joys[i])
-				std::cout << i << std::endl;
-		}
-		for (int i = 0; i < buttonCount; i++)
-		{
-			if (buttons[i])
-				std::cout << i << std::endl;
-		}
-		
 	}
 
 	gui->Shutdown();

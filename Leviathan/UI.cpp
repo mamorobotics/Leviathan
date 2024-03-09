@@ -30,8 +30,6 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGui::StyleColorsDark();
 
 	start = time(0);
-
-	 
 }
 
 void UI::NewFrame()
