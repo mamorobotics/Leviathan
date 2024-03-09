@@ -13,6 +13,9 @@
 #include <atomic>
 #include <thread>
 
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
+
 #define PORT 8080
 #define IP "192.168.1.1"     
 
@@ -33,6 +36,7 @@ private:
 	std::vector<char> header_buffer;
 	std::vector<char> data_buffer;
 	std::vector<char> image_buffer;
+	int numMessages;
 	std::string recvLength;
 	std::string recvHeader;
 
@@ -45,6 +49,8 @@ public:
     	socket.open(asio::ip::udp::v4());
 		socket.bind(remote_endpoint);
     }
+	void Connect();
+	void ResizeBuffer(int newSize);
 
 	void SendError(std::string message);
 	void SendWarning(std::string message);
@@ -53,33 +59,8 @@ public:
 
 	void Recieve();
 	void HandleHandshake();
+	void LoadTexture(std::vector<char> * dataPtr, GLuint* out_texture);
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();
-
-	void LoadTexture(std::vector<char>* dataPtr, GLuint* out_texture)
-    {
-		if(dataPtr == nullptr || dataPtr->empty()){
-			UI::Get()->PublishOutput("Image data pointer is empty.", LEV_CODE::IMAGE_ERROR);
-			isDecoding = false;
-			return;
-		}
-		
-        cv::Mat mat = cv::imdecode(*dataPtr, cv::IMREAD_UNCHANGED);
-
-        if(mat.empty()){
-			UI::Get()->PublishOutput("Unable to decode the JPEG image.", LEV_CODE::IMAGE_ERROR);
-			isDecoding = false;
-            return;
-        }
-		
-        glBindTexture(GL_TEXTURE_2D, UI::Get()->getCameraTexture());
-        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mat.cols, mat.rows, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
-
-		UI::Get()->setCameraWidth(mat.cols);
-		UI::Get()->setCameraHeight(mat.rows);
-
-        isDecoding = false;
-    }
 };
-

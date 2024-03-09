@@ -136,6 +136,30 @@ void Connection::HandleHandshake(){
     }
 }
 
+void Connection::LoadTexture(std::vector<char>* dataPtr, GLuint* out_texture)
+{
+    UI* gui = UI::Get();
+
+    if(dataPtr == nullptr || dataPtr->empty()){
+        isDecoding = false;
+        return;
+    }
+    std::vector<char> data = *dataPtr;
+    
+    cv::Mat mat = cv::imdecode(data_buffer, cv::IMREAD_UNCHANGED);
+
+    if(mat.empty()){
+        gui->PublishOutput("Unable to decode the JPEG image.", LEV_CODE::IMAGE_ERROR);
+        isDecoding = false;
+        return;
+    }
+    
+    glBindTexture(GL_TEXTURE_2D, *(gui->getCameraTexture()));
+    glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mat.cols, mat.rows, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
+
+    isDecoding = false;
+}
+
 Connection::~Connection()
 {
 }

@@ -24,9 +24,6 @@ void error_callback( int error, const char *msg ) {
 
 int main()
 {
-	UI* gui = UI::Get();
-	Connection* conn = Connection::Get();
-
 	Controller::ScanControllers();
 	
 	//Setup GLFW and Imgui
@@ -52,6 +49,9 @@ int main()
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		throw("Unable to context to OpenGL");
+
+	UI* gui = UI::Get();
+	Connection* conn = Connection::Get();
 
 	int screen_width, screen_height;
 	glfwGetFramebufferSize(window, &screen_width, &screen_height);
@@ -81,13 +81,10 @@ int main()
 		int duration = duration_cast<microseconds>(stop - start).count();
 		gui->setMainDeltaTime((float)duration / 1000000);
 
-		conn->Send(5, controller->GetControllerValues()->toString());
-		conn->Send(6, std::to_string(gui->getCameraQuality()));
-
 		int joyCount, buttonCount;
 
-		const float* joys = glfwGetJoystickAxes(id, &joyCount);
-		const unsigned char* buttons = glfwGetJoystickButtons(id, &buttonCount);
+		const float* joys = glfwGetJoystickAxes(0, &joyCount);
+		const unsigned char* buttons = glfwGetJoystickButtons(0, &buttonCount);
 
 		for (int i = 0; i < joyCount; i++)
 		{
@@ -103,9 +100,6 @@ int main()
 	}
 
 	gui->Shutdown();
-
-	glDeleteTextures(1, &gui->getCameraTexture());
-	glfwTerminate();
 	
 	return 0;
 }
