@@ -83,15 +83,17 @@ int main()
 
 		conn->Send(5, controller->GetControllerValues()->toString());
 
+		int joyCount, buttonCount;
+
 		const float* joys = glfwGetJoystickAxes(id, &joyCount);
 		const unsigned char* buttons = glfwGetJoystickButtons(id, &buttonCount);
 
-		for (int i = 0; i < sizeof(joys)/sizeof(joys[0]); i++)
+		for (int i = 0; i < joyCount; i++)
 		{
 			if (joys[i])
 				std::cout << i << std::endl;
 		}
-		for (int i = 0; i < sizeof(buttons)/sizeof(buttons[0]); i++)
+		for (int i = 0; i < buttonCount; i++)
 		{
 			if (buttons[i])
 				std::cout << i << std::endl;
