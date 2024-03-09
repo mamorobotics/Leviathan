@@ -9,7 +9,6 @@
 #include "UI.hpp"
 #include "ConnDetails.hpp"
 #include "Management.hpp"
-#include "LoadTextureFromBuffer.hpp"
 #include <unistd.h>
 #include <atomic>
 #include <thread>
@@ -74,7 +73,7 @@ public:
             return;
         }
 		
-        glBindTexture(GL_TEXTURE_2D, UI::Get()->getCameraTexture(););
+        glBindTexture(GL_TEXTURE_2D, UI::Get()->getCameraTexture());
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mat.cols, mat.rows, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
 
 		UI::Get()->setCameraWidth(mat.cols);
