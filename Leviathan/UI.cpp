@@ -2,11 +2,19 @@
 
 UI::UI()
 {
+	glGenTextures(1, &cameraTexture);
+	glBindTexture(GL_TEXTURE_2D, cameraTexture);
 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 }
 
 void UI::Init(GLFWwindow* window, const char* glsl_version)
 {
+	
+
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
@@ -20,13 +28,7 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 
 	start = time(0);
 
-	glGenTextures(1, &cameraTexture);
-	glBindTexture(GL_TEXTURE_2D, cameraTexture);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); 
+	 
 }
 
 void UI::NewFrame()
