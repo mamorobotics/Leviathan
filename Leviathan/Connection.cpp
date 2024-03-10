@@ -41,34 +41,42 @@ void Connection::Recieve()
         failedFrame = false;
         asio::error_code error;
         size_buffer.resize(32);
-        socket.receive_from(asio::buffer(size_buffer), remote_endpoint, 0, error);
-        int size = 0;
-        try{
-            size = stoi(std::string(size_buffer.data()));
-        }catch(const std::invalid_argument& e){
-            UI::Get()->PublishOutput("Invalid size message", LEV_CODE::CONN_ERROR);
+        initial_buffer.resize(32);
+        // socket.receive_from(asio::buffer(size_buffer), remote_endpoint, 0, error);
+        // int size = 0;
+        // try{
+        //     size = stoi(std::string(size_buffer.data()));
+        // }catch(const std::invalid_argument& e){
+        //     UI::Get()->PublishOutput("Invalid size message", LEV_CODE::CONN_ERROR);
 
-            size = 65500;
+        //     size = 65500;
 
-            failedFrame = true;
-        }
+        //     failedFrame = true;
+        // }
 
-        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+        // if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
         
-        header_buffer.resize(32);
-        socket.receive_from(asio::buffer(header_buffer), remote_endpoint, 0, error);
-        int header = 0;
-        try{
-            header = stoi(std::string(header_buffer.data()));
-        }catch(const std::invalid_argument& e){
-            UI::Get()->PublishOutput("Invalid header message", LEV_CODE::CONN_ERROR);
+        // header_buffer.resize(32);
+        // socket.receive_from(asio::buffer(header_buffer), remote_endpoint, 0, error);
+        // int header = 0;
+        // try{
+        //     header = stoi(std::string(header_buffer.data()));
+        // }catch(const std::invalid_argument& e){
+        //     UI::Get()->PublishOutput("Invalid header message", LEV_CODE::CONN_ERROR);
 
-            header = 11;
+        //     header = 11;
 
-            failedFrame = true;
-        }
+        //     failedFrame = true;
+        // }
 
-        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+        // if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+
+        socket.receive_from(asio::buffer(initial_buffer), remote_endpoint, 0, error);
+
+        std::string msg = std::string(initial_buffer.data());
+        int index = msg.find("!");
+        std::string size = msg.substr(0, index);
+        std::string header = msg.substr(index + 1, msg.length() - (id.length() + 1));
 
         data_buffer.resize(0);
         if(!isDecoding && header == 4){

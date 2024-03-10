@@ -34,6 +34,7 @@ private:
 
 	std::vector<char> size_buffer;
 	std::vector<char> header_buffer;
+	std::vector<char> initial_buffer;
 	std::vector<char> data_buffer;
 	std::vector<char> image_buffer;
 	int numMessages;
