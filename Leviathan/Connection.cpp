@@ -70,18 +70,13 @@ void Connection::Recieve()
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
-        data_buffer.resize(size);
+        data_buffer.resize(0);
         if(!isDecoding && header == 4){
             image_buffer.resize(size);
         }
 
-        // socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
-        // if(!isDecoding && header == 4){
-        //     image_buffer = data_buffer;
-        // }
-
         int total_size = 0;
-        while (total_size < size)
+        while (total_size < size - 1)
         {
             std::vector<char> buf;
             buf.resize((size - total_size) > 65500 ? 65500 : (size - total_size));
@@ -89,7 +84,6 @@ void Connection::Recieve()
             total_size += (size - total_size) > 65500 ? 65500 : (size - total_size);
             data_buffer.insert(data_buffer.end(), buf.begin(), buf.end());
         }
-        const unsigned char* message = reinterpret_cast<const unsigned char*>(data_buffer.data());
 
         if(!isDecoding && header == 4){
             image_buffer = data_buffer;

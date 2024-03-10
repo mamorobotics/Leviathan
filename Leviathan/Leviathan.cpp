@@ -48,6 +48,8 @@ void LoadTexture(std::vector<char>* dataPtr)
     gui->setCameraWidth(mat.cols);
     gui->setCameraHeight(mat.rows);
 
+	cv::flip(mat, mat, 1);
+
     glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
     glGenerateMipmap(GL_TEXTURE_2D);
