@@ -154,16 +154,15 @@ void Connection::LoadTexture(std::vector<char>* dataPtr)
         return;
     }
 
-    cv::imwrite("hello.png", mat);
-
     gui->setCameraWidth(mat.cols);
     gui->setCameraHeight(mat.rows);
 
     glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
+    glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
 
-    isDecoding = false;
+    isDecoding = false;    
 }
 
 Connection::~Connection()
