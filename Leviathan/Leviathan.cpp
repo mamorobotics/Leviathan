@@ -22,6 +22,41 @@ void error_callback( int error, const char *msg ) {
     UI::Get()->PublishOutput(s, LEV_CODE::GENERAL_ERROR);
 }
 
+void LoadTexture(std::vector<char>* dataPtr)
+{
+	Connection* conn = Connection::Get();
+    UI* gui = UI::Get();
+
+	conn->SetDecoding(true);
+
+    if(dataPtr == nullptr || dataPtr->empty()){
+        conn->SetDecoding(false);
+		conn->SetNewImage(false);
+        return;
+    }
+    std::vector<char> data = *dataPtr;
+    
+    cv::Mat mat = cv::imdecode(data, cv::IMREAD_UNCHANGED);
+
+    if(mat.empty()){
+        gui->PublishOutput("Unable to decode the JPEG image.", LEV_CODE::IMAGE_ERROR);
+        conn->SetDecoding(false);
+		conn->SetNewImage(false);
+        return;
+    }
+
+    gui->setCameraWidth(mat.cols);
+    gui->setCameraHeight(mat.rows);
+
+    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    conn->SetDecoding(false);
+	conn->SetNewImage(false);
+}
+
 int main()
 {
 	UI* gui = UI::Get();
@@ -42,7 +77,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
 
-	GLFWwindow* window = glfwCreateWindow(1280, 720, "Leviathan", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(1920, 1080, "Leviathan", NULL, NULL);
 
 	if (window == NULL)
 		return 2;
@@ -52,8 +87,6 @@ int main()
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		throw("Unable to context to OpenGL");
-
-	
 
 	gui->CreateCameraTexture();
 
@@ -88,47 +121,11 @@ int main()
 		int joyCount, buttonCount;
 		if(!conn->GetDecoding() && conn->GetNewImage())
 		{
-			LoadTexture(conn->GetImageBufferPtr());
+			LoadTexture(conn->GetImageBuffer());
 		}
 	}
 
 	gui->Shutdown();
 	
 	return 0;
-}
-
-
-void LoadTexture(std::vector<char>* dataPtr)
-{
-	Connection* conn = Connection::Get();
-    UI* gui = UI::Get();
-
-	conn->SetDecoding(true);
-
-    if(dataPtr == nullptr || dataPtr->empty()){
-        conn->SetDecoding(false);
-		conn->SetNewImage(false);
-        return;
-    }
-    std::vector<char> data = *dataPtr;
-    
-    cv::Mat mat = cv::imdecode(data, cv::IMREAD_UNCHANGED);
-
-    if(mat.empty()){
-        gui->PublishOutput("Unable to decode the JPEG image.", LEV_CODE::IMAGE_ERROR);
-        conn->SetDecoding(false);
-		conn->SetNewImage(false);
-        return;
-    }
-
-    gui->setCameraWidth(mat.cols);
-    gui->setCameraHeight(mat.rows);
-
-    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, 0);
-
-    conn->SetDecoding(false);
-	conn->SetNewImage(false);
 }

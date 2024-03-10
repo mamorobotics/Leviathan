@@ -60,8 +60,7 @@ public:
 
 	void Recieve();
 	void HandleHandshake();
-	void LoadTexture(std::vector<char> * dataPtr);
-	*std::vector<char> GetImageBufferPtr(){ return *image_buffer; };
+	std::vector<char>* GetImageBuffer(){ return &image_buffer; };
 	bool GetDecoding(){ return isDecoding; }
 	bool GetNewImage(){ return newImage; }
 	void SetDecoding(bool val){ isDecoding = val; }
