@@ -2,7 +2,20 @@
 
 UI::UI()
 {
+	
+}
 
+void UI::CreateCameraTexture()
+{
+	glGenTextures(1, &cameraTexture);
+	glBindTexture(GL_TEXTURE_2D, cameraTexture);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void UI::Init(GLFWwindow* window, const char* glsl_version)
@@ -47,18 +60,29 @@ void UI::Update()
 		if (ImGui::Button("Exit"))
 			statisticsOpen = false;
 
-		std::map<std::string, float[64]>::iterator it = graphs.begin();
-		while (it != graphs.end())
+		float averageDelta = 0;
+		float deltaVals2[64];
+		for (int i = 0; i < 64; i++)
 		{
-			float averageVal = 0;
-			for (int i = 0; i < 64; i++)
-			{
-				averageVal += it->second[i];
-			}
-			averageVal /= 64;
-			ImGui::PlotLines(it->first.c_str(), it->second, IM_ARRAYSIZE(it->second), 0, std::to_string(averageVal).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
+			averageDelta += deltaVals[i];
+			deltaVals2[i] = deltaVals[(i + 65) % 64];
 		}
+		averageDelta /= 64;
+		std::copy(std::begin(deltaVals2), std::end(deltaVals2), std::begin(deltaVals));
+		deltaVals[63] = ImGui::GetIO().DeltaTime;
+		ImGui::PlotLines("DeltaTime", deltaVals, IM_ARRAYSIZE(deltaVals), 0, std::to_string(averageDelta).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
 
+		float averageFrame = 0;
+		float frameVals2[64];
+		for (int i = 0; i < 64; i++)
+		{
+			averageFrame += frameVals[i];
+			frameVals2[i] = frameVals[(i + 65) % 64];
+		}
+		averageFrame /= 64;
+		std::copy(std::begin(frameVals2), std::end(frameVals2), std::begin(frameVals));
+		frameVals[63] = ImGui::GetIO().Framerate;
+		ImGui::PlotLines("Framerate", frameVals, IM_ARRAYSIZE(frameVals), 0, std::to_string((int)averageFrame).c_str(), -1.0f, 1.0f, ImVec2(0, 80.0f));
 		if (ImGui::Button("Test Error"))
 			PublishOutput("Error Test", LEV_CODE::TEST);
 		if (ImGui::Button("Test Telemetry"))
@@ -68,7 +92,7 @@ void UI::Update()
 	}
 
 	ImGui::Begin("Camera View");
-	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(512, 512));
+	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();
 
 	ImGui::Begin("Networking");
@@ -81,15 +105,11 @@ void UI::Update()
 	{
 		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
-		if (ImGui::Button("Connect"))
-			Connection::Get()->Connect();
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
-		
 	}	
 	ImGui::End();
 
 	ImGui::Begin("Controller");
-
 	ControllerValues* controllerValues = controller->GetControllerValues();
 	ImGui::Text(("Controller: " + std::string(glfwGetJoystickName(controller->getId())) + " (" + std::to_string(controller->getId()) + ")").c_str());
 	ImGui::Text(("Left Stick Coordinate: (" + std::to_string(controllerValues->ljoyx) + ", " + std::to_string(controllerValues->ljoyy) + ")").c_str());
@@ -103,7 +123,6 @@ void UI::Update()
 	ImGui::Text(("Left Bumper: " + std::to_string(controllerValues->lbumper)).c_str());
 	ImGui::Text(("Right Bumper: " + std::to_string(controllerValues->rbumper)).c_str());
 	ImGui::End();
-
 	ImGui::Begin("Output");
 
 	if (ImGui::BeginListBox("##Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
@@ -160,17 +179,6 @@ void UI::PublishOutput(std::string msg, LEV_CODE code)
 void UI::PublishTelemetry(std::string id, std::string value)
 {
 	telemetry[id] = value;
-}
-
-void UI::PublishGraph(std::string id, float value)
-{
-	float values2[64];
-	for (int i = 0; i < 64; i++)
-	{
-		values2[i] = graphs[id][(i + 65) % 64];
-	}
-	std::copy(std::begin(values2), std::end(values2), std::begin(graphs[id]));
-	graphs[id][63] = value;
 }
 
 void UI::Shutdown()

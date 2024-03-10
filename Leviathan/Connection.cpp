@@ -1,35 +1,26 @@
 #include "Connection.hpp"
 
-void Connection::Connect()
-{
-	UI::Get()->setConnectionDetails(connDetails);
-}
-
 void Connection::SendError(std::string message)
 {
-	Send(2, &message, message.size());
+	Send(2, &message);
 }
 
 void Connection::SendWarning(std::string message)
 {
-	Send(1, &message, message.size());
+	Send(1, &message);
 }
 
 void Connection::SendTelemetry(std::string key, std::string value)
 {
     std::string message = key + "!" + value;
-	Send(3, &message, message.size());
+	Send(3, &message);
 }
 
-void Connection::Send(int header, void * message, int length)
+void Connection::Send(int header, void * message)
 {
-    std::stringstream stream;
-
-    std::string msgLength = std::to_string(length);
+    std::string msgLength = std::to_string(sizeof(message));
     msgLength.insert(0, 32-msgLength.size(), ' ');
     auto lenSent = socket.send_to(asio::buffer(msgLength, 32), remote_endpoint, 0);
-
-    auto msgTup = std::make_tuple(header, message);
 
     std::string msgHeader = std::to_string(header);
     msgHeader.insert(0, 32-msgHeader.size(), ' ');
@@ -38,46 +29,93 @@ void Connection::Send(int header, void * message, int length)
     auto msgSent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
 }
 
-void Connection::HandleReceive(const asio::error_code& error, std::size_t bytes_received){
-    if(!error){
+void Connection::Recieve() 
+{
+    UI* gui = UI::Get();
+    int i = 0;
+    int j=0;
+    bool failedFrame = false;
+    while (true)
+    {
+        j++;
+        failedFrame = false;
+        asio::error_code error;
+        size_buffer.resize(32);
+        socket.receive_from(asio::buffer(size_buffer), remote_endpoint, 0, error);
+        int size = 0;
+        try{
+            size = stoi(std::string(size_buffer.data()));
+        }catch(const std::invalid_argument& e){
+            UI::Get()->PublishOutput("Invalid size message", LEV_CODE::CONN_ERROR);
 
-<<<<<<< HEAD
-        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+            size = 65500;
 
-        socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-        int header = stoi(std::string(recv_buffer.data()));
-
-        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
-
-        ResizeBuffer(0);
-        int total_size = 0;
-        while (total_size < size)
-        {
-            std::vector<char> buf;
-            buf.resize((size - total_size) > 65500 ? 65500 : (size - total_size));
-            socket.receive_from(asio::buffer(buf), remote_endpoint, 0, error);
-            total_size += (size - total_size) > 65500 ? 65500 : (size - total_size);
-            recv_buffer.insert(recv_buffer.end(), buf.begin(), buf.end());
+            failedFrame = true;
         }
-
-        const unsigned char* message = reinterpret_cast<const unsigned char*>(recv_buffer.data());
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
         
-        if(header==4){
-            int width, height, im_type;;
-            //LoadTextureFromBuffer::LoadTexture(decmp_data, 512, 512, gui->getCameraTexture());
+        header_buffer.resize(32);
+        socket.receive_from(asio::buffer(header_buffer), remote_endpoint, 0, error);
+        int header = 0;
+        try{
+            header = stoi(std::string(header_buffer.data()));
+        }catch(const std::invalid_argument& e){
+            UI::Get()->PublishOutput("Invalid header message", LEV_CODE::CONN_ERROR);
+
+            header = 11;
+
+            failedFrame = true;
         }
+
+        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+
+        data_buffer.resize(size);
+        if(!isDecoding && header == 4){
+            image_buffer.resize(size);
+        }
+
+        socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
+        if(!isDecoding && header == 4){
+            image_buffer = data_buffer;
+        }
+
+        if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
+
+        if(header == 4 && !failedFrame && !isDecoding && !gui->isCameraPaused()){
+            newImage = true;
+        }
+        
+        if(header == 2)
+        {
+            gui->PublishOutput(std::string(data_buffer.data()), LEV_CODE::GENERAL_ERROR);
+        }
+
+        if(header == 1)
+        {
+            gui->PublishOutput(std::string(data_buffer.data()), LEV_CODE::WARNING);
+        }
+
+        if(header == 3)
+        {
+            std::string msg = std::string(data_buffer.data());
+            int index = msg.find("!");
+            std::string id = msg.substr(0, index);
+            std::string value = msg.substr(index + 1, msg.length() - (id.length() + 1));
+            gui->PublishTelemetry(id, value);
+        }
+
+        data_buffer.resize(0);
     }
 }
 
 void Connection::HandleHandshake(){
     UI* gui = UI::Get();
-    ResizeBuffer(32);
+    data_buffer.resize(32);
     asio::error_code error;
-    socket.receive_from(asio::buffer(recv_buffer), remote_endpoint, 0, error);
-    if(recv_buffer.data() != NULL){
-        if(std::string(recv_buffer.data()) != "0110"){
+    socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);
+    if(data_buffer.data() != NULL){
+        if(std::string(data_buffer.data()) != "0110"){
             gui->PublishOutput("Handshake with client failed", LEV_CODE::CONN_ERROR);
         } else { 
             gui->PublishOutput("Succesful handshake with client", LEV_CODE::CLEAR);
@@ -89,13 +127,7 @@ void Connection::HandleHandshake(){
         }
     }else{
         gui->PublishOutput("Error Code for receiving: " + error.message(), LEV_CODE::CONN_ERROR);
-=======
-    }else{
-        std::cout << error.message();
->>>>>>> parent of 478f7c4 (Merge pull request #4 from mamorobotics/Networking)
     }
-
-    socket.async_receive(asio::buffer(recv_buffer), std::bind(&Connection::HandleReceive, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 Connection::~Connection()

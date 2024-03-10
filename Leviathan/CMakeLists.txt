@@ -3,7 +3,8 @@
 #
 
 # Add source to this project's executable.
-add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp" "ControllerValues.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "LoadTexture.hpp" "Management.hpp" "stb_image.hpp")
+add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp" "ControllerValues.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "Management.hpp" )
+
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Leviathan PROPERTY CXX_STANDARD 20)
@@ -55,7 +56,8 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "GLFW_INCLUDE_NONE")
 
 include_directories("${LIB_DIR}/asio/include")
 
-# jpeg
+#openCV
+find_package(OpenCV REQUIRED)
+include_directories(/home/mhsrobotics/opencv/include)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${TurboJPEG_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${TurboJPEG_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})

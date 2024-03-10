@@ -5,6 +5,7 @@
 #include <iostream>
 #include <time.h>
 #include <tuple>
+#include <thread>
 #include <map>
 
 #include "imgui.h"
@@ -22,7 +23,7 @@ class UI {
 private:
 	int cameraWidth, cameraHeight = 0;
 	time_t start = time(0);
-	GLuint cameraTexture = NULL;
+	GLuint cameraTexture;
 	bool pauseCamera = false;
 	bool statisticsOpen = false;
 	int selectedController = 0;
@@ -33,7 +34,6 @@ private:
 
 	std::vector<std::string> output;
 	std::map<std::string, std::string> telemetry;
-	std::map<std::string, float[64]> graphs;
 
 	ConnDetails connDetails;
 
@@ -44,13 +44,13 @@ public:
 
 	UI();
 	UI(const UI& obj) = delete;
+	void CreateCameraTexture();
 	void Init(GLFWwindow* window, const char* glsl_version);
 	void NewFrame();
 	void Update();
 	void Render(GLFWwindow* window);
 	void PublishOutput(std::string msg, LEV_CODE code = LEV_CODE::CLEAR);
 	void PublishTelemetry(std::string id, std::string value);
-	void PublishGraph(std::string id, float value);
 	void Shutdown();
 	~UI();
 
@@ -58,7 +58,9 @@ public:
 
 	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
-	GLuint* getCameraTexture() { return &cameraTexture; }
+	bool isCameraPaused() { return pauseCamera; }
+	int getCameraQuality() { return quality; }
+	GLuint getCameraTexture() { return cameraTexture; }
 	void setCameraWidth(int width) { cameraWidth = width; }
 	void setCameraHeight(int height) { cameraHeight = height; }
 };

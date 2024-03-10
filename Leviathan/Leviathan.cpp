@@ -5,8 +5,9 @@
 
 #include "UI.hpp"
 #include "Connection.hpp"
-#include "LoadTexture.hpp"
+
 #include "Controller.hpp"
+
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
@@ -18,7 +19,42 @@ Connection* Connection::connection = new Connection();
 void error_callback( int error, const char *msg ) {
     std::string s;
     s = " [" + std::to_string(error) + "] " + msg + '\n';
-    std::cerr << s << std::endl;
+    UI::Get()->PublishOutput(s, LEV_CODE::GENERAL_ERROR);
+}
+
+void LoadTexture(std::vector<char>* dataPtr)
+{
+	Connection* conn = Connection::Get();
+    UI* gui = UI::Get();
+
+	conn->SetDecoding(true);
+
+    if(dataPtr == nullptr || dataPtr->empty()){
+        conn->SetDecoding(false);
+		conn->SetNewImage(false);
+        return;
+    }
+    std::vector<char> data = *dataPtr;
+    
+    cv::Mat mat = cv::imdecode(data, cv::IMREAD_UNCHANGED);
+
+    if(mat.empty()){
+        gui->PublishOutput("Unable to decode the JPEG image.", LEV_CODE::IMAGE_ERROR);
+        conn->SetDecoding(false);
+		conn->SetNewImage(false);
+        return;
+    }
+
+    gui->setCameraWidth(mat.cols);
+    gui->setCameraHeight(mat.rows);
+
+    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    conn->SetDecoding(false);
+	conn->SetNewImage(false);
 }
 
 int main()
@@ -27,7 +63,7 @@ int main()
 	Connection* conn = Connection::Get();
 
 	Controller::ScanControllers();
-
+	
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
 
@@ -40,11 +76,8 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
-	//you may need to uncomment these to get it to work
-	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	GLFWwindow* window = glfwCreateWindow(1280, 720, "Leviathan", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(1920, 1080, "Leviathan", NULL, NULL);
 
 	if (window == NULL)
 		return 2;
@@ -55,16 +88,21 @@ int main()
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		throw("Unable to context to OpenGL");
 
+	gui->CreateCameraTexture();
+
 	int screen_width, screen_height;
 	glfwGetFramebufferSize(window, &screen_width, &screen_height);
 	glViewport(0, 0, screen_width, screen_height);
 
 	gui->Init(window, glsl_version);
 
-	Controller* controller = new Controller(0);
+	Controller* controller = new Controller(1);
 	gui->controller = controller;
 
 	bool firstFrame = true;
+
+	std::thread networkThread(&Connection::HandleHandshake, conn);
+	networkThread.detach();
 
 	while (!glfwWindowShouldClose(window)) {
 		auto start = high_resolution_clock::now();
@@ -72,17 +110,19 @@ int main()
 		gui->NewFrame();
 		gui->Update();
 		gui->Render(window);
-		
+			
 		if (firstFrame) {
 			firstFrame = false;
 		}
 		auto stop = high_resolution_clock::now();
-		int duration = duration_cast<microseconds>(stop - start).count();		
+		int duration = duration_cast<microseconds>(stop - start).count();
 		gui->setMainDeltaTime((float)duration / 1000000);
 
-		gui->PublishGraph("Delta Time", ImGui::GetIO().DeltaTime);
-		gui->PublishGraph("Frame Rate", ImGui::GetIO().Framerate);
-
+		int joyCount, buttonCount;
+		if(!conn->GetDecoding() && conn->GetNewImage())
+		{
+			LoadTexture(conn->GetImageBuffer());
+		}
 	}
 
 	gui->Shutdown();
