@@ -41,6 +41,7 @@ private:
 	std::string recvHeader;
 
 	std::atomic<bool> isDecoding = false;
+	std::atomic<bool> newImage = false;
 
 	static Connection* connection;
 
@@ -60,6 +61,11 @@ public:
 	void Recieve();
 	void HandleHandshake();
 	void LoadTexture(std::vector<char> * dataPtr);
+	*std::vector<char> GetImageBufferPtr(){ return *image_buffer; };
+	bool GetDecoding(){ return isDecoding; }
+	bool GetNewImage(){ return newImage; }
+	void SetDecoding(bool val){ isDecoding = val; }
+	void SetNewImage(bool val){ newImage = val; }
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();
