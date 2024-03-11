@@ -45,7 +45,7 @@ void Connection::Recieve()
         j++;
         failedFrame = false;
         asio::error_code error;
-        size_buffer.resize(32);
+        // size_buffer.resize(32);
         initial_buffer.resize(32);
         // socket.receive_from(asio::buffer(size_buffer), remote_endpoint, 0, error);
         // int size = 0;
