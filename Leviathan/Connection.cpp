@@ -16,17 +16,22 @@ void Connection::SendTelemetry(std::string key, std::string value)
 	Send(3, &message);
 }
 
-void Connection::Send(int header, void * message)
+void Connection::Send(int header, std::string message)
 {
-    std::string msgLength = std::to_string(sizeof(message));
-    msgLength.insert(0, 32-msgLength.size(), ' ');
-    auto lenSent = socket.send_to(asio::buffer(msgLength, 32), remote_endpoint, 0);
+    std::string initialMsg = std::to_string(sizeof(message)) + "!" + std::to_string(header);
+    initialMsg.insert(0, 32-initialMsg.size(), ' ');
+    auto lenSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
 
-    std::string msgHeader = std::to_string(header);
-    msgHeader.insert(0, 32-msgHeader.size(), ' ');
-    auto headerSent = socket.send_to(asio::buffer(msgHeader, 32), remote_endpoint, 0);
-
-    auto msgSent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
+    if(sizeof(message) > 65500){
+        while(sizeof(message) >65500){
+            std::string temp = message.substr(0, 65500);
+            message = message.substr(65500);
+            auto msgSent = socket.send_to(asio::buffer(temp, 65500), remote_endpoint, 0);
+        }
+    }
+    if(sizeof(message) != 0){
+        auto msgSent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
+    }
 }
 
 void Connection::Recieve() 
