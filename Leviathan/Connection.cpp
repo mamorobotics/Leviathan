@@ -16,18 +16,24 @@ void Connection::SendTelemetry(std::string key, std::string value)
 	Send(3, &message);
 }
 
-void Connection::Send(int header, std::string * message)
+void Connection::Send(int header, void* message)
 {
     std::string messageData = *message;
     std::string initialMsg = std::to_string(sizeof(messageData)) + "!" + std::to_string(header);
     initialMsg.insert(0, 32-initialMsg.size(), ' ');
     auto initSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
 
-    if(sizeof(messageData) > 65500){
-        while(sizeof(messageData) > 65500){
-            std::string temp = messageData.substr(0, 65500);
-            messageData = messageData.substr(65500);
-            auto msgSent = socket.send_to(asio::buffer(temp, 65500), remote_endpoint, 0);
+    if(sizeof(message) > 65500){
+        while(sizeof(message) > 65500){
+            void* chunk = malloc(65500);
+            std::memcpy(chunk, message, 65500);
+            void* rest = malloc(sizeof(message) - 65500);
+            std::memcpy(rest, message + 65500, sizeof(message) - 65500);
+            free(message);
+            message = rest;
+            auto msgSent = socket.send_to(asio::buffer(chunk, 65500), remote_endpoint, 0);
+            free(chunk);
+            free(rest);
         }
     }
     if(sizeof(messageData) != 0){
