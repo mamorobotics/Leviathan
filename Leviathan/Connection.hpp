@@ -60,7 +60,7 @@ public:
 	void SendError(std::string message);
 	void SendWarning(std::string message);
 	void SendTelemetry(std::string key, std::string value);
-	void Send(int header, std::string * message);
+	void Send(int header, void * message);
 
 	void Recieve();
 	void HandleHandshake();
