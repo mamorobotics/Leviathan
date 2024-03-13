@@ -16,27 +16,30 @@ void Connection::SendTelemetry(std::string key, std::string value)
 	Send(3, &message);
 }
 
-void Connection::Send(int header, std::string message)
+void Connection::Send(int header, std::string * message)
 {
-    std::string initialMsg = std::to_string(sizeof(message)) + "!" + std::to_string(header);
+    std::string messageData = *message;
+    std::string initialMsg = std::to_string(sizeof(messageData)) + "!" + std::to_string(header);
     initialMsg.insert(0, 32-initialMsg.size(), ' ');
-    auto lenSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
+    auto initSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
 
-    if(sizeof(message) > 65500){
-        while(sizeof(message) >65500){
-            std::string temp = message.substr(0, 65500);
-            message = message.substr(65500);
+    if(sizeof(messageData) > 65500){
+        while(sizeof(messageData) > 65500){
+            std::string temp = messageData.substr(0, 65500);
+            messageData = messageData.substr(65500);
             auto msgSent = socket.send_to(asio::buffer(temp, 65500), remote_endpoint, 0);
         }
     }
-    if(sizeof(message) != 0){
-        auto msgSent = socket.send_to(asio::buffer(message, sizeof(message)), remote_endpoint, 0);
+    if(sizeof(messageData) != 0){
+        auto msgSent = socket.send_to(asio::buffer(messageData, sizeof(messageData)), remote_endpoint, 0);
     }
 }
 
 void Connection::Recieve() 
 {
     UI* gui = UI::Get();
+    camQual = gui->getCameraQuality();
+    mainCam = gui->isMainCamera();
     int i = 0;
     int j=0;
     bool failedFrame = false;
@@ -80,8 +83,10 @@ void Connection::Recieve()
 
         std::string msg = std::string(initial_buffer.data());
         int index = msg.find("!");
-        std::string size = msg.substr(0, index);
-        std::string header = msg.substr(index + 1, msg.length() - (id.length() + 1));
+        std::string sizeStr = msg.substr(0, index);
+        int size = stoi(sizeStr);
+        std::string headerStr = msg.substr(index + 1, msg.length() - (sizeStr.length() + 1));
+        int header = stoi(headerStr);
 
         data_buffer.resize(0);
         if(!isDecoding && header == 4){
@@ -128,6 +133,21 @@ void Connection::Recieve()
         }
 
         data_buffer.resize(0);
+        
+        
+        if(camQual != gui->getCameraQuality()){
+            std::string newQual = "qual!" + std::to_string(gui->getCameraQuality());
+            camQual = gui->getCameraQuality();
+            Send(6, &newQual);
+        }
+        if(mainCam != gui->isMainCamera()){
+            std::string val;
+            if(gui->isMainCamera()){val = "1";}
+            else{val = "0";}
+            std::string newCam = "cam!" + val;
+            mainCam = gui->isMainCamera();
+            Send(6, &newCam);
+        }
     }
 }
 

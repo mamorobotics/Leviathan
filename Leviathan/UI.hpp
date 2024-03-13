@@ -25,6 +25,7 @@ private:
 	time_t start = time(0);
 	GLuint cameraTexture;
 	bool pauseCamera = false;
+	bool mainCamera = true;
 	bool statisticsOpen = false;
 	int selectedController = 0;
 	int quality = 80;
@@ -59,6 +60,7 @@ public:
 	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
 	bool isCameraPaused() { return pauseCamera; }
+	bool isMainCamera() { return mainCamera; }
 	int getCameraQuality() { return quality; }
 	GLuint getCameraTexture() { return cameraTexture; }
 	void setCameraWidth(int width) { cameraWidth = width; }

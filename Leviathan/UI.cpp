@@ -152,6 +152,7 @@ void UI::Update()
 	ImGui::Begin("Camera Settings");
 	ImGui::Checkbox("Pause Video Feed", &pauseCamera);
 	ImGui::SliderInt("Quality", &quality , 0, 100, "%d%%");
+	ImGui::Checkbox("Main Camera", &mainCamera);
 	ImGui::End();
 }
 
