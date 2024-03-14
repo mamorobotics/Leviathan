@@ -31,13 +31,13 @@ ControllerValues* Controller::GetControllerValues()
 	controllerValues.ltrigger = joys[4];
 	controllerValues.rtrigger = joys[5];
 
-	controllerValues.a = buttons[0];
-	controllerValues.b = buttons[1];
-	controllerValues.x = buttons[2];
+	controllerValues.a = buttons[1];
+	controllerValues.b = buttons[2];
+	controllerValues.x = buttons[0];
 	controllerValues.y = buttons[3];
 
-	controllerValues.rbumper = buttons[4];
-	controllerValues.lbumper = buttons[5];
+	controllerValues.rbumper = buttons[5];
+	controllerValues.lbumper = buttons[4];
 
 	return &controllerValues;
 }
