@@ -38,6 +38,7 @@ void Connection::Recieve()
     UI* gui = UI::Get();
     camQual = gui->getCameraQuality();
     mainCam = gui->isMainCamera();
+    ControllerValues* controllerValues = controller->GetControllerValues();
     int i = 0;
     int j=0;
     bool failedFrame = false;
@@ -146,6 +147,7 @@ void Connection::Recieve()
             mainCam = gui->isMainCamera();
             Send(6, &newCam);
         }
+        Send(5, controllerValues->toString());
     }
 }
 
