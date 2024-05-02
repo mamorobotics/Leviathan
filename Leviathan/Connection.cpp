@@ -19,7 +19,7 @@ void Connection::SendTelemetry(std::string key, std::string value)
 void Connection::Send(int header, std::string * message)
 {
     std::string messageData = *message;
-    std::string initialMsg = std::to_string(sizeof(messageData)) + "!" + std::to_string(header);
+    std::string initialMsg = std::to_string(messageData.size()) + "!" + std::to_string(header);
     initialMsg.insert(0, 32-initialMsg.size(), ' ');
     auto initSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
 
@@ -29,7 +29,7 @@ void Connection::Send(int header, std::string * message)
         auto msgSent = socket.send_to(asio::buffer(temp, 65500), remote_endpoint, 0);
     }
     if(sizeof(messageData) != 0){
-        auto msgSent = socket.send_to(asio::buffer(messageData, sizeof(messageData)), remote_endpoint, 0);
+        auto msgSent = socket.send_to(asio::buffer(messageData, messageData.size()), remote_endpoint, 0);
     }
 }
 
@@ -38,7 +38,7 @@ void Connection::Recieve()
     UI* gui = UI::Get();
     camQual = gui->getCameraQuality();
     mainCam = gui->isMainCamera();
-    ControllerValues* controllerValues = controller->GetControllerValues();
+    Controller* controller = new Controller(1);
     int i = 0;
     int j=0;
     bool failedFrame = false;
@@ -147,7 +147,11 @@ void Connection::Recieve()
             mainCam = gui->isMainCamera();
             Send(6, &newCam);
         }
-        Send(5, controllerValues->toString());
+
+        ControllerValues* controllerValues = controller->GetControllerValues();
+        std::string str = controllerValues->toString();
+        std::cout<<str<<std::endl;
+        Send(5, &str);
     }
 }
 
