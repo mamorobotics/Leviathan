@@ -13,7 +13,7 @@ private:
     ControllerValues controllerValues;
     int id;
 
-    int joyCount, buttonCount;
+    int joyCount, buttonCount, hatCount;
 
 public:
 	Controller(int id);

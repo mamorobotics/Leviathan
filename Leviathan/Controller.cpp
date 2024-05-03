@@ -22,6 +22,7 @@ ControllerValues* Controller::GetControllerValues()
 {
 	const float* joys = glfwGetJoystickAxes(id, &joyCount);
 	const unsigned char* buttons = glfwGetJoystickButtons(id, &buttonCount);
+	const unsigned char* hats = glfwGetJoystickHats(id, &hatCount);
 
 	controllerValues.ljoyx = joys[0];
 	controllerValues.ljoyy = joys[1];
