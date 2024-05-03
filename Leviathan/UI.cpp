@@ -122,6 +122,10 @@ void UI::Update()
 	ImGui::Text(("Y: " + std::to_string(controllerValues->y)).c_str());
 	ImGui::Text(("Left Bumper: " + std::to_string(controllerValues->lbumper)).c_str());
 	ImGui::Text(("Right Bumper: " + std::to_string(controllerValues->rbumper)).c_str());
+	ImGui::Text(("Dpad Up: " + std::to_string(controllerValues->up)).c_str());
+	ImGui::Text(("Dpad Down: " + std::to_string(controllerValues->down)).c_str());
+	ImGui::Text(("Dpad Left: " + std::to_string(controllerValues->left)).c_str());
+	ImGui::Text(("Dpad Right: " + std::to_string(controllerValues->right)).c_str());
 	ImGui::End();
 	ImGui::Begin("Output");
 
