@@ -42,41 +42,12 @@ void Connection::Recieve()
     int i = 0;
     int j=0;
     bool failedFrame = false;
-    while (true)
+    while (!reconnect)
     {
         j++;
         failedFrame = false;
         asio::error_code error;
-        // size_buffer.resize(32);
         initial_buffer.resize(32);
-        // socket.receive_from(asio::buffer(size_buffer), remote_endpoint, 0, error);
-        // int size = 0;
-        // try{
-        //     size = stoi(std::string(size_buffer.data()));
-        // }catch(const std::invalid_argument& e){
-        //     UI::Get()->PublishOutput("Invalid size message", LEV_CODE::CONN_ERROR);
-
-        //     size = 65500;
-
-        //     failedFrame = true;
-        // }
-
-        // if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
-        
-        // header_buffer.resize(32);
-        // socket.receive_from(asio::buffer(header_buffer), remote_endpoint, 0, error);
-        // int header = 0;
-        // try{
-        //     header = stoi(std::string(header_buffer.data()));
-        // }catch(const std::invalid_argument& e){
-        //     UI::Get()->PublishOutput("Invalid header message", LEV_CODE::CONN_ERROR);
-
-        //     header = 11;
-
-        //     failedFrame = true;
-        // }
-
-        // if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
 
         socket.receive_from(asio::buffer(initial_buffer), remote_endpoint, 0, error);
 
@@ -153,6 +124,8 @@ void Connection::Recieve()
         std::cout<<str<<std::endl;
         Send(5, &str);
     }
+    reconnect = false;
+    HandleHandshake();
 }
 
 void Connection::HandleHandshake(){

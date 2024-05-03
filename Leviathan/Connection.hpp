@@ -43,6 +43,7 @@ private:
 
 	std::atomic<bool> isDecoding = false;
 	std::atomic<bool> newImage = false;
+	std::atomic<bool> reconnect = false;
 
 	int camQual;
 	bool mainCam;

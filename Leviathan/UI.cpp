@@ -96,6 +96,7 @@ void UI::Update()
 	ImGui::End();
 
 	ImGui::Begin("Networking");
+	Connection* conn = Connection::Get();
 	if (ImGui::CollapsingHeader("Host"))
 	{
 		ImGui::Text(("IP: " + connDetails.selfIP).c_str());
@@ -106,7 +107,8 @@ void UI::Update()
 		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
-	}	
+	}
+	if (ImGui::Button("Reconnect")) conn->reconnect = true;
 	ImGui::End();
 
 	ImGui::Begin("Controller");
