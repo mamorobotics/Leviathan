@@ -2,18 +2,18 @@
 
 void Connection::SendError(std::string message)
 {
-	Send(2, &message);
+	Send("2", &message);
 }
 
 void Connection::SendWarning(std::string message)
 {
-	Send(1, &message);
+	Send("1", &message);
 }
 
 void Connection::SendTelemetry(std::string key, std::string value)
 {
     std::string message = key + "!" + value;
-	Send(3, &message);
+	Send("3", &message);
 }
 
 void Connection::Send(std::string headers, std::string * message)
@@ -104,14 +104,14 @@ void Connection::Recieve()
 
         data_buffer.resize(0);
         
-        std::string msg = "";
+        std::string msgN = "";
         std::string headers = "";
         
         if(camQual != gui->getCameraQuality()){
             std::string newQual = "qual!" + std::to_string(gui->getCameraQuality());
             camQual = gui->getCameraQuality();
             headers+="6?";
-            msg+=newQual+"?";
+            msgN+=newQual+"?";
         }
         if(mainCam != gui->isMainCamera()){
             std::string val;
@@ -120,13 +120,13 @@ void Connection::Recieve()
             std::string newCam = "cam!" + val;
             mainCam = gui->isMainCamera();
             headers+="6?";
-            msg+=newCam+"?";
+            msgN+=newCam+"?";
         }
 
         ControllerValues* controllerValues = controller->GetControllerValues();
-        msg += controllerValues->toString();
-        headers+="5"
-        Send(headers, &msg);
+        msgN += controllerValues->toString();
+        headers+="5";
+        Send(headers, &msgN);
     }
     reconnect = false;
     HandleHandshake();
@@ -134,6 +134,8 @@ void Connection::Recieve()
 
 void Connection::HandleHandshake(){
     UI* gui = UI::Get();
+    gui->PublishOutput("Starting handshake with client", LEV_CODE::CLEAR);
+    data_buffer.resize(0);
     data_buffer.resize(32);
     asio::error_code error;
     socket.receive_from(asio::buffer(data_buffer), remote_endpoint, 0, error);

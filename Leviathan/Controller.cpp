@@ -25,12 +25,12 @@ ControllerValues* Controller::GetControllerValues()
 	const unsigned char* hats = glfwGetJoystickHats(id, &hatCount);
 
 	controllerValues.ljoyx = joys[0];
-	controllerValues.ljoyy = joys[1];
+	controllerValues.ljoyy = -joys[1];
 	controllerValues.rjoyx = joys[2];
-	controllerValues.rjoyy = joys[3];
+	controllerValues.rjoyy = -joys[3];
 
-	controllerValues.ltrigger = joys[4];
-	controllerValues.rtrigger = joys[5];
+	controllerValues.ltrigger = buttons[6];
+	controllerValues.rtrigger = buttons[7];
 
 	controllerValues.a = buttons[1];
 	controllerValues.b = buttons[2];
@@ -39,6 +39,11 @@ ControllerValues* Controller::GetControllerValues()
 
 	controllerValues.rbumper = buttons[5];
 	controllerValues.lbumper = buttons[4];
+
+	controllerValues.up = buttons[12];
+	controllerValues.right = buttons[13];
+	controllerValues.down = buttons[14];
+	controllerValues.left = buttons[15];
 
 	return &controllerValues;
 }

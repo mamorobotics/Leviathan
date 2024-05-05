@@ -43,7 +43,6 @@ private:
 
 	std::atomic<bool> isDecoding = false;
 	std::atomic<bool> newImage = false;
-	std::atomic<bool> reconnect = false;
 
 	int camQual;
 	bool mainCam;
@@ -51,6 +50,8 @@ private:
 	static Connection* connection;
 
 public:
+	std::atomic<bool> reconnect = false;
+
 	Connection() : io_context(), socket(io_context), remote_endpoint(asio::ip::address::from_string(IP), PORT) {
     	socket.open(asio::ip::udp::v4());
 		socket.bind(remote_endpoint);
@@ -61,7 +62,7 @@ public:
 	void SendError(std::string message);
 	void SendWarning(std::string message);
 	void SendTelemetry(std::string key, std::string value);
-	void Send(int header, std::string * message);
+	void Send(std::string header, std::string * message);
 
 	void Recieve();
 	void HandleHandshake();
