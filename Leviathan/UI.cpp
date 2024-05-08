@@ -108,7 +108,7 @@ void UI::Update()
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
 	}
-	if (ImGui::Button("Reconnect")) conn->reconnect = true;
+	if (ImGui::Button("Reconnect")) conn->Reconnect();
 	ImGui::End();
 
 	ImGui::Begin("Controller");
