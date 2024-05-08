@@ -43,6 +43,7 @@ private:
 
 	std::atomic<bool> isDecoding = false;
 	std::atomic<bool> newImage = false;
+ std::atomic<bool> reconnect = false;
 
 	int camQual;
 	bool mainCam;
@@ -50,8 +51,6 @@ private:
 	static Connection* connection;
 
 public:
-	std::atomic<bool> reconnect = false;
-
 	Connection() : io_context(), socket(io_context), remote_endpoint(asio::ip::address::from_string(IP), PORT) {
     	socket.open(asio::ip::udp::v4());
 		socket.bind(remote_endpoint);
@@ -71,6 +70,7 @@ public:
 	bool GetNewImage(){ return newImage; }
 	void SetDecoding(bool val){ isDecoding = val; }
 	void SetNewImage(bool val){ newImage = val; }
+ void Reconnect(){ reconnect = true; }
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();
