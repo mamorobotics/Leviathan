@@ -70,7 +70,7 @@ public:
 	bool GetNewImage(){ return newImage; }
 	void SetDecoding(bool val){ isDecoding = val; }
 	void SetNewImage(bool val){ newImage = val; }
- void Reconnect(){ reconnect = true; }
+	void Reconnect(){ reconnect = true; }
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();
