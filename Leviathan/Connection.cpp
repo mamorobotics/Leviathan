@@ -42,6 +42,8 @@ void Connection::Recieve()
     int i = 0;
     int j=0;
     bool failedFrame = false;
+    int count = 1;
+    bool camChange = false;
     while (!reconnect)
     {
         j++;
@@ -51,7 +53,8 @@ void Connection::Recieve()
 
         socket.receive_from(asio::buffer(initial_buffer), remote_endpoint, 0, error);
 
-        std::string msg = std::string(initial_buffer.data());
+        std::string msg = reinterpret_cast<char*>(initial_buffer.data());
+        std::cout<<msg<<std::endl;
         int index = msg.find("!");
         std::string sizeStr = msg.substr(0, index);
         int size = stoi(sizeStr);
@@ -112,6 +115,7 @@ void Connection::Recieve()
             camQual = gui->getCameraQuality();
             headers+="6?";
             msgN+=newQual+"?";
+            camChange = true;
         }
         if(mainCam != gui->isMainCamera()){
             std::string val;
@@ -121,15 +125,23 @@ void Connection::Recieve()
             mainCam = gui->isMainCamera();
             headers+="6?";
             msgN+=newCam+"?";
+            camChange = true;
         }
-
-        ControllerValues* controllerValues = controller->GetControllerValues();
-        msgN += controllerValues->toString();
-        headers+="5";
-        Send(headers, &msgN);
+        
+        if(camChange || count%4==0){
+            ControllerValues* controllerValues = controller->GetControllerValues();
+            msgN += controllerValues->toString();
+            headers+="5";
+            //Send(headers, &msgN);
+            camChange = false;
+        }
+        if(count==4){count = 0;}
+        count++;
     }
     reconnect = false;
     HandleHandshake();
+
+    // "Fornite >>> Pubg" - Felix Grimm 2022
 }
 
 void Connection::HandleHandshake(){
