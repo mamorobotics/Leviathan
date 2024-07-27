@@ -18,9 +18,10 @@ void Connection::SendTelemetry(std::string key, std::string value)
 
 void Connection::Send(std::string headers, std::string * message)
 {
+    //auto initSent = socket.send_to(asio::buffer("0220", 32), remote_endpoint, 0);
     std::string messageData = *message;
     std::string initialMsg = std::to_string(messageData.size()) + "!" + headers;
-    initialMsg.insert(0, 32-initialMsg.size(), ' ');
+    initialMsg.append(32-initialMsg.size(), ' ');
     auto initSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
 
     while(sizeof(messageData) > 65500){
@@ -42,7 +43,6 @@ void Connection::Recieve()
     int i = 0;
     int j=0;
     bool failedFrame = false;
-    int count = 1;
     bool camChange = false;
     while (!reconnect)
     {
@@ -114,7 +114,7 @@ void Connection::Recieve()
             std::string newQual = "qual!" + std::to_string(gui->getCameraQuality());
             camQual = gui->getCameraQuality();
             headers+="6?";
-            msgN+=newQual+"?";
+            msgN+=newQual;
             camChange = true;
         }
         if(mainCam != gui->isMainCamera()){
@@ -124,19 +124,18 @@ void Connection::Recieve()
             std::string newCam = "cam!" + val;
             mainCam = gui->isMainCamera();
             headers+="6?";
-            msgN+=newCam+"?";
+            if(camChange){newCam = newCam+"?";}
+            msgN+=newCam;
             camChange = true;
         }
         
-        if(camChange || count%4==0){
-            ControllerValues* controllerValues = controller->GetControllerValues();
-            msgN += controllerValues->toString();
-            headers+="5";
-            //Send(headers, &msgN);
+        if(camChange){
+            //ControllerValues* controllerValues = controller->GetControllerValues();
+            //msgN += controllerValues->toString();
+            //headers+="5";
+            Send(headers, &msgN);
             camChange = false;
         }
-        if(count==4){count = 0;}
-        count++;
     }
     reconnect = false;
     HandleHandshake();
