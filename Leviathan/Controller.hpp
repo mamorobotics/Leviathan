@@ -21,6 +21,7 @@ public:
     int getId() { return id; }
     void setId(int id) { this->id = id; }
     ControllerValues* GetControllerValues();
+    double deadzone(double val, double dead);
     static int GetNumControllers();
 	~Controller();
 };

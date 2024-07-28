@@ -18,9 +18,10 @@ void Connection::SendTelemetry(std::string key, std::string value)
 
 void Connection::Send(std::string headers, std::string * message)
 {
+    //auto initSent = socket.send_to(asio::buffer("0220", 32), remote_endpoint, 0);
     std::string messageData = *message;
     std::string initialMsg = std::to_string(messageData.size()) + "!" + headers;
-    initialMsg.insert(0, 32-initialMsg.size(), ' ');
+    initialMsg.append(32-initialMsg.size(), ' ');
     auto initSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
 
     while(sizeof(messageData) > 65500){
@@ -42,6 +43,7 @@ void Connection::Recieve()
     int i = 0;
     int j=0;
     bool failedFrame = false;
+    bool camChange = false;
     while (!reconnect)
     {
         j++;
@@ -51,7 +53,8 @@ void Connection::Recieve()
 
         socket.receive_from(asio::buffer(initial_buffer), remote_endpoint, 0, error);
 
-        std::string msg = std::string(initial_buffer.data());
+        std::string msg = reinterpret_cast<char*>(initial_buffer.data());
+        std::cout<<msg<<std::endl;
         int index = msg.find("!");
         std::string sizeStr = msg.substr(0, index);
         int size = stoi(sizeStr);
@@ -111,7 +114,8 @@ void Connection::Recieve()
             std::string newQual = "qual!" + std::to_string(gui->getCameraQuality());
             camQual = gui->getCameraQuality();
             headers+="6?";
-            msgN+=newQual+"?";
+            msgN+=newQual;
+            camChange = true;
         }
         if(mainCam != gui->isMainCamera()){
             std::string val;
@@ -120,16 +124,23 @@ void Connection::Recieve()
             std::string newCam = "cam!" + val;
             mainCam = gui->isMainCamera();
             headers+="6?";
-            msgN+=newCam+"?";
+            if(camChange){newCam = newCam+"?";}
+            msgN+=newCam;
+            camChange = true;
         }
-
-        ControllerValues* controllerValues = controller->GetControllerValues();
-        msgN += controllerValues->toString();
-        headers+="5";
-        Send(headers, &msgN);
+        
+        if(camChange){
+            //ControllerValues* controllerValues = controller->GetControllerValues();
+            //msgN += controllerValues->toString();
+            //headers+="5";
+            Send(headers, &msgN);
+            camChange = false;
+        }
     }
     reconnect = false;
     HandleHandshake();
+
+    // "Fornite >>> Pubg" - Felix Grimm 2022
 }
 
 void Connection::HandleHandshake(){
