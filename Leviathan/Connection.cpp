@@ -106,7 +106,9 @@ void Connection::Recieve()
         }
 
         data_buffer.resize(0);
-        
+
+        //SENDING STARTS HERE...
+
         std::string msgN = "";
         std::string headers = "";
         
@@ -136,11 +138,15 @@ void Connection::Recieve()
             Send(headers, &msgN);
             camChange = false;
         }
+                
+        ControllerValues* controllerValues = controller->GetControllerValues();
+        char*  msgSerial = controllerValues->toString();
+
+        RS232_cputs(cport_nr, msgSerial); // sends string on serial
+        printf("Sent to Arduino: '%s'\n", msgSerial);
     }
     reconnect = false;
     HandleHandshake();
-
-    // "Fornite >>> Pubg" - Felix Grimm 2022
 }
 
 void Connection::HandleHandshake(){

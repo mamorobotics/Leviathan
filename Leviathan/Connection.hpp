@@ -33,6 +33,8 @@ private:
     udp::endpoint remote_endpoint;
 	udp::endpoint sender_endpoint;
 
+	int cport_nr=16; //GET PORT USING COMMANDS FROM https://www.monocilindro.com/2017/02/19/how-to-connect-arduino-and-raspberry-pi-using-usb-and-c/
+
 	std::vector<char> size_buffer;
 	std::vector<char> header_buffer;
 	std::vector<char> initial_buffer;
@@ -53,8 +55,19 @@ private:
 
 public:
 	Connection() : io_context(), socket(io_context), remote_endpoint(asio::ip::address::from_string(IP), PORT) {
-    	socket.open(asio::ip::udp::v4());
+    	//eth
+		socket.open(asio::ip::udp::v4());
 		socket.bind(remote_endpoint);
+
+		//serial over usb
+        int bdrate=57600; /* 9600 baud */
+		char mode[]={'8','N','1',0}; // 8 data bits, no parity, 1 stop bit
+
+		if(RS232_OpenComport(cport_nr, bdrate, mode))
+        {
+            printf("Can not open comport\n");
+            return(0);
+        }
     }
 	void Connect();
 	void ResizeBuffer(int newSize);
