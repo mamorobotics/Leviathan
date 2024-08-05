@@ -15,6 +15,7 @@
 
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "lib/RS-232/rs232.h"
 
 #define PORT 8080
 #define IP "192.168.1.1"     
