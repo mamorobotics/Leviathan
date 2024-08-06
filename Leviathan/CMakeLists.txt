@@ -61,3 +61,6 @@ find_package(OpenCV REQUIRED)
 include_directories(/home/mhsrobotics/opencv/include)
 
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
+
+#rs232
+target_link_libraries(${PROJECT_NAME} ${LIB_DIR}/RS-232/rs232.c)

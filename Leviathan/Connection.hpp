@@ -63,10 +63,9 @@ public:
         int bdrate=57600; /* 9600 baud */
 		char mode[]={'8','N','1',0}; // 8 data bits, no parity, 1 stop bit
 
-		if(RS232_OpenComport(cport_nr, bdrate, mode))
+		if(RS232_OpenComport(cport_nr, bdrate, mode, 0))
         {
             printf("Can not open comport\n");
-            return(0);
         }
     }
 	void Connect();

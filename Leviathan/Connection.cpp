@@ -140,7 +140,7 @@ void Connection::Recieve()
         }
                 
         ControllerValues* controllerValues = controller->GetControllerValues();
-        char*  msgSerial = controllerValues->toString();
+        const char*  msgSerial = controllerValues->toString().c_str();
 
         RS232_cputs(cport_nr, msgSerial); // sends string on serial
         printf("Sent to Arduino: '%s'\n", msgSerial);
