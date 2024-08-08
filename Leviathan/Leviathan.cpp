@@ -63,6 +63,7 @@ int main()
 {
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
+	//Serial* ser = Serial::Get();
 
 	Controller::ScanControllers();
 	
@@ -103,8 +104,13 @@ int main()
 
 	bool firstFrame = true;
 
+	//eth
 	std::thread networkThread(&Connection::HandleHandshake, conn);
 	networkThread.detach();
+
+	//serial
+	// std::thread serialThread(&Serial::SendController, ser);
+	// serialThread.detach();
 
 	while (!glfwWindowShouldClose(window)) {
 		auto start = high_resolution_clock::now();
