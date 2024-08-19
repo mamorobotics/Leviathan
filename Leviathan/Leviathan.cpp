@@ -7,6 +7,7 @@
 #include "Connection.hpp"
 
 #include "Controller.hpp"
+#include "Serial.hpp"
 
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -15,6 +16,7 @@ using namespace std::chrono;
 
 UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
+Serial* Serial::serial = new Serial();
 
 void error_callback( int error, const char *msg ) {
     std::string s;
@@ -63,7 +65,7 @@ int main()
 {
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
-	//Serial* ser = Serial::Get();
+	// Serial* ser = Serial::Get();
 
 	Controller::ScanControllers();
 	

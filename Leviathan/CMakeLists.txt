@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp" "Serial.cpp" "Serial.hpp" "ControllerValues.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "Management.hpp" )
+add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp"  "Serial.cpp" "Serial.hpp" "ControllerValues.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "Management.hpp" )
 
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

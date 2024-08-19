@@ -9,6 +9,7 @@
 #include "UI.hpp"
 #include "ConnDetails.hpp"
 #include "Management.hpp"
+#include "Serial.hpp"
 #include <unistd.h>
 #include <atomic>
 #include <thread>
@@ -33,8 +34,6 @@ private:
     udp::endpoint remote_endpoint;
 	udp::endpoint sender_endpoint;
 
-	int cport_nr=16; //GET PORT USING COMMANDS FROM https://www.monocilindro.com/2017/02/19/how-to-connect-arduino-and-raspberry-pi-using-usb-and-c/
-
 	std::vector<char> size_buffer;
 	std::vector<char> header_buffer;
 	std::vector<char> initial_buffer;
@@ -43,6 +42,8 @@ private:
 	int numMessages;
 	std::string recvLength;
 	std::string recvHeader;
+
+	int cport_nr=24; //GET PORT USING COMMANDS FROM https://www.monocilindro.com/2017/02/19/how-to-connect-arduino-and-raspberry-pi-using-usb-and-c/
 
 	std::atomic<bool> isDecoding = false;
 	std::atomic<bool> newImage = false;
@@ -60,13 +61,13 @@ public:
 		socket.bind(remote_endpoint);
 
 		//serial over usb
-        int bdrate=57600; /* 9600 baud */
-		char mode[]={'8','N','1',0}; // 8 data bits, no parity, 1 stop bit
+        // int bdrate=9600; /* 9600 baud */
+		// char mode[]={'8','N','1',0}; // 8 data bits, no parity, 1 stop bit
 
-		if(RS232_OpenComport(cport_nr, bdrate, mode, 0))
-        {
-            printf("Can not open comport\n");
-        }
+		// if(RS232_OpenComport(cport_nr, bdrate, mode, 0))
+        // {
+        //     printf("Can not open comport\n");
+        // }
     }
 	void Connect();
 	void ResizeBuffer(int newSize);

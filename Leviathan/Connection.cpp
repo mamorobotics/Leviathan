@@ -36,6 +36,7 @@ void Connection::Send(std::string headers, std::string * message)
 
 void Connection::Recieve() 
 {
+    Serial* ser = Serial::Get();
     UI* gui = UI::Get();
     camQual = gui->getCameraQuality();
     mainCam = gui->isMainCamera();
@@ -44,6 +45,8 @@ void Connection::Recieve()
     int j=0;
     bool failedFrame = false;
     bool camChange = false;
+    bool oneIter = false;
+
     while (!reconnect)
     {
         j++;
@@ -54,7 +57,7 @@ void Connection::Recieve()
         socket.receive_from(asio::buffer(initial_buffer), remote_endpoint, 0, error);
 
         std::string msg = reinterpret_cast<char*>(initial_buffer.data());
-        std::cout<<msg<<std::endl;
+        //std::cout<<msg<<std::endl;
         int index = msg.find("!");
         std::string sizeStr = msg.substr(0, index);
         int size = stoi(sizeStr);
@@ -138,12 +141,20 @@ void Connection::Recieve()
             Send(headers, &msgN);
             camChange = false;
         }
-                
-        ControllerValues* controllerValues = controller->GetControllerValues();
-        const char*  msgSerial = controllerValues->toString().c_str();
 
-        RS232_cputs(cport_nr, msgSerial); // sends string on serial
-        printf("Sent to Arduino: '%s'\n", msgSerial);
+        if(!oneIter){
+            std::cout<<"once"<<std::endl;
+            std::thread serialThread(&Serial::SendController, ser);
+	        serialThread.detach();
+
+            oneIter = true;
+        }
+
+        // ControllerValues* controllerValues = controller->GetControllerValues();
+        // const char*  msgSerial = controllerValues->toString().c_str();
+
+        // RS232_cputs(cport_nr, msgSerial); // sends string on serial
+        // printf("Sent to Arduino: '%s'\n", msgSerial);
     }
     reconnect = false;
     HandleHandshake();
