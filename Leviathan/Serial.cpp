@@ -5,13 +5,17 @@ void Serial::SendController()
     Controller* controller = new Controller(1);    
 	while(true){
 		ControllerValues* controllerValues = controller->GetControllerValues();
-		//std::cout<<controllerValues->toString().c_str()<<std::endl;
-		std::string msgSerialStr = controllerValues->toString();
-		const char* msgSerial = msgSerialStr.c_str();
+		std::string msgStr = controllerValues->toString();
 
-		RS232_cputs(cport_nr, msgSerial); // sends string on serial
+		unsigned char* msg = new unsigned char[msgStr.size() + 1];
+    	std::memcpy(msg, msgStr.c_str(), msgStr.size() + 1);
 
-		//printf("Sent to Arduino: '%s'\n", msgSerial);
+		int err = RS232_SendBuf(cport_nr, msg, msgStr.size() + 1); // sends string on serial
+		if(err==-1){
+			std::cout<<"send failed"<<std::endl;
+		}
+
+		delete[] msg;
 	}
 }
 
