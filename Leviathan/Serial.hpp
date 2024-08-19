@@ -1,18 +1,18 @@
 #pragma once
-// #include <iostream>
-// #include <tuple>
-// #include <sstream>
-// #include <thread>
-// #include <opencv2/opencv.hpp>
+#include <iostream>
+#include <tuple>
+#include <sstream>
+#include <thread>
+#include <opencv2/opencv.hpp>
 
-// #include <asio.hpp>
+#include <asio.hpp>
 #include "UI.hpp"
-// #include <unistd.h>
-// #include <atomic>
-// #include <thread>
+#include <unistd.h>
+#include <atomic>
+#include <thread>
 
-// #include "glad/glad.h"
-// #include "GLFW/glfw3.h"
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 #include "lib/RS-232/rs232.h"
 
 class Serial

@@ -6,7 +6,8 @@ void Serial::SendController()
 	while(true){
 		ControllerValues* controllerValues = controller->GetControllerValues();
 		//std::cout<<controllerValues->toString().c_str()<<std::endl;
-		const char* msgSerial = controllerValues->toString().c_str();
+		std::string msgSerialStr = controllerValues->toString();
+		const char* msgSerial = msgSerialStr.c_str();
 
 		RS232_cputs(cport_nr, msgSerial); // sends string on serial
 
