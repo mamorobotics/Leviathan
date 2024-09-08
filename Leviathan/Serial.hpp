@@ -4,7 +4,13 @@
 #include <sstream>
 #include <thread>
 #include <opencv2/opencv.hpp>
+#include <iostream>
+#include <tuple>
+#include <sstream>
+#include <thread>
+#include <opencv2/opencv.hpp>
 
+#include <asio.hpp>
 #include <asio.hpp>
 #include "UI.hpp"
 #include <unistd.h>
