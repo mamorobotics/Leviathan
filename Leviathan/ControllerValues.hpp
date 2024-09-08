@@ -36,10 +36,10 @@ public:
             str+="!y";
         }
         if(lbumper==1){
-            str+="!lb";
+            str+="!j";
         }
         if(rbumper==1){
-            str+="!rb";
+            str+="!k";
         }
         if(up==1){
             str+="!u";
