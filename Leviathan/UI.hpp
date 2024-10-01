@@ -22,15 +22,18 @@
 class UI {
 private:
 	int cameraWidth, cameraHeight = 0;
+	int floatId = 0;
 	time_t start = time(0);
 	GLuint cameraTexture;
 	bool pauseCamera = false;
 	bool mainCamera = true;
 	bool statisticsOpen = false;
+	bool floatOpen = false;
 	int selectedController = 0;
 	int quality = 80;
 	float deltaVals[64];
 	float frameVals[64];
+	float depthVals[128];
 	float mainDeltaTime;
 
 	std::vector<std::string> output;
@@ -57,6 +60,14 @@ public:
 
 	static UI* Get();
 
+	void addDepthVals(float depth) {
+		float depthVals2[128];
+		for (int i = 0; i < 128; i++)
+		{
+			depthVals2[i] = depthVals[(i + 129) % 128];
+		}
+		std::copy(std::begin(depthVals2), std::end(depthVals2), std::begin(depthVals));
+	}
 	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
 	bool isCameraPaused() { return pauseCamera; }

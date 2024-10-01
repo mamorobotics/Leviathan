@@ -52,6 +52,10 @@ void UI::Update()
 	{
 		statisticsOpen = true;
 	}
+	if (ImGui::MenuItem("Float"))
+	{
+		floatOpen = true;
+	}
 	ImGui::EndMainMenuBar();
 
 	if (statisticsOpen)
@@ -88,6 +92,16 @@ void UI::Update()
 		if (ImGui::Button("Test Telemetry"))
 			PublishTelemetry("Telemetry Test", std::to_string(rand()));
 		ImGui::Text(("Main delta time: " + std::to_string(mainDeltaTime)).c_str());
+		ImGui::End();
+	}
+
+	if (floatOpen) {
+		ImGui::Begin("Float");
+		if (ImGui::Button("Exit"))
+			floatOpen = false;
+
+		ImGui::InputInt("Float Id", &floatId);
+		ImGui::PlotLines("Depth", depthVals, IM_ARRAYSIZE(depthVals), 0, NULL, -1.0f, 1.0f, ImVec2(0, 80.0f));
 		ImGui::End();
 	}
 
