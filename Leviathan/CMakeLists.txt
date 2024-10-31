@@ -64,3 +64,8 @@ target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
 
 #rs232
 target_link_libraries(${PROJECT_NAME} ${LIB_DIR}/RS-232/rs232.c)
+
+#RF24
+add_subdirectory("${LIB_DIR}/RF24-Master")  # Path to the RF24 library
+include_directories(${CMAKE_SOURCE_DIR}/libs/RF24)
+target_link_libraries(${PROJECT_NAME} RF24)
