@@ -148,6 +148,7 @@ void Connection::Recieve()
             std::thread serialThread(&Serial::SendController, ser);
             std::thread radioThread(&Radio::startRadioReceive, rad);
 	        serialThread.detach();
+	        radioThread.detach();
 
             oneIter = true;
         }

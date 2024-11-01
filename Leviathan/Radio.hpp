@@ -50,8 +50,6 @@ public:
 		radio.printDetails();
 
 		radio.startListening(); 
-
-		cout << "Start listening..." << endl;
 	}
 	void startRadioReceive();
 	vector getDepthvals(int i){return i==1? depthProfileOne : depthProfileTwo;}
