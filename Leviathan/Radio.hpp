@@ -27,6 +27,14 @@ class Radio
 private:
 	static Radio* radio;
 
+	uint8_t pipeNumber;
+	uint8_t payloadSize;
+
+	std::vector<std::array<std::atomic<float>, 2>> depthProfileOne;
+	std::vector<std::array<std::atomic<float>, 2>> depthProfileTwo;
+	std::vector<std::string> floatOutputs;
+
+
 public:
 	Radio(){
 		RF24 radio(PIN_CE, PIN_CSN);
@@ -46,6 +54,8 @@ public:
 		cout << "Start listening..." << endl;
 	}
 	void startRadioReceive();
+	vector getDepthvals(int i){return i==1? depthProfileOne : depthProfileTwo;}
+	vector getFloatOutputs(){return floatOutputs;}
 	Radio(const Radio& obj) = delete;
 	~Radio();
 	static Radio* Get();

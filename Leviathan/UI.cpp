@@ -97,11 +97,22 @@ void UI::Update()
 
 	if (floatOpen) {
 		ImGui::Begin("Float");
+		Radio* rad = Radio::Get();
 		if (ImGui::Button("Exit"))
 			floatOpen = false;
 
 		ImGui::InputInt("Float Id", &floatId);
-		ImGui::PlotLines("Depth", depthVals, IM_ARRAYSIZE(depthVals), 0, NULL, -1.0f, 1.0f, ImVec2(0, 80.0f));
+		ImGui::PlotLines("Depth", rad-->getDepthVals(1), rad-->getDepthVals(1).size(), 0, NULL, -1.0f, 1.0f, ImVec2(0, 80.0f));
+
+		if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
+		{
+			for (unsigned int n = 0; n < rad-->getFloatOutputs().size(); n++) 
+			{
+				ImGui::Text((rad-->getFloatOutputs()[n]).c_str());
+			}
+			ImGui::EndListBox();
+		}
+
 		ImGui::End();
 	}
 
