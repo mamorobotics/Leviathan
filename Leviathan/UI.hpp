@@ -59,15 +59,6 @@ public:
 	~UI();
 
 	static UI* Get();
-
-	void addDepthVals(float depth) {
-		float depthVals2[128];
-		for (int i = 0; i < 128; i++)
-		{
-			depthVals2[i] = depthVals[(i + 129) % 128];
-		}
-		std::copy(std::begin(depthVals2), std::end(depthVals2), std::begin(depthVals));
-	}
 	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
 	bool isCameraPaused() { return pauseCamera; }
