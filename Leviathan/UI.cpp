@@ -133,7 +133,10 @@ void UI::Update()
 		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
 		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
 	}
-	if (ImGui::Button("Reconnect")) conn->Reconnect();
+	if (ImGui::Button("Reconnect")){
+		std::thread networkThread(&Connection::HandleHandshake, conn);
+		networkThread.detach();
+	}
 	ImGui::End();
 
 	ImGui::Begin("Controller");

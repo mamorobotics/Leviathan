@@ -48,7 +48,7 @@ void Connection::Recieve()
     bool camChange = false;
     bool oneIter = false;
 
-    while (!reconnect)
+    while (true)
     {
         j++;
         failedFrame = false;
@@ -159,8 +159,6 @@ void Connection::Recieve()
         // RS232_cputs(cport_nr, msgSerial); // sends string on serial
         // printf("Sent to Arduino: '%s'\n", msgSerial);
     }
-    reconnect = false;
-    HandleHandshake();
 }
 
 void Connection::HandleHandshake(){

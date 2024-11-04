@@ -47,7 +47,7 @@ private:
 
 	std::atomic<bool> isDecoding = false;
 	std::atomic<bool> newImage = false;
-	std::atomic<bool> reconnect = false;
+	//std::atomic<bool> reconnect = false;
 
 	int camQual;
 	bool mainCam;
@@ -84,7 +84,7 @@ public:
 	bool GetNewImage(){ return newImage; }
 	void SetDecoding(bool val){ isDecoding = val; }
 	void SetNewImage(bool val){ newImage = val; }
-	void Reconnect(){ reconnect = true; }
+	//void Reconnect(){ reconnect = true; }
 	Connection(const Connection& obj) = delete;
 	~Connection();
 	static Connection* Get();
