@@ -66,6 +66,7 @@ int main()
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
 	// Serial* ser = Serial::Get();
+	Radio* rad = Radio::Get();
 
 	Controller::ScanControllers();
 	
@@ -111,8 +112,12 @@ int main()
 	networkThread.detach();
 
 	//serial
-	// std::thread serialThread(&Serial::SendController, ser);
-	// serialThread.detach();
+	//std::thread serialThread(&Serial::SendController, ser);
+	//serialThread.detach();
+
+	//radio
+	std::thread radioThread(&Radio::startRadioReceive, rad);
+	radioThread.detach();
 
 	while (!glfwWindowShouldClose(window)) {
 		auto start = high_resolution_clock::now();

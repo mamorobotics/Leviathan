@@ -37,7 +37,6 @@ void Connection::Send(std::string headers, std::string * message)
 void Connection::Recieve() 
 {
     Serial* ser = Serial::Get();
-    Radio* rad = Radio::Get();
     UI* gui = UI::Get();
     camQual = gui->getCameraQuality();
     mainCam = gui->isMainCamera();
@@ -148,7 +147,6 @@ void Connection::Recieve()
             std::thread serialThread(&Serial::SendController, ser);
             std::thread radioThread(&Radio::startRadioReceive, rad);
 	        serialThread.detach();
-	        radioThread.detach();
 
             oneIter = true;
         }
