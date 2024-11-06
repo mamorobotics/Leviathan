@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <iostream>
 #include <chrono>
@@ -18,6 +18,7 @@ using namespace std::chrono;
 UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
 Serial* Serial::serial = new Serial();
+Radio* Radio::radio = new Radio();
 
 void error_callback( int error, const char *msg ) {
     std::string s;
