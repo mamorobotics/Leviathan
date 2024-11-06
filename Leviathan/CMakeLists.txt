@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp"  "Serial.cpp" "Serial.hpp" "ControllerValues.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "Management.hpp" )
+add_executable (Leviathan "Leviathan.cpp"  "UI.cpp"  "UI.hpp" "Connection.cpp" "Connection.hpp"  "Serial.cpp" "Serial.hpp" "Radio.cpp" "Radio.hpp" "ControllerValues.hpp" "Controller.cpp" "Controller.hpp" "ConnDetails.hpp" "Management.hpp" )
 
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
@@ -66,6 +66,6 @@ target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
 target_link_libraries(${PROJECT_NAME} ${LIB_DIR}/RS-232/rs232.c)
 
 #RF24
-add_subdirectory("${LIB_DIR}/RF24-Master")  # Path to the RF24 library
-include_directories(${CMAKE_SOURCE_DIR}/libs/RF24)
-target_link_libraries(${PROJECT_NAME} RF24)
+include_directories(/usr/local/include/RF24)
+include_directories(${CMAKE_SOURCE_DIR}/lib/RF24)
+target_link_libraries(${PROJECT_NAME} "/home/mhsrobotics/Desktop/Leviathan/Leviathan/lib/RF24/build/librf24.so")

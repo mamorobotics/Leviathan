@@ -8,6 +8,7 @@
 
 #include "Controller.hpp"
 #include "Serial.hpp"
+#include "Radio.hpp"
 
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -108,8 +109,8 @@ int main()
 	bool firstFrame = true;
 
 	//eth
-	std::thread networkThread(&Connection::HandleHandshake, conn);
-	networkThread.detach();
+	//std::thread networkThread(&Connection::HandleHandshake, conn);
+	//networkThread.detach();
 
 	//serial
 	//std::thread serialThread(&Serial::SendController, ser);

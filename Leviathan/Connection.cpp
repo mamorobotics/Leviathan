@@ -145,7 +145,7 @@ void Connection::Recieve()
         if(!oneIter){
             std::cout<<"once"<<std::endl;
             std::thread serialThread(&Serial::SendController, ser);
-            std::thread radioThread(&Radio::startRadioReceive, rad);
+            //std::thread radioThread(&Radio::startRadioReceive, rad);
 	        serialThread.detach();
 
             oneIter = true;

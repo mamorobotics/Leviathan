@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <algorithm>
+#include <cmath>
 #include "Controller.hpp"
 
 class ControllerValues
@@ -21,7 +23,7 @@ public:
         rjoyx = std::clamp((int)(rjoyx*1000), 0, 999);
         rjoyy = std::clamp((int)(rjoyy*1000), 0, 999);
 
-        std::string str = std::to_string(ljoyx) + "!" + std::to_string(ljoyy) + "!" + std::to_string(rjoyx) + "!" + std::to_string(rjoyy) + "!" + std::to_string(std::clamp(round(ltrigger*100), 0, 99)) + "!" + std::to_string(std::clamp(round(rtrigger*100), 0, 99));
+        std::string str = std::to_string(ljoyx) + "!" + std::to_string(ljoyy) + "!" + std::to_string(rjoyx) + "!" + std::to_string(rjoyy) + "!" + std::to_string(std::clamp((int)std::round(ltrigger*100), 0, 99)) + "!" + std::to_string(std::clamp((int)std::round(rtrigger*100), 0, 99));
         
         if(a==1){
             str+="!a";

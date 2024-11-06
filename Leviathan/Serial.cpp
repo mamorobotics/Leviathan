@@ -7,7 +7,7 @@ void Serial::SendController()
 		ControllerValues* controllerValues = controller->GetControllerValues();
 		std::string msgStr = "<" + controllerValues->toStringPartial() + ">";
 
-		RS232_cputs(cport_nr, msgStr); // sends string on serial
+		RS232_cputs(cport_nr, msgStr.c_str()); // sends string on serial
 	}
 }
 

@@ -102,7 +102,7 @@ void UI::Update()
 			floatOpen = false;
 
 		ImGui::InputInt("Float Id", &floatId);
-		ImGui::PlotLines("Depth", rad->getDepthVals(1), rad->getDepthVals(1).size(), 0, NULL, -1.0f, 1.0f, ImVec2(0, 200.0f));
+		//ImGui::PlotLines("Depth", rad->getDepthVals(1), rad->getDepthVals(1).size(), 0, NULL, -1.0f, 1.0f, ImVec2(0, 200.0f));
 
 		if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
 		{
