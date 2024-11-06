@@ -114,6 +114,11 @@ void UI::Update()
 		}
 
 		ImGui::End();
+		// if (ImPlot::BeginPlot("Line Plots")) {
+		// 	ImPlot::SetupAxes("x","y");
+		// 	ImPlot::PlotLine("f(x)", rad->getDepthVals(1)[0], rad->getDepthVals(1)[1], rad->getDepthVals(1)[1].size());
+		// 	ImPlot::EndPlot();
+    	// }
 	}
 
 	ImGui::Begin("Camera View");

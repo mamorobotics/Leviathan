@@ -40,14 +40,12 @@ void Radio::startRadioReceive() {
 			// 	data.push_back(std::string(token.begin(), token.end()));
 			// }
 
-			// std::array<std::atomic<float>, 2> atomicFloats;
-			// atomicFloats[0] = data[1];
-			// atomicFloats[1] = data[2];
-
 			// if(profile == 1){
-			// 	depthProfileOne[index] = atomicFloats;
+			// 	depthProfileOne[0][index] = data[1];
+			// 	depthProfileOne[1][index] = data[2];
 			// }else{
-			// 	depthProfileTwo[index] = atomicFloats;
+			// 	depthProfileTwo[0][index] = data[1];
+			// 	depthProfileTwo[1][index] = data[2];
 			// }
 
 			// index += 1;
