@@ -30,6 +30,10 @@ add_library("ImGui" "${IMGUI_DIR}/imgui.cpp"
 "${IMGUI_DIR}/imgui_draw.cpp"
 "${IMGUI_DIR}/imgui_tables.cpp"
 "${IMGUI_DIR}/imgui_widgets.cpp"
+"${IMGUI_DIR}/implot_internal.h"
+"${IMGUI_DIR}/implot_items.cpp"
+"${IMGUI_DIR}/implot.cpp"
+"${IMGUI_DIR}/implot.h"
 
 "${IMGUI_DIR}/imgui_impl_glfw.cpp"
 "${IMGUI_DIR}/imgui_impl_opengl3.cpp")
