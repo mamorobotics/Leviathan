@@ -25,8 +25,8 @@ private:
 	uint8_t pipeNumber = 0;
 	uint8_t payloadSize = 0;
 
-	std::array<std::array<std::atomic<float>, 128>, 2> depthProfileOne;
-	std::array<std::array<std::atomic<float>, 128>, 2> depthProfileTwo;
+	std::array<std::array<float, 128>, 2> depthProfileOne;
+	std::array<std::array<float, 128>, 2> depthProfileTwo;
 	std::vector<std::string> floatOutputs;
 	
 	static Radio* radio;
@@ -34,7 +34,12 @@ private:
 public:
 	Radio();
 	void startRadioReceive();
-	//std::array<std::array<std::atomic<float>, 128>, 2> getDepthVals(int i){return i==1? depthProfileOne : depthProfileTwo;}
+	std::array<std::array<float, 128>, 2> getDepthVals(int i){
+		if(i==1){
+			return depthProfileOne;
+		}
+		return depthProfileTwo;
+	}
 	std::vector<std::string> getFloatOutputs(){return floatOutputs;}
 	Radio(const Radio& obj) = delete;
 	~Radio();

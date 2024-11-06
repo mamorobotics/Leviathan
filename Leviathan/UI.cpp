@@ -22,6 +22,7 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
+	ImPlot::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();
 
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
@@ -113,12 +114,21 @@ void UI::Update()
 			ImGui::EndListBox();
 		}
 
+		if (ImPlot::BeginPlot("Depth Data")) {
+			float x[128];
+			float y[128];
+			for(size_t i=0; i<128; i++){
+				x[i] = rad->getDepthVals(1)[0][i];
+				y[i] = rad->getDepthVals(1)[1][i];
+			}
+
+			ImPlot::SetupAxes("x","y");
+			ImPlot::SetupAxesLimits(0, 20, -5, 0);
+			ImPlot::PlotLine("f(x)", x, y, 128);
+			ImPlot::EndPlot();
+    	}
+
 		ImGui::End();
-		// if (ImPlot::BeginPlot("Line Plots")) {
-		// 	ImPlot::SetupAxes("x","y");
-		// 	ImPlot::PlotLine("f(x)", rad->getDepthVals(1)[0], rad->getDepthVals(1)[1], rad->getDepthVals(1)[1].size());
-		// 	ImPlot::EndPlot();
-    	// }
 	}
 
 	ImGui::Begin("Camera View");
@@ -225,6 +235,7 @@ void UI::Shutdown()
 {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
+	ImPlot::DestroyContext();
 	ImGui::DestroyContext();
 }
 

@@ -5,7 +5,8 @@ Radio::Radio(){
 }
 
 void Radio::startRadioReceive() {
-	RF24 radioRF(11, 24); //CE, CSN
+	//RF24 radioRF(11, 24); //CE, CSN
+	RF24 radioRF(17,0);
 
 	radioRF.begin();
 	radioRF.setChannel(5);
