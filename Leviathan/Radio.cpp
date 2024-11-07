@@ -8,17 +8,23 @@ void Radio::startRadioReceive() {
 	//RF24 radioRF(11, 24); //CE, CSN
 	RF24 radioRF(17,0);
 
-	radioRF.begin();
-	radioRF.setChannel(5);
+	if(!radioRF.begin()){
+		std::cout << "radio init failed" << std::endl;
+	}
+	radioRF.setChannel(80);
 	radioRF.setPALevel(RF24_PA_HIGH);
 	radioRF.setDataRate(RF24_1MBPS);
 	radioRF.enableDynamicPayloads();
 
-	radioRF.openReadingPipe(0, 0x7878787878LL);
+	radioRF.openReadingPipe(1, 0x7878787878LL);
 
 	radioRF.printDetails();
 
 	radioRF.startListening();
+
+	if(radioRF.isChipConnected()){
+		std::cout<<"chip"<<std::endl;
+	}
 
 	while (true) {
 		if (radioRF.available(&pipeNumber)) {

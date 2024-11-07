@@ -22,8 +22,8 @@ class Radio
 private:
 	int index = 0;
 
-	uint8_t pipeNumber = 0;
-	uint8_t payloadSize = 0;
+	uint8_t pipeNumber = 1;
+	uint8_t payloadSize = 32;
 
 	std::array<std::array<float, 128>, 2> depthProfileOne;
 	std::array<std::array<float, 128>, 2> depthProfileTwo;
