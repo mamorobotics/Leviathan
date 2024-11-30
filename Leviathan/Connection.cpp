@@ -142,14 +142,14 @@ void Connection::Recieve()
             camChange = false;
         }
 
-        if(!oneIter){
-            std::cout<<"once"<<std::endl;
-            std::thread serialThread(&Serial::SendController, ser);
-            //std::thread radioThread(&Radio::startRadioReceive, rad);
-	        serialThread.detach();
+        // if(!oneIter){
+        //     std::cout<<"once"<<std::endl;
+        //     std::thread serialThread(&Serial::SendController, ser);
+        //     //std::thread radioThread(&Radio::startRadioReceive, rad);
+	    //     serialThread.detach();
 
-            oneIter = true;
-        }
+        //     oneIter = true;
+        // }
 
         // ControllerValues* controllerValues = controller->GetControllerValues();
         // const char*  msgSerial = controllerValues->toString().c_str();

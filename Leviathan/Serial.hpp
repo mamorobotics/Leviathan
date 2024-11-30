@@ -23,6 +23,8 @@ class Serial
 private:
 	int cport_nr = 16; //GET PORT USING COMMANDS FROM https://www.monocilindro.com/2017/02/19/how-to-connect-arduino-and-raspberry-pi-using-usb-and-c/
 
+	std::vector<std::string> floatOutputs;
+
 	static Serial* serial;
 
 public:
@@ -37,7 +39,7 @@ public:
 			std::cout<<"cannnot open comport"<<std::endl;
         }
 	}
-	void SendController();
+	void SendControllerAndGetFloatData();
 	Serial(const Serial& obj) = delete;
 	~Serial();
 	static Serial* Get();
