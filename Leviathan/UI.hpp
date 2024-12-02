@@ -16,7 +16,7 @@
 #include "ConnDetails.hpp"
 #include "Management.hpp"
 #include "Connection.hpp"
-#include "Radio.hpp"
+#include "Serial.hpp"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Controller.hpp"

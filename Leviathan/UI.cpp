@@ -96,40 +96,37 @@ void UI::Update()
 		ImGui::End();
 	}
 
-	if (floatOpen) {
-		ImGui::Begin("Float");
-		Radio* rad = Radio::Get();
-		if (ImGui::Button("Exit"))
-			floatOpen = false;
+	ImGui::Begin("Float");
+	Serial* ser = Serial::Get();
+	if (ImGui::Button("Exit"))
+		floatOpen = false;
 
-		ImGui::InputInt("Float Id", &floatId);
-		//ImGui::PlotLines("Depth", rad->getDepthVals(1), rad->getDepthVals(1).size(), 0, NULL, -1.0f, 1.0f, ImVec2(0, 200.0f));
+	ImGui::InputInt("Float Id", &floatId);
 
-		if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
+	if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
+	{
+		for (unsigned int n = 0; n < rad->getFloatOutputs().size(); n++) 
 		{
-			for (unsigned int n = 0; n < rad->getFloatOutputs().size(); n++) 
-			{
-				ImGui::Text((rad->getFloatOutputs()[n]).c_str());
-			}
-			ImGui::EndListBox();
+			ImGui::Text((rad->getFloatOutputs()[n]).c_str());
+		}
+		ImGui::EndListBox();
+	}
+
+	if (ImPlot::BeginPlot("Depth Data")) {
+		float x[128];
+		float y[128];
+		for(size_t i=0; i<128; i++){
+			x[i] = ser->getDepthVals(1)[0][i];
+			y[i] = ser->getDepthVals(1)[1][i];
 		}
 
-		if (ImPlot::BeginPlot("Depth Data")) {
-			float x[128];
-			float y[128];
-			for(size_t i=0; i<128; i++){
-				x[i] = rad->getDepthVals(1)[0][i];
-				y[i] = rad->getDepthVals(1)[1][i];
-			}
-
-			ImPlot::SetupAxes("x","y");
-			ImPlot::SetupAxesLimits(0, 20, -5, 0);
-			ImPlot::PlotLine("f(x)", x, y, 128);
-			ImPlot::EndPlot();
-    	}
-
-		ImGui::End();
+		ImPlot::SetupAxes("x","y");
+		ImPlot::SetupAxesLimits(0, 20, -5, 0);
+		ImPlot::PlotLine("f(x)", x, y, 128);
+		ImPlot::EndPlot();
 	}
+
+	ImGui::End();
 
 	ImGui::Begin("Camera View");
 	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));

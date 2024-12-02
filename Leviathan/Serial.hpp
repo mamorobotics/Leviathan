@@ -24,6 +24,8 @@ private:
 	int cport_nr = 16; //GET PORT USING COMMANDS FROM https://www.monocilindro.com/2017/02/19/how-to-connect-arduino-and-raspberry-pi-using-usb-and-c/
 
 	std::vector<std::string> floatOutputs;
+	std::array<std::array<float, 128>, 2> depthProfileOne;
+	std::array<std::array<float, 128>, 2> depthProfileTwo;
 
 	static Serial* serial;
 
@@ -40,6 +42,13 @@ public:
         }
 	}
 	void SendControllerAndGetFloatData();
+	std::array<std::array<float, 128>, 2> getDepthVals(int i){
+		if(i==1){
+			return depthProfileOne;
+		}
+		return depthProfileTwo;
+	}
+	std::vector<std::string> getFloatOutputs(){return floatOutputs;}
 	Serial(const Serial& obj) = delete;
 	~Serial();
 	static Serial* Get();
