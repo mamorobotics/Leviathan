@@ -53,10 +53,6 @@ void UI::Update()
 	{
 		statisticsOpen = true;
 	}
-	if (ImGui::MenuItem("Float"))
-	{
-		floatOpen = true;
-	}
 	ImGui::EndMainMenuBar();
 
 	if (statisticsOpen)
@@ -105,9 +101,9 @@ void UI::Update()
 
 	if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
 	{
-		for (unsigned int n = 0; n < rad->getFloatOutputs().size(); n++) 
+		for (unsigned int n = 0; n < ser->getFloatOutputs().size(); n++) 
 		{
-			ImGui::Text((rad->getFloatOutputs()[n]).c_str());
+			ImGui::Text((ser->getFloatOutputs()[n]).c_str());
 		}
 		ImGui::EndListBox();
 	}
@@ -121,8 +117,8 @@ void UI::Update()
 		}
 
 		ImPlot::SetupAxes("x","y");
-		ImPlot::SetupAxesLimits(0, 20, -5, 0);
-		ImPlot::PlotLine("f(x)", x, y, 128);
+		ImPlot::SetupAxesLimits(0, 20, 0, 30);
+		ImPlot::PlotLine("f(x)", x, y, ser->getNumDataPts(1));
 		ImPlot::EndPlot();
 	}
 

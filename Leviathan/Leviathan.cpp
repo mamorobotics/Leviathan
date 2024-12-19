@@ -8,7 +8,6 @@
 
 #include "Controller.hpp"
 #include "Serial.hpp"
-#include "Radio.hpp"
 
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
@@ -18,7 +17,6 @@ using namespace std::chrono;
 UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
 Serial* Serial::serial = new Serial();
-Radio* Radio::radio = new Radio();
 
 void error_callback( int error, const char *msg ) {
     std::string s;
@@ -68,7 +66,6 @@ int main()
 	UI* gui = UI::Get();
 	Connection* conn = Connection::Get();
 	Serial* ser = Serial::Get();
-//	Radio* rad = Radio::Get();
 
 	Controller::ScanControllers();
 	
@@ -110,16 +107,12 @@ int main()
 	bool firstFrame = true;
 
 	//eth
-	//std::thread networkThread(&Connection::HandleHandshake, conn);
-	//networkThread.detach();
+	std::thread networkThread(&Connection::HandleHandshake, conn);
+	networkThread.detach();
 
 	//serial
-	std::thread serialThread(&Serial::SendController, ser);
+	std::thread serialThread(&Serial::SendControllerAndGetFloatData, ser);
 	serialThread.detach();
-
-	//radio
-	// std::thread radioThread(&Radio::startRadioReceive, rad);
-	// radioThread.detach();
 
 	while (!glfwWindowShouldClose(window)) {
 		auto start = high_resolution_clock::now();

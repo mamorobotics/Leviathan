@@ -18,10 +18,10 @@ public:
     }
     std::string toStringPartial()
     {
-        ljoyx = std::clamp((int)(ljoyx*1000), 0, 999);
-        ljoyy = std::clamp((int)(ljoyy*1000), 0, 999);
-        rjoyx = std::clamp((int)(rjoyx*1000), 0, 999);
-        rjoyy = std::clamp((int)(rjoyy*1000), 0, 999);
+        ljoyx = std::clamp((int)(ljoyx*1000), -999, 999);
+        ljoyy = std::clamp((int)(ljoyy*1000), -999, 999);
+        rjoyx = std::clamp((int)(rjoyx*1000), -999, 999);
+        rjoyy = std::clamp((int)(rjoyy*1000), -999, 999);
 
         std::string str = std::to_string(ljoyx) + "!" + std::to_string(ljoyy) + "!" + std::to_string(rjoyx) + "!" + std::to_string(rjoyy) + "!" + std::to_string(std::clamp((int)std::round(ltrigger*100), 0, 99)) + "!" + std::to_string(std::clamp((int)std::round(rtrigger*100), 0, 99));
         
