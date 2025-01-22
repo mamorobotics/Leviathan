@@ -7,8 +7,8 @@ UI::UI()
 
 void UI::CreateCameraTexture()
 {
-	glGenTextures(1, &cameraTexture);
-	glBindTexture(GL_TEXTURE_2D, cameraTexture);
+	glGenTextures(1, &cameraTextures);
+	glBindTexture(GL_TEXTURE_2D, cameraTexture1);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -124,9 +124,13 @@ void UI::Update()
 
 	ImGui::End();
 
-	ImGui::Begin("Camera View");
-	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
+	ImGui::Begin("Main Camera View");
+	ImGui::Image((void*)(intptr_t)cameraTexture1, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();
+
+	// ImGui::Begin("Secondary Camera View");
+	// ImGui::Image((void*)(intptr_t)cameraTexture2, ImVec2(cameraWidth, cameraHeight));
+	// ImGui::End();
 
 	ImGui::Begin("Networking");
 	Connection* conn = Connection::Get();

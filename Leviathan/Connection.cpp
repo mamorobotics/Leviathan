@@ -80,7 +80,11 @@ void Connection::Recieve()
         }
 
         if(!isDecoding && header == 4){
-            image_buffer = data_buffer;
+            image_buffer1 = data_buffer;
+
+            //int frameSplitIndex = std::string(data_buffer.data()).find("!");
+            //image_buffer1.assign(data_buffer.begin(), data_buffer.begin() + frameSplitIndex);
+            //image_buffer2.assign(data_buffer.begin() + frameSplitIndex + 1, data_buffer.end());
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
