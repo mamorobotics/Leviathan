@@ -38,11 +38,11 @@ private:
 	std::vector<char> header_buffer;
 	std::vector<char> initial_buffer;
 	std::vector<char> data_buffer;
-	std::vector<char> image_buffer1;
-	std::vector<char> image_buffer2;
+	std::vector<char> image_buffer;
 	int numMessages;
 	std::string recvLength;
 	std::string recvHeader;
+	int maxPacketSize = 1472;
 
 	int cport_nr=24; //GET PORT USING COMMANDS FROM https://www.monocilindro.com/2017/02/19/how-to-connect-arduino-and-raspberry-pi-using-usb-and-c/
 
@@ -80,7 +80,7 @@ public:
 
 	void Recieve();
 	void HandleHandshake();
-	std::vector<char>* GetImageBuffer( int i ){ i==1 ? return &image_buffer: return &image_buffer2; };
+	std::vector<char>* GetImageBuffer(){ return &image_buffer; };
 	bool GetDecoding(){ return isDecoding; }
 	bool GetNewImage(){ return newImage; }
 	void SetDecoding(bool val){ isDecoding = val; }

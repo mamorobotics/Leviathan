@@ -24,10 +24,10 @@ void Connection::Send(std::string headers, std::string * message)
     initialMsg.append(32-initialMsg.size(), ' ');
     auto initSent = socket.send_to(asio::buffer(initialMsg, 32), remote_endpoint, 0);
 
-    while(sizeof(messageData) > 65500){
-        std::string temp = messageData.substr(0, 65500);
-        messageData = messageData.substr(65500);
-        auto msgSent = socket.send_to(asio::buffer(temp, 65500), remote_endpoint, 0);
+    while(sizeof(messageData) > maxPacketSize){
+        std::string temp = messageData.substr(0, maxPacketSize);
+        messageData = messageData.substr(maxPacketSize);
+        auto msgSent = socket.send_to(asio::buffer(temp, maxPacketSize), remote_endpoint, 0);
     }
     if(sizeof(messageData) != 0){
         auto msgSent = socket.send_to(asio::buffer(messageData, messageData.size()), remote_endpoint, 0);
@@ -57,7 +57,6 @@ void Connection::Recieve()
         socket.receive_from(asio::buffer(initial_buffer), remote_endpoint, 0, error);
 
         std::string msg = reinterpret_cast<char*>(initial_buffer.data());
-        //std::cout<<msg<<std::endl;
         int index = msg.find("!");
         std::string sizeStr = msg.substr(0, index);
         int size = stoi(sizeStr);
@@ -70,21 +69,17 @@ void Connection::Recieve()
         }
 
         int total_size = 0;
-        while (total_size < size - 1)
+        while (total_size < size)
         {
             std::vector<char> buf;
-            buf.resize((size - total_size) > 65500 ? 65500 : (size - total_size));
+            buf.resize((size - total_size) > maxPacketSize ? maxPacketSize : (size - total_size));
             socket.receive_from(asio::buffer(buf), remote_endpoint, 0, error);
-            total_size += (size - total_size) > 65500 ? 65500 : (size - total_size);
+            total_size += (size - total_size) > maxPacketSize ? maxPacketSize : (size - total_size);
             data_buffer.insert(data_buffer.end(), buf.begin(), buf.end());
         }
 
         if(!isDecoding && header == 4){
-            image_buffer1 = data_buffer;
-
-            //int frameSplitIndex = std::string(data_buffer.data()).find("!");
-            //image_buffer1.assign(data_buffer.begin(), data_buffer.begin() + frameSplitIndex);
-            //image_buffer2.assign(data_buffer.begin() + frameSplitIndex + 1, data_buffer.end());
+            image_buffer = data_buffer;
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);
