@@ -24,7 +24,7 @@ void error_callback( int error, const char *msg ) {
     UI::Get()->PublishOutput(s, LEV_CODE::GENERAL_ERROR);
 }
 
-void LoadTexture(std::vector<char>* dataPtr)
+void LoadTexture(std::vector<char>* dataPtr, int i)
 {
 	Connection* conn = Connection::Get();
     UI* gui = UI::Get();
@@ -52,7 +52,7 @@ void LoadTexture(std::vector<char>* dataPtr)
 
 	cv::flip(mat, mat, 1);
 
-    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
+    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture(i));
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -131,7 +131,8 @@ int main()
 		int joyCount, buttonCount;
 		if(!conn->GetDecoding() && conn->GetNewImage())
 		{
-			LoadTexture(conn->GetImageBuffer());
+			LoadTexture(conn->GetImageBuffer(1));
+			//LoadTexture(conn->GetImageBuffer(2));
 		}
 	}
 

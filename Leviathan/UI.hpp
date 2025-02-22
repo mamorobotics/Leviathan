@@ -26,7 +26,8 @@ private:
 	int cameraWidth, cameraHeight = 0;
 	int floatId = 0;
 	time_t start = time(0);
-	GLuint cameraTexture;
+	GLuint cameraTexture1;
+	GLuint cameraTexture2;
 	bool pauseCamera = false;
 	bool mainCamera = true;
 	bool statisticsOpen = false;
@@ -66,7 +67,7 @@ public:
 	bool isCameraPaused() { return pauseCamera; }
 	bool isMainCamera() { return mainCamera; }
 	int getCameraQuality() { return quality; }
-	GLuint getCameraTexture() { return cameraTexture; }
+	GLuint getCameraTexture(int i) { i==1? return cameraTexture1: return cameraTexture2; }
 	void setCameraWidth(int width) { cameraWidth = width; }
 	void setCameraHeight(int height) { cameraHeight = height; }
 };
