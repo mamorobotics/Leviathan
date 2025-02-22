@@ -16,7 +16,7 @@ void Serial::SendControllerAndGetFloatData()
 		//std::cout<<msgStr<<std::endl;
 
 		RS232_cputs(cport_nr, msgStr.c_str()); // sends string on serial
-		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
 		// while(notEnd){
 		// 	n = RS232_PollComport(cport_nr, (unsigned char*)buffer, sizeof(buffer) - 1);
