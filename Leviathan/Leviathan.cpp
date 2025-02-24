@@ -12,6 +12,9 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
+
 using namespace std::chrono;
 
 UI* UI::ui = new UI();
@@ -24,7 +27,7 @@ void error_callback( int error, const char *msg ) {
     UI::Get()->PublishOutput(s, LEV_CODE::GENERAL_ERROR);
 }
 
-void LoadTexture(std::vector<char>* dataPtr, int i)
+void LoadTexture(std::vector<char>* dataPtr)
 {
 	Connection* conn = Connection::Get();
     UI* gui = UI::Get();
@@ -52,7 +55,7 @@ void LoadTexture(std::vector<char>* dataPtr, int i)
 
 	cv::flip(mat, mat, 1);
 
-    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture(i));
+    glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mat.cols, mat.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, mat.data);
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -131,7 +134,7 @@ int main()
 		int joyCount, buttonCount;
 		if(!conn->GetDecoding() && conn->GetNewImage())
 		{
-			LoadTexture(conn->GetImageBuffer(1));
+			LoadTexture(conn->GetImageBuffer());
 			//LoadTexture(conn->GetImageBuffer(2));
 		}
 	}

@@ -65,7 +65,7 @@ void Connection::Recieve()
 
         data_buffer.resize(0);
         if(!isDecoding && header == 4){
-            image_buffer1.resize(size);
+            image_buffer.resize(size);
         }
 
         int total_size = 0;
@@ -79,13 +79,7 @@ void Connection::Recieve()
         }
 
         if(!isDecoding && header == 4){
-            image_buffer1 = data_buffer;
-
-            // size_t delimiterPos = std::find(data_buffer.begin(), data_buffer.end(), '!') - data_buffer.begin();
-            // std::vector<char> firstPart(data_buffer.begin(), data_buffer.begin() + delimiterPos);
-            // std::vector<char> secondPart(data_buffer.begin() + delimiterPos + 1, data_buffer.end());
-            // image_buffer1 = firstPart;
-            // image_buffer2 = secondPart;
+            image_buffer = data_buffer;
         }
 
         if (error.value()) gui->PublishOutput(error.message(), LEV_CODE::CONN_ERROR);

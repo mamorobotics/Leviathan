@@ -5,18 +5,10 @@ UI::UI()
 	
 }
 
-void UI::CreateCameraTexture(int i)
+void UI::CreateCameraTexture()
 {
-	if(i==1)
-	{
-		glGenTextures(1, &cameraTexture1);
-		glBindTexture(GL_TEXTURE_2D, cameraTexture1);
-	}
-	// else
-	// {
-	// 	glGenTextures(1, &cameraTexture2);
-	// 	glBindTexture(GL_TEXTURE_2D, cameraTexture2);
-	// }
+	glGenTextures(1, &cameraTexture);
+	glBindTexture(GL_TEXTURE_2D, cameraTexture);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -24,6 +16,22 @@ void UI::CreateCameraTexture(int i)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+GLuint UI::LoadStillAsTexture()
+{
+	GLuint texture;
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	return texture;
 }
 
 void UI::Init(GLFWwindow* window, const char* glsl_version)
@@ -109,8 +117,6 @@ void UI::Update()
 		ImGui::Begin("Stills");
 		if (ImGui::Button("Exit"))
 			stillsOpen = false;
-		if (ImGui::Button("Take Photo"))
-			cameraTexture
 		ImGui::End();
 	}
 
@@ -144,13 +150,9 @@ void UI::Update()
 	}
 
 	ImGui::End();
-	
-	ImGui::Begin("Main Camera View");
-	ImGui::Image((void*)(intptr_t)cameraTexture1, ImVec2(cameraWidth, cameraHeight));
-	ImGui::End();
-	
-	ImGui::Begin("Secondary Camera View");
-	ImGui::Image((void*)(intptr_t)cameraTexture2, ImVec2(cameraWidth, cameraHeight));
+
+	ImGui::Begin("Camera View");
+	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();
 
 	ImGui::Begin("Controller");
@@ -201,6 +203,33 @@ void UI::Update()
 	ImGui::Checkbox("Pause Video Feed", &pauseCamera);
 	ImGui::SliderInt("Quality", &quality , 0, 100, "%d%%");
 	ImGui::Checkbox("Main Camera", &mainCamera);
+	if (ImGui::Button("Take Photo"))
+		{
+			// GLint currentTextureID;
+			// glGetIntegerv(GL_TEXTURE_BINDING_2D, &currentTextureID);
+
+			GLuint fbo;
+			glGenFramebuffers(1, &fbo);
+			glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, cameraTexture, 0);
+
+
+			std::vector<unsigned char> buffer (730 * 1280 * 3);
+
+			glReadPixels(0, 0, 1280, 720, GL_RGB, GL_UNSIGNED_BYTE, buffer.data());
+			GLenum error = glGetError();
+			if(error != GL_NO_ERROR){
+				std::cout << "OpenGL error: " << error << std::endl; 
+			}
+
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			glDeleteFramebuffers(1, &fbo);
+
+			const char * filename = (std::to_string(stillNum) + ".jpg").c_str(); 
+
+			int success = stbi_write_jpg(filename, 1280, 720, 3, buffer.data(), 95);
+			stillNum++;
+		}
 	ImGui::End();
 }
 

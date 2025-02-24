@@ -26,9 +26,9 @@ class UI {
 private:
 	int cameraWidth, cameraHeight = 0;
 	int floatId = 0;
+	int stillNum = 1;
 	time_t start = time(0);
-	GLuint cameraTexture1;
-	GLuint cameraTexture2;
+	GLuint cameraTexture;
 	bool pauseCamera = false;
 	bool mainCamera = true;
 	bool statisticsOpen = false;
@@ -53,6 +53,7 @@ public:
 	UI();
 	UI(const UI& obj) = delete;
 	void CreateCameraTexture();
+	GLuint UI::LoadStillAsTexture()
 	void Init(GLFWwindow* window, const char* glsl_version);
 	void NewFrame();
 	void Update();
@@ -68,7 +69,7 @@ public:
 	bool isCameraPaused() { return pauseCamera; }
 	bool isMainCamera() { return mainCamera; }
 	int getCameraQuality() { return quality; }
-	GLuint getCameraTexture(int i) { i==1? return cameraTexture1: return cameraTexture2; }
+	GLuint getCameraTexture() { return cameraTexture; }
 	void setCameraWidth(int width) { cameraWidth = width; }
 	void setCameraHeight(int height) { cameraHeight = height; }
 };
