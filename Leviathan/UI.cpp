@@ -53,6 +53,10 @@ void UI::Update()
 	{
 		statisticsOpen = true;
 	}
+	if (ImGui::MenuItem("Stills"))
+	{
+		stillsOpen = true;
+	}
 	ImGui::EndMainMenuBar();
 
 	if (statisticsOpen)
@@ -92,14 +96,23 @@ void UI::Update()
 		ImGui::End();
 	}
 
+	if (stillsOpen)
+	{
+		ImGui::Begin("Stills");
+		if (ImGui::Button("Exit"))
+			stillsOpen = false;
+		if (ImGui::Button("Take Photo"))
+			cameraTexture
+		ImGui::End();
+	}
+
 	ImGui::Begin("Float");
+
 	Serial* ser = Serial::Get();
-	if (ImGui::Button("Exit"))
-		floatOpen = false;
 
-	ImGui::InputInt("Float Id", &floatId);
+	ImGui::InputInt("Ascent #", &floatId);
 
-	if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, -FLT_MIN)))
+	if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, 300)))
 	{
 		for (unsigned int n = 0; n < ser->getFloatOutputs().size(); n++) 
 		{
@@ -126,25 +139,6 @@ void UI::Update()
 
 	ImGui::Begin("Camera View");
 	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
-	ImGui::End();
-
-	ImGui::Begin("Networking");
-	Connection* conn = Connection::Get();
-	if (ImGui::CollapsingHeader("Host"))
-	{
-		ImGui::Text(("IP: " + connDetails.selfIP).c_str());
-		ImGui::Text(("Port: " + connDetails.selfPort).c_str());
-	}
-	if (ImGui::CollapsingHeader("Connection"))
-	{
-		ImGui::Text(("IP: " + connDetails.connectedIP).c_str());
-		ImGui::Text(("Port: " + connDetails.connectedPort).c_str());
-		ImGui::Text(("Status: " + connDetails.connectionStatus).c_str());
-	}
-	if (ImGui::Button("Reconnect")){
-		std::thread networkThread(&Connection::HandleHandshake, conn);
-		networkThread.detach();
-	}
 	ImGui::End();
 
 	ImGui::Begin("Controller");

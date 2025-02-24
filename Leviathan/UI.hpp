@@ -20,6 +20,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Controller.hpp"
+#include "stb_image_write.h"
 
 class UI {
 private:
@@ -30,7 +31,7 @@ private:
 	bool pauseCamera = false;
 	bool mainCamera = true;
 	bool statisticsOpen = false;
-	bool floatOpen = false;
+	bool stillsOpen = false;
 	int selectedController = 0;
 	int quality = 80;
 	float deltaVals[64];
