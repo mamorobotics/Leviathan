@@ -5,10 +5,18 @@ UI::UI()
 	
 }
 
-void UI::CreateCameraTexture()
+void UI::CreateCameraTexture(int i)
 {
-	glGenTextures(1, &cameraTexture);
-	glBindTexture(GL_TEXTURE_2D, cameraTexture);
+	if(i==1)
+	{
+		glGenTextures(1, &cameraTexture1);
+		glBindTexture(GL_TEXTURE_2D, cameraTexture1);
+	}
+	// else
+	// {
+	// 	glGenTextures(1, &cameraTexture2);
+	// 	glBindTexture(GL_TEXTURE_2D, cameraTexture2);
+	// }
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -136,9 +144,13 @@ void UI::Update()
 	}
 
 	ImGui::End();
-
-	ImGui::Begin("Camera View");
-	ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
+	
+	ImGui::Begin("Main Camera View");
+	ImGui::Image((void*)(intptr_t)cameraTexture1, ImVec2(cameraWidth, cameraHeight));
+	ImGui::End();
+	
+	ImGui::Begin("Secondary Camera View");
+	ImGui::Image((void*)(intptr_t)cameraTexture2, ImVec2(cameraWidth, cameraHeight));
 	ImGui::End();
 
 	ImGui::Begin("Controller");

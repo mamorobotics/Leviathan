@@ -38,7 +38,8 @@ private:
 	std::vector<char> header_buffer;
 	std::vector<char> initial_buffer;
 	std::vector<char> data_buffer;
-	std::vector<char> image_buffer;
+	std::vector<char> image_buffer1;
+	std::vector<char> image_buffer2;
 	int numMessages;
 	std::string recvLength;
 	std::string recvHeader;
