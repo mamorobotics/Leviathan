@@ -1,0 +1,4 @@
+var structasio_1_1traits_1_1require__member_3_01asio_1_1thread__pool_1_1basic__executor__type_3_01_af0df8dea293d6371b21c558773dc7b72 =
+[
+    [ "result_type", "structasio_1_1traits_1_1require__member_3_01asio_1_1thread__pool_1_1basic__executor__type_3_01_af0df8dea293d6371b21c558773dc7b72.html#ac57f9ec244945de1448eda27a82fb6c7", null ]
+];

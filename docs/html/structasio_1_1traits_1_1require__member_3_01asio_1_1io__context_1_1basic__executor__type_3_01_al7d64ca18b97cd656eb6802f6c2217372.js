@@ -1,0 +1,4 @@
+var structasio_1_1traits_1_1require__member_3_01asio_1_1io__context_1_1basic__executor__type_3_01_al7d64ca18b97cd656eb6802f6c2217372 =
+[
+    [ "result_type", "structasio_1_1traits_1_1require__member_3_01asio_1_1io__context_1_1basic__executor__type_3_01_al7d64ca18b97cd656eb6802f6c2217372.html#a3fb1242084d316917d1fa9024e925251", null ]
+];

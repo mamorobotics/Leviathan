@@ -1,0 +1,4 @@
+var structstd_1_1experimental_1_1coroutine__traits_3_01void_00_01_c_01_6_6_00_01asio_1_1experimental1f514eaeb13a7cb3d8d0c77b5e752b7b =
+[
+    [ "promise_type", "structstd_1_1experimental_1_1coroutine__traits_3_01void_00_01_c_01_6_6_00_01asio_1_1experimental1f514eaeb13a7cb3d8d0c77b5e752b7b.html#aeba07b7ab3596742b9dec8d417dd9031", null ]
+];

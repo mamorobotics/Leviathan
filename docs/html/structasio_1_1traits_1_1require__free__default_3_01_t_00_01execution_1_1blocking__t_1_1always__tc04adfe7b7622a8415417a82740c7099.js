@@ -1,0 +1,4 @@
+var structasio_1_1traits_1_1require__free__default_3_01_t_00_01execution_1_1blocking__t_1_1always__tc04adfe7b7622a8415417a82740c7099 =
+[
+    [ "result_type", "structasio_1_1traits_1_1require__free__default_3_01_t_00_01execution_1_1blocking__t_1_1always__tc04adfe7b7622a8415417a82740c7099.html#a2b3c44e48922e07a736557012650b63c", null ]
+];

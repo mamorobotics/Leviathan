@@ -1,0 +1,4 @@
+var structasio_1_1traits_1_1static__query_3_01_t_00_01execution_1_1mapping__t_00_01enable__if__t_3_0d1e08483cf884944e9dfae63d0bacf1a =
+[
+    [ "result_type", "structasio_1_1traits_1_1static__query_3_01_t_00_01execution_1_1mapping__t_00_01enable__if__t_3_0d1e08483cf884944e9dfae63d0bacf1a.html#a25b971ca11b9d5d0ba35a3ed13825801", null ]
+];

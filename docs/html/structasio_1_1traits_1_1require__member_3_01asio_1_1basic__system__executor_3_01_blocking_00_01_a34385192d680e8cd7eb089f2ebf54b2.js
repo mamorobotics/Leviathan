@@ -1,0 +1,4 @@
+var structasio_1_1traits_1_1require__member_3_01asio_1_1basic__system__executor_3_01_blocking_00_01_a34385192d680e8cd7eb089f2ebf54b2 =
+[
+    [ "result_type", "structasio_1_1traits_1_1require__member_3_01asio_1_1basic__system__executor_3_01_blocking_00_01_a34385192d680e8cd7eb089f2ebf54b2.html#aa775f912bfa6bd39f48ee747baffadba", null ]
+];

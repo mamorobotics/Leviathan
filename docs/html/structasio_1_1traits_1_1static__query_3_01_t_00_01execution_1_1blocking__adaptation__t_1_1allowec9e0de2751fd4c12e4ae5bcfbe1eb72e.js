@@ -1,0 +1,4 @@
+var structasio_1_1traits_1_1static__query_3_01_t_00_01execution_1_1blocking__adaptation__t_1_1allowec9e0de2751fd4c12e4ae5bcfbe1eb72e =
+[
+    [ "result_type", "structasio_1_1traits_1_1static__query_3_01_t_00_01execution_1_1blocking__adaptation__t_1_1allowec9e0de2751fd4c12e4ae5bcfbe1eb72e.html#ae60d848db445af890d5316780108cb08", null ]
+];
