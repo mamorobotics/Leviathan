@@ -12,8 +12,6 @@ void Serial::SendControllerAndGetFloatData()
 		notEnd = true;
 		ControllerValues* controllerValues = controller->GetControllerValues();
 		std::string msgStr = "<" + controllerValues->toStringPartial() + ">";
-		//std::cout<<"controller sent"<<std::endl;
-		//std::cout<<msgStr<<std::endl;
 
 		RS232_cputs(cport_nr, msgStr.c_str()); // sends string on serial
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
