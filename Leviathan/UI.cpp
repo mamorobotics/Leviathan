@@ -117,6 +117,13 @@ void UI::Update()
 		ImGui::Begin("Stills");
 		if (ImGui::Button("Exit"))
 			stillsOpen = false;
+		std::filesystem::path images = new std::filesystem::path{"images"};
+		for (auto const& dir_entry : std::filesystem::directory_iterator{images}) 
+		{
+			GLuint ImageTexture;
+			LoadTexture::LoadTextureFromFile(dir_entry.path(), ImageTexture, 1280, 720);
+			ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(1280, 720));
+		}
 		ImGui::End();
 	}
 
@@ -205,9 +212,6 @@ void UI::Update()
 	ImGui::Checkbox("Main Camera", &mainCamera);
 	if (ImGui::Button("Take Photo"))
 		{
-			// GLint currentTextureID;
-			// glGetIntegerv(GL_TEXTURE_BINDING_2D, &currentTextureID);
-
 			GLuint fbo;
 			glGenFramebuffers(1, &fbo);
 			glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -225,7 +229,7 @@ void UI::Update()
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			glDeleteFramebuffers(1, &fbo);
 
-			const char * filename = (std::to_string(stillNum) + ".jpg").c_str(); 
+			const char * filename = ("images\\" + std::to_string(stillNum) + ".jpg").c_str(); 
 
 			int success = stbi_write_jpg(filename, 1280, 720, 3, buffer.data(), 95);
 			stillNum++;

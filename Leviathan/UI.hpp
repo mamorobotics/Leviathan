@@ -20,7 +20,8 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Controller.hpp"
-#include "stb_image_write.h"
+#include "stb_image_write.hpp"
+#include "LoadTexture.hpp"
 
 class UI {
 private:
