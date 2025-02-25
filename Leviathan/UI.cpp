@@ -123,6 +123,7 @@ void UI::Update()
 			GLuint ImageTexture;
 			LoadTexture::LoadTextureFromFile(dir_entry.path(), ImageTexture, 1280, 720);
 			ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(1280, 720));
+			ImGui::SameLine();
 		}
 		ImGui::End();
 	}
