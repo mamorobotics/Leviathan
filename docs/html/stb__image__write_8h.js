@@ -1,6 +1,7 @@
 var stb__image__write_8h =
 [
     [ "STBIWDEF", "stb__image__write_8h.html#a1d964457ebf7cc898b8cb14e66cbfaa8", null ],
+    [ "stbi_write_func", "stb__image__write_8h.html#a2326fd2fd79095b9ef34695a0bda114f", null ],
     [ "stbi_flip_vertically_on_write", "stb__image__write_8h.html#a5c41a5d16dc665edd2489b982ba29b85", null ],
     [ "stbi_write_bmp", "stb__image__write_8h.html#a4f63ec842984e5db3edf2da89f16038e", null ],
     [ "stbi_write_bmp_to_func", "stb__image__write_8h.html#aca9573665994b2244a6a045b2a1df1ea", null ],

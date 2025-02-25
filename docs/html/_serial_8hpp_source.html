@@ -111,8 +111,8 @@ $(function(){initNavTree('_serial_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="asio_8hpp.html">asio.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="asio_8hpp.html">asio.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;asio.hpp&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;asio.hpp&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_u_i_8hpp.html">UI.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;atomic&gt;</span></div>
@@ -121,9 +121,9 @@ $(function(){initNavTree('_serial_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="_management_8hpp.html">Management.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="glad_8h.html">glad/glad.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="glfw3_8h.html">GLFW/glfw3.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="rs232_8h.html">lib/RS-232/rs232.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;glad/glad.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;GLFW/glfw3.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;lib/RS-232/rs232.h&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_serial.html">   21</a></span><span class="keyword">class </span><a class="code hl_function" href="class_serial.html#a3667c3137f2df94716b5193f9fb736ab">Serial</a></div>
@@ -145,9 +145,9 @@ $(function(){initNavTree('_serial_8hpp_source.html',''); initResizable(true); })
 <div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_serial.html#a3667c3137f2df94716b5193f9fb736ab">   37</a></span>    <a class="code hl_function" href="class_serial.html#a3667c3137f2df94716b5193f9fb736ab">Serial</a>(){</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">int</span> bdrate=9600; <span class="comment">/* 9600 baud */</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">char</span> <a class="code hl_typedef" href="glad_8h.html#a1e71d9c196e4683cc06c4b54d53f7ef5">mode</a>[]={<span class="charliteral">&#39;8&#39;</span>,<span class="charliteral">&#39;N&#39;</span>,<span class="charliteral">&#39;1&#39;</span>,0}; <span class="comment">// 8 data bits, no parity, 1 stop bit</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">char</span> mode[]={<span class="charliteral">&#39;8&#39;</span>,<span class="charliteral">&#39;N&#39;</span>,<span class="charliteral">&#39;1&#39;</span>,0}; <span class="comment">// 8 data bits, no parity, 1 stop bit</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span>(<a class="code hl_function" href="rs232_8c.html#a8387633166c515d774ad158ba266d06a">RS232_OpenComport</a>(cport_nr, bdrate, <a class="code hl_typedef" href="glad_8h.html#a1e71d9c196e4683cc06c4b54d53f7ef5">mode</a>, 0))</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span>(RS232_OpenComport(cport_nr, bdrate, mode, 0))</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="comment">//UI* gui = UI::Get();</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="comment">//gui-&gt;PublishOutput(&quot;Can not open comport&quot;, LEV_CODE::CONN_ERROR);</span></div>
@@ -184,7 +184,6 @@ $(function(){initNavTree('_serial_8hpp_source.html',''); initResizable(true); })
 </div>
 <div class="ttc" id="a_management_8hpp_html"><div class="ttname"><a href="_management_8hpp.html">Management.hpp</a></div></div>
 <div class="ttc" id="a_u_i_8hpp_html"><div class="ttname"><a href="_u_i_8hpp.html">UI.hpp</a></div></div>
-<div class="ttc" id="aasio_8hpp_html"><div class="ttname"><a href="asio_8hpp.html">asio.hpp</a></div></div>
 <div class="ttc" id="aclass_serial_html_a3667c3137f2df94716b5193f9fb736ab"><div class="ttname"><a href="class_serial.html#a3667c3137f2df94716b5193f9fb736ab">Serial::Serial</a></div><div class="ttdeci">Serial()</div><div class="ttdef"><b>Definition</b> Serial.hpp:37</div></div>
 <div class="ttc" id="aclass_serial_html_a36a3e6bd8dfa59d7366eab1b422a091d"><div class="ttname"><a href="class_serial.html#a36a3e6bd8dfa59d7366eab1b422a091d">Serial::Get</a></div><div class="ttdeci">static Serial * Get()</div><div class="ttdef"><b>Definition</b> Serial.cpp:76</div></div>
 <div class="ttc" id="aclass_serial_html_a5b32c394c0ff923a4ef1c13cfb20a6ba"><div class="ttname"><a href="class_serial.html#a5b32c394c0ff923a4ef1c13cfb20a6ba">Serial::~Serial</a></div><div class="ttdeci">~Serial()</div><div class="ttdef"><b>Definition</b> Serial.cpp:72</div></div>
@@ -193,11 +192,6 @@ $(function(){initNavTree('_serial_8hpp_source.html',''); initResizable(true); })
 <div class="ttc" id="aclass_serial_html_abe96595fe97338307381ba281abd8a8c"><div class="ttname"><a href="class_serial.html#abe96595fe97338307381ba281abd8a8c">Serial::Serial</a></div><div class="ttdeci">Serial(const Serial &amp;obj)=delete</div></div>
 <div class="ttc" id="aclass_serial_html_ac3fb1ecd0851fbcf3c72b5beabde55db"><div class="ttname"><a href="class_serial.html#ac3fb1ecd0851fbcf3c72b5beabde55db">Serial::SendControllerAndGetFloatData</a></div><div class="ttdeci">void SendControllerAndGetFloatData()</div><div class="ttdef"><b>Definition</b> Serial.cpp:3</div></div>
 <div class="ttc" id="aclass_serial_html_ae03a721b88403f753099105055387321"><div class="ttname"><a href="class_serial.html#ae03a721b88403f753099105055387321">Serial::getNumDataPts</a></div><div class="ttdeci">int getNumDataPts(int i)</div><div class="ttdef"><b>Definition</b> Serial.hpp:55</div></div>
-<div class="ttc" id="aglad_8h_html"><div class="ttname"><a href="glad_8h.html">glad.h</a></div></div>
-<div class="ttc" id="aglad_8h_html_a1e71d9c196e4683cc06c4b54d53f7ef5"><div class="ttname"><a href="glad_8h.html#a1e71d9c196e4683cc06c4b54d53f7ef5">mode</a></div><div class="ttdeci">GLenum mode</div><div class="ttdef"><b>Definition</b> glad.h:1395</div></div>
-<div class="ttc" id="aglfw3_8h_html"><div class="ttname"><a href="glfw3_8h.html">glfw3.h</a></div><div class="ttdoc">The header of the GLFW 3 API.</div></div>
-<div class="ttc" id="ars232_8c_html_a8387633166c515d774ad158ba266d06a"><div class="ttname"><a href="rs232_8c.html#a8387633166c515d774ad158ba266d06a">RS232_OpenComport</a></div><div class="ttdeci">int RS232_OpenComport(int comport_number, int baudrate, const char *mode, int flowctrl)</div><div class="ttdef"><b>Definition</b> rs232.c:540</div></div>
-<div class="ttc" id="ars232_8h_html"><div class="ttname"><a href="rs232_8h.html">rs232.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

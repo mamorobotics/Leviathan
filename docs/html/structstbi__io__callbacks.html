@@ -113,11 +113,11 @@ $(function(){initNavTree('structstbi__io__callbacks.html',''); initResizable(tru
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a623e46b3a2a019611601409926283a88" id="r_a623e46b3a2a019611601409926283a88"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a623e46b3a2a019611601409926283a88">read</a> )(<a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a> *user, char *<a class="el" href="glad_8h.html#abd87654504355b4c1bb002dcb1d4d16a">data</a>, int <a class="el" href="glad_8h.html#a3d1e3edfcf61ca2d831883e1afbad89e">size</a>)</td></tr>
+<tr class="memitem:a623e46b3a2a019611601409926283a88" id="r_a623e46b3a2a019611601409926283a88"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a623e46b3a2a019611601409926283a88">read</a> )(void *user, char *data, int size)</td></tr>
 <tr class="separator:a623e46b3a2a019611601409926283a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a257aac5480a90a6c4b8fbe86c1b01068" id="r_a257aac5480a90a6c4b8fbe86c1b01068"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a257aac5480a90a6c4b8fbe86c1b01068">skip</a> )(<a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a> *user, int n)</td></tr>
+<tr class="memitem:a257aac5480a90a6c4b8fbe86c1b01068" id="r_a257aac5480a90a6c4b8fbe86c1b01068"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a257aac5480a90a6c4b8fbe86c1b01068">skip</a> )(void *user, int n)</td></tr>
 <tr class="separator:a257aac5480a90a6c4b8fbe86c1b01068"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a319639db2f76e715eed7a7a974136832" id="r_a319639db2f76e715eed7a7a974136832"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a319639db2f76e715eed7a7a974136832">eof</a> )(<a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a> *user)</td></tr>
+<tr class="memitem:a319639db2f76e715eed7a7a974136832" id="r_a319639db2f76e715eed7a7a974136832"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a319639db2f76e715eed7a7a974136832">eof</a> )(void *user)</td></tr>
 <tr class="separator:a319639db2f76e715eed7a7a974136832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -128,7 +128,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* stbi_io_callbacks::eof) (<a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a> *user)</td>
+          <td class="memname">int(* stbi_io_callbacks::eof) (void *user)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -142,7 +142,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* stbi_io_callbacks::read) (<a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a> *user, char *<a class="el" href="glad_8h.html#abd87654504355b4c1bb002dcb1d4d16a">data</a>, int <a class="el" href="glad_8h.html#a3d1e3edfcf61ca2d831883e1afbad89e">size</a>)</td>
+          <td class="memname">int(* stbi_io_callbacks::read) (void *user, char *data, int size)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -156,7 +156,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a>(* stbi_io_callbacks::skip) (<a class="el" href="bind__immediate__executor_8cpp.html#a59a5a6248bbe8018ef97e7c0490d1508">void</a> *user, int n)</td>
+          <td class="memname">void(* stbi_io_callbacks::skip) (void *user, int n)</td>
         </tr>
       </table>
 </div><div class="memdoc">

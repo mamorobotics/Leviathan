@@ -1,8 +1,7 @@
 var dir_dfc9ca28b7a844e2eda8fd52791bb330 =
 [
-    [ "lib", "dir_4d53a6655195b5dd92ff9dc9f6007fde.html", "dir_4d53a6655195b5dd92ff9dc9f6007fde" ],
     [ "ConnDetails.hpp", "_conn_details_8hpp.html", "_conn_details_8hpp" ],
-    [ "Connection.cpp", "connection_8cpp.html", null ],
+    [ "Connection.cpp", "_connection_8cpp.html", null ],
     [ "Connection.hpp", "_connection_8hpp.html", "_connection_8hpp" ],
     [ "Controller.cpp", "_controller_8cpp.html", null ],
     [ "Controller.hpp", "_controller_8hpp.html", "_controller_8hpp" ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_5fglfwdecorationsidewayland_0',['_GLFWdecorationSideWayland',['../wl__platform_8h.html#ad60a0a27370d399e4f9fd58d1eeef1ac',1,'wl_platform.h']]]
+  ['lev_5fcode_0',['LEV_CODE',['../_management_8hpp.html#ac5583769968c2840da2616d733509990',1,'Management.hpp']]]
 ];
