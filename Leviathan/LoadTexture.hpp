@@ -1,8 +1,19 @@
 #include "stb_image.h"
 #include "glad/glad.h"
 
+/**
+ * @class LoadTexture
+ * @brief Loads textures from files
+ */
 class LoadTexture {
 public:
+    /**
+     * @brief Loads a texture from a file.
+     * @param filename input file name as a char* string to read from.
+     * @param out_texture output GLuint pointer of the texture created.
+     * @param out_width output int of the width of the texture created.
+     * @param out_height output int of the height of the texture created.
+     */
     static bool LoadTextureFromFile(const char* filename, GLuint* out_texture, int* out_width, int* out_height)
     {
         // Load from file

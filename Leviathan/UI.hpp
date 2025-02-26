@@ -28,7 +28,6 @@
  * @class UI
  * @brief Handles the user interface of leviathan
  */
-
 class UI {
 private:
 	int cameraWidth, cameraHeight = 0;
