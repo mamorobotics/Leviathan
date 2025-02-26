@@ -56,8 +56,20 @@ public:
 	UI(const UI& obj) = delete;
 	void CreateCameraTexture();
 	GLuint LoadStillAsTexture();
+	/**
+     * @brief This initializes the IMGUI instance, setting IMGUI config variables and setting linking it to the glsl instance.
+	 * @param window A GLFWwindow pointer to the window object created by glfw.
+	 * @param glsl_version A char array pointer stating the currently used glsl version (recommended "#version 120").
+     */
 	void Init(GLFWwindow* window, const char* glsl_version);
+	/**
+     * @brief Creates the imgui instance, seperated out from Init for control flow purposes. 
+     */
 	void NewFrame();
+	/**
+     * @brief Update handles the main event loop of the IMGUI application. 
+	 * In here you can define all UI elements to be displayed and how they interact with the program around them.
+     */
 	void Update();
 	void Render(GLFWwindow* window);
 	void PublishOutput(std::string msg, LEV_CODE code = LEV_CODE::CLEAR);
@@ -68,10 +80,34 @@ public:
 	static UI* Get();
 	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
+	/**
+     * @brief Returns whether or not the camera is currently paused through the camera UI.
+	 * @return Boolean stating whether or not the camera is paused.
+     */
 	bool isCameraPaused() { return pauseCamera; }
+	/**
+     * @brief Returns whether or not the currently selected camera in the UI is the "main camera" (Going to be deprecated later for multi-camera).
+	 * @return Boolean stating whether or not the currently slected camera is "main".
+     */
 	bool isMainCamera() { return mainCamera; }
+	/**
+     * @brief Returns the currently requested camera quality within the UI.
+	 * @return Integer stating currently requested camera quality.
+     */
 	int getCameraQuality() { return quality; }
+	/**
+     * @brief Returns the texture buffer the camera writes to.
+	 * @return GLuint representing the camera texture buffer.
+     */
 	GLuint getCameraTexture() { return cameraTexture; }
+	/**
+     * @brief Set the camera width throughout the application.
+	 * @param width Integrer stating the width.
+     */
 	void setCameraWidth(int width) { cameraWidth = width; }
+	/**
+     * @brief Set the camera height throughout the application.
+	 * @param height Integer stating the height.
+     */
 	void setCameraHeight(int height) { cameraHeight = height; }
 };

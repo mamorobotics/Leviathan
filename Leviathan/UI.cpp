@@ -121,10 +121,8 @@ void UI::Update()
 		for (auto const& dir_entry : std::filesystem::directory_iterator{images}) 
 		{
 			GLuint ImageTexture;
-			int width = 1280;
-			int height = 720;
-			LoadTexture::LoadTextureFromFile(dir_entry.path().string().c_str(), &ImageTexture, &width, &height);
-			ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(160, 90));
+			LoadTexture::LoadTextureFromFile(dir_entry.path().string().c_str(), &ImageTexture, &cameraWidth, &cameraHeight);
+			ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(cameraWidth, cameraHeight));
 			ImGui::SameLine();
 		}
 		ImGui::End();
@@ -221,9 +219,9 @@ void UI::Update()
 			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, cameraTexture, 0);
 
 
-			std::vector<unsigned char> buffer (730 * 1280 * 3);
+			std::vector<unsigned char> buffer (cameraWidth * cameraHeight * 3);
 
-			glReadPixels(0, 0, 1280, 720, GL_RGB, GL_UNSIGNED_BYTE, buffer.data());
+			glReadPixels(0, 0, cameraWidth, cameraHeight, GL_RGB, GL_UNSIGNED_BYTE, buffer.data());
 			GLenum error = glGetError();
 			if(error != GL_NO_ERROR){
 				std::cout << "OpenGL error: " << error << std::endl; 
@@ -234,7 +232,7 @@ void UI::Update()
 
 			const char * filename = ("images\\" + std::to_string(stillNum) + ".jpg").c_str(); 
 
-			int success = stbi_write_jpg(filename, 1280, 720, 3, buffer.data(), 95);
+			int success = stbi_write_jpg(filename, cameraWidth, cameraHeight, 3, buffer.data(), 95);
 			stillNum++;
 		}
 	ImGui::End();
