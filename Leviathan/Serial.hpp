@@ -18,6 +18,10 @@
 #include "GLFW/glfw3.h"
 #include "lib/RS-232/rs232.h"
 
+/**
+ * @class Serial
+ * @brief Connects via usb Serial to the Arduino nano so send controller data and receive float data.
+ */
 class Serial
 {
 private:

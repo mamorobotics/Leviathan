@@ -132,17 +132,17 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a343987d157ef748864b4bee254de479c" id="r_a343987d157ef748864b4bee254de479c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a343987d157ef748864b4bee254de479c">error_callback</a> (int error, const char *msg)</td></tr>
+<tr class="memdesc:a343987d157ef748864b4bee254de479c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function publishes the error message to telemetry.  <br /></td></tr>
 <tr class="separator:a343987d157ef748864b4bee254de479c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a811b30b6f08e019bc0505a6341720ceb" id="r_a811b30b6f08e019bc0505a6341720ceb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a811b30b6f08e019bc0505a6341720ceb">LoadTexture</a> (std::vector&lt; char &gt; *dataPtr)</td></tr>
+<tr class="memdesc:a811b30b6f08e019bc0505a6341720ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function loads the texture from the given data buffer and stores it to the camera texture.  <br /></td></tr>
 <tr class="separator:a811b30b6f08e019bc0505a6341720ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the main entry point of the program. </p>
-<p>This file contains the main function and initializes all subsystems.</p>
-<dl class="section author"><dt>Author</dt><dd>Your Name </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025-02-25 </dd></dl>
+<p>This file contains the main function and initializes all subsystems. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a18372412ad2fc3ce1e3240b3cf0efe78" name="a18372412ad2fc3ce1e3240b3cf0efe78"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18372412ad2fc3ce1e3240b3cf0efe78">&#9670;&#160;</a></span>STB_IMAGE_IMPLEMENTATION</h2>
@@ -192,6 +192,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This function publishes the error message to telemetry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>the general error code </td></tr>
+    <tr><td class="paramname">msg</td><td>the error message </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a811b30b6f08e019bc0505a6341720ceb" name="a811b30b6f08e019bc0505a6341720ceb"></a>
@@ -208,6 +217,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function loads the texture from the given data buffer and stores it to the camera texture. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dataPtr</td><td>pointer to the data buffer so that texture can be loaded </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
