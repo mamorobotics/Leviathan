@@ -54,6 +54,9 @@ public:
 
 	UI();
 	UI(const UI& obj) = delete;
+	/**
+     * @brief Creates the camera texture buffer.
+     */
 	void CreateCameraTexture();
 	GLuint LoadStillAsTexture();
 	/**
@@ -69,15 +72,40 @@ public:
 	/**
      * @brief Update handles the main event loop of the IMGUI application. 
 	 * In here you can define all UI elements to be displayed and how they interact with the program around them.
+	 * This code does not specifically display the window, just defines how it looks and behaves.
      */
 	void Update();
+	/**
+     * @brief Handles the final rendering of the window to the screen.
+	 * @param window GLFWwindow pointer of the application window to publish to.
+     */
 	void Render(GLFWwindow* window);
+	/**
+     * @brief Publishes data to the output box.
+	 * @param msg Message string to be published
+	 * @param code Output code defined by LEV_CODE within Management.hpp.
+     */
 	void PublishOutput(std::string msg, LEV_CODE code = LEV_CODE::CLEAR);
+	/**
+     * @brief Publishes data to the telemetry box.
+	 * @param id The string ID of the telemetric data to show.
+	 * @param value The string value of the telemetric data to update.
+     */
 	void PublishTelemetry(std::string id, std::string value);
+	/**
+     * @brief Shuts down the application smoothly.
+     */
 	void Shutdown();
 	~UI();
 
+	/**
+     * @brief Grabs the UI singleton pointer.
+     */
 	static UI* Get();
+	/**
+     * @brief Sets the current UI update delta time for debugging purposes.
+	 * @param time Current delta time.
+     */
 	void setMainDeltaTime(float time) { mainDeltaTime = time; }
 	void setConnectionDetails(ConnDetails connDetails);
 	/**
