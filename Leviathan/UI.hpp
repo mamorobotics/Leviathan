@@ -24,6 +24,11 @@
 #include "stb_image_write.h"
 #include "LoadTexture.hpp"
 
+/**
+ * @class UI
+ * @brief Handles the user interface of leviathan
+ */
+
 class UI {
 private:
 	int cameraWidth, cameraHeight = 0;
