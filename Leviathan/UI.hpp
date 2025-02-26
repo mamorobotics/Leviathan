@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <filesystem>
 #include <time.h>
 #include <tuple>
 #include <thread>
@@ -54,7 +55,7 @@ public:
 	UI();
 	UI(const UI& obj) = delete;
 	void CreateCameraTexture();
-	GLuint UI::LoadStillAsTexture()
+	GLuint LoadStillAsTexture();
 	void Init(GLFWwindow* window, const char* glsl_version);
 	void NewFrame();
 	void Update();
