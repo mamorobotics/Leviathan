@@ -110,13 +110,18 @@ $(function(){initNavTree('class_controller_values.html',''); initResizable(true)
 </div><!--header-->
 <div class="contents">
 
+<p>Handles the representation of the values of a controller throughout the application.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_controller_values_8hpp_source.html">ControllerValues.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8f67c44408a9c0e6004ababbdd2d480d" id="r_a8f67c44408a9c0e6004ababbdd2d480d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f67c44408a9c0e6004ababbdd2d480d">toStringFull</a> ()</td></tr>
+<tr class="memdesc:a8f67c44408a9c0e6004ababbdd2d480d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms all values into a string seperated by "!". Does not modify values.  <br /></td></tr>
 <tr class="separator:a8f67c44408a9c0e6004ababbdd2d480d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8875d2a6e8062a325dc82109c20c604f" id="r_a8875d2a6e8062a325dc82109c20c604f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8875d2a6e8062a325dc82109c20c604f">toStringPartial</a> ()</td></tr>
+<tr class="memdesc:a8875d2a6e8062a325dc82109c20c604f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms all values into a string seperated by "!". It automatically tranasforms and clamps each value into a more "space effecient" storage medium with joy's mapped into non-float values with 4 sig-figs, and represents buttons only if pressed.  <br /></td></tr>
 <tr class="separator:a8875d2a6e8062a325dc82109c20c604f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -154,7 +159,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aa66da322dd5127232944dacdebbba2f1" id="r_aa66da322dd5127232944dacdebbba2f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa66da322dd5127232944dacdebbba2f1">right</a></td></tr>
 <tr class="separator:aa66da322dd5127232944dacdebbba2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Handles the representation of the values of a controller throughout the application. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8f67c44408a9c0e6004ababbdd2d480d" name="a8f67c44408a9c0e6004ababbdd2d480d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f67c44408a9c0e6004ababbdd2d480d">&#9670;&#160;</a></span>toStringFull()</h2>
 
@@ -177,6 +184,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Transforms all values into a string seperated by "!". Does not modify values. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns a string of values as stated above. </dd></dl>
 
 </div>
 </div>
@@ -202,6 +212,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Transforms all values into a string seperated by "!". It automatically tranasforms and clamps each value into a more "space effecient" storage medium with joy's mapped into non-float values with 4 sig-figs, and represents buttons only if pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns a string of values as stated above. </dd></dl>
 
 </div>
 </div>

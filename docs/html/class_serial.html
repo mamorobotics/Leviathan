@@ -110,19 +110,27 @@ $(function(){initNavTree('class_serial.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
+<p>Connects via usb <a class="el" href="class_serial.html" title="Connects via usb Serial to the Arduino nano so send controller data and receive float data.">Serial</a> to the Arduino nano so send controller data and receive float data.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_serial_8hpp_source.html">Serial.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3667c3137f2df94716b5193f9fb736ab" id="r_a3667c3137f2df94716b5193f9fb736ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3667c3137f2df94716b5193f9fb736ab">Serial</a> ()</td></tr>
+<tr class="memdesc:a3667c3137f2df94716b5193f9fb736ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init the seril class and starts connection with Arduino to send controller data and receive float data.  <br /></td></tr>
 <tr class="separator:a3667c3137f2df94716b5193f9fb736ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3fb1ecd0851fbcf3c72b5beabde55db" id="r_ac3fb1ecd0851fbcf3c72b5beabde55db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3fb1ecd0851fbcf3c72b5beabde55db">SendControllerAndGetFloatData</a> ()</td></tr>
+<tr class="memdesc:ac3fb1ecd0851fbcf3c72b5beabde55db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primary function that opperates the call and response between the Arduino and the computer.  <br /></td></tr>
 <tr class="separator:ac3fb1ecd0851fbcf3c72b5beabde55db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc85f1dd368e8851ad3c8409e7453a5" id="r_aabc85f1dd368e8851ad3c8409e7453a5"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::array&lt; float, 128 &gt;, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aabc85f1dd368e8851ad3c8409e7453a5">getDepthVals</a> (int i)</td></tr>
+<tr class="memdesc:aabc85f1dd368e8851ad3c8409e7453a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a getter for depth values.  <br /></td></tr>
 <tr class="separator:aabc85f1dd368e8851ad3c8409e7453a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae03a721b88403f753099105055387321" id="r_ae03a721b88403f753099105055387321"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae03a721b88403f753099105055387321">getNumDataPts</a> (int i)</td></tr>
+<tr class="memdesc:ae03a721b88403f753099105055387321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get amount of data in the depth profile.  <br /></td></tr>
 <tr class="separator:ae03a721b88403f753099105055387321"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a601075814cb4a8b11c44b79934e4ffbf" id="r_a601075814cb4a8b11c44b79934e4ffbf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a601075814cb4a8b11c44b79934e4ffbf">getFloatOutputs</a> ()</td></tr>
+<tr class="memdesc:a601075814cb4a8b11c44b79934e4ffbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the float outputs  <br /></td></tr>
 <tr class="separator:a601075814cb4a8b11c44b79934e4ffbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe96595fe97338307381ba281abd8a8c" id="r_abe96595fe97338307381ba281abd8a8c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe96595fe97338307381ba281abd8a8c">Serial</a> (const <a class="el" href="class_serial.html">Serial</a> &amp;obj)=delete</td></tr>
 <tr class="separator:abe96595fe97338307381ba281abd8a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,7 +142,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a36a3e6bd8dfa59d7366eab1b422a091d" id="r_a36a3e6bd8dfa59d7366eab1b422a091d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_serial.html">Serial</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36a3e6bd8dfa59d7366eab1b422a091d">Get</a> ()</td></tr>
 <tr class="separator:a36a3e6bd8dfa59d7366eab1b422a091d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Connects via usb <a class="el" href="class_serial.html" title="Connects via usb Serial to the Arduino nano so send controller data and receive float data.">Serial</a> to the Arduino nano so send controller data and receive float data. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3667c3137f2df94716b5193f9fb736ab" name="a3667c3137f2df94716b5193f9fb736ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3667c3137f2df94716b5193f9fb736ab">&#9670;&#160;</a></span>Serial() <span class="overload">[1/2]</span></h2>
 
@@ -157,6 +167,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Init the seril class and starts connection with Arduino to send controller data and receive float data. </p>
 
 </div>
 </div>
@@ -251,6 +263,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>This is a getter for depth values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>float ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of depth values each item contains the time depth was recorded and the depth value </dd></dl>
+
 </div>
 </div>
 <a id="a601075814cb4a8b11c44b79934e4ffbf" name="a601075814cb4a8b11c44b79934e4ffbf"></a>
@@ -275,6 +296,9 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>returns the float outputs </p>
+<dl class="section return"><dt>Returns</dt><dd>vector of float outputs </dd></dl>
 
 </div>
 </div>
@@ -301,6 +325,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get amount of data in the depth profile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>float ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of data points </dd></dl>
+
 </div>
 </div>
 <a id="ac3fb1ecd0851fbcf3c72b5beabde55db" name="ac3fb1ecd0851fbcf3c72b5beabde55db"></a>
@@ -317,6 +350,8 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Primary function that opperates the call and response between the Arduino and the computer. </p>
 
 </div>
 </div>

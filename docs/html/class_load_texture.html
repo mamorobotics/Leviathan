@@ -109,14 +109,20 @@ $(function(){initNavTree('class_load_texture.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
+<p>Loads textures from files.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_load_texture_8hpp_source.html">LoadTexture.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a60aac90a14e324ca6111e7b3fad7afa3" id="r_a60aac90a14e324ca6111e7b3fad7afa3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60aac90a14e324ca6111e7b3fad7afa3">LoadTextureFromFile</a> (const char *filename, GLuint *out_texture, int *out_width, int *out_height)</td></tr>
+<tr class="memdesc:a60aac90a14e324ca6111e7b3fad7afa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a texture from a file.  <br /></td></tr>
 <tr class="separator:a60aac90a14e324ca6111e7b3fad7afa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Loads textures from files. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a60aac90a14e324ca6111e7b3fad7afa3" name="a60aac90a14e324ca6111e7b3fad7afa3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60aac90a14e324ca6111e7b3fad7afa3">&#9670;&#160;</a></span>LoadTextureFromFile()</h2>
 
@@ -153,6 +159,17 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Loads a texture from a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>input file name as a char* string to read from. </td></tr>
+    <tr><td class="paramname">out_texture</td><td>output GLuint pointer of the texture created. </td></tr>
+    <tr><td class="paramname">out_width</td><td>output int of the width of the texture created. </td></tr>
+    <tr><td class="paramname">out_height</td><td>output int of the height of the texture created. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

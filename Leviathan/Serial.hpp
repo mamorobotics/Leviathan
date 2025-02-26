@@ -38,6 +38,10 @@ private:
 	static Serial* serial;
 
 public:
+	/**
+     * @brief Init the seril class and starts connection with Arduino to send controller data
+	 * and receive float data.
+     */
 	Serial(){
 		int bdrate=9600; /* 9600 baud */
 		char mode[]={'8','N','1',0}; // 8 data bits, no parity, 1 stop bit
@@ -49,19 +53,38 @@ public:
 			std::cout<<"cannnot open comport"<<std::endl;
         }
 	}
+	/**
+     * @brief Primary function that opperates the call and response between the Arduino 
+	 * and the computer.
+     */
 	void SendControllerAndGetFloatData();
+	/**
+     * @brief This is a getter for depth values
+	 * @param i float ID
+	 * @return array of depth values each item contains the time depth
+	 * was recorded and the depth value
+     */
 	std::array<std::array<float, 128>, 2> getDepthVals(int i){
 		if(i==1){
 			return depthProfileOne;
 		}
 		return depthProfileTwo;
 	}
+	/**
+     * @brief Get amount of data in the depth profile
+	 * @param i float ID
+	 * @return number of data points
+     */
 	int getNumDataPts(int i){
 		if(i==1){
 			return dataPts1;
 		}
 		return dataPts2;
 	}
+	/**
+     * @brief returns the float outputs
+	 * @return vector of float outputs
+     */
 	std::vector<std::string> getFloatOutputs(){
 		return floatOutputs;
 	}

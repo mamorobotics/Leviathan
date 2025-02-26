@@ -111,6 +111,9 @@ $(function(){initNavTree('class_u_i.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
+<p>Handles the user interface of leviathan.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_u_i_8hpp_source.html">UI.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -120,45 +123,61 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a864459b76a367c20fed1296d3fd92955" id="r_a864459b76a367c20fed1296d3fd92955"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a864459b76a367c20fed1296d3fd92955">UI</a> (const <a class="el" href="class_u_i.html">UI</a> &amp;obj)=delete</td></tr>
 <tr class="separator:a864459b76a367c20fed1296d3fd92955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c324b4a7302b75ecebf6f31b455eccb" id="r_a1c324b4a7302b75ecebf6f31b455eccb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c324b4a7302b75ecebf6f31b455eccb">CreateCameraTexture</a> ()</td></tr>
+<tr class="memdesc:a1c324b4a7302b75ecebf6f31b455eccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the camera texture buffer.  <br /></td></tr>
 <tr class="separator:a1c324b4a7302b75ecebf6f31b455eccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1aed0692161c0b26ddfd34c76e49e3ba" id="r_a1aed0692161c0b26ddfd34c76e49e3ba"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1aed0692161c0b26ddfd34c76e49e3ba">LoadStillAsTexture</a> ()</td></tr>
 <tr class="separator:a1aed0692161c0b26ddfd34c76e49e3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad223bba30d9f30acaa15490777102961" id="r_ad223bba30d9f30acaa15490777102961"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad223bba30d9f30acaa15490777102961">Init</a> (GLFWwindow *window, const char *glsl_version)</td></tr>
+<tr class="memdesc:ad223bba30d9f30acaa15490777102961"><td class="mdescLeft">&#160;</td><td class="mdescRight">This initializes the IMGUI instance, setting IMGUI config variables and setting linking it to the glsl instance.  <br /></td></tr>
 <tr class="separator:ad223bba30d9f30acaa15490777102961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a902606a95a6acd4651315e70ea653520" id="r_a902606a95a6acd4651315e70ea653520"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a902606a95a6acd4651315e70ea653520">NewFrame</a> ()</td></tr>
+<tr class="memdesc:a902606a95a6acd4651315e70ea653520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the imgui instance, seperated out from Init for control flow purposes.  <br /></td></tr>
 <tr class="separator:a902606a95a6acd4651315e70ea653520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a232c0f650742de92f021baf74ea07ee8" id="r_a232c0f650742de92f021baf74ea07ee8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a232c0f650742de92f021baf74ea07ee8">Update</a> ()</td></tr>
+<tr class="memdesc:a232c0f650742de92f021baf74ea07ee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update handles the main event loop of the IMGUI application. In here you can define all <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> elements to be displayed and how they interact with the program around them. This code does not specifically display the window, just defines how it looks and behaves.  <br /></td></tr>
 <tr class="separator:a232c0f650742de92f021baf74ea07ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fee935a54f2af6ad51686a5b2b83e4e" id="r_a4fee935a54f2af6ad51686a5b2b83e4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fee935a54f2af6ad51686a5b2b83e4e">Render</a> (GLFWwindow *window)</td></tr>
+<tr class="memdesc:a4fee935a54f2af6ad51686a5b2b83e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the final rendering of the window to the screen.  <br /></td></tr>
 <tr class="separator:a4fee935a54f2af6ad51686a5b2b83e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4555f2b58b3dc0096500e4a89208562" id="r_ad4555f2b58b3dc0096500e4a89208562"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4555f2b58b3dc0096500e4a89208562">PublishOutput</a> (std::string msg, <a class="el" href="_management_8hpp.html#ac5583769968c2840da2616d733509990">LEV_CODE</a> code=<a class="el" href="_management_8hpp.html#ac5583769968c2840da2616d733509990a1e1a4aba20a5a009e616cbc8fad33ac7">LEV_CODE::CLEAR</a>)</td></tr>
+<tr class="memdesc:ad4555f2b58b3dc0096500e4a89208562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publishes data to the output box.  <br /></td></tr>
 <tr class="separator:ad4555f2b58b3dc0096500e4a89208562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5448cb327d8e01b4583bbd6aae3839e1" id="r_a5448cb327d8e01b4583bbd6aae3839e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5448cb327d8e01b4583bbd6aae3839e1">PublishTelemetry</a> (std::string id, std::string value)</td></tr>
+<tr class="memdesc:a5448cb327d8e01b4583bbd6aae3839e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publishes data to the telemetry box.  <br /></td></tr>
 <tr class="separator:a5448cb327d8e01b4583bbd6aae3839e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace80dd0b1e6b12ab9de012725bb13590" id="r_ace80dd0b1e6b12ab9de012725bb13590"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace80dd0b1e6b12ab9de012725bb13590">Shutdown</a> ()</td></tr>
+<tr class="memdesc:ace80dd0b1e6b12ab9de012725bb13590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down the application smoothly.  <br /></td></tr>
 <tr class="separator:ace80dd0b1e6b12ab9de012725bb13590"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b23d0c64c7cbb3d143d90ec532a7ccd" id="r_a1b23d0c64c7cbb3d143d90ec532a7ccd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b23d0c64c7cbb3d143d90ec532a7ccd">~UI</a> ()</td></tr>
 <tr class="separator:a1b23d0c64c7cbb3d143d90ec532a7ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ccde03336d8dc99e5de30b8437f46bd" id="r_a1ccde03336d8dc99e5de30b8437f46bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ccde03336d8dc99e5de30b8437f46bd">setMainDeltaTime</a> (float time)</td></tr>
+<tr class="memdesc:a1ccde03336d8dc99e5de30b8437f46bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> update delta time for debugging purposes.  <br /></td></tr>
 <tr class="separator:a1ccde03336d8dc99e5de30b8437f46bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9656c5166589e27bf8d08baf23e507a2" id="r_a9656c5166589e27bf8d08baf23e507a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9656c5166589e27bf8d08baf23e507a2">setConnectionDetails</a> (<a class="el" href="class_conn_details.html">ConnDetails</a> connDetails)</td></tr>
 <tr class="separator:a9656c5166589e27bf8d08baf23e507a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9680cf2e5a347f8df4612b131d242190" id="r_a9680cf2e5a347f8df4612b131d242190"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9680cf2e5a347f8df4612b131d242190">isCameraPaused</a> ()</td></tr>
+<tr class="memdesc:a9680cf2e5a347f8df4612b131d242190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether or not the camera is currently paused through the camera <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a>.  <br /></td></tr>
 <tr class="separator:a9680cf2e5a347f8df4612b131d242190"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1182379475841ccadc89760c31ddef79" id="r_a1182379475841ccadc89760c31ddef79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1182379475841ccadc89760c31ddef79">isMainCamera</a> ()</td></tr>
+<tr class="memdesc:a1182379475841ccadc89760c31ddef79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether or not the currently selected camera in the <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> is the "main camera" (Going to be deprecated later for multi-camera).  <br /></td></tr>
 <tr class="separator:a1182379475841ccadc89760c31ddef79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42e869a73733b0ea02513487ae0e1ebe" id="r_a42e869a73733b0ea02513487ae0e1ebe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42e869a73733b0ea02513487ae0e1ebe">getCameraQuality</a> ()</td></tr>
+<tr class="memdesc:a42e869a73733b0ea02513487ae0e1ebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently requested camera quality within the <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a>.  <br /></td></tr>
 <tr class="separator:a42e869a73733b0ea02513487ae0e1ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeea74059ade8f3692e45e8faf4e4ec18" id="r_aeea74059ade8f3692e45e8faf4e4ec18"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeea74059ade8f3692e45e8faf4e4ec18">getCameraTexture</a> ()</td></tr>
+<tr class="memdesc:aeea74059ade8f3692e45e8faf4e4ec18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the texture buffer the camera writes to.  <br /></td></tr>
 <tr class="separator:aeea74059ade8f3692e45e8faf4e4ec18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7284c773fe07d9aa383c4282f2995a9" id="r_ab7284c773fe07d9aa383c4282f2995a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7284c773fe07d9aa383c4282f2995a9">setCameraWidth</a> (int width)</td></tr>
+<tr class="memdesc:ab7284c773fe07d9aa383c4282f2995a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the camera width throughout the application.  <br /></td></tr>
 <tr class="separator:ab7284c773fe07d9aa383c4282f2995a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e397bc944fab911ce93bcda93f8958d" id="r_a8e397bc944fab911ce93bcda93f8958d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e397bc944fab911ce93bcda93f8958d">setCameraHeight</a> (int height)</td></tr>
+<tr class="memdesc:a8e397bc944fab911ce93bcda93f8958d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the camera height throughout the application.  <br /></td></tr>
 <tr class="separator:a8e397bc944fab911ce93bcda93f8958d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af3c80dcdba4d4ac565c3afe5a98679b4" id="r_af3c80dcdba4d4ac565c3afe5a98679b4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_u_i.html">UI</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3c80dcdba4d4ac565c3afe5a98679b4">Get</a> ()</td></tr>
+<tr class="memdesc:af3c80dcdba4d4ac565c3afe5a98679b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grabs the <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> singleton pointer.  <br /></td></tr>
 <tr class="separator:af3c80dcdba4d4ac565c3afe5a98679b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -166,7 +185,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae2044fcc02b521e3a702aa4642fb23f4" id="r_ae2044fcc02b521e3a702aa4642fb23f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_controller.html">Controller</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2044fcc02b521e3a702aa4642fb23f4">controller</a></td></tr>
 <tr class="separator:ae2044fcc02b521e3a702aa4642fb23f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Handles the user interface of leviathan. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a675985a56b5e87ebdc8e5884b9f2ee09" name="a675985a56b5e87ebdc8e5884b9f2ee09"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a675985a56b5e87ebdc8e5884b9f2ee09">&#9670;&#160;</a></span>UI() <span class="overload">[1/2]</span></h2>
 
@@ -242,6 +263,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Creates the camera texture buffer. </p>
+
 </div>
 </div>
 <a id="af3c80dcdba4d4ac565c3afe5a98679b4" name="af3c80dcdba4d4ac565c3afe5a98679b4"></a>
@@ -266,6 +289,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Grabs the <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> singleton pointer. </p>
 
 </div>
 </div>
@@ -292,6 +317,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the currently requested camera quality within the <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Integer stating currently requested camera quality. </dd></dl>
+
 </div>
 </div>
 <a id="aeea74059ade8f3692e45e8faf4e4ec18" name="aeea74059ade8f3692e45e8faf4e4ec18"></a>
@@ -317,6 +345,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the texture buffer the camera writes to. </p>
+<dl class="section return"><dt>Returns</dt><dd>GLuint representing the camera texture buffer. </dd></dl>
+
 </div>
 </div>
 <a id="ad223bba30d9f30acaa15490777102961" name="ad223bba30d9f30acaa15490777102961"></a>
@@ -337,6 +368,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This initializes the IMGUI instance, setting IMGUI config variables and setting linking it to the glsl instance. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>A GLFWwindow pointer to the window object created by glfw. </td></tr>
+    <tr><td class="paramname">glsl_version</td><td>A char array pointer stating the currently used glsl version (recommended "#version 120"). </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -363,6 +403,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns whether or not the camera is currently paused through the camera <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Boolean stating whether or not the camera is paused. </dd></dl>
+
 </div>
 </div>
 <a id="a1182379475841ccadc89760c31ddef79" name="a1182379475841ccadc89760c31ddef79"></a>
@@ -387,6 +430,9 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns whether or not the currently selected camera in the <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> is the "main camera" (Going to be deprecated later for multi-camera). </p>
+<dl class="section return"><dt>Returns</dt><dd>Boolean stating whether or not the currently slected camera is "main". </dd></dl>
 
 </div>
 </div>
@@ -422,6 +468,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Creates the imgui instance, seperated out from Init for control flow purposes. </p>
+
 </div>
 </div>
 <a id="ad4555f2b58b3dc0096500e4a89208562" name="ad4555f2b58b3dc0096500e4a89208562"></a>
@@ -442,6 +490,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Publishes data to the output box. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>Message string to be published </td></tr>
+    <tr><td class="paramname">code</td><td>Output code defined by <a class="el" href="_management_8hpp.html#ac5583769968c2840da2616d733509990" title="Enumeration representing various error and status codes.">LEV_CODE</a> within <a class="el" href="_management_8hpp.html" title="This file contains all error codes and what they will return in console.">Management.hpp</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -464,6 +521,15 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Publishes data to the telemetry box. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The string ID of the telemetric data to show. </td></tr>
+    <tr><td class="paramname">value</td><td>The string value of the telemetric data to update. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a4fee935a54f2af6ad51686a5b2b83e4e" name="a4fee935a54f2af6ad51686a5b2b83e4e"></a>
@@ -480,6 +546,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Handles the final rendering of the window to the screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>GLFWwindow pointer of the application window to publish to. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -506,6 +580,14 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Set the camera height throughout the application. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">height</td><td>Integer stating the height. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab7284c773fe07d9aa383c4282f2995a9" name="ab7284c773fe07d9aa383c4282f2995a9"></a>
@@ -530,6 +612,14 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set the camera width throughout the application. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>Integrer stating the width. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -573,6 +663,14 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Sets the current <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> update delta time for debugging purposes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>Current delta time. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ace80dd0b1e6b12ab9de012725bb13590" name="ace80dd0b1e6b12ab9de012725bb13590"></a>
@@ -590,6 +688,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Shuts down the application smoothly. </p>
+
 </div>
 </div>
 <a id="a232c0f650742de92f021baf74ea07ee8" name="a232c0f650742de92f021baf74ea07ee8"></a>
@@ -606,6 +706,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Update handles the main event loop of the IMGUI application. In here you can define all <a class="el" href="class_u_i.html" title="Handles the user interface of leviathan.">UI</a> elements to be displayed and how they interact with the program around them. This code does not specifically display the window, just defines how it looks and behaves. </p>
 
 </div>
 </div>

@@ -110,6 +110,9 @@ $(function(){initNavTree('class_controller.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
+<p>Handles the representation of a controller.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_controller_8hpp_source.html">Controller.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -117,12 +120,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a359a26c0466ac19fb795264d2f7e0420" id="r_a359a26c0466ac19fb795264d2f7e0420"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a359a26c0466ac19fb795264d2f7e0420">Controller</a> (int id)</td></tr>
 <tr class="separator:a359a26c0466ac19fb795264d2f7e0420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaff163cd3f95c43e6ee2d551b28f489" id="r_aeaff163cd3f95c43e6ee2d551b28f489"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaff163cd3f95c43e6ee2d551b28f489">getId</a> ()</td></tr>
+<tr class="memdesc:aeaff163cd3f95c43e6ee2d551b28f489"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the currently selected controller ID.  <br /></td></tr>
 <tr class="separator:aeaff163cd3f95c43e6ee2d551b28f489"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55827bc6d8d38854d7e9d4c135ff48a3" id="r_a55827bc6d8d38854d7e9d4c135ff48a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55827bc6d8d38854d7e9d4c135ff48a3">setId</a> (int id)</td></tr>
+<tr class="memdesc:a55827bc6d8d38854d7e9d4c135ff48a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the currently selected controller ID.  <br /></td></tr>
 <tr class="separator:a55827bc6d8d38854d7e9d4c135ff48a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52f0066df267b58232f267904a2df1c7" id="r_a52f0066df267b58232f267904a2df1c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_controller_values.html">ControllerValues</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52f0066df267b58232f267904a2df1c7">GetControllerValues</a> ()</td></tr>
+<tr class="memdesc:a52f0066df267b58232f267904a2df1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the <a class="el" href="class_controller_values.html" title="Handles the representation of the values of a controller throughout the application.">ControllerValues</a> representation of the values of the currently selected controller.  <br /></td></tr>
 <tr class="separator:a52f0066df267b58232f267904a2df1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab60d1c34596cd40d1f99768319f39393" id="r_ab60d1c34596cd40d1f99768319f39393"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab60d1c34596cd40d1f99768319f39393">deadzone</a> (double val, double dead)</td></tr>
+<tr class="memdesc:ab60d1c34596cd40d1f99768319f39393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates a controller deadzone.  <br /></td></tr>
 <tr class="separator:ab60d1c34596cd40d1f99768319f39393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ab87934c4f7a266cfdb86e0f36bc1b5" id="r_a0ab87934c4f7a266cfdb86e0f36bc1b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ab87934c4f7a266cfdb86e0f36bc1b5">~Controller</a> ()</td></tr>
 <tr class="separator:a0ab87934c4f7a266cfdb86e0f36bc1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,11 +137,15 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0f6673891b7dbd1953b9719bd08d7a87" id="r_a0f6673891b7dbd1953b9719bd08d7a87"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f6673891b7dbd1953b9719bd08d7a87">ScanControllers</a> ()</td></tr>
+<tr class="memdesc:a0f6673891b7dbd1953b9719bd08d7a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans for all connected controllers. MUST BE CALLED BEFORE CONTROLLER ASSIGNMENT FOR CONTROLLER TO WORK.  <br /></td></tr>
 <tr class="separator:a0f6673891b7dbd1953b9719bd08d7a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a46b83207ea53343e734a2459413b2d" id="r_a2a46b83207ea53343e734a2459413b2d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a46b83207ea53343e734a2459413b2d">GetNumControllers</a> ()</td></tr>
+<tr class="memdesc:a2a46b83207ea53343e734a2459413b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current number of connected controllers. Only works if ScanControllers has previously been called.  <br /></td></tr>
 <tr class="separator:a2a46b83207ea53343e734a2459413b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Handles the representation of a controller. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a359a26c0466ac19fb795264d2f7e0420" name="a359a26c0466ac19fb795264d2f7e0420"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a359a26c0466ac19fb795264d2f7e0420">&#9670;&#160;</a></span>Controller()</h2>
 
@@ -189,6 +200,16 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Simulates a controller deadzone. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>the current controller value to simulate on. </td></tr>
+    <tr><td class="paramname">dead</td><td>the zone in which to simulate a deadzone. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the simulated deadzone value. </dd></dl>
+
 </div>
 </div>
 <a id="a52f0066df267b58232f267904a2df1c7" name="a52f0066df267b58232f267904a2df1c7"></a>
@@ -205,6 +226,8 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns the <a class="el" href="class_controller_values.html" title="Handles the representation of the values of a controller throughout the application.">ControllerValues</a> representation of the values of the currently selected controller. </p>
 
 </div>
 </div>
@@ -231,6 +254,9 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the currently selected controller ID. </p>
+<dl class="section return"><dt>Returns</dt><dd>int according to above. </dd></dl>
+
 </div>
 </div>
 <a id="a2a46b83207ea53343e734a2459413b2d" name="a2a46b83207ea53343e734a2459413b2d"></a>
@@ -255,6 +281,9 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns the current number of connected controllers. Only works if ScanControllers has previously been called. </p>
+<dl class="section return"><dt>Returns</dt><dd>int according to above definition. </dd></dl>
 
 </div>
 </div>
@@ -281,6 +310,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Scans for all connected controllers. MUST BE CALLED BEFORE CONTROLLER ASSIGNMENT FOR CONTROLLER TO WORK. </p>
+
 </div>
 </div>
 <a id="a55827bc6d8d38854d7e9d4c135ff48a3" name="a55827bc6d8d38854d7e9d4c135ff48a3"></a>
@@ -305,6 +336,14 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Sets the currently selected controller ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>currently used controller. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
