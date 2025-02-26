@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['lbumper_0',['lbumper',['../class_controller_values.html#af7083a44d628a3998aacd885a0a66687',1,'ControllerValues']]],
-  ['left_1',['left',['../class_controller_values.html#a13feb9bb442d3d474b250cdafc07441c',1,'ControllerValues']]],
-  ['ljoyx_2',['ljoyx',['../class_controller_values.html#a2c5699bbde6346dfc9e49061d0f952a8',1,'ControllerValues']]],
-  ['ljoyy_3',['ljoyy',['../class_controller_values.html#a8661658578ce7218690dfcbca80be7da',1,'ControllerValues']]],
-  ['ltrigger_4',['ltrigger',['../class_controller_values.html#a4dba2937a88a260fa842dd836cd5b2a8',1,'ControllerValues']]]
+  ['rbumper_0',['rbumper',['../class_controller_values.html#a31d09ab789dbe063dcfa0447126ef4a4',1,'ControllerValues']]],
+  ['read_1',['read',['../structstbi__io__callbacks.html#a623e46b3a2a019611601409926283a88',1,'stbi_io_callbacks']]],
+  ['right_2',['right',['../class_controller_values.html#aa66da322dd5127232944dacdebbba2f1',1,'ControllerValues']]],
+  ['rjoyx_3',['rjoyx',['../class_controller_values.html#aed4b1df4b03cbd526eb409faa9538fe7',1,'ControllerValues']]],
+  ['rjoyy_4',['rjoyy',['../class_controller_values.html#a2582c41454c00f7d499a6c641b0b21f6',1,'ControllerValues']]],
+  ['rtrigger_5',['rtrigger',['../class_controller_values.html#a2e13d51f59777545186f7371104fe873',1,'ControllerValues']]]
 ];

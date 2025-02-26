@@ -134,20 +134,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a944d1a2869f56d69bcc5a62654998276"><td class="mdescLeft">&#160;</td><td class="mdescRight">This sends the given message with the corresponding header.  <br /></td></tr>
 <tr class="separator:a944d1a2869f56d69bcc5a62654998276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a806cc53179afb1f9a1b02f2f26c6fa5a" id="r_a806cc53179afb1f9a1b02f2f26c6fa5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a806cc53179afb1f9a1b02f2f26c6fa5a">Recieve</a> ()</td></tr>
-<tr class="memdesc:a806cc53179afb1f9a1b02f2f26c6fa5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This receives the message from the submarine and processes it and handles it according to the received header. Refer to.  <br /></td></tr>
+<tr class="memdesc:a806cc53179afb1f9a1b02f2f26c6fa5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This receives the message from the submarine and processes it and handles it according to the received header. Also triggers sending information. Refer to.  <br /></td></tr>
 <tr class="separator:a806cc53179afb1f9a1b02f2f26c6fa5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e88eb5b637c80a18461be68915808e3" id="r_a1e88eb5b637c80a18461be68915808e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e88eb5b637c80a18461be68915808e3">HandleHandshake</a> ()</td></tr>
-<tr class="memdesc:a1e88eb5b637c80a18461be68915808e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This handles the handshake with the submarine, by receiving the handshake message and checking if it is the correct message. Then it triggers the send function to conditionally send the camera number and quality.  <br /></td></tr>
+<tr class="memdesc:a1e88eb5b637c80a18461be68915808e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This handles the handshake with the submarine, by receiving the handshake message and checking if it is the correct message. Then it triggers the receive function to conditionally send the camera number and quality.  <br /></td></tr>
 <tr class="separator:a1e88eb5b637c80a18461be68915808e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6b9e4d586338f99d021c390eee2b4bd" id="r_ab6b9e4d586338f99d021c390eee2b4bd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6b9e4d586338f99d021c390eee2b4bd">GetImageBuffer</a> ()</td></tr>
+<tr class="memdesc:ab6b9e4d586338f99d021c390eee2b4bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This return the current image buffer for it to be transformed into an image texture to be displayed on the <a class="el" href="class_u_i.html">UI</a>.  <br /></td></tr>
 <tr class="separator:ab6b9e4d586338f99d021c390eee2b4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a597757bb4d1f55c28382a6be559dde8a" id="r_a597757bb4d1f55c28382a6be559dde8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a597757bb4d1f55c28382a6be559dde8a">GetDecoding</a> ()</td></tr>
+<tr class="memdesc:a597757bb4d1f55c28382a6be559dde8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This return the current decoding state in order to be used in conjunction with the GetNewImage function.  <br /></td></tr>
 <tr class="separator:a597757bb4d1f55c28382a6be559dde8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25967d0c16010413e1daf66804f1c740" id="r_a25967d0c16010413e1daf66804f1c740"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25967d0c16010413e1daf66804f1c740">GetNewImage</a> ()</td></tr>
+<tr class="memdesc:a25967d0c16010413e1daf66804f1c740"><td class="mdescLeft">&#160;</td><td class="mdescRight">This returns whether there is a new image or not in order to be used in conjunction with the GetDecoding function.  <br /></td></tr>
 <tr class="separator:a25967d0c16010413e1daf66804f1c740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ef60c83e0e8b9c601a2747efd42f3b2" id="r_a2ef60c83e0e8b9c601a2747efd42f3b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ef60c83e0e8b9c601a2747efd42f3b2">SetDecoding</a> (bool val)</td></tr>
+<tr class="memdesc:a2ef60c83e0e8b9c601a2747efd42f3b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This sets whether or not the current image is being decoded to help align threads.  <br /></td></tr>
 <tr class="separator:a2ef60c83e0e8b9c601a2747efd42f3b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05df1da59580e25dc255523c02b4d98c" id="r_a05df1da59580e25dc255523c02b4d98c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05df1da59580e25dc255523c02b4d98c">SetNewImage</a> (bool val)</td></tr>
+<tr class="memdesc:a05df1da59580e25dc255523c02b4d98c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This sets whether or not there is a new image to help align threads.  <br /></td></tr>
 <tr class="separator:a05df1da59580e25dc255523c02b4d98c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2c229471cfe59c542c880212f6978a0" id="r_af2c229471cfe59c542c880212f6978a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2c229471cfe59c542c880212f6978a0">Connection</a> (const <a class="el" href="class_connection.html">Connection</a> &amp;obj)=delete</td></tr>
 <tr class="separator:af2c229471cfe59c542c880212f6978a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -297,6 +302,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>This return the current decoding state in order to be used in conjunction with the GetNewImage function. </p>
+
 </div>
 </div>
 <a id="ab6b9e4d586338f99d021c390eee2b4bd" name="ab6b9e4d586338f99d021c390eee2b4bd"></a>
@@ -321,6 +328,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>This return the current image buffer for it to be transformed into an image texture to be displayed on the <a class="el" href="class_u_i.html">UI</a>. </p>
 
 </div>
 </div>
@@ -347,6 +356,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>This returns whether there is a new image or not in order to be used in conjunction with the GetDecoding function. </p>
+
 </div>
 </div>
 <a id="a1e88eb5b637c80a18461be68915808e3" name="a1e88eb5b637c80a18461be68915808e3"></a>
@@ -364,7 +375,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This handles the handshake with the submarine, by receiving the handshake message and checking if it is the correct message. Then it triggers the send function to conditionally send the camera number and quality. </p>
+<p>This handles the handshake with the submarine, by receiving the handshake message and checking if it is the correct message. Then it triggers the receive function to conditionally send the camera number and quality. </p>
 
 </div>
 </div>
@@ -383,7 +394,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This receives the message from the submarine and processes it and handles it according to the received header. Refer to. </p>
+<p>This receives the message from the submarine and processes it and handles it according to the received header. Also triggers sending information. Refer to. </p>
 
 </div>
 </div>
@@ -512,6 +523,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>This sets whether or not the current image is being decoded to help align threads. </p>
+
 </div>
 </div>
 <a id="a05df1da59580e25dc255523c02b4d98c" name="a05df1da59580e25dc255523c02b4d98c"></a>
@@ -536,6 +549,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>This sets whether or not there is a new image to help align threads. </p>
 
 </div>
 </div>

@@ -1,3 +1,8 @@
+/**
+ * @file Management.hpp
+ * @brief This file contains all error codes and what they will return in console
+ */
+
 #include <string>
 
 #ifndef FILE_H

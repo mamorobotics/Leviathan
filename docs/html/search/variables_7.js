@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['rbumper_0',['rbumper',['../class_controller_values.html#a31d09ab789dbe063dcfa0447126ef4a4',1,'ControllerValues']]],
-  ['read_1',['read',['../structstbi__io__callbacks.html#a623e46b3a2a019611601409926283a88',1,'stbi_io_callbacks']]],
-  ['right_2',['right',['../class_controller_values.html#aa66da322dd5127232944dacdebbba2f1',1,'ControllerValues']]],
-  ['rjoyx_3',['rjoyx',['../class_controller_values.html#aed4b1df4b03cbd526eb409faa9538fe7',1,'ControllerValues']]],
-  ['rjoyy_4',['rjoyy',['../class_controller_values.html#a2582c41454c00f7d499a6c641b0b21f6',1,'ControllerValues']]],
-  ['rtrigger_5',['rtrigger',['../class_controller_values.html#a2e13d51f59777545186f7371104fe873',1,'ControllerValues']]]
+  ['selfip_0',['selfIP',['../class_conn_details.html#a8846e7757275b30de915d0c7ac438b00',1,'ConnDetails']]],
+  ['selfport_1',['selfPort',['../class_conn_details.html#aa34a39ab00e85bec01c03e2b77a4eed2',1,'ConnDetails']]],
+  ['skip_2',['skip',['../structstbi__io__callbacks.html#a257aac5480a90a6c4b8fbe86c1b01068',1,'stbi_io_callbacks']]],
+  ['stbi_5fwrite_5fforce_5fpng_5ffilter_3',['stbi_write_force_png_filter',['../stb__image__write_8h.html#a5bfaf6779e88c4122d2b1fdf3723378e',1,'stb_image_write.h']]],
+  ['stbi_5fwrite_5fpng_5fcompression_5flevel_4',['stbi_write_png_compression_level',['../stb__image__write_8h.html#a599b900a32e68e29c820d9755d0eea28',1,'stb_image_write.h']]],
+  ['stbi_5fwrite_5ftga_5fwith_5frle_5',['stbi_write_tga_with_rle',['../stb__image__write_8h.html#af4ce66fb7d4d97110036bf6e92e196bd',1,'stb_image_write.h']]]
 ];

@@ -124,7 +124,7 @@ void UI::Update()
 			int width = 1280;
 			int height = 720;
 			LoadTexture::LoadTextureFromFile(dir_entry.path().string().c_str(), &ImageTexture, &width, &height);
-			ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(1280, 720));
+			ImGui::Image((void*)(intptr_t)cameraTexture, ImVec2(160, 90));
 			ImGui::SameLine();
 		}
 		ImGui::End();

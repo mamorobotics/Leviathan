@@ -1,4 +1,11 @@
-﻿#pragma once
+﻿/**
+ * @file Leviathan.cpp
+ * @brief This is the main entry point of the program.
+ *
+ * This file contains the main function and initializes all subsystems.
+ */
+
+#pragma once
 
 #include <iostream>
 #include <chrono>
@@ -24,12 +31,22 @@ UI* UI::ui = new UI();
 Connection* Connection::connection = new Connection();
 Serial* Serial::serial = new Serial();
 
+/**
+ * @brief This function publishes the error message to telemetry.
+ * @param error the general error code
+ * @param msg the error message
+ */
 void error_callback( int error, const char *msg ) {
     std::string s;
     s = " [" + std::to_string(error) + "] " + msg + '\n';
     UI::Get()->PublishOutput(s, LEV_CODE::GENERAL_ERROR);
 }
 
+/**
+ * @brief This function loads the texture from the given data buffer and stores it to 
+ * the camera texture.
+ * @param dataPtr pointer to the data buffer so that texture can be loaded
+ */
 void LoadTexture(std::vector<char>* dataPtr)
 {
 	Connection* conn = Connection::Get();
@@ -56,6 +73,7 @@ void LoadTexture(std::vector<char>* dataPtr)
     gui->setCameraWidth(mat.cols);
     gui->setCameraHeight(mat.rows);
 
+	//Flip Camera Texture bc OpenGL reads from bottom left so images are flipped
 	cv::flip(mat, mat, 1);
 
     glBindTexture(GL_TEXTURE_2D, gui->getCameraTexture());
@@ -112,11 +130,11 @@ int main()
 
 	bool firstFrame = true;
 
-	//eth
+	//ethernet init
 	std::thread networkThread(&Connection::HandleHandshake, conn);
 	networkThread.detach();
 
-	//serial
+	//serial init
 	std::thread serialThread(&Serial::SendControllerAndGetFloatData, ser);
 	serialThread.detach();
 
@@ -138,7 +156,6 @@ int main()
 		if(!conn->GetDecoding() && conn->GetNewImage())
 		{
 			LoadTexture(conn->GetImageBuffer());
-			//LoadTexture(conn->GetImageBuffer(2));
 		}
 	}
 

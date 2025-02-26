@@ -89,16 +89,40 @@ public:
 	 * to the received header. Also triggers sending information. Refer to 
      */
 	void Recieve();
+
 	/**
      * @brief This handles the handshake with the submarine, by receiving the handshake message and
 	 * checking if it is the correct message. Then it triggers the receive function to conditionally send
 	 * the camera number and quality
      */
 	void HandleHandshake();
+
+	/**
+     * @brief This return the current image buffer for it to be transformed into an image texture
+	 * to be displayed on the UI
+     */
 	std::vector<char>* GetImageBuffer(){ return &image_buffer; };
+
+	/**
+     * @brief This return the current decoding state in order to be used in conjunction with the
+	 * GetNewImage function
+     */
 	bool GetDecoding(){ return isDecoding; }
+
+	/**
+     * @brief This returns whether there is a new image or not in order to be used in 
+	 * conjunction with the GetDecoding function
+     */
 	bool GetNewImage(){ return newImage; }
+
+	/**
+     * @brief This sets whether or not the current image is being decoded to help align threads
+     */
 	void SetDecoding(bool val){ isDecoding = val; }
+
+	/**
+     * @brief This sets whether or not there is a new image to help align threads
+     */
 	void SetNewImage(bool val){ newImage = val; }
 	//void Reconnect(){ reconnect = true; }
 	Connection(const Connection& obj) = delete;

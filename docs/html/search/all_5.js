@@ -12,6 +12,5 @@ var searchData=
   ['getimagebuffer_9',['GetImageBuffer',['../class_connection.html#ab6b9e4d586338f99d021c390eee2b4bd',1,'Connection']]],
   ['getnewimage_10',['GetNewImage',['../class_connection.html#a25967d0c16010413e1daf66804f1c740',1,'Connection']]],
   ['getnumcontrollers_11',['GetNumControllers',['../class_controller.html#a2a46b83207ea53343e734a2459413b2d',1,'Controller']]],
-  ['getnumdatapts_12',['getNumDataPts',['../class_serial.html#ae03a721b88403f753099105055387321',1,'Serial']]],
-  ['glsl_5fversion_13',['glsl_version',['../class_u_i.html#a2903d9e9c5232661049386c70b575b5c',1,'UI']]]
+  ['getnumdatapts_12',['getNumDataPts',['../class_serial.html#ae03a721b88403f753099105055387321',1,'Serial']]]
 ];
