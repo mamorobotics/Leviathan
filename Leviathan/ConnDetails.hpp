@@ -2,6 +2,10 @@
 
 #include <string>
 
+/**
+ * @class ConnDetails
+ * @brief Handles the details of the current connection.
+ */
 class ConnDetails
 {
 public:

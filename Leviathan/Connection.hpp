@@ -28,7 +28,6 @@ using asio::ip::address;
  * @class Connection
  * @brief Handles connection with submarine via ethernet.
  */
-
 class Connection
 {
 private:
