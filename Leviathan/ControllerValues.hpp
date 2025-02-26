@@ -5,17 +5,30 @@
 #include <cmath>
 #include "Controller.hpp"
 
+/**
+ * @class ControllerValues
+ * @brief Handles the representation of the values of a controller throughout the application.
+ */
 class ControllerValues
 {
 public:
 	float ljoyx, ljoyy, rjoyx, rjoyy, ltrigger, rtrigger;
     int a, b, x, y, lbumper, rbumper, up, down, left, right;
 
+    /**
+     * @brief Transforms all values into a string seperated by "!". Does not modify values. 
+     * @return Returns a string of values as stated above.
+     */
     std::string toStringFull()
     {
         return std::to_string(ljoyx) + "!" + std::to_string(ljoyy) + "!" + std::to_string(rjoyx) + "!" + std::to_string(rjoyy) + "!" + std::to_string(ltrigger) + "!" + std::to_string(rtrigger) + "!"
          + std::to_string(a) + "!" + std::to_string(b) + "!" + std::to_string(x) + "!" + std::to_string(y) + "!" + std::to_string(lbumper) + "!" + std::to_string(rbumper) + "!" + std::to_string(up) + "!" + std::to_string(down) + "!" + std::to_string(left) + "!" + std::to_string(right);
     }
+    /**
+     * @brief Transforms all values into a string seperated by "!". It automatically tranasforms and clamps each value into a more 
+     * "space effecient" storage medium with joy's mapped into non-float values with 4 sig-figs, and represents buttons only if pressed.
+     * @return Returns a string of values as stated above.
+     */
     std::string toStringPartial()
     {
         ljoyx = std::clamp((int)(ljoyx*1000), -999, 999);
