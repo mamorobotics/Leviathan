@@ -118,18 +118,26 @@ void UI::Update()
 		if (ImGui::Button("Exit"))
 			stillsOpen = false;
 		std::filesystem::path images = "images";
-		int i=0;
+		int i = 0;
+		int index = 0;
 		for (auto const& dir_entry : std::filesystem::directory_iterator{images}) 
 		{
-			GLuint ImageTexture;
+			if (stillsTextures[index] == NULL)
+			{
+				stillsTextures.push_back(new GLuint);
+			}
+
+			GLuint ImageTexture = stillsTextures[index];
+			
 			LoadTexture::LoadTextureFromFile(dir_entry.path().string().c_str(), &ImageTexture, &cameraWidth, &cameraHeight);
-			ImGui::Image((void*)(intptr_t)ImageTexture, ImVec2(416, 234));
+			ImGui::Image((void*)(intptr_t)ImageTexture, ImVec2(cameraWidth/3, cameraHeight/3));
 			if(i < 2){
 				ImGui::SameLine();
 			}else {
 				i = 0;
 			}
 			i++;
+			index++;
 		}
 		ImGui::End();
 	}

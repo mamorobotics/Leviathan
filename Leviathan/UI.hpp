@@ -46,6 +46,7 @@ private:
 	float depthVals[128];
 	float mainDeltaTime;
 
+	std::vector<GLuint> stillsTextures;
 	std::vector<std::string> output;
 	std::map<std::string, std::string> telemetry;
 
