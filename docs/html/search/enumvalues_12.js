@@ -1,8 +1,0 @@
-var searchData=
-[
-  ['unauthorized_0',['unauthorized',['../structhttp_1_1server_1_1reply.html#a08d3b8d638988f252ab4e5cd3db72ad6ac71e7b466f7ac4498cd5a78954420e9d',1,'http::server::reply::unauthorized'],['../structhttp_1_1server2_1_1reply.html#a3fa790dc50a0fe3158fea8014395f37fa223ca3aaff1b29900d87bbcb85517447',1,'http::server2::reply::unauthorized'],['../structhttp_1_1server3_1_1reply.html#abf2ead1365da33f8d7cbe24816d070d1acd2f21a63fcf41fa4c76ff26729817ec',1,'http::server3::reply::unauthorized'],['../structhttp_1_1server4_1_1reply.html#a2c75caf04d09f0ca6b485c847be2aa05aed3d4ac6c2062f1d2c12b7d664b06157',1,'http::server4::reply::unauthorized']]],
-  ['unexpected_5fresult_1',['unexpected_result',['../namespaceasio_1_1ssl_1_1error.html#af5923c8b6f1383a625ee7293be063321a743b095b1b62f0f70d3ef54ebb568167',1,'asio::ssl::error']]],
-  ['unspecified_5fsystem_5ferror_2',['unspecified_system_error',['../namespaceasio_1_1ssl_1_1error.html#af5923c8b6f1383a625ee7293be063321a873d66e5293e5ad11da9f2e9aa52c67d',1,'asio::ssl::error']]],
-  ['user_5fset_5flinger_3',['user_set_linger',['../namespaceasio_1_1detail_1_1socket__ops.html#ac30d710cd4517e040e09a5824fef6e7ea1ee8676ef17dc218d9e2a0f3476448e7',1,'asio::detail::socket_ops']]],
-  ['user_5fset_5fnon_5fblocking_4',['user_set_non_blocking',['../namespaceasio_1_1detail_1_1descriptor__ops.html#acd2c9159c4edfa505af01dcaf0e576fcabc2ae064c1ea10a1c92b27ad21098a6d',1,'asio::detail::descriptor_ops::user_set_non_blocking'],['../namespaceasio_1_1detail_1_1socket__ops.html#ac30d710cd4517e040e09a5824fef6e7ea4f960990a3814108246f236f45ef1131',1,'asio::detail::socket_ops::user_set_non_blocking']]]
-];

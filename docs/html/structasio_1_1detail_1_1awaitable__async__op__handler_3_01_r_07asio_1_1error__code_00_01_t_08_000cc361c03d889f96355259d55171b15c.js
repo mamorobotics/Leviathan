@@ -1,5 +1,0 @@
-var structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07asio_1_1error__code_00_01_t_08_000cc361c03d889f96355259d55171b15c =
-[
-    [ "ec_", "structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07asio_1_1error__code_00_01_t_08_000cc361c03d889f96355259d55171b15c.html#ad2ff41e8bebe4fbbf62fdd10e3dd57fb", null ],
-    [ "value_", "structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07asio_1_1error__code_00_01_t_08_000cc361c03d889f96355259d55171b15c.html#a6f339e6296f5195a6c807a74edb60ebf", null ]
-];

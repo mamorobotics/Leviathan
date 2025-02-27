@@ -1,6 +1,0 @@
-var classasio_1_1async__result_3_01cancellation__slot__binder_3_01_t_00_01_cancellation_slot_01_4_00_01_signature_01_4 =
-[
-    [ "init_wrapper", "structasio_1_1async__result_3_01cancellation__slot__binder_3_01_t_00_01_cancellation_slot_01_4_09122c78fd40678ca627dd152583dce6b.html", "structasio_1_1async__result_3_01cancellation__slot__binder_3_01_t_00_01_cancellation_slot_01_4_09122c78fd40678ca627dd152583dce6b" ],
-    [ "base_type", "classasio_1_1async__result.html#af8189aa45cb04b8e2cdab3009df66e95", null ],
-    [ "async_result", "classasio_1_1async__result_3_01cancellation__slot__binder_3_01_t_00_01_cancellation_slot_01_4_00_01_signature_01_4.html#adf71154a3258e510967a057fb1666f59", null ]
-];

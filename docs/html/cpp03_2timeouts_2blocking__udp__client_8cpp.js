@@ -1,5 +1,0 @@
-var cpp03_2timeouts_2blocking__udp__client_8cpp =
-[
-    [ "client", "classclient.html", "classclient" ],
-    [ "main", "cpp03_2timeouts_2blocking__udp__client_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97", null ]
-];

@@ -1,8 +1,0 @@
-var concurrent__channel_8hpp =
-[
-    [ "asio::experimental::detail::concurrent_channel_type< ExecutorOrSignature, typename >", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type.html", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type" ],
-    [ "asio::experimental::detail::concurrent_channel_type< ExecutorOrSignature, typename >::inner< Signatures >", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_1_1inner.html", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_1_1inner" ],
-    [ "asio::experimental::detail::concurrent_channel_type< ExecutorOrSignature, enable_if_t< is_executor< ExecutorOrSignature >::value||execution::is_executor< ExecutorOrSignature >::value > >", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_3_01_executor_or_signature_00_98f587507c2e29241950964aec5f3553.html", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_3_01_executor_or_signature_00_98f587507c2e29241950964aec5f3553" ],
-    [ "asio::experimental::detail::concurrent_channel_type< ExecutorOrSignature, enable_if_t< is_executor< ExecutorOrSignature >::value||execution::is_executor< ExecutorOrSignature >::value > >::inner< Signatures >", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_3_01_executor_or_signature_00_d78f918d33ef21029700a6f63669e03a.html", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_3_01_executor_or_signature_00_d78f918d33ef21029700a6f63669e03a" ],
-    [ "asio::experimental::concurrent_channel", "namespaceasio_1_1experimental.html#a7fefafb3f653f41e014f2139169119a1", null ]
-];

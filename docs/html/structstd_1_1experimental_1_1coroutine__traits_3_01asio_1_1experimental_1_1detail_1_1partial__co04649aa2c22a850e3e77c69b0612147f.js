@@ -1,4 +1,0 @@
-var structstd_1_1experimental_1_1coroutine__traits_3_01asio_1_1experimental_1_1detail_1_1partial__co04649aa2c22a850e3e77c69b0612147f =
-[
-    [ "promise_type", "structstd_1_1experimental_1_1coroutine__traits_3_01asio_1_1experimental_1_1detail_1_1partial__co04649aa2c22a850e3e77c69b0612147f.html#a80628422c65bc8dbf108167c610329f3", null ]
-];

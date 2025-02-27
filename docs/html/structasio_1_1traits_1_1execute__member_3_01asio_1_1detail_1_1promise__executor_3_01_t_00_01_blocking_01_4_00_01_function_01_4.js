@@ -1,4 +1,0 @@
-var structasio_1_1traits_1_1execute__member_3_01asio_1_1detail_1_1promise__executor_3_01_t_00_01_blocking_01_4_00_01_function_01_4 =
-[
-    [ "result_type", "structasio_1_1traits_1_1execute__member_3_01asio_1_1detail_1_1promise__executor_3_01_t_00_01_blocking_01_4_00_01_function_01_4.html#a37259576353d5c6121aa89280c8d70b9", null ]
-];

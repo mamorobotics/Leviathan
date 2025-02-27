@@ -1,4 +1,0 @@
-var structasio_1_1traits_1_1query__member_3_01asio_1_1detail_1_1promise__executor_3_01_t_00_01_blockc7721e4bc2a5e0d17fe0ae0a2798e128 =
-[
-    [ "result_type", "structasio_1_1traits_1_1query__member_3_01asio_1_1detail_1_1promise__executor_3_01_t_00_01_blockc7721e4bc2a5e0d17fe0ae0a2798e128.html#ac4ac1acad21757f52af9980a4a5b1f8e", null ]
-];

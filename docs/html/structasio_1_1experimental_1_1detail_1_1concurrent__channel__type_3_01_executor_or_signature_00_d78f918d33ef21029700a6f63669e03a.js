@@ -1,5 +1,0 @@
-var structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_3_01_executor_or_signature_00_d78f918d33ef21029700a6f63669e03a =
-[
-    [ "type", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_1_1inner.html#a701878e2ea8b97dffc5355849826b239", null ],
-    [ "type", "structasio_1_1experimental_1_1detail_1_1concurrent__channel__type_3_01_executor_or_signature_00_d78f918d33ef21029700a6f63669e03a.html#a965a97046c1f2519e5398016f1c96a44", null ]
-];

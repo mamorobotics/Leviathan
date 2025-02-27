@@ -1,4 +1,0 @@
-var structasio_1_1associated__cancellation__slot_3_01reference__wrapper_3_01_t_01_4_00_01_cancellation_slot_01_4 =
-[
-    [ "type", "structasio_1_1associated__cancellation__slot_3_01reference__wrapper_3_01_t_01_4_00_01_cancellation_slot_01_4.html#a9e91bb3c27b373cf62cc1af5fe47eb1e", null ]
-];

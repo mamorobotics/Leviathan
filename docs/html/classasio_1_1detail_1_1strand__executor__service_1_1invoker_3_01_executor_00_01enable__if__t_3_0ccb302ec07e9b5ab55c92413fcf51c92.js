@@ -1,8 +1,0 @@
-var classasio_1_1detail_1_1strand__executor__service_1_1invoker_3_01_executor_00_01enable__if__t_3_0ccb302ec07e9b5ab55c92413fcf51c92 =
-[
-    [ "on_invoker_exit", "structasio_1_1detail_1_1strand__executor__service_1_1invoker_3_01_executor_00_01enable__if__t_3_6376cf9af6c6d4a6333f32f234beccc7.html", "structasio_1_1detail_1_1strand__executor__service_1_1invoker_3_01_executor_00_01enable__if__t_3_6376cf9af6c6d4a6333f32f234beccc7" ],
-    [ "invoker", "classasio_1_1detail_1_1strand__executor__service_1_1invoker_3_01_executor_00_01enable__if__t_3_0ccb302ec07e9b5ab55c92413fcf51c92.html#ac9390b62fa2b0f0fc1d8b049d9490f01", null ],
-    [ "invoker", "classasio_1_1detail_1_1strand__executor__service_1_1invoker_3_01_executor_00_01enable__if__t_3_0ccb302ec07e9b5ab55c92413fcf51c92.html#afbb01a782910ee266e89ad0d21e3e47a", null ],
-    [ "invoker", "classasio_1_1detail_1_1strand__executor__service_1_1invoker_3_01_executor_00_01enable__if__t_3_0ccb302ec07e9b5ab55c92413fcf51c92.html#a3d8e6c286c3fdc5bcfbf910189bcae45", null ],
-    [ "operator()", "classasio_1_1detail_1_1strand__executor__service_1_1invoker_3_01_executor_00_01enable__if__t_3_0ccb302ec07e9b5ab55c92413fcf51c92.html#a0a5d91c6a885931e5a480e0a043873c4", null ]
-];

@@ -1,5 +1,0 @@
-var structasio_1_1experimental_1_1detail_1_1co__composed__state__default__cancellation__on__suspend_e1f279dbd21909d8f343411848bd4321 =
-[
-    [ "promise_type", "structasio_1_1experimental_1_1detail_1_1co__composed__state__default__cancellation__on__suspend_e1f279dbd21909d8f343411848bd4321.html#a496222e0adbaf3ed80d417d8e725db2c", null ],
-    [ "return_type", "structasio_1_1experimental_1_1detail_1_1co__composed__state__default__cancellation__on__suspend_e1f279dbd21909d8f343411848bd4321.html#a927392b34d3f8a13b20e2abd2e46046a", null ]
-];

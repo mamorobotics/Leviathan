@@ -1,7 +1,0 @@
-var classasio_1_1detail_1_1immediate__executor__binder__completion__handler__async__result_3_01_targ9ca409c2914196941e0d03fd689e4905 =
-[
-    [ "completion_handler_type", "classasio_1_1detail_1_1immediate__executor__binder__completion__handler__async__result_3_01_targ9ca409c2914196941e0d03fd689e4905.html#a4dbe55456bd9e029e249ade233200fd6", null ],
-    [ "immediate_executor_binder_completion_handler_async_result", "classasio_1_1detail_1_1immediate__executor__binder__completion__handler__async__result_3_01_targ9ca409c2914196941e0d03fd689e4905.html#a63c4373809a7959cc51ae604ac56af66", null ],
-    [ "immediate_executor_binder_completion_handler_async_result", "classasio_1_1detail_1_1immediate__executor__binder__completion__handler__async__result.html#aa8631bce7dbf81704467964053c15612", null ],
-    [ "get", "classasio_1_1detail_1_1immediate__executor__binder__completion__handler__async__result_3_01_targ9ca409c2914196941e0d03fd689e4905.html#a9f0a1a7b27021c9715c91a9a365c645f", null ]
-];

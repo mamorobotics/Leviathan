@@ -1,4 +1,0 @@
-var structasio_1_1detail_1_1associated__cancellation__slot__forwarding__base_3_01_t_00_01_s_00_01ena7e0677bb580659b9bfc960b56cc189ab =
-[
-    [ "asio_associated_cancellation_slot_is_unspecialised", "structasio_1_1detail_1_1associated__cancellation__slot__forwarding__base_3_01_t_00_01_s_00_01ena7e0677bb580659b9bfc960b56cc189ab.html#a169f8b3f6b8479f9a981247b634add00", null ]
-];

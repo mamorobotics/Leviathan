@@ -1,4 +1,0 @@
-var structasio_1_1detail_1_1allocator__binder__async__result__return__type_3_01_target_async_result_c85547bb121689d0f5c0371ad689ff06 =
-[
-    [ "return_type", "structasio_1_1detail_1_1allocator__binder__async__result__return__type_3_01_target_async_result_c85547bb121689d0f5c0371ad689ff06.html#a8bf1878cfb91da18e1fcd339d81ab1fb", null ]
-];

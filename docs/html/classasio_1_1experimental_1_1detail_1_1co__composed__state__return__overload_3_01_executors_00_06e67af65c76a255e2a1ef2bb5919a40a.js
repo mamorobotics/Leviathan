@@ -1,7 +1,0 @@
-var classasio_1_1experimental_1_1detail_1_1co__composed__state__return__overload_3_01_executors_00_06e67af65c76a255e2a1ef2bb5919a40a =
-[
-    [ "derived_type", "classasio_1_1experimental_1_1detail_1_1co__composed__state__return__overload_3_01_executors_00_06e67af65c76a255e2a1ef2bb5919a40a.html#afbe86fa9bb8443f6380bcfe49eec6e15", null ],
-    [ "promise_type", "classasio_1_1experimental_1_1detail_1_1co__composed__state__return__overload_3_01_executors_00_06e67af65c76a255e2a1ef2bb5919a40a.html#a5780ecbd185fd3976f9a15cd51646dce", null ],
-    [ "return_type", "classasio_1_1experimental_1_1detail_1_1co__composed__state__return__overload_3_01_executors_00_06e67af65c76a255e2a1ef2bb5919a40a.html#ac722f0da644abd60276aa5904d629765", null ],
-    [ "on_cancellation_complete_with", "classasio_1_1experimental_1_1detail_1_1co__composed__state__return__overload_3_01_executors_00_06e67af65c76a255e2a1ef2bb5919a40a.html#ac425c71a1273742cde22db627f54e468", null ]
-];

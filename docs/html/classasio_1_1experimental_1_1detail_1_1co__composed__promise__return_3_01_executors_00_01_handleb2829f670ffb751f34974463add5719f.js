@@ -1,5 +1,0 @@
-var classasio_1_1experimental_1_1detail_1_1co__composed__promise__return_3_01_executors_00_01_handleb2829f670ffb751f34974463add5719f =
-[
-    [ "final_suspend", "classasio_1_1experimental_1_1detail_1_1co__composed__promise__return_3_01_executors_00_01_handleb2829f670ffb751f34974463add5719f.html#a01e02e07a1464c061829fb3efebde2d9", null ],
-    [ "return_void", "classasio_1_1experimental_1_1detail_1_1co__composed__promise__return_3_01_executors_00_01_handleb2829f670ffb751f34974463add5719f.html#ae8ed389f666e220ba25efae315bbb484", null ]
-];

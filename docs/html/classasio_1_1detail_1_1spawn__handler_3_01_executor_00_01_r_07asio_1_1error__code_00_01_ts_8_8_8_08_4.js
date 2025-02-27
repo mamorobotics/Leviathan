@@ -1,7 +1,0 @@
-var classasio_1_1detail_1_1spawn__handler_3_01_executor_00_01_r_07asio_1_1error__code_00_01_ts_8_8_8_08_4 =
-[
-    [ "result_type", "structasio_1_1detail_1_1spawn__handler_3_01_executor_00_01_r_07asio_1_1error__code_00_01_ts_8_8_8_08_4_1_1result__type.html", "structasio_1_1detail_1_1spawn__handler_3_01_executor_00_01_r_07asio_1_1error__code_00_01_ts_8_8_8_08_4_1_1result__type" ],
-    [ "return_type", "classasio_1_1detail_1_1spawn__handler_3_01_executor_00_01_r_07asio_1_1error__code_00_01_ts_8_8_8_08_4.html#aae0147229a9e80abf5c57b9d014bd4e2", null ],
-    [ "spawn_handler", "classasio_1_1detail_1_1spawn__handler_3_01_executor_00_01_r_07asio_1_1error__code_00_01_ts_8_8_8_08_4.html#a14a84eb24751415082c1828754161b13", null ],
-    [ "operator()", "classasio_1_1detail_1_1spawn__handler_3_01_executor_00_01_r_07asio_1_1error__code_00_01_ts_8_8_8_08_4.html#a5edaa93d7a7ae15a0cf14ed6892588e3", null ]
-];

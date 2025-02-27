@@ -1,8 +1,0 @@
-var classasio_1_1experimental_1_1detail_1_1channel__send__functions_3_01_derived_00_01_executor_00_03c924ac731b9dc560550dcbaded0ec23 =
-[
-    [ "async_send", "classasio_1_1experimental_1_1detail_1_1channel__send__functions_3_01_derived_00_01_executor_00_03c924ac731b9dc560550dcbaded0ec23.html#acf4684ba36d0135a5c338700f96b8623", null ],
-    [ "try_send", "classasio_1_1experimental_1_1detail_1_1channel__send__functions_3_01_derived_00_01_executor_00_03c924ac731b9dc560550dcbaded0ec23.html#a98d45a24166cdca0fe0c20bb4421772e", null ],
-    [ "try_send_n", "classasio_1_1experimental_1_1detail_1_1channel__send__functions_3_01_derived_00_01_executor_00_03c924ac731b9dc560550dcbaded0ec23.html#aa813afcd766170104d0a2beae5282e7c", null ],
-    [ "try_send_n_via_dispatch", "classasio_1_1experimental_1_1detail_1_1channel__send__functions_3_01_derived_00_01_executor_00_03c924ac731b9dc560550dcbaded0ec23.html#a5b5af18b4264eff22bcf5e7a2f9f302d", null ],
-    [ "try_send_via_dispatch", "classasio_1_1experimental_1_1detail_1_1channel__send__functions_3_01_derived_00_01_executor_00_03c924ac731b9dc560550dcbaded0ec23.html#a0c70be8afd06d4a91a063763c641de2c", null ]
-];

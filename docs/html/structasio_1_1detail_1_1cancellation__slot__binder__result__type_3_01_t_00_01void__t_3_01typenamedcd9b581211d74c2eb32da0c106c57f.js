@@ -1,6 +1,0 @@
-var structasio_1_1detail_1_1cancellation__slot__binder__result__type_3_01_t_00_01void__t_3_01typenamedcd9b581211d74c2eb32da0c106c57f =
-[
-    [ "result_type", "structasio_1_1detail_1_1cancellation__slot__binder__result__type_3_01_t_00_01void__t_3_01typenamedcd9b581211d74c2eb32da0c106c57f.html#ab5a858db30732f32b1a75fd67180cdcf", null ],
-    [ "result_type_or_void", "structasio_1_1detail_1_1cancellation__slot__binder__result__type.html#ab524aa7883dc8ac66c735b85260c4f86", null ],
-    [ "result_type_or_void", "structasio_1_1detail_1_1cancellation__slot__binder__result__type_3_01_t_00_01void__t_3_01typenamedcd9b581211d74c2eb32da0c106c57f.html#a4f58328d5a6d6f25bd349116ac2746c2", null ]
-];

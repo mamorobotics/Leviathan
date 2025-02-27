@@ -1,7 +1,0 @@
-var impl_2promise_8hpp =
-[
-    [ "asio::experimental::detail::promise_impl< void(Ts...), Executor, Allocator >", "structasio_1_1experimental_1_1detail_1_1promise__impl_3_01void_07_ts_8_8_8_08_00_01_executor_00_01_allocator_01_4.html", "structasio_1_1experimental_1_1detail_1_1promise__impl_3_01void_07_ts_8_8_8_08_00_01_executor_00_01_allocator_01_4" ],
-    [ "asio::experimental::detail::promise_impl< void(Ts...), Executor, Allocator >::completion_base", "structasio_1_1experimental_1_1detail_1_1promise__impl_3_01void_07_ts_8_8_8_08_00_01_executor_00_be2d79858bb0de0bf9538eb592584e7c.html", "structasio_1_1experimental_1_1detail_1_1promise__impl_3_01void_07_ts_8_8_8_08_00_01_executor_00_be2d79858bb0de0bf9538eb592584e7c" ],
-    [ "asio::experimental::detail::promise_impl< void(Ts...), Executor, Allocator >::completion_impl< Alloc, WaitHandler_ >", "structasio_1_1experimental_1_1detail_1_1promise__impl_3_01void_07_ts_8_8_8_08_00_01_executor_00_edebb8611fa0f941a1d23c17ccc9c471.html", "structasio_1_1experimental_1_1detail_1_1promise__impl_3_01void_07_ts_8_8_8_08_00_01_executor_00_edebb8611fa0f941a1d23c17ccc9c471" ],
-    [ "asio::experimental::detail::promise_handler< void(Ts...), Executor, Allocator >", "structasio_1_1experimental_1_1detail_1_1promise__handler_3_01void_07_ts_8_8_8_08_00_01_executor_00_01_allocator_01_4.html", "structasio_1_1experimental_1_1detail_1_1promise__handler_3_01void_07_ts_8_8_8_08_00_01_executor_00_01_allocator_01_4" ]
-];

@@ -1,6 +1,0 @@
-var structasio_1_1experimental_1_1detail_1_1parallel__group__signature_3_01_n_00_01_sig0_00_01_sig1_00_01_sig_n_8_8_8_01_4 =
-[
-    [ "order_type", "structasio_1_1experimental_1_1detail_1_1parallel__group__signature_3_01_n_00_01_sig0_00_01_sig1_00_01_sig_n_8_8_8_01_4.html#ad02cac6c665d7b95fabfbdc983a96ac2", null ],
-    [ "raw_type", "structasio_1_1experimental_1_1detail_1_1parallel__group__signature_3_01_n_00_01_sig0_00_01_sig1_00_01_sig_n_8_8_8_01_4.html#ac55b747b71d1c166f197ea140ce2a528", null ],
-    [ "type", "structasio_1_1experimental_1_1detail_1_1parallel__group__signature_3_01_n_00_01_sig0_00_01_sig1_00_01_sig_n_8_8_8_01_4.html#a661f37186eee61e387989e826af2ae04", null ]
-];

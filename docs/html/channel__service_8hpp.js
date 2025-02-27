@@ -1,8 +1,0 @@
-var channel__service_8hpp =
-[
-    [ "asio::experimental::detail::channel_service< Mutex >", "classasio_1_1experimental_1_1detail_1_1channel__service.html", "classasio_1_1experimental_1_1detail_1_1channel__service" ],
-    [ "asio::experimental::detail::channel_service< Mutex >::base_implementation_type", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1base__implementation__type.html", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1base__implementation__type" ],
-    [ "asio::experimental::detail::channel_service< Mutex >::implementation_type< Traits, Signatures >", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1implementation__type.html", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1implementation__type" ],
-    [ "asio::experimental::detail::channel_service< Mutex >::implementation_type< Traits, R()>", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1implementation__type_3_01_traits_00_01_r_07_08_4.html", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1implementation__type_3_01_traits_00_01_r_07_08_4" ],
-    [ "asio::experimental::detail::channel_service< Mutex >::implementation_type< Traits, R(asio::error_code)>", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1implementation__type_3_01_traits_00_01_r_07asio_1_1error__code_08_4.html", "structasio_1_1experimental_1_1detail_1_1channel__service_1_1implementation__type_3_01_traits_00_01_r_07asio_1_1error__code_08_4" ]
-];

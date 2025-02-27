@@ -1,4 +1,0 @@
-var structasio_1_1associated__immediate__executor_3_01any__completion__handler_3_01_signatures_8_8_8_01_4_00_01_candidate_01_4 =
-[
-    [ "type", "structasio_1_1associated__immediate__executor_3_01any__completion__handler_3_01_signatures_8_8_8_01_4_00_01_candidate_01_4.html#a33ad1319758b499d4875ccceec27ffb9", null ]
-];

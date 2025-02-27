@@ -1,4 +1,0 @@
-var structasio_1_1traits_1_1query__static__constexpr__member_3_01asio_1_1detail_1_1promise__executor9657cfb8861a0cc6057df91d71c9714a =
-[
-    [ "result_type", "structasio_1_1traits_1_1query__static__constexpr__member_3_01asio_1_1detail_1_1promise__executor9657cfb8861a0cc6057df91d71c9714a.html#af373c2b3515a689c9eac95fd7fc9c61e", null ]
-];

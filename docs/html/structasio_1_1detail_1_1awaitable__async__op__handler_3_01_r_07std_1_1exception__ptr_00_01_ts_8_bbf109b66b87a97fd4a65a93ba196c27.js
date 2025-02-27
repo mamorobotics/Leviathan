@@ -1,5 +1,0 @@
-var structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_ts_8_bbf109b66b87a97fd4a65a93ba196c27 =
-[
-    [ "ex_", "structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_ts_8_bbf109b66b87a97fd4a65a93ba196c27.html#ac44259935b67c5eae3dfa699ea4a5c13", null ],
-    [ "value_", "structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_ts_8_bbf109b66b87a97fd4a65a93ba196c27.html#a8f47f44673f1449398437c95ce115eab", null ]
-];

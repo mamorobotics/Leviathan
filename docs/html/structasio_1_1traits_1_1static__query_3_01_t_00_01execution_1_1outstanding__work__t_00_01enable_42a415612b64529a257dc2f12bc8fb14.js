@@ -1,4 +1,0 @@
-var structasio_1_1traits_1_1static__query_3_01_t_00_01execution_1_1outstanding__work__t_00_01enable_42a415612b64529a257dc2f12bc8fb14 =
-[
-    [ "result_type", "structasio_1_1traits_1_1static__query_3_01_t_00_01execution_1_1outstanding__work__t_00_01enable_42a415612b64529a257dc2f12bc8fb14.html#a573e10bca63cfaaca7c100cd22a2f776", null ]
-];

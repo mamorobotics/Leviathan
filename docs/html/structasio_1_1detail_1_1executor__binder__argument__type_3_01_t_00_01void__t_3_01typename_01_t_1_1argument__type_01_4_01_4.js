@@ -1,4 +1,0 @@
-var structasio_1_1detail_1_1executor__binder__argument__type_3_01_t_00_01void__t_3_01typename_01_t_1_1argument__type_01_4_01_4 =
-[
-    [ "argument_type", "structasio_1_1detail_1_1executor__binder__argument__type_3_01_t_00_01void__t_3_01typename_01_t_1_1argument__type_01_4_01_4.html#ad4bbbb7ba41ae81bf7fdd11709235b22", null ]
-];

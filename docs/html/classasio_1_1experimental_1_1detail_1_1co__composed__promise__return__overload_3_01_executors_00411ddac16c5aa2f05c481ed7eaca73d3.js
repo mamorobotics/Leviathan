@@ -1,6 +1,0 @@
-var classasio_1_1experimental_1_1detail_1_1co__composed__promise__return__overload_3_01_executors_00411ddac16c5aa2f05c481ed7eaca73d3 =
-[
-    [ "derived_type", "classasio_1_1experimental_1_1detail_1_1co__composed__promise__return__overload_3_01_executors_00411ddac16c5aa2f05c481ed7eaca73d3.html#ac0a2863d53311b68d386d0815926e3bb", null ],
-    [ "return_type", "classasio_1_1experimental_1_1detail_1_1co__composed__promise__return__overload_3_01_executors_00411ddac16c5aa2f05c481ed7eaca73d3.html#a1c13a8a834bb4d90d07575299a734a56", null ],
-    [ "return_value", "classasio_1_1experimental_1_1detail_1_1co__composed__promise__return__overload_3_01_executors_00411ddac16c5aa2f05c481ed7eaca73d3.html#a2dab9105b5e89b64e7f67ab32c772ecb", null ]
-];

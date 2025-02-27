@@ -1,5 +1,0 @@
-var structasio_1_1detail_1_1cancellation__slot__binder__argument__types_3_01_t_00_01void__t_3_01type430e8a734b6d8c212e088d74adfb1906 =
-[
-    [ "first_argument_type", "structasio_1_1detail_1_1cancellation__slot__binder__argument__types_3_01_t_00_01void__t_3_01type430e8a734b6d8c212e088d74adfb1906.html#a87784857aa5cf79d3754d342d6c98d9a", null ],
-    [ "second_argument_type", "structasio_1_1detail_1_1cancellation__slot__binder__argument__types_3_01_t_00_01void__t_3_01type430e8a734b6d8c212e088d74adfb1906.html#aced847d721be181b2ec9ef47cb40db73", null ]
-];

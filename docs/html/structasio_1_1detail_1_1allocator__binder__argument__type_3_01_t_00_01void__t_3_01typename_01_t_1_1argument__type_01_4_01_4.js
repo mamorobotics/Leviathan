@@ -1,4 +1,0 @@
-var structasio_1_1detail_1_1allocator__binder__argument__type_3_01_t_00_01void__t_3_01typename_01_t_1_1argument__type_01_4_01_4 =
-[
-    [ "argument_type", "structasio_1_1detail_1_1allocator__binder__argument__type_3_01_t_00_01void__t_3_01typename_01_t_1_1argument__type_01_4_01_4.html#ae5e76a758e9f07a2e1446f98e4d85c1a", null ]
-];

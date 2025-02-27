@@ -1,6 +1,0 @@
-var classasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_t_08_00_01_executor_01_4 =
-[
-    [ "result_type", "structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_t_08_ab2267dae5984d6e8966b78873c53ce4.html", "structasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_t_08_ab2267dae5984d6e8966b78873c53ce4" ],
-    [ "awaitable_async_op_handler", "classasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_t_08_00_01_executor_01_4.html#ae56282d40088dbf6081200eb7bab79b5", null ],
-    [ "operator()", "classasio_1_1detail_1_1awaitable__async__op__handler_3_01_r_07std_1_1exception__ptr_00_01_t_08_00_01_executor_01_4.html#aaf999b2fd55d3c3bdfcfae331285e6c5", null ]
-];

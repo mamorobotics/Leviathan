@@ -1,4 +1,0 @@
-var structasio_1_1associated__immediate__executor_3_01reference__wrapper_3_01_t_01_4_00_01_executor_01_4 =
-[
-    [ "type", "structasio_1_1associated__immediate__executor_3_01reference__wrapper_3_01_t_01_4_00_01_executor_01_4.html#a87736b13af41a02bd4eb52bc29b3453c", null ]
-];

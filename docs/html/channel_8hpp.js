@@ -1,8 +1,0 @@
-var channel_8hpp =
-[
-    [ "asio::experimental::detail::channel_type< ExecutorOrSignature, typename >", "structasio_1_1experimental_1_1detail_1_1channel__type.html", "structasio_1_1experimental_1_1detail_1_1channel__type" ],
-    [ "asio::experimental::detail::channel_type< ExecutorOrSignature, typename >::inner< Signatures >", "structasio_1_1experimental_1_1detail_1_1channel__type_1_1inner.html", "structasio_1_1experimental_1_1detail_1_1channel__type_1_1inner" ],
-    [ "asio::experimental::detail::channel_type< ExecutorOrSignature, enable_if_t< is_executor< ExecutorOrSignature >::value||execution::is_executor< ExecutorOrSignature >::value > >", "structasio_1_1experimental_1_1detail_1_1channel__type_3_01_executor_or_signature_00_01enable__if25df280be514ecb6542adeed99277389.html", "structasio_1_1experimental_1_1detail_1_1channel__type_3_01_executor_or_signature_00_01enable__if25df280be514ecb6542adeed99277389" ],
-    [ "asio::experimental::detail::channel_type< ExecutorOrSignature, enable_if_t< is_executor< ExecutorOrSignature >::value||execution::is_executor< ExecutorOrSignature >::value > >::inner< Signatures >", "structasio_1_1experimental_1_1detail_1_1channel__type_3_01_executor_or_signature_00_01enable__ifc777c19a09ed25e2c14c943ab509787a.html", "structasio_1_1experimental_1_1detail_1_1channel__type_3_01_executor_or_signature_00_01enable__ifc777c19a09ed25e2c14c943ab509787a" ],
-    [ "asio::experimental::channel", "namespaceasio_1_1experimental.html#ab9bc95bb81ce2f161c5fade03ea92947", null ]
-];

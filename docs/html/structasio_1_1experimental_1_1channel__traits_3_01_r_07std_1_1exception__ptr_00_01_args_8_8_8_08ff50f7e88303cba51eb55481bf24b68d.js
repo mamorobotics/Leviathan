@@ -1,4 +1,0 @@
-var structasio_1_1experimental_1_1channel__traits_3_01_r_07std_1_1exception__ptr_00_01_args_8_8_8_08ff50f7e88303cba51eb55481bf24b68d =
-[
-    [ "type", "structasio_1_1experimental_1_1channel__traits_3_01_r_07std_1_1exception__ptr_00_01_args_8_8_8_08ff50f7e88303cba51eb55481bf24b68d.html#acc7cbbe2da2c13f7e95f894672ae504d", null ]
-];

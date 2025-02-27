@@ -1,5 +1,0 @@
-var classasio_1_1experimental_1_1detail_1_1co__composed__promise__return_3_01_executors_00_01_handleb994e972fa64e668228495ed2fd2bbb9 =
-[
-    [ "final_suspend", "classasio_1_1experimental_1_1detail_1_1co__composed__promise__return_3_01_executors_00_01_handleb994e972fa64e668228495ed2fd2bbb9.html#a9ff29a9fe82d42770dab7da752901508", null ],
-    [ "co_composed_promise_return_overload", "classasio_1_1experimental_1_1detail_1_1co__composed__promise__return_3_01_executors_00_01_handleb994e972fa64e668228495ed2fd2bbb9.html#ac4e9b76517bdd6549253ef8314f3d4c8", null ]
-];
