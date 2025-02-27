@@ -92,7 +92,15 @@ int main()
 	Serial* ser = Serial::Get();
 
 	Controller::ScanControllers();
-	
+
+	std::filesystem::path images = "images";
+	if(std::filesystem::exists(images) && std::filesystem::is_directory(images)){
+		for (auto const& dir_entry : std::filesystem::directory_iterator{images}) 
+		{
+			std::filesystem::remove_all(dir_entry.path());
+		}
+	}
+
 	//Setup GLFW and Imgui
 	glfwSetErrorCallback( error_callback );
 
