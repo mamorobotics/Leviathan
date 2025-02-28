@@ -49,6 +49,8 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGui::StyleColorsDark();
 
 	start = time(0);
+
+	stillsTextures.insert(stillsTextures.end(), 7, 0);
 }
 
 void UI::NewFrame()
@@ -124,7 +126,8 @@ void UI::Update()
 		{
 			if (stillsTextures[index] == NULL)
 			{
-				stillsTextures.push_back(new GLuint);
+				GLuint blank = 0;
+				stillsTextures.push_back(blank);
 			}
 
 			GLuint ImageTexture = stillsTextures[index];
