@@ -39,6 +39,7 @@ private:
 	bool mainCamera = true;
 	bool statisticsOpen = false;
 	bool stillsOpen = false;
+	bool stillsTexturesLoaded = false;
 	int selectedController = 0;
 	int quality = 80;
 	float deltaVals[64];

@@ -49,8 +49,6 @@ void UI::Init(GLFWwindow* window, const char* glsl_version)
 	ImGui::StyleColorsDark();
 
 	start = time(0);
-
-	stillsTextures.insert(stillsTextures.end(), 7, 0);
 }
 
 void UI::NewFrame()
@@ -73,6 +71,7 @@ void UI::Update()
 	}
 	if (ImGui::MenuItem("Stills"))
 	{
+		stillsTexturesLoaded = false;
 		stillsOpen = true;
 	}
 	ImGui::EndMainMenuBar();
@@ -118,30 +117,57 @@ void UI::Update()
 	{
 		ImGui::Begin("Stills");
 		if (ImGui::Button("Exit"))
-			stillsOpen = false;
-		std::filesystem::path images = "images";
-		int i = 0;
-		int index = 0;
-		for (auto const& dir_entry : std::filesystem::directory_iterator{images}) 
 		{
-			if (stillsTextures[index] == NULL)
+			stillsOpen = false;
+
+			for (size_t i = 0; i < stillsTextures.size(); i++) 
 			{
-				GLuint blank = 0;
-				stillsTextures.push_back(blank);
+				if (stillsTextures[i] != 0)
+				{
+					PublishOutput("Deleted texture on stills exit", LEV_CODE::IMAGE_ERROR);
+					glDeleteTextures(1, &stillsTextures[i]);
+					stillsTextures[i] = 0;
+				}
 			}
 
-			GLuint ImageTexture = stillsTextures[index];
-			
-			LoadTexture::LoadTextureFromFile(dir_entry.path().string().c_str(), &ImageTexture, &cameraWidth, &cameraHeight);
-			ImGui::Image((void*)(intptr_t)ImageTexture, ImVec2(cameraWidth/3, cameraHeight/3));
+			stillsTextures.clear();
+		}
+
+		if (!stillsTexturesLoaded) 
+		{
+			std::filesystem::path images = "images";
+
+			int index = 0;
+			for (auto const& dir_entry : std::filesystem::directory_iterator{images}) 
+			{
+				while (index >= stillsTextures.size())
+				{
+					PublishOutput("Created new StillsTexture entry", LEV_CODE::IMAGE_ERROR);
+					stillsTextures.push_back(0);
+				}
+
+				glGenTextures(1, &stillsTextures[index]);
+				
+				LoadTexture::LoadTextureFromFile(dir_entry.path().string().c_str(), &stillsTextures[index], &cameraWidth, &cameraHeight);
+
+				index++;
+			}
+
+			stillsTexturesLoaded = true;
+		}
+
+		int i = 0;
+		for(int index = 0; index < stillsTextures.size(); index++) 
+		{
+			ImGui::Image((void*)(intptr_t)stillsTextures[index], ImVec2(cameraWidth/3, cameraHeight/3));
 			if(i < 2){
 				ImGui::SameLine();
 			}else {
-				i = 0;
+				i = -1;
 			}
 			i++;
-			index++;
 		}
+		
 		ImGui::End();
 	}
 
@@ -228,30 +254,32 @@ void UI::Update()
 	ImGui::Checkbox("Pause Video Feed", &pauseCamera);
 	ImGui::SliderInt("Quality", &quality , 0, 100, "%d%%");
 	ImGui::Checkbox("Main Camera", &mainCamera);
-	if (ImGui::Button("Take Photo"))
-		{
-			GLuint fbo;
-			glGenFramebuffers(1, &fbo);
-			glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, cameraTexture, 0);
+	if (ImGui::Button("Take Photo")) 
+	{
+		PublishOutput("Photo Taken", LEV_CODE::CLEAR);
+
+		GLuint fbo;
+		glGenFramebuffers(1, &fbo);
+		glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, cameraTexture, 0);
 
 
-			std::vector<unsigned char> buffer (cameraWidth * cameraHeight * 3);
+		std::vector<unsigned char> buffer (cameraWidth * cameraHeight * 3);
 
-			glReadPixels(0, 0, cameraWidth, cameraHeight, GL_RGB, GL_UNSIGNED_BYTE, buffer.data());
-			GLenum error = glGetError();
-			if(error != GL_NO_ERROR){
-				std::cout << "OpenGL error: " << error << std::endl; 
-			}
-
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glDeleteFramebuffers(1, &fbo);
-
-			const char * filename = ("images/" + std::to_string(stillNum) + ".jpg").c_str(); 
-
-			int success = stbi_write_jpg(filename, cameraWidth, cameraHeight, 3, buffer.data(), 95);
-			stillNum++;
+		glReadPixels(0, 0, cameraWidth, cameraHeight, GL_RGB, GL_UNSIGNED_BYTE, buffer.data());
+		GLenum error = glGetError();
+		if(error != GL_NO_ERROR){
+			std::cout << "OpenGL error: " << error << std::endl; 
 		}
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glDeleteFramebuffers(1, &fbo);
+
+		const char * filename = ("images/" + std::to_string(stillNum) + ".jpg").c_str(); 
+
+		int success = stbi_write_jpg(filename, cameraWidth, cameraHeight, 3, buffer.data(), 95);
+		stillNum++;
+	}
 	ImGui::End();
 }
 
