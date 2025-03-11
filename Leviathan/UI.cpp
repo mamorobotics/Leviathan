@@ -179,26 +179,28 @@ void UI::Update()
 
 	if (ImGui::BeginListBox("##Float Output box", ImVec2(-FLT_MIN, 300)))
 	{
-		for (unsigned int n = 0; n < ser->getFloatOutputs().size(); n++) 
+		std::vector<std::string> floatOutputs = ser->getFloatOutputs();
+
+		for (unsigned int n = 0; n < floatOutputs.size(); n++) 
 		{
-			ImGui::Text((ser->getFloatOutputs()[n]).c_str());
+			ImGui::Text((floatOutputs[n]).c_str());
 		}
 		ImGui::EndListBox();
 	}
 
-	if (ImPlot::BeginPlot("Depth Data")) {
-		float x[128];
-		float y[128];
-		for(size_t i=0; i<128; i++){
-			x[i] = ser->getDepthVals(1)[0][i];
-			y[i] = ser->getDepthVals(1)[1][i];
-		}
+	// if (ImPlot::BeginPlot("Depth Data")) {
+	// 	float x[128];
+	// 	float y[128];
+	// 	for(size_t i=0; i<128; i++){
+	// 		x[i] = ser->getDepthVals(1)[0][i];
+	// 		y[i] = ser->getDepthVals(1)[1][i];
+	// 	}
 
-		ImPlot::SetupAxes("x","y");
-		ImPlot::SetupAxesLimits(0, 20, 0, 30);
-		ImPlot::PlotLine("f(x)", x, y, ser->getNumDataPts(1));
-		ImPlot::EndPlot();
-	}
+	// 	ImPlot::SetupAxes("x","y");
+	// 	ImPlot::SetupAxesLimits(0, 20, 0, 30);
+	// 	ImPlot::PlotLine("f(x)", x, y, ser->getNumDataPts(1));
+	// 	ImPlot::EndPlot();
+	// }
 
 	ImGui::End();
 

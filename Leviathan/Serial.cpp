@@ -50,20 +50,20 @@ void Serial::SendControllerAndGetFloatData()
 				// std::cout<<"Time "<<data_split[1]<<std::endl;
 				// std::cout<<"Depth "<<data_split[2]<<std::endl;
 
-				if(profile == 0){
-					depthProfileOne[0][index] = std::stof(data_split[1]);
-					depthProfileOne[1][index] = std::stof(data_split[2].substr(0,3));
-					dataPts1 += 1;
-					dataPts1 = std::min(dataPts1, 128);
-				}else{
-					depthProfileTwo[0][index] = std::stof(data_split[1]);
-					depthProfileTwo[1][index] = std::stof(data_split[2].substr(0,3));
-					dataPts2 += 1;
-					dataPts2 = std::min(dataPts2, 128);
-				}
+				// if(profile == 0){
+				// 	depthProfileOne[0][index] = std::stof(data_split[1]);
+				// 	depthProfileOne[1][index] = std::stof(data_split[2].substr(0,3));
+				// 	dataPts1 += 1;
+				// 	dataPts1 = std::min(dataPts1, 128);
+				// }else{
+				// 	depthProfileTwo[0][index] = std::stof(data_split[1]);
+				// 	depthProfileTwo[1][index] = std::stof(data_split[2].substr(0,3));
+				// 	dataPts2 += 1;
+				// 	dataPts2 = std::min(dataPts2, 128);
+				// }
 
-				index += 1;
-				index %= 128;
+				// index += 1;
+				// index %= 128;
 			} else if(data[0] == 'E'){
 				profile++;
 				profile %= 2;
