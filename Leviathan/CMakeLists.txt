@@ -16,16 +16,16 @@ message( ${LIB_DIR} )
 # Glad
 set(GLAD_DIR "${LIB_DIR}/glad")
 
-add_library("glad" "${GLAD_DIR}/src/glad.c")
+add_library(glad "${GLAD_DIR}/src/glad.c")
 
-target_include_directories("glad" PRIVATE "${GLAD_DIR}/include")
+target_include_directories(glad PRIVATE "${GLAD_DIR}/include")
 target_include_directories(${PROJECT_NAME} PRIVATE "${GLAD_DIR}/include")
-target_link_libraries(${PROJECT_NAME} "glad" "${CMAKE_DL_LIBS}")
+target_link_libraries(${PROJECT_NAME} glad "${CMAKE_DL_LIBS}")
 
 # ImGui
 set(IMGUI_DIR "${LIB_DIR}/ImGui")
 
-add_library("ImGui" "${IMGUI_DIR}/imgui.cpp"
+add_library(ImGui "${IMGUI_DIR}/imgui.cpp"
 "${IMGUI_DIR}/imgui_demo.cpp"
 "${IMGUI_DIR}/imgui_draw.cpp"
 "${IMGUI_DIR}/imgui_tables.cpp"
@@ -38,9 +38,9 @@ add_library("ImGui" "${IMGUI_DIR}/imgui.cpp"
 "${IMGUI_DIR}/imgui_impl_glfw.cpp"
 "${IMGUI_DIR}/imgui_impl_opengl3.cpp")
 
-target_include_directories("ImGui" PRIVATE "${IMGUI_DIR}")
+target_include_directories(ImGui PRIVATE "${IMGUI_DIR}")
 target_include_directories(${PROJECT_NAME} PRIVATE "${IMGUI_DIR}")
-target_link_libraries(${PROJECT_NAME} "ImGui" "${CMAKE_DL_LIBS}")
+target_link_libraries(${PROJECT_NAME} ImGui "${CMAKE_DL_LIBS}")
 
 # Glfw3
 set(GLFW_DIR "${LIB_DIR}/glfw3")
